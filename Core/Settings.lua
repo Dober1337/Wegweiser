@@ -22,6 +22,9 @@ ns.defaults = {
         talentHint    = true,
         loginReminder = true,
         onScreen      = false,
+        -- Modul: Talent-Leitfaden
+        talentGuide   = true,
+        talentBuild   = "SHAMAN_RESTORATION_LEVELING_HYBRID", -- gewählter Build (pro Klasse passend)
     },
     talentDump = {},   -- Ergebnis von /ww talentdump, pro Klasse
 }

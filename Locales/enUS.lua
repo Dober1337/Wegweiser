@@ -55,3 +55,27 @@ L.OPT_ONSCREEN_TT       = "Also shows tips in large text in the middle of the sc
 
 -- Test
 L.TEST_HEADER           = "This is what a level-up tip looks like:"
+
+-- Talent-Leitfaden
+L.HELP_BUILD            = "/ww build – talent guide: progress and next point"
+L.HELP_BUILD_LIST       = "/ww build list – all steps of the build"
+L.HELP_BUILD_NOTES      = "/ww build notes – known trade-offs of the build"
+L.OPT_GUIDE             = "Talent guide"
+L.OPT_GUIDE_TT          = "Recommends which talent to pick next, based on a leveling build."
+L.GUIDE_NO_BUILD        = "There is no talent build for your class yet."
+L.GUIDE_TREE_CHANGED    = "|cffff5555The talent tree has changed – please check the build.|r"
+L.GUIDE_SEE_BUILD       = "Details: /ww build"
+L.GUIDE_PROGRESS        = "Progress: %d of %d points as planned."
+L.GUIDE_NEXT            = "Next: %s"
+L.GUIDE_POINT_LINE      = "point %d (level %d): %s %d/%d"
+L.GUIDE_COMPLETE        = "All points of the build are spent. Well done!"
+L.GUIDE_DEVIATION       = "|cffffff00Note:|r %s is at %d, the build plans %d. That's fine – it's your choice."
+L.GUIDE_MORE            = "More: /ww build liste, /ww build hinweise"
+L.GUIDE_LIST_LINE       = "%s Lvl %s: %s %d/%d"
+L.GUIDE_NOTES_HEADER    = "Known trade-offs of this build:"
+L.CHECK_NODE_MISSING    = "Step %d: talent #%d no longer exists."
+L.CHECK_MAXRANK         = "%s: max rank should be %d, game says %d."
+L.CHECK_POSITION        = "%s: expected tree %d row %d column %d, game says tree %d row %d column %d."
+L.CHECK_GATE            = "Point %d (%s): needs %d points in the tree, only %d at that time."
+L.CHECK_ARROW           = "Point %d (%s): requires %s at rank %d first."
+L.CHECK_TOO_MANY        = "%s: build plans rank %d, but the maximum is %d."

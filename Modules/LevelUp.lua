@@ -39,6 +39,11 @@ function LevelUp:CheckTalentPoints()
     else
         ns:Notify(L.TALENT_UNSPENT_MANY, unspent, key)
     end
+
+    -- Talent-Leitfaden: welcher Punkt ist laut Build dran?
+    if ns.modules.TalentGuide then
+        ns.modules.TalentGuide:PrintNext()
+    end
 end
 
 -- Gibt es auf diesem Level neue Fähigkeiten beim Lehrer? (alle 2 Level)

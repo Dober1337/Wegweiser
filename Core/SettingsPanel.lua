@@ -39,6 +39,8 @@ function ns:OnDatabaseReady()
     addCheckbox("talentHint",    L.OPT_TALENT,   L.OPT_TALENT_TT)
     addCheckbox("loginReminder", L.OPT_LOGIN,    L.OPT_LOGIN_TT)
     addCheckbox("onScreen",      L.OPT_ONSCREEN, L.OPT_ONSCREEN_TT)
+    -- Modul: Talent-Leitfaden
+    addCheckbox("talentGuide",   L.OPT_GUIDE,    L.OPT_GUIDE_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.
 

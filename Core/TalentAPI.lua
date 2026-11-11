@@ -109,6 +109,188 @@ function TalentAPI:GetTrees()
     return trees, configID, treeID
 end
 
+-- ------------------------------------------------------------
+-- Kompletten Baum mit allen Talenten auslesen
+-- ------------------------------------------------------------
+
+-- Name, Symbol und Zauber eines Talent-Eintrags
+local function readEntry(configID, entryID)
+    local result = { entryID = entryID }
+    local entry = C_Traits.GetEntryInfo(configID, entryID)
+    if not entry then return result end
+    result.maxRanks = entry.maxRanks
+    local def = entry.definitionID and C_Traits.GetDefinitionInfo(entry.definitionID)
+    if def then
+        result.spellID = def.spellID
+        result.name = def.overrideName
+        if (not result.name or result.name == "") and def.spellID and C_Spell then
+            result.name = C_Spell.GetSpellName(def.spellID)
+        end
+        result.icon = def.overrideIcon
+        if (not result.icon or result.icon == 0) and def.spellID and C_Spell then
+            result.icon = C_Spell.GetSpellTexture(def.spellID)
+        end
+    end
+    return result
+end
+
+-- Bedingungen eines Talents (z. B. "X Punkte im Baum nötig")
+local function readConditions(configID, conditionIDs)
+    local list = {}
+    for _, condID in ipairs(conditionIDs or {}) do
+        local c = C_Traits.GetConditionInfo(configID, condID)
+        if c then
+            table.insert(list, {
+                condID              = condID,
+                isGate              = c.isGate,
+                isMet               = c.isMet,
+                type                = c.type,
+                spentAmountRequired = c.spentAmountRequired,
+                playerLevel         = c.playerLevel,
+                traitCurrencyID     = c.traitCurrencyID,
+            })
+        end
+    end
+    return list
+end
+
+-- Sortierte Liste unterschiedlicher (gerundeter) Werte
+local function distinctSorted(values)
+    local seen, list = {}, {}
+    for _, v in ipairs(values) do
+        local r = math.floor(v + 0.5)
+        if not seen[r] then
+            seen[r] = true
+            table.insert(list, r)
+        end
+    end
+    table.sort(list)
+    return list
+end
+
+-- Kleinster Abstand zwischen benachbarten Werten (= Rasterabstand)
+local function gridStep(sortedList)
+    local step
+    for i = 2, #sortedList do
+        local d = sortedList[i] - sortedList[i - 1]
+        if d > 5 and (not step or d < step) then
+            step = d
+        end
+    end
+    return step
+end
+
+-- Liest den kompletten Talentbaum. Rückgabe: Tabelle oder nil, Fehlercode.
+--   result.trees[i].talents  = Liste der Talente des Baums i
+--   result.byNode[nodeID]    = Talent (mit .treeIndex)
+-- Jedes Talent hat: nodeID, name, icon, spellID, tier, column, maxRank,
+-- rank, posX, posY, leadsTo, gateRequired (Punkte im Baum für diese Reihe).
+-- Reihe/Spalte werden aus der Pixel-Position berechnet (Raster).
+function TalentAPI:ReadTree()
+    if not self:IsAvailable() then return nil, "NO_API" end
+    local trees, configID, treeID = self:GetTrees()
+    if not configID then return nil, "NO_CONFIG" end
+    if not trees then return nil, "NO_TREE" end
+
+    local treeByGroup = {}
+    for _, tree in ipairs(trees) do
+        tree.talents = {}
+        treeByGroup[tree.groupID] = tree
+    end
+    local result = { trees = trees, configID = configID, treeID = treeID,
+                     byNode = {}, ungrouped = {} }
+
+    -- 1. Alle sichtbaren Knoten einsammeln
+    for _, nodeID in ipairs(C_Traits.GetTreeNodes(treeID) or {}) do
+        local node = C_Traits.GetNodeInfo(configID, nodeID)
+        if node and node.ID and node.ID ~= 0 and node.isVisible then
+            local talent = {
+                nodeID     = nodeID,
+                posX       = node.posX,
+                posY       = node.posY,
+                maxRank    = node.maxRanks,
+                rank       = node.ranksPurchased,
+                activeRank = node.activeRank,
+                nodeType   = node.type,
+                groupIDs   = node.groupIDs,
+                leadsTo    = {},
+                conditions = readConditions(configID, node.conditionIDs),
+                entries    = {},
+            }
+            for _, edge in ipairs(node.visibleEdges or {}) do
+                table.insert(talent.leadsTo, edge.targetNode)
+            end
+            for _, entryID in ipairs(node.entryIDs or {}) do
+                table.insert(talent.entries, readEntry(configID, entryID))
+            end
+            local first = talent.entries[1]
+            if first then
+                talent.name, talent.icon, talent.spellID = first.name, first.icon, first.spellID
+            end
+            -- Punkte-Voraussetzung der Reihe (größter Wert der Bedingungen)
+            talent.gateRequired = 0
+            for _, c in ipairs(talent.conditions) do
+                if (c.spentAmountRequired or 0) > talent.gateRequired then
+                    talent.gateRequired = c.spentAmountRequired
+                end
+            end
+
+            local owner
+            for _, gid in ipairs(node.groupIDs or {}) do
+                if treeByGroup[gid] then owner = treeByGroup[gid] break end
+            end
+            if owner then
+                talent.treeIndex = owner.index
+                table.insert(owner.talents, talent)
+                result.byNode[nodeID] = talent
+            else
+                table.insert(result.ungrouped, talent)
+            end
+        end
+    end
+
+    -- 2. Raster über alle Bäume bestimmen
+    local allX, allY = {}, {}
+    for _, tree in ipairs(trees) do
+        for _, t in ipairs(tree.talents) do
+            table.insert(allX, t.posX)
+            table.insert(allY, t.posY)
+        end
+    end
+    local ys = distinctSorted(allY)
+    local stepY, stepX, minY = gridStep(ys), gridStep(distinctSorted(allX)), ys[1]
+    result.grid = { stepX = stepX, stepY = stepY, minY = minY }
+
+    -- 3. Reihe/Spalte je Baum berechnen
+    for _, tree in ipairs(trees) do
+        local minX
+        for _, t in ipairs(tree.talents) do
+            if not minX or t.posX < minX then minX = t.posX end
+        end
+        local maxColumn = 0
+        tree.tierGates = {}   -- Reihe -> nötige Punkte im Baum (aus dem Spiel)
+        for _, t in ipairs(tree.talents) do
+            if stepY and minY then
+                t.tier = math.floor((t.posY - minY) / stepY + 0.5) + 1
+            end
+            if stepX and minX then
+                t.column = math.floor((t.posX - minX) / stepX + 0.5) + 1
+                if t.column > maxColumn then maxColumn = t.column end
+            end
+            if t.tier then tree.tierGates[t.tier] = t.gateRequired end
+        end
+        -- Belegt ein Baum keine 4 Spalten, kann die Spaltenzählung verschoben sein.
+        tree.columnsUsed = maxColumn
+        tree.columnsCertain = (maxColumn == 4)
+        table.sort(tree.talents, function(a, b)
+            if (a.tier or 0) ~= (b.tier or 0) then return (a.tier or 0) < (b.tier or 0) end
+            return (a.column or 0) < (b.column or 0)
+        end)
+    end
+
+    return result
+end
+
 -- Tastenbelegung für das Talentfenster als Text (z. B. "N"), sonst nil.
 function TalentAPI:GetTalentKeyText()
     local key = GetBindingKey and GetBindingKey("TOGGLETALENTS")

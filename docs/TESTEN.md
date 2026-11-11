@@ -39,3 +39,18 @@ Nach `/ww talentdump` und `/reload` die Datei öffnen:
 Den Abschnitt `["talentDump"]` komplett kopieren und schicken.
 Am besten mit dem Schamanen machen, der schon Punkte verteilt hat – dann
 sind auch die aktuellen Ränge drin.
+
+## Phase 2 – Talent-Leitfaden (Version 0.2.0)
+
+**Neue Dateien → WoW komplett neu starten (nicht nur /reload).**
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | Einloggen | „Version 0.2.0 geladen“, KEINE rote Meldung „Talentbaum hat sich geändert“ |
+| 2 | `/ww build` | Titel „Heal-Reiter (Leveling-Build)“, Fortschritt „X von 51“, nächster Punkt mit Begründung |
+| 3 | `/ww build liste` | 4 Phasen, alle Talentnamen auf Deutsch, Häkchen bei erledigten Schritten, `>` beim aktuellen |
+| 4 | `/ww build hinweise` | 4 Kompromiss-Hinweise |
+| 5 | `/ww config` | neues Häkchen „Talent-Leitfaden“ |
+| 6 | Nächster Levelaufstieg | nach „Du hast 1 freien Talentpunkt …“ kommt „Als Nächstes: …“ |
+| 7 | Punkt wie empfohlen verteilen, `/ww build` | Fortschritt +1, nächster Punkt rückt weiter |
+| 8 | (optional) Punkt woanders hinsetzen, `/ww build` | gelber Hinweis „… steht auf 1, der Build sieht 0 vor“ |

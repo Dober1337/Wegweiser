@@ -55,3 +55,27 @@ L.OPT_ONSCREEN_TT       = "Zeigt Hinweise zusätzlich groß in der Bildschirmmit
 
 -- Test
 L.TEST_HEADER           = "So sieht ein Level-Up-Hinweis aus:"
+
+-- Talent-Leitfaden
+L.HELP_BUILD            = "/ww build – Talent-Leitfaden: Fortschritt und nächster Punkt"
+L.HELP_BUILD_LIST       = "/ww build liste – alle Schritte des Builds"
+L.HELP_BUILD_NOTES      = "/ww build hinweise – bekannte Kompromisse des Builds"
+L.OPT_GUIDE             = "Talent-Leitfaden"
+L.OPT_GUIDE_TT          = "Empfiehlt anhand eines Leveling-Builds, welches Talent als Nächstes dran ist."
+L.GUIDE_NO_BUILD        = "Für deine Klasse gibt es noch keinen Talent-Build."
+L.GUIDE_TREE_CHANGED    = "|cffff5555Talentbaum hat sich geändert – Build prüfen.|r"
+L.GUIDE_SEE_BUILD       = "Details: /ww build"
+L.GUIDE_PROGRESS        = "Fortschritt: %d von %d Punkten wie geplant verteilt."
+L.GUIDE_NEXT            = "Als Nächstes: %s"
+L.GUIDE_POINT_LINE      = "Punkt %d (Level %d): %s %d/%d"
+L.GUIDE_COMPLETE        = "Alle Punkte des Builds sind verteilt. Gut gemacht!"
+L.GUIDE_DEVIATION       = "|cffffff00Hinweis:|r %s steht auf %d, der Build sieht %d vor. Das ist okay – deine Entscheidung."
+L.GUIDE_MORE            = "Mehr: /ww build liste, /ww build hinweise"
+L.GUIDE_LIST_LINE       = "%s Lvl %s: %s %d/%d"
+L.GUIDE_NOTES_HEADER    = "Bekannte Kompromisse dieses Builds:"
+L.CHECK_NODE_MISSING    = "Schritt %d: Talent #%d gibt es nicht mehr."
+L.CHECK_MAXRANK         = "%s: maximaler Rang sollte %d sein, das Spiel sagt %d."
+L.CHECK_POSITION        = "%s: erwartet Baum %d Reihe %d Spalte %d, das Spiel sagt Baum %d Reihe %d Spalte %d."
+L.CHECK_GATE            = "Punkt %d (%s): braucht %d Punkte im Baum, zu diesem Zeitpunkt sind es erst %d."
+L.CHECK_ARROW           = "Punkt %d (%s): setzt zuerst %s auf %d voraus."
+L.CHECK_TOO_MANY        = "%s: Build plant Rang %d, Maximum ist %d."
