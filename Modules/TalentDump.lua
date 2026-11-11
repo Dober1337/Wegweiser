@@ -69,6 +69,7 @@ function TalentDump:Run()
             firstTalentLevel = ns:Const("FIRST_TALENT_LEVEL"),
         },
         apiProbe = probeAPI(),
+        -- Pfeile mit Art: edgeTypes[Ziel] = 0 optisch, 2 ausreichend, 3 erforderlich
     }
     ns.db.talentDump[classFile] = dump
 

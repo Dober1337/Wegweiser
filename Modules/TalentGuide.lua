@@ -113,10 +113,20 @@ function Guide:Validate(build, tree)
     --    gateRequired = (Reihe-1) * 5 Punkte im selben Baum (Core/TalentAPI.lua).
     local spentInTree, rank = {}, {}
     local sources = {}   -- Ziel-nodeID -> Liste der Talente, deren Pfeil darauf zeigt
+    -- Nur echte Voraussetzungen zählen: Pfeil vom Typ "erforderlich"
+    -- (Enum.TraitEdgeType.RequiredForAvailability = 3, falls das Spiel den Typ
+    -- liefert) UND von einem höher gelegenen auf ein tieferes Talent.
+    -- Im Zweifel nicht blockieren – was wirklich gesperrt ist, verhindert das Spiel.
     for _, live in pairs(tree.byNode) do
         for _, target in ipairs(live.leadsTo or {}) do
-            sources[target] = sources[target] or {}
-            table.insert(sources[target], live)
+            local edgeType = live.edgeTypes and live.edgeTypes[target]
+            local tgt = tree.byNode[target]
+            local required = (edgeType == nil or edgeType == 3)
+            local downward = tgt and live.tier and tgt.tier and live.tier < tgt.tier
+            if required and downward then
+                sources[target] = sources[target] or {}
+                table.insert(sources[target], live)
+            end
         end
     end
     for _, p in ipairs(self:ExpandPoints(build)) do

@@ -239,6 +239,10 @@ function TalentAPI:ReadTree()
             }
             for _, edge in ipairs(node.visibleEdges or {}) do
                 table.insert(talent.leadsTo, edge.targetNode)
+                -- Art der Verbindung merken (Enum.TraitEdgeType: 0 nur optisch,
+                -- 2 ausreichend, 3 erforderlich, …) – nur 3 ist eine echte Voraussetzung
+                talent.edgeTypes = talent.edgeTypes or {}
+                talent.edgeTypes[edge.targetNode] = edge.type
             end
             for _, entryID in ipairs(node.entryIDs or {}) do
                 table.insert(talent.entries, readEntry(configID, entryID))
