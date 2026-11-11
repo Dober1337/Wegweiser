@@ -44,7 +44,7 @@ local commands = {
     talentdump = function() ns.modules.TalentDump:Start() end,
     test       = function()
         ns:Print(L.TEST_HEADER)
-        ns.modules.LevelUp:ShowLevelUpMessages(UnitLevel("player"))
+        ns.modules.LevelUp:ShowLevelUpMessages(UnitLevel("player"), true)
         ns:RunOutOfCombat(function() ns.modules.LevelUp:CheckTalentPoints() end, true)
     end,
     help       = showHelp,

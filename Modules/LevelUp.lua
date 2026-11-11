@@ -8,9 +8,10 @@
 --   * Wenn freie Talentpunkte vorhanden sind: Hinweis mit Tastenbelegung.
 --   * Optional direkt nach dem Einloggen: Erinnerung an freie Talentpunkte.
 --
--- Hinweis Klassenlehrer: Ob es auf einem Level WIRKLICH etwas Neues gibt,
--- weiß das Addon erst mit Data/Skills.lua (Skill-Berater). Bis dahin ist
--- der Hinweis bewusst allgemein formuliert ("vielleicht").
+-- Hinweis Klassenlehrer: Neue Fähigkeiten gibt es alle 2 Level
+-- (TRAINER_LEVEL_INTERVAL in Data/Constants.lua, vom Spieler bestätigt).
+-- Deshalb kommt der Hinweis nur auf geraden Leveln (2, 4, 6, ...).
+-- Welche Fähigkeiten genau, zeigt später der Skill-Berater (Data/Skills.lua).
 -- ============================================================
 
 local _, ns = ...
@@ -40,12 +41,20 @@ function LevelUp:CheckTalentPoints()
     end
 end
 
+-- Gibt es auf diesem Level neue Fähigkeiten beim Lehrer? (alle 2 Level)
+function LevelUp:IsTrainerLevel(level)
+    local interval = ns:Const("TRAINER_LEVEL_INTERVAL") or 2
+    return level >= interval and level % interval == 0
+end
+
 -- Zeigt alle Level-Up-Hinweise für ein bestimmtes Level an.
 -- Wird auch von /ww test benutzt.
-function LevelUp:ShowLevelUpMessages(level)
+-- forceTrainer = true: Lehrer-Hinweis immer zeigen (nur für /ww test,
+-- damit man ihn auch auf einem ungeraden Level einmal sieht).
+function LevelUp:ShowLevelUpMessages(level, forceTrainer)
     ns:Notify(L.LEVELUP_CONGRATS, level)
 
-    if settings().trainerHint then
+    if settings().trainerHint and (forceTrainer or self:IsTrainerLevel(level)) then
         ns:Print(L.LEVELUP_TRAINER)
     end
 

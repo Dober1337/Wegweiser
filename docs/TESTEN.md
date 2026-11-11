@@ -28,7 +28,7 @@
 | 8 | `/ww punkte` (ab Level 10) | „Talentpunkte: X verteilt, Y frei“ + die drei Baumnamen mit Punkten |
 | 9 | `/ww talentdump`, dann `/reload` | Chat: „Talentbaum gespeichert: 3 Bäume, … Talente“ |
 | 10 | Im Kampf `/ww talentdump` | „wird nach dem Kampf ausgeführt“, danach automatisch Dump |
-| 11 | Echter Levelaufstieg | Glückwunsch + Tipp; ab Level 10 Hinweis auf freie Talentpunkte |
+| 11 | Echter Levelaufstieg | Glückwunsch; Lehrer-Hinweis nur auf geraden Leveln; ab Level 10 Hinweis auf freie Talentpunkte |
 | 12 | `/reload` mit freien Talentpunkten | nach ~5 Sekunden Erinnerung |
 
 ## Talentdump an die Entwicklung schicken

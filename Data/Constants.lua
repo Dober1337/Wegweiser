@@ -12,6 +12,8 @@ ns.Constants = {
     MAX_LEVEL          = { value = 60, verified = true },  -- vom Spieler bestätigt
     -- Punkte, die pro Reihe im selben Baum nötig sind: Reihe n braucht (n-1) * 5.
     POINTS_PER_TIER    = { value = 5,  verified = true },  -- vom Spieler bestätigt
+    -- Neue Fähigkeiten beim Klassenlehrer gibt es alle 2 Level (2, 4, 6, 8, ...).
+    TRAINER_LEVEL_INTERVAL = { value = 2, verified = true }, -- vom Spieler bestätigt, Nov 2026
 }
 
 -- Kurzform, damit Module nicht immer ".value" schreiben müssen.

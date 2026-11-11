@@ -22,7 +22,7 @@ L.HELP_TEST             = "/ww test – zeigt eine Beispiel-Nachricht zum Levela
 
 -- Level-Up-Modul
 L.LEVELUP_CONGRATS      = "Glückwunsch zu Level %d!"
-L.LEVELUP_TRAINER       = "Tipp: Schau bei deinem Klassenlehrer vorbei – vielleicht gibt es neue Fähigkeiten oder Ränge."
+L.LEVELUP_TRAINER       = "Neue Fähigkeiten! Bei deinem Klassenlehrer kannst du jetzt neue Fähigkeiten oder Ränge lernen."
 L.LEVELUP_FIRST_TALENT  = "Ab jetzt bekommst du Talentpunkte! Jeder Punkt macht deinen Charakter ein Stück stärker."
 L.TALENT_UNSPENT_ONE    = "Du hast 1 freien Talentpunkt. Öffne das Talentfenster (%s), um ihn zu verteilen."
 L.TALENT_UNSPENT_MANY   = "Du hast %d freie Talentpunkte. Öffne das Talentfenster (%s), um sie zu verteilen."
@@ -45,7 +45,7 @@ L.SETTINGS_TITLE        = "Wegweiser"
 L.OPT_LEVELUP           = "Level-Up-Hinweise"
 L.OPT_LEVELUP_TT        = "Zeigt beim Levelaufstieg einen kurzen Tipp im Chat."
 L.OPT_TRAINER           = "Erinnerung: Klassenlehrer"
-L.OPT_TRAINER_TT        = "Erinnert dich nach dem Levelaufstieg an den Besuch beim Klassenlehrer."
+L.OPT_TRAINER_TT        = "Erinnert dich alle 2 Level (2, 4, 6, ...) an den Besuch beim Klassenlehrer."
 L.OPT_TALENT            = "Erinnerung: Talentpunkte"
 L.OPT_TALENT_TT         = "Sagt dir Bescheid, wenn du freie Talentpunkte hast."
 L.OPT_LOGIN             = "Beim Einloggen erinnern"
