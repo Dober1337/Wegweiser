@@ -301,6 +301,18 @@ function TalentAPI:ReadTree()
     return result
 end
 
+-- Darf man im Talentfenster selbst zurücksetzen? true / false / nil (unbekannt)
+-- (TraitTreeInfo.cannotRefund – geprüft im Forever-UI-Quellcode; ist es gesetzt,
+--  zeigt Blizzard keinen Zurücksetzen-Knopf, dann gilt "Talente verlernen" beim Lehrer)
+function TalentAPI:CanRefundInFrame()
+    local configID = self:GetConfigID()
+    local treeID = self:GetTreeID(configID)
+    if not treeID or not C_Traits.GetTreeInfo then return nil end
+    local ok, info = pcall(C_Traits.GetTreeInfo, configID, treeID)
+    if not ok or not info then return nil end
+    return not info.cannotRefund
+end
+
 -- Tastenbelegung für das Talentfenster als Text (z. B. "N"), sonst nil.
 function TalentAPI:GetTalentKeyText()
     local key = GetBindingKey and GetBindingKey("TOGGLETALENTS")

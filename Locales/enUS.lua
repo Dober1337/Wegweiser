@@ -269,3 +269,11 @@ L.TS_NOTHING_NOW        = "Nothing new to learn right now."
 L.TS_LEVEL_LINE         = "  Level %d: %s"
 L.TS_NOTHING_SOON       = "No new abilities known for the next levels."
 L.TS_SOURCE             = "Trainer list from your last visit (%s)."
+
+-- Verskillt?
+L.GUIDE_STAGED_WARN     = "Careful: %s is not part of the build. It is not applied yet – you can still undo it in the talent window."
+L.GUIDE_OFF_SUMMARY     = "%d point(s) differ from the build. At level 60 you will therefore be missing: %s."
+L.GUIDE_RESET_FRAME     = "To fix it: \"Reset\" at the top of the talent window, then spend the points again."
+L.GUIDE_RESET_TRAINER   = "To fix it: ask your class trainer to \"unlearn talents\" (costs gold), then spend the points again."
+L.GUIDE_RESET_UNKNOWN   = "To fix it: reset your talents (talent window or class trainer), then spend the points again."
+L.GUIDE_UNDO_HINT       = "Not applied yet: undo it in the talent window (free)."

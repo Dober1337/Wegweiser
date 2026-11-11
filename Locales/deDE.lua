@@ -269,3 +269,11 @@ L.TS_NOTHING_NOW        = "Gerade gibt es nichts Neues zu lernen."
 L.TS_LEVEL_LINE         = "  Level %d: %s"
 L.TS_NOTHING_SOON       = "Für die nächsten Level sind keine neuen Fähigkeiten bekannt."
 L.TS_SOURCE             = "Lehrerliste vom letzten Besuch (%s)."
+
+-- Verskillt?
+L.GUIDE_STAGED_WARN     = "Achtung: %s gehört nicht zum Build. Noch nicht angewendet – im Talentfenster kannst du es rückgängig machen."
+L.GUIDE_OFF_SUMMARY     = "%d Punkt(e) weichen vom Build ab. Dadurch fehlen dir mit Level 60: %s."
+L.GUIDE_RESET_FRAME     = "Korrigieren: oben im Talentfenster „Zurücksetzen“, dann die Punkte neu verteilen."
+L.GUIDE_RESET_TRAINER   = "Korrigieren: beim Klassenlehrer „Talente verlernen“ (kostet Gold), dann die Punkte neu verteilen."
+L.GUIDE_RESET_UNKNOWN   = "Korrigieren: Talente zurücksetzen (Talentfenster oder Klassenlehrer), dann die Punkte neu verteilen."
+L.GUIDE_UNDO_HINT       = "Noch nicht angewendet: im Talentfenster rückgängig machen (kostenlos)."

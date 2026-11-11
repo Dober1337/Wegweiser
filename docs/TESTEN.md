@@ -208,3 +208,14 @@ Der Jäger-Build hat keine festen Talent-Nummern: Wegweiser sucht die Talente be
 | 3 | `/ww lernen` | „Jetzt lernbar: …“ und die nächsten Level mit ihren Fähigkeiten |
 | 4 | Levelaufstieg | „Neu beim Klassenlehrer: Fähigkeit (Rang x), …“ statt des allgemeinen Hinweises |
 | 5 | Level ohne neue Fähigkeiten | kein Lehrer-Hinweis |
+
+## Verskillt? (Version 0.18.0)
+
+`/reload` reicht.
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | Im Talentfenster einen Punkt AUSSERHALB des Builds setzen (noch nicht anwenden!) | sofort: „Achtung: … gehört nicht zum Build. Noch nicht angewendet – … rückgängig machen“ |
+| 2 | Dabei `/ww build` | „1 Punkt(e) weichen ab … fehlen dir mit Level 60: …“ + „im Talentfenster rückgängig machen (kostenlos)“ |
+| 3 | Rückgängig machen | Hinweise verschwinden bei `/ww build` |
+| 4 | (Nur wenn ohnehin verskillt und angewendet) `/ww build` | zeigt den Weg zum Zurücksetzen (Talentfenster oder Klassenlehrer) – bitte melden, welcher Weg im Spiel stimmt |

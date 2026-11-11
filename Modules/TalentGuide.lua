@@ -160,12 +160,34 @@ function Guide:GetProgress(build, tree)
         end
     end
 
-    -- Abweichungen: Punkte in Talenten, die der Build (so hoch) nicht vorsieht
+    -- Abweichungen: Punkte in Talenten, die der Build (so hoch) nicht vorsieht.
+    -- staged = Punkte nur vorgemerkt (noch nicht "Änderungen anwenden") -> rückgängig machbar
     local final = build._finalRanks
+    progress.offPoints = 0
     for nodeID, live in pairs(tree.byNode) do
         local want = final[nodeID] or 0
-        if (live.rank or 0) > want then
-            table.insert(progress.deviations, { live = live, have = live.rank, want = want })
+        local have = live.rank or 0
+        if have > want then
+            local committed = live.activeRank or have
+            table.insert(progress.deviations, {
+                live = live, have = have, want = want,
+                staged = have > committed and (have - math.max(committed, want)) or 0,
+            })
+            progress.offPoints = progress.offPoints + (have - want)
+        end
+    end
+
+    -- Welche Build-Punkte fehlen dadurch am Ende? (die letzten offPoints Punkte)
+    progress.missingAtEnd = {}
+    if progress.offPoints > 0 then
+        local seen = {}
+        for k = #points, math.max(1, #points - progress.offPoints + 1), -1 do
+            local step = points[k].step
+            if not seen[step] then
+                seen[step] = true
+                local live = tree.byNode[step.nodeID]
+                table.insert(progress.missingAtEnd, 1, live and live.name or ("#" .. tostring(step.nodeID)))
+            end
         end
     end
     return progress
@@ -222,6 +244,34 @@ function Guide:ResolveByName(build, tree)
     build._resolved = true
 end
 
+-- Wie kann man Talente zurücksetzen? (zur Laufzeit ermittelt)
+function Guide:ResetHint()
+    local canRefund = ns.TalentAPI:CanRefundInFrame()
+    if canRefund == true then
+        return L.GUIDE_RESET_FRAME
+    elseif canRefund == false then
+        return L.GUIDE_RESET_TRAINER
+    end
+    return L.GUIDE_RESET_UNKNOWN
+end
+
+-- Sofortwarnung: abweichender Punkt, noch nicht angewendet
+local stagedWarned = {}
+function Guide:CheckStaged()
+    if not settings().talentGuide then return end
+    local build, tree = self:Load()
+    if not build or #self:Validate(build, tree) > 0 then return end
+    for _, d in ipairs(self:GetProgress(build, tree).deviations) do
+        if d.staged > 0 then
+            local key = d.live.nodeID .. ":" .. d.have
+            if not stagedWarned[key] then
+                stagedWarned[key] = true
+                ns:Notify(L.GUIDE_STAGED_WARN, d.live.name or "?")
+            end
+        end
+    end
+end
+
 -- Kurzer Hinweis auf den nächsten Punkt (für Level-Up-Meldungen)
 function Guide:PrintNext()
     if not settings().talentGuide then return end
@@ -266,6 +316,13 @@ function Guide:PrintSummary()
     end
     for _, d in ipairs(progress.deviations) do
         ns:Print(L.GUIDE_DEVIATION, d.live.name or "?", d.have, d.want)
+    end
+    if progress.offPoints > 0 then
+        ns:Print(L.GUIDE_OFF_SUMMARY, progress.offPoints, table.concat(progress.missingAtEnd, ", "))
+        local staged = 0
+        for _, d in ipairs(progress.deviations) do staged = staged + d.staged end
+        -- Nur vorgemerkt? Dann kostenlos rückgängig machen statt zurücksetzen
+        ns:Print("   " .. (staged >= progress.offPoints and L.GUIDE_UNDO_HINT or self:ResetHint()))
     end
     ns:Print(L.GUIDE_MORE)
 end
@@ -317,6 +374,16 @@ end
 -- ------------------------------------------------------------
 
 function Guide:OnInitialize()
+    -- Talentpunkt gesetzt/geändert -> prüfen, ob er (noch unangewendet) abweicht
+    local pending = false
+    ns:RegisterEvent("TRAIT_NODE_CHANGED", function()
+        if pending then return end
+        pending = true
+        C_Timer.After(0.3, function()
+            pending = false
+            ns:RunOutOfCombat(function() Guide:CheckStaged() end, true)
+        end)
+    end)
     local checked = false
     ns:RegisterEvent("PLAYER_ENTERING_WORLD", function(_, isInitialLogin, isReloadingUi)
         if checked or not (isInitialLogin or isReloadingUi) then return end
