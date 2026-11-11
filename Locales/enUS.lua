@@ -280,3 +280,15 @@ L.GUIDE_UNDO_HINT       = "Not applied yet: undo it in the talent window (free).
 L.PROF_TRAINER_SAVED    = "Location of %s saved as %s trainer – /ww trainer will find them from now on."
 L.PROF_WAY_NAMES        = "According to the guide: %s"
 L.PROF_WAY_LEARN        = "Visit one of these trainers once – Wegweiser then remembers the location for /ww trainer."
+
+-- Build einblenden
+L.OPT_SHOWFULL          = "Show the whole build in the talent window"
+L.OPT_SHOWFULL_TT       = "Colors all talents of the build: gold = pick now, green = done, blue = later (with target rank), red = differs from the build. Also via the button in the talent window."
+L.HL_BTN_SHOW           = "Show build"
+L.HL_BTN_HIDE           = "Hide build"
+L.HL_FULL_ON            = "Whole build shown in the talent window."
+L.HL_FULL_OFF           = "Only the current talent is marked."
+L.HL_LEGEND_NOW         = "Gold: pick now"
+L.HL_LEGEND_DONE        = "Green: done as planned"
+L.HL_LEGEND_LATER       = "Blue: later in the build (target rank above)"
+L.HL_LEGEND_OFF         = "Red: differs from the build"

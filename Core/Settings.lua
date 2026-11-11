@@ -25,6 +25,7 @@ ns.defaults = {
         -- Modul: Talent-Leitfaden
         talentGuide   = true,
         talentHighlight = true,   -- Markierungen im Blizzard-Talentfenster
+        talentShowFull  = false,  -- ganzen Build farbig einblenden (Knopf im Talentfenster)
         -- Modul: Quest-Berater
         questAdvisor    = true,
         questAcceptHint = true,   -- Bewertung im Chat, wenn eine Quest angenommen wird

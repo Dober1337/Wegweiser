@@ -28,7 +28,11 @@ local L = ns.L
 local Highlight = {}
 ns.modules.TalentHighlight = Highlight
 
-local GOLD = { 1.0, 0.82, 0.0 }
+local GOLD  = { 1.0, 0.82, 0.0 }
+-- Farben für "Build einblenden"
+local GREEN = { 0.25, 0.9, 0.25 }    -- schon wie geplant verteilt
+local BLUE  = { 0.3, 0.6, 1.0 }      -- kommt später im Build
+local RED   = { 1.0, 0.25, 0.25 }    -- weicht vom Build ab
 local CHECK_TEXTURE = "Interface\\RaidFrame\\ReadyCheck-Ready"
 
 local overlays = setmetatable({}, { __mode = "k" })  -- Knopf -> unser Rahmen
@@ -59,9 +63,11 @@ local function createOverlay(button)
     -- Goldener Rahmen aus vier Kanten (je 3 Pixel dick)
     local glow = CreateFrame("Frame", nil, o)
     glow:SetAllPoints()
+    o.edges = {}
     local function edge(p1, p2, w, h)
         local t = glow:CreateTexture(nil, "OVERLAY")
         t:SetColorTexture(GOLD[1], GOLD[2], GOLD[3], 1)
+        table.insert(o.edges, t)
         t:SetPoint(p1)
         t:SetPoint(p2)
         if w then t:SetWidth(w) end
@@ -95,6 +101,11 @@ local function createOverlay(button)
     o.check = check
 
     return o
+end
+
+-- Rahmenfarbe setzen (Gold, Grün, Blau, Rot)
+local function setBorder(o, c)
+    for _, t in ipairs(o.edges) do t:SetColorTexture(c[1], c[2], c[3], 1) end
 end
 
 local function hideOverlay(o)
@@ -198,6 +209,10 @@ end
 function Highlight:Refresh()
     refreshPending = false
     hideAll()
+    if self.toggleButton then
+        self.toggleButton:SetShown(isEnabled())
+        self.toggleButton:SetText(settings().talentShowFull and L.HL_BTN_HIDE or L.HL_BTN_SHOW)
+    end
     if not isEnabled() or not frameUsable() then return end
     if ns:InCombat() then
         ns:RunOutOfCombat(function() Highlight:Refresh() end, true)
@@ -205,20 +220,57 @@ function Highlight:Refresh()
     end
     if not computeStates() then return end
 
+    local full = settings().talentShowFull
     for nodeID, s in pairs(nodeState) do
         local button = talentsFrame:GetTalentButtonByNodeID(nodeID)
-        -- Nur das Talent des aktuellen Schritts wird sichtbar markiert.
-        if button and button:IsShown() and s.isCurrentStep then
-            local o = getOverlay(button)
-            o:Show()
-            o.target:SetText(string.format("» %d/%d", s.stepTarget or s.want, s.maxRank))
-            o.target:Show()
-            if s.state == "NOW" then
-                o.glow:Show()
-                o.glowAnim:Play()
+        if button and button:IsShown() then
+            if s.isCurrentStep then
+                -- Aktueller Schritt: immer markiert (Ziel-Rang, Gold bei freiem Punkt)
+                local o = getOverlay(button)
+                o:Show()
+                o.target:SetText(string.format("» %d/%d", s.stepTarget or s.want, s.maxRank))
+                o.target:SetTextColor(GOLD[1], GOLD[2], GOLD[3])
+                o.target:Show()
+                if s.state == "NOW" then
+                    setBorder(o, GOLD)
+                    o.glow:Show()
+                    o.glowAnim:Play()
+                elseif full then
+                    setBorder(o, BLUE)
+                    o.glow:Show()
+                end
+            elseif full then
+                -- "Build einblenden": alle Build-Talente farbig, Abweichungen rot
+                local o = getOverlay(button)
+                local color
+                if s.deviation then
+                    color = RED
+                elseif s.state == "DONE" then
+                    color = GREEN
+                elseif s.state == "LATER" then
+                    color = BLUE
+                    o.target:SetText(string.format("» %d/%d", s.want, s.maxRank))
+                    o.target:SetTextColor(BLUE[1], BLUE[2], BLUE[3])
+                    o.target:Show()
+                end
+                if color then
+                    o:Show()
+                    setBorder(o, color)
+                    o.glow:Show()
+                end
             end
         end
     end
+end
+
+-- "Build einblenden" an/aus
+function Highlight:ToggleFull()
+    settings().talentShowFull = not settings().talentShowFull
+    ns:Print(settings().talentShowFull and L.HL_FULL_ON or L.HL_FULL_OFF)
+    if self.toggleButton then
+        self.toggleButton:SetText(settings().talentShowFull and L.HL_BTN_HIDE or L.HL_BTN_SHOW)
+    end
+    self:ScheduleRefresh()
 end
 
 -- Mehrere Ereignisse kurz hintereinander -> nur einmal neu zeichnen
@@ -312,6 +364,29 @@ local function setup()
         C_Timer.After(1, function() Highlight:ScheduleRefresh() end)
     end)
     talentsFrame:HookScript("OnHide", hideAll)
+
+    -- Knopf "Build einblenden" unten links im Talentfenster (eigener Knopf)
+    local btn = CreateFrame("Button", nil, talentsFrame, "UIPanelButtonTemplate")
+    btn:SetSize(150, 22)
+    btn:SetPoint("BOTTOMLEFT", talentsFrame, "BOTTOMLEFT", 16, 10)
+    btn:SetFrameLevel(talentsFrame:GetFrameLevel() + 1500)
+    btn:SetText(settings().talentShowFull and L.HL_BTN_HIDE or L.HL_BTN_SHOW)
+    btn:SetScript("OnClick", function()
+        if ns:InCombat() then return end
+        Highlight:ToggleFull()
+    end)
+    btn:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_TOP")
+        GameTooltip:AddLine("Wegweiser", 1, 0.82, 0)
+        GameTooltip:AddLine(L.HL_LEGEND_NOW, GOLD[1], GOLD[2], GOLD[3])
+        GameTooltip:AddLine(L.HL_LEGEND_DONE, GREEN[1], GREEN[2], GREEN[3])
+        GameTooltip:AddLine(L.HL_LEGEND_LATER, BLUE[1], BLUE[2], BLUE[3])
+        GameTooltip:AddLine(L.HL_LEGEND_OFF, RED[1], RED[2], RED[3])
+        GameTooltip:Show()
+    end)
+    btn:SetScript("OnLeave", function() GameTooltip:Hide() end)
+    btn:SetShown(isEnabled())
+    Highlight.toggleButton = btn
     if EventRegistry then
         EventRegistry:RegisterCallback("TalentDisplay.TooltipCreated", onTooltip, Highlight)
     end

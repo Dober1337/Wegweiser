@@ -280,3 +280,15 @@ L.GUIDE_UNDO_HINT       = "Noch nicht angewendet: im Talentfenster rückgängig 
 L.PROF_TRAINER_SAVED    = "Ort von %s als %s-Lehrer gemerkt – /ww lehrer findet ihn ab jetzt."
 L.PROF_WAY_NAMES        = "Laut Guide: %s"
 L.PROF_WAY_LEARN        = "Besuch einen dieser Lehrer einmal – dann merkt sich Wegweiser den Ort für /ww lehrer."
+
+-- Build einblenden
+L.OPT_SHOWFULL          = "Ganzen Build im Talentfenster zeigen"
+L.OPT_SHOWFULL_TT       = "Färbt alle Talente des Builds: Gold = jetzt skillen, Grün = erledigt, Blau = später (mit Ziel-Rang), Rot = weicht vom Build ab. Auch über den Knopf im Talentfenster."
+L.HL_BTN_SHOW           = "Build einblenden"
+L.HL_BTN_HIDE           = "Build ausblenden"
+L.HL_FULL_ON            = "Ganzer Build im Talentfenster eingeblendet."
+L.HL_FULL_OFF           = "Nur das aktuelle Talent wird markiert."
+L.HL_LEGEND_NOW         = "Gold: jetzt skillen"
+L.HL_LEGEND_DONE        = "Grün: wie geplant verteilt"
+L.HL_LEGEND_LATER       = "Blau: später im Build (Ziel-Rang darüber)"
+L.HL_LEGEND_OFF         = "Rot: weicht vom Build ab"

@@ -64,7 +64,9 @@ end
 local function buildCommand(arg)
     local guide = ns.modules.TalentGuide
     ns:RunOutOfCombat(function()
-        if arg == "liste" or arg == "list" then
+        if arg == "zeigen" or arg == "show" then
+            ns.modules.TalentHighlight:ToggleFull()
+        elseif arg == "liste" or arg == "list" then
             guide:PrintList()
         elseif arg == "hinweise" or arg == "notes" then
             guide:PrintNotes()

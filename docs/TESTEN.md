@@ -219,3 +219,16 @@ Der Jäger-Build hat keine festen Talent-Nummern: Wegweiser sucht die Talente be
 | 2 | Dabei `/ww build` | „1 Punkt(e) weichen ab … fehlen dir mit Level 60: …“ + „im Talentfenster rückgängig machen (kostenlos)“ |
 | 3 | Rückgängig machen | Hinweise verschwinden bei `/ww build` |
 | 4 | (Nur wenn ohnehin verskillt und angewendet) `/ww build` | zeigt den Weg zum Zurücksetzen (Talentfenster oder Klassenlehrer) – bitte melden, welcher Weg im Spiel stimmt |
+
+## Build einblenden (Version 0.19.0)
+
+`/reload` reicht.
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | Talentfenster öffnen | unten links Knopf „Build einblenden“ (Maus drüber: Farb-Legende) |
+| 2 | Knopf drücken | alle Build-Talente farbig: Gold = jetzt, Grün = erledigt, Blau = später (mit „» x/y“), Rot = abweichend |
+| 3 | Knopf erneut („Build ausblenden“) | nur noch das aktuelle Talent markiert |
+| 4 | Fenster schließen/öffnen, `/reload` | Wahl bleibt erhalten |
+| 5 | `/ww build zeigen` | schaltet ebenfalls um |
+Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
