@@ -14,6 +14,8 @@ ns.QuestRules = {
     -- Blizzards Schwierigkeit relativ zum Spieler:
     -- C_PlayerInfo.GetContentDifficultyQuestForPlayer(questID) -> Enum.RelativeContentDifficulty
     -- Das ist dieselbe Funktion, mit der Blizzard die Questtitel einfärbt.
+    -- Im Spiel bestätigt: liefert auch für ANGEBOTENE (noch nicht angenommene)
+    -- Quests einen Wert – Quest 869 "Raptorendiebe", Level 13, gelb (2), Nov 2026.
     difficulty = {
         [0] = "SKIP",         -- Trivial    = grau   -> überspringen (keine/kaum EP)
         [1] = "STILL_WORTH",  -- Easy       = grün   -> lohnt sich gerade noch
