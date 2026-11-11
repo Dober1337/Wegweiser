@@ -33,6 +33,8 @@ ns.defaults = {
         -- Zonen
         zoneMapLevels   = true,   -- Levelbereiche auf der Weltkarte
         zoneAdvice      = true,   -- Hinweis, wenn die Zone zu niedrig wird
+        -- Berufe
+        profHelper      = true,   -- Hinweise kurz vor/am Rang-Limit, Tipps
         talentBuild   = "SHAMAN_RESTORATION_LEVELING_HYBRID", -- gewählter Build (pro Klasse passend)
     },
     talentDump = {},   -- Ergebnis von /ww talentdump, pro Klasse

@@ -50,6 +50,8 @@ function ns:OnDatabaseReady()
     -- Zonen
     addCheckbox("zoneMapLevels",   L.OPT_MAPLVL,    L.OPT_MAPLVL_TT)
     addCheckbox("zoneAdvice",      L.OPT_ZADVICE,   L.OPT_ZADVICE_TT)
+    -- Berufe
+    addCheckbox("profHelper",      L.OPT_PROF,      L.OPT_PROF_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.
 

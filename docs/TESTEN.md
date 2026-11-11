@@ -132,3 +132,15 @@ Daten: `WTF\Account\<KONTONAME>\SavedVariables\WegweiserRecorder.lua` – **ab u
 | 3 | Weltkarte: Maus über andere Zonen (Durotar, Steinkrallengebirge, …) | „Stufe x–y“ in passender Farbe |
 | 4 | Levelaufstieg mit kaum lohnenden Quests | „Nur noch N Quest(s), die sich lohnen – Zeit weiterzuziehen?“ + Vorschläge |
 | 5 | (später) in eine zu niedrige Zone gehen, z. B. Durotar ab Level 11 | „Durotar (1–10) ist jetzt zu niedrig für dich …“ + Vorschläge |
+
+## Berufe-Helfer (Version 0.12.0)
+
+**Neue Dateien → WoW komplett neu starten.**
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | `/ww berufe` | deine Berufe mit Skill/Limit, Art und Nummer (#182 …) – Screenshot schicken (prüft die Nummern) |
+| 2 | Beruf kurz vor dem Limit (z. B. 70–74/75) | gelber Hinweis „fast am Limit – geh bald zum Berufslehrer“ |
+| 3 | Beruf genau am Limit (75/75) | Hinweis „Limit erreicht!“ (auch in der Bildschirmmitte, falls eingeschaltet) |
+| 4 | Charakter ab Level 5 ohne Hauptberuf | einmal „Tipp: Du hast noch keinen Hauptberuf …“ |
+| 5 | `/ww config` | neues Häkchen „Berufe-Helfer“ |
