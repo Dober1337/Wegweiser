@@ -30,6 +30,9 @@ ns.defaults = {
         questAcceptHint = true,   -- Bewertung im Chat, wenn eine Quest angenommen wird
         questOfferHint  = true,   -- Hinweis beim Questgeber, bevor man annimmt
         questLogIcons   = true,   -- Symbole im Questlog
+        -- Routen-Recorder
+        routeRecorder   = true,   -- zeichnet Quests/Orte für spätere Routen auf
+        routeVerbose    = false,  -- jeden aufgezeichneten Schritt im Chat melden
         talentBuild   = "SHAMAN_RESTORATION_LEVELING_HYBRID", -- gewählter Build (pro Klasse passend)
     },
     talentDump = {},   -- Ergebnis von /ww talentdump, pro Klasse

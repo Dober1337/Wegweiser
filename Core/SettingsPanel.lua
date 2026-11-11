@@ -47,6 +47,9 @@ function ns:OnDatabaseReady()
     addCheckbox("questOfferHint",  L.OPT_QOFFER,    L.OPT_QOFFER_TT)
     addCheckbox("questLogIcons",   L.OPT_QICONS,    L.OPT_QICONS_TT)
     addCheckbox("questAcceptHint", L.OPT_QACCEPT,   L.OPT_QACCEPT_TT)
+    -- Routen-Recorder
+    addCheckbox("routeRecorder",   L.OPT_REC,       L.OPT_REC_TT)
+    addCheckbox("routeVerbose",    L.OPT_RECV,      L.OPT_RECV_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.
 

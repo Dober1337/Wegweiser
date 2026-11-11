@@ -24,6 +24,7 @@ local function showHelp()
     ns:Print(L.HELP_BUILD_LIST)
     ns:Print(L.HELP_BUILD_NOTES)
     ns:Print(L.HELP_QUESTS)
+    ns:Print(L.HELP_ROUTE)
     ns:Print(L.HELP_TALENTDUMP)
     ns:Print(L.HELP_TEST)
 end
@@ -65,6 +66,7 @@ local commands = {
     points     = showPoints,
     talentdump = function() ns.modules.TalentDump:Start() end,
     build      = buildCommand,
+    route      = function(arg, rest) ns.modules.RouteRecorder:Command(arg, rest) end,
     zoneinfo   = function() ns:RunOutOfCombat(function() ns.modules.ZoneGuide:Probe() end) end,
     questinfo  = function() ns.modules.QuestAdvisor:PrintOfferDebug() end,
     quests     = function() ns:RunOutOfCombat(function() ns.modules.QuestAdvisor:PrintOverview() end) end,
@@ -81,16 +83,18 @@ local commands = {
 SLASH_WEGWEISER1 = "/ww"
 SLASH_WEGWEISER2 = "/wegweiser"
 SlashCmdList.WEGWEISER = function(msg)
-    -- Erstes Wort = Befehl, zweites Wort = Zusatz (beides klein geschrieben)
-    local cmd, arg = (msg or ""):match("^%s*(%S*)%s*(%S*)")
-    cmd, arg = cmd:lower(), arg:lower()
+    -- Erstes Wort = Befehl, zweites Wort = Zusatz (beides klein geschrieben),
+    -- rest = alles nach dem Befehl in Originalschreibweise (z. B. für Notizen)
+    local cmd, rest = (msg or ""):match("^%s*(%S*)%s*(.-)%s*$")
+    local arg = (rest:match("^(%S*)") or ""):lower()
+    cmd = cmd:lower()
     if cmd == "" then
         showHelp()
         return
     end
     local handler = commands[cmd]
     if handler then
-        handler(arg)
+        handler(arg, rest)
     else
         ns:Print(L.UNKNOWN_COMMAND, cmd)
         showHelp()
