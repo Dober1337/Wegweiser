@@ -100,21 +100,23 @@ Bitte Screenshot vom Talentfenster schicken – dann passe ich Größe/Position 
 | 5 | Annehmen / Fenster schließen | Kasten verschwindet |
 | 6 | Mit Questie | Symbole stören Questie nicht; nichts überlappt |
 
-## Stufe 0 + 2 – Zonen-Prüfung und Routen-Recorder (Version 0.7.0)
+## Stufe 0 + 2 – Zonen-Prüfung und Routen-Recorder (Wegweiser 0.8.0 + WegweiserRecorder 1.0.0)
 
-**Neue Dateien + neue SavedVariable → WoW komplett neu starten.**
+Der Recorder ist ein **eigenes Addon**. Installation:
+- Ordner `Wegweiser` wie gewohnt nach `AddOns\Wegweiser`
+- Ordner `WegweiserRecorder` (im ZIP von GitHub unter `Wegweiser-main\WegweiserRecorder`,
+  oder `dist\WegweiserRecorder.zip`) **zusätzlich** nach `AddOns\WegweiserRecorder`
+- WoW komplett neu starten
 
 | # | Test | Erwartung |
 |---|------|-----------|
-| 1 | Einloggen | nach ein paar Sekunden: „Routen-Aufzeichnung aktiv (bisher 0 Schritte)“ |
+| 1 | Einloggen | „Wegweiser Recorder: N Schritte aus dem Wegweiser-Addon übernommen“ (einmalig), dann „Aufzeichnung aktiv“ |
 | 2 | `/ww zoneinfo` | Zone, Levelbereich laut Spiel, Position, Anzahl verfügbarer Quests – Screenshot schicken |
-| 3 | `/ww config` → „Aufgezeichnete Schritte melden“ an | jeder Schritt erscheint kurz im Chat (zum Testen) |
-| 4 | Quest annehmen, erledigen, abgeben | Chat: „Aufgezeichnet: ACCEPT …“, „COMPLETE …“, „TURNIN …“ |
+| 3 | `/wwrec melden` | ab jetzt jeder Schritt im Chat |
+| 4 | Quest annehmen, erledigen, abgeben | „Aufgezeichnet: ACCEPT …“, „COMPLETE …“, „TURNIN …“ |
 | 5 | Flugmeister benutzen | „TAXI“ beim Start und bei der Landung |
-| 6 | `/ww route notiz Hier Geisterwolf nutzen` | „Notiz gespeichert“ |
-| 7 | `/ww route` | Status + letzte 5 Schritte |
-| 8 | Nach dem Test „melden“ wieder aus | Aufzeichnung läuft still weiter |
+| 6 | `/wwrec notiz Hier Geisterwolf nutzen` | „Notiz gespeichert“ |
+| 7 | `/wwrec` bzw. `/ww route` | Status, zufällige Charakter-Nr., letzte 5 Schritte |
+| 8 | `/wwrec melden` | Meldungen wieder aus, Aufzeichnung läuft still weiter |
 
-Aufzeichnung steht nach /reload bzw. Ausloggen in
-`WTF\Account\<KONTONAME>\SavedVariables\Wegweiser.lua` unter `WegweiserRouteDB`.
-**Diese Datei ab und zu sichern** (kopieren) – sie ist die Grundlage für die Routen.
+Daten: `WTF\Account\<KONTONAME>\SavedVariables\WegweiserRecorder.lua` – **ab und zu sichern**.

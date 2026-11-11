@@ -1,0 +1,12 @@
+## Interface: 16001
+## Title: Wegweiser Recorder
+## Notes: Records your questing route (quests, places, level-ups) to build leveling routes for Wegweiser.
+## Notes-deDE: Zeichnet deine Questroute auf (Quests, Orte, Levelaufstiege) – als Grundlage für Leveling-Routen in Wegweiser.
+## Author: Wegweiser-Team
+## Version: 1.0.0
+## SavedVariables: WegweiserRecorderDB
+## SavedVariablesPerCharacter: WegweiserRecorderChar
+## IconTexture: Interface\Icons\INV_Misc_Map_01
+
+Locales.lua
+Recorder.lua

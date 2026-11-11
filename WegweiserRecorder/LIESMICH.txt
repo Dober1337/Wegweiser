@@ -1,0 +1,37 @@
+WEGWEISER RECORDER – kurze Anleitung
+====================================
+
+Was macht das Addon?
+Es zeichnet beim ganz normalen Spielen deine Questroute auf: welche Quest du
+wo annimmst, erledigst und abgibst, wann du aufsteigst, wohin du fliegst.
+Daraus bauen wir Leveling-Routen für das kostenlose Einsteiger-Addon
+"Wegweiser". Du musst nichts anders machen als sonst.
+
+Was wird NICHT gespeichert?
+Kein Charaktername, kein Realm, keine Chat-Nachrichten, keine Gilde.
+Jeder Charakter bekommt nur eine zufällige Nummer (z. B. d71664f6).
+Gespeichert werden Klasse, Volk, Fraktion, Quests, Orte und Level.
+
+Installation
+1. Den Ordner "WegweiserRecorder" in diesen Ordner legen:
+   World of Warcraft\_forever_\Interface\AddOns\
+   Danach muss es so aussehen:
+   ...\AddOns\WegweiserRecorder\WegweiserRecorder.toc
+2. WoW (neu) starten. Nach dem Einloggen steht im Chat:
+   "Wegweiser Recorder: Aufzeichnung aktiv ..."
+
+Befehle (im Chat eingeben)
+  /wwrec              Status und letzte Schritte
+  /wwrec notiz Text   eigene Notiz an dieser Stelle (z. B. Tipp für andere)
+  /wwrec pause        Aufzeichnung anhalten (z. B. beim Farmen)
+  /wwrec start        weiter aufzeichnen
+  /wwrec melden       jeden Schritt im Chat anzeigen (an/aus)
+
+Daten schicken
+Die Aufzeichnung steht in dieser Datei (wird beim Ausloggen geschrieben):
+  World of Warcraft\_forever_\WTF\Account\<KONTONAME>\SavedVariables\WegweiserRecorder.lua
+<KONTONAME> ist der einzige Ordner unter "Account" (oft eine Nummer wie 12345678#1).
+Diese Datei bitte ab und zu schicken – nicht erst mit 60. Zwischendurch eine
+Kopie zu sichern schadet auch nicht.
+
+Danke fürs Mitmachen!

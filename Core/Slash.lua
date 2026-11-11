@@ -66,7 +66,14 @@ local commands = {
     points     = showPoints,
     talentdump = function() ns.modules.TalentDump:Start() end,
     build      = buildCommand,
-    route      = function(arg, rest) ns.modules.RouteRecorder:Command(arg, rest) end,
+    -- Aufzeichnung macht das eigene Addon "WegweiserRecorder" (falls installiert)
+    route      = function(arg, rest)
+        if WegweiserRecorder and WegweiserRecorder.Command then
+            WegweiserRecorder:Command(arg, rest)
+        else
+            ns:Print(L.REC_NOT_INSTALLED)
+        end
+    end,
     zoneinfo   = function() ns:RunOutOfCombat(function() ns.modules.ZoneGuide:Probe() end) end,
     questinfo  = function() ns.modules.QuestAdvisor:PrintOfferDebug() end,
     quests     = function() ns:RunOutOfCombat(function() ns.modules.QuestAdvisor:PrintOverview() end) end,
