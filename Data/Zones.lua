@@ -18,7 +18,8 @@
 --   mapIDVerified  true, wenn die uiMapID im Spiel bestätigt ist.
 --                  Die uiMapIDs stammen aus WoW Classic (Classic-Fallback,
 --                  ungeprüft) – Prüfung im Spiel mit /ww zonecheck.
---                  Bestätigt per /ww zonecheck (Spieler, 11.11.2026): 1411, 1412, 1413, 1416, 1417, 1418.
+--                  ALLE 38 uiMapIDs bestätigt per /ww zonecheck (Spieler, deutscher
+--                  Client, 11.11.2026: alle Namen passen, 0 fehlen).
 -- ============================================================
 
 local _, ns = ...
@@ -29,47 +30,47 @@ ns.Zones = {
     -- ===== Kalimdor (uiMapID 1414) =====
     [1411] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = true, en = "Durotar" }, -- Durotar
     [1412] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = true, en = "Mulgore" }, -- Mulgore
-    [1438] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = false, en = "Teldrassil" }, -- Teldrassil
-    [1439] = { min = 10, max = 20, src = SRC, verified = false, mapIDVerified = false, en = "Darkshore" }, -- Darkshore
+    [1438] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = true, en = "Teldrassil" }, -- Teldrassil
+    [1439] = { min = 10, max = 20, src = SRC, verified = false, mapIDVerified = true, en = "Darkshore" }, -- Darkshore
     [1413] = { min = 10, max = 25, src = SRC, verified = false, mapIDVerified = true , en = "The Barrens" }, -- The Barrens (ID per /ww zoneinfo bestätigt)
-    [1442] = { min = 15, max = 27, src = SRC, verified = false, mapIDVerified = false, en = "Stonetalon Mountains" }, -- Stonetalon Mountains
-    [1440] = { min = 18, max = 30, src = SRC, verified = false, mapIDVerified = false, en = "Ashenvale" }, -- Ashenvale
-    [1441] = { min = 25, max = 35, src = SRC, verified = false, mapIDVerified = false, en = "Thousand Needles" }, -- Thousand Needles
-    [1443] = { min = 30, max = 40, src = SRC, verified = false, mapIDVerified = false, en = "Desolace" }, -- Desolace
-    [1445] = { min = 35, max = 45, src = SRC, verified = false, mapIDVerified = false, en = "Dustwallow Marsh" }, -- Dustwallow Marsh
-    [1444] = { min = 40, max = 50, src = SRC, verified = false, mapIDVerified = false, en = "Feralas" }, -- Feralas
-    [1446] = { min = 40, max = 50, src = SRC, verified = false, mapIDVerified = false, en = "Tanaris" }, -- Tanaris
-    [1447] = { min = 45, max = 55, src = SRC, verified = false, mapIDVerified = false, en = "Azshara" }, -- Azshara
-    [1449] = { min = 48, max = 55, src = SRC, verified = false, mapIDVerified = false, en = "Un'Goro Crater" }, -- Un'Goro Crater
-    [1448] = { min = 48, max = 55, src = SRC, verified = false, mapIDVerified = false, en = "Felwood" }, -- Felwood
-    [1451] = { min = 55, max = 60, src = SRC, verified = false, mapIDVerified = false, en = "Silithus" }, -- Silithus
-    [1452] = { min = 55, max = 60, src = SRC, verified = false, mapIDVerified = false, en = "Winterspring" }, -- Winterspring
+    [1442] = { min = 15, max = 27, src = SRC, verified = false, mapIDVerified = true, en = "Stonetalon Mountains" }, -- Stonetalon Mountains
+    [1440] = { min = 18, max = 30, src = SRC, verified = false, mapIDVerified = true, en = "Ashenvale" }, -- Ashenvale
+    [1441] = { min = 25, max = 35, src = SRC, verified = false, mapIDVerified = true, en = "Thousand Needles" }, -- Thousand Needles
+    [1443] = { min = 30, max = 40, src = SRC, verified = false, mapIDVerified = true, en = "Desolace" }, -- Desolace
+    [1445] = { min = 35, max = 45, src = SRC, verified = false, mapIDVerified = true, en = "Dustwallow Marsh" }, -- Dustwallow Marsh
+    [1444] = { min = 40, max = 50, src = SRC, verified = false, mapIDVerified = true, en = "Feralas" }, -- Feralas
+    [1446] = { min = 40, max = 50, src = SRC, verified = false, mapIDVerified = true, en = "Tanaris" }, -- Tanaris
+    [1447] = { min = 45, max = 55, src = SRC, verified = false, mapIDVerified = true, en = "Azshara" }, -- Azshara
+    [1449] = { min = 48, max = 55, src = SRC, verified = false, mapIDVerified = true, en = "Un'Goro Crater" }, -- Un'Goro Crater
+    [1448] = { min = 48, max = 55, src = SRC, verified = false, mapIDVerified = true, en = "Felwood" }, -- Felwood
+    [1451] = { min = 55, max = 60, src = SRC, verified = false, mapIDVerified = true, en = "Silithus" }, -- Silithus
+    [1452] = { min = 55, max = 60, src = SRC, verified = false, mapIDVerified = true, en = "Winterspring" }, -- Winterspring
     -- Moonglade: laut Quelle ohne Levelbereich
     -- Mount Hyjal (60), Riverglades, Shen'dralas, Zephras Isle: NEU in Forever,
     --   uiMapID unbekannt -> dort /ww zoneinfo eingeben und nachtragen.
 
     -- ===== Östliche Königreiche (uiMapID 1415) =====
-    [1420] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = false, en = "Tirisfal Glades" }, -- Tirisfal Glades
-    [1426] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = false, en = "Dun Morogh" }, -- Dun Morogh
-    [1429] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = false, en = "Elwynn Forest" }, -- Elwynn Forest
-    [1421] = { min = 10, max = 20, src = SRC, verified = false, mapIDVerified = false, en = "Silverpine Forest" }, -- Silverpine Forest
-    [1432] = { min = 10, max = 20, src = SRC, verified = false, mapIDVerified = false, en = "Loch Modan" }, -- Loch Modan
-    [1436] = { min = 10, max = 20, src = SRC, verified = false, mapIDVerified = false, en = "Westfall" }, -- Westfall
-    [1433] = { min = 15, max = 25, src = SRC, verified = false, mapIDVerified = false, en = "Redridge Mountains" }, -- Redridge Mountains
-    [1431] = { min = 18, max = 30, src = SRC, verified = false, mapIDVerified = false, en = "Duskwood" }, -- Duskwood
-    [1437] = { min = 20, max = 30, src = SRC, verified = false, mapIDVerified = false, en = "Wetlands" }, -- Wetlands
-    [1424] = { min = 20, max = 30, src = SRC, verified = false, mapIDVerified = false, en = "Hillsbrad Foothills" }, -- Hillsbrad Foothills
+    [1420] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = true, en = "Tirisfal Glades" }, -- Tirisfal Glades
+    [1426] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = true, en = "Dun Morogh" }, -- Dun Morogh
+    [1429] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = true, en = "Elwynn Forest" }, -- Elwynn Forest
+    [1421] = { min = 10, max = 20, src = SRC, verified = false, mapIDVerified = true, en = "Silverpine Forest" }, -- Silverpine Forest
+    [1432] = { min = 10, max = 20, src = SRC, verified = false, mapIDVerified = true, en = "Loch Modan" }, -- Loch Modan
+    [1436] = { min = 10, max = 20, src = SRC, verified = false, mapIDVerified = true, en = "Westfall" }, -- Westfall
+    [1433] = { min = 15, max = 25, src = SRC, verified = false, mapIDVerified = true, en = "Redridge Mountains" }, -- Redridge Mountains
+    [1431] = { min = 18, max = 30, src = SRC, verified = false, mapIDVerified = true, en = "Duskwood" }, -- Duskwood
+    [1437] = { min = 20, max = 30, src = SRC, verified = false, mapIDVerified = true, en = "Wetlands" }, -- Wetlands
+    [1424] = { min = 20, max = 30, src = SRC, verified = false, mapIDVerified = true, en = "Hillsbrad Foothills" }, -- Hillsbrad Foothills
     [1416] = { min = 30, max = 40, src = SRC, verified = false, mapIDVerified = true, en = "Alterac Mountains" }, -- Alterac Mountains
     [1417] = { min = 30, max = 40, src = SRC, verified = false, mapIDVerified = true, en = "Arathi Highlands" }, -- Arathi Highlands
-    [1434] = { min = 30, max = 45, src = SRC, verified = false, mapIDVerified = false, en = "Stranglethorn Vale" }, -- Stranglethorn Vale
+    [1434] = { min = 30, max = 45, src = SRC, verified = false, mapIDVerified = true, en = "Stranglethorn Vale" }, -- Stranglethorn Vale
     [1418] = { min = 35, max = 45, src = SRC, verified = false, mapIDVerified = true, en = "Badlands" }, -- Badlands
-    [1435] = { min = 35, max = 45, src = SRC, verified = false, mapIDVerified = false, en = "Swamp of Sorrows" }, -- Swamp of Sorrows
-    [1425] = { min = 40, max = 50, src = SRC, verified = false, mapIDVerified = false, en = "The Hinterlands" }, -- The Hinterlands
-    [1427] = { min = 43, max = 50, src = SRC, verified = false, mapIDVerified = false, en = "Searing Gorge" }, -- Searing Gorge
-    [1419] = { min = 45, max = 55, src = SRC, verified = false, mapIDVerified = false, en = "Blasted Lands" }, -- Blasted Lands
-    [1430] = { min = 55, max = 60, src = SRC, verified = false, mapIDVerified = false, en = "Deadwind Pass" }, -- Deadwind Pass
-    [1422] = { min = 51, max = 58, src = SRC, verified = false, mapIDVerified = false, en = "Western Plaguelands" }, -- Western Plaguelands
-    [1423] = { min = 53, max = 60, src = SRC, verified = false, mapIDVerified = false, en = "Eastern Plaguelands" }, -- Eastern Plaguelands
+    [1435] = { min = 35, max = 45, src = SRC, verified = false, mapIDVerified = true, en = "Swamp of Sorrows" }, -- Swamp of Sorrows
+    [1425] = { min = 40, max = 50, src = SRC, verified = false, mapIDVerified = true, en = "The Hinterlands" }, -- The Hinterlands
+    [1427] = { min = 43, max = 50, src = SRC, verified = false, mapIDVerified = true, en = "Searing Gorge" }, -- Searing Gorge
+    [1419] = { min = 45, max = 55, src = SRC, verified = false, mapIDVerified = true, en = "Blasted Lands" }, -- Blasted Lands
+    [1430] = { min = 55, max = 60, src = SRC, verified = false, mapIDVerified = true, en = "Deadwind Pass" }, -- Deadwind Pass
+    [1422] = { min = 51, max = 58, src = SRC, verified = false, mapIDVerified = true, en = "Western Plaguelands" }, -- Western Plaguelands
+    [1423] = { min = 53, max = 60, src = SRC, verified = false, mapIDVerified = true, en = "Eastern Plaguelands" }, -- Eastern Plaguelands
     -- Burning Steppes (1428): laut Quelle ohne Levelbereich (aber für 51–52 empfohlen)
 }
 
