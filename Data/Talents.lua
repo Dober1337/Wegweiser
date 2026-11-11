@@ -148,7 +148,8 @@ table.insert(ns.TalentBuilds, {
 -- ------------------------------------------------------------
 -- JÄGER – Tierherrschaft (Leveling)
 -- QUELLE: Wowhead (Leveling-Talentbuild Jäger, WoW Forever), vom Spieler
--- übernommen, Nov 2026. Genaue URL: noch nachtragen.
+-- übernommen, Nov 2026:
+--   https://www.wowhead.com/forever/de/guide/classes/hunter/beast-mastery/dps-leveling-tips
 -- Verteilung 31 Tierherrschaft / 16 Treffsicherheit / 4 Überleben.
 -- STATUS: planned = true -> noch NICHT aktiv. Es fehlen nodeID, Reihe,
 -- Spalte und maxRank – die kommen aus /ww talentdump eines Jägers.
@@ -163,7 +164,7 @@ table.insert(ns.TalentBuilds, {
     buildType = "LEVELING",
     variant   = "BM_MM",
     source    = "WOWHEAD",
-    sourceUrl = nil,             -- genaue Wowhead-URL nachtragen
+    sourceUrl = "https://www.wowhead.com/forever/de/guide/classes/hunter/beast-mastery/dps-leveling-tips",
     resolveByName = true,        -- Talente über den Namen im Spiel-Baum finden
     structureVerified = false,
     positionsVerified = false,
