@@ -131,3 +131,4 @@ L.REC_NOT_INSTALLED     = "Route recording is a separate addon: install the fold
 L.WML_LABEL              = "%s: level %s"
 L.OPT_MAPLVL             = "Level ranges on the world map"
 L.OPT_MAPLVL_TT          = "Shows the level range of a zone on the world map (hover over a zone or open its map)."
+L.WML_RANGE              = "Level %s"

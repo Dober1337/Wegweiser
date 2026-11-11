@@ -131,3 +131,4 @@ L.REC_NOT_INSTALLED     = "Die Routen-Aufzeichnung ist ein eigenes Addon: Leg de
 L.WML_LABEL              = "%s: Stufe %s"
 L.OPT_MAPLVL             = "Levelbereiche auf der Weltkarte"
 L.OPT_MAPLVL_TT          = "Zeigt auf der Weltkarte den Levelbereich einer Zone (Maus über die Zone oder Zonenkarte öffnen)."
+L.WML_RANGE              = "Stufe %s"

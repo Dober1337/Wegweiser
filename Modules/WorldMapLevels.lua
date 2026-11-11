@@ -46,13 +46,17 @@ local function rangeColor(minL, maxL)
     return color
 end
 
--- Text für eine Zone oder nil
-function WML:TextFor(mapID)
+-- Text für eine Zone oder nil.
+-- withName = false: nur "Stufe 10–25" (wenn Blizzard den Namen schon darüber zeigt)
+function WML:TextFor(mapID, withName)
     local z = ns.Zones and ns.Zones[mapID]
     if not z then return nil end
+    local range = (z.min == z.max) and tostring(z.min) or (z.min .. "–" .. z.max)
+    if withName == false then
+        return string.format(L.WML_RANGE, range), rangeColor(z.min, z.max)
+    end
     local info = C_Map.GetMapInfo(mapID)
     local name = info and info.name or "?"
-    local range = (z.min == z.max) and tostring(z.min) or (z.min .. "–" .. z.max)
     return string.format(L.WML_LABEL, name, range), rangeColor(z.min, z.max)
 end
 
@@ -63,12 +67,13 @@ local function update()
     local mapID = map:GetMapID()
     if not mapID then return end
 
-    local shownID
+    local shownID, hovering
     if map:IsCanvasMouseFocus() then
         local x, y = map:GetNormalizedCursorPosition()
         local info = x and C_Map.GetMapInfoAtPosition(mapID, x, y)
         if info and info.mapID ~= mapID then
             shownID = info.mapID          -- Maus über einer Zone
+            hovering = true               -- Blizzard zeigt den Namen schon darüber
         end
     end
     if not shownID then
@@ -79,7 +84,7 @@ local function update()
     end
     if not shownID then return end
 
-    local text, color = WML:TextFor(shownID)
+    local text, color = WML:TextFor(shownID, not hovering)
     if text then
         label:SetText(text)
         label:SetTextColor(color.r, color.g, color.b)
