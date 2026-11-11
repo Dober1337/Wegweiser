@@ -242,13 +242,15 @@ local function onTooltip(_, button, tooltip)
     tooltip:AddLine(" ")
     if s.state == "NOW" then
         local reason = s.nextPoint and loc(s.nextPoint.step.reason) or ""
-        tooltip:AddLine(string.format(L.HL_TT_NOW, reason), GOLD[1], GOLD[2], GOLD[3], true)
+        local text = reason ~= "" and string.format(L.HL_TT_NOW, reason) or L.HL_TT_NOW_SHORT
+        tooltip:AddLine(text, GOLD[1], GOLD[2], GOLD[3], true)
     elseif s.state == "DONE" and not s.deviation then
         tooltip:AddLine(L.HL_TT_DONE, 0.3, 1.0, 0.3, true)
     elseif s.state == "LATER" and s.nextPoint then
         local text = s.isNextButNoPoint and L.HL_TT_NEXT or L.HL_TT_LATER
         tooltip:AddLine(string.format(text, s.isCurrentStep and s.stepTarget or s.want, s.maxRank, s.nextPoint.level), 0.75, 0.85, 1.0, true)
-        tooltip:AddLine(loc(s.nextPoint.step.reason), 0.8, 0.8, 0.8, true)
+        local reason = loc(s.nextPoint.step.reason)
+        if reason ~= "" then tooltip:AddLine(reason, 0.8, 0.8, 0.8, true) end
     end
     if s.deviation then
         tooltip:AddLine(string.format(L.HL_TT_DEVIATION, s.want or 0, s.have or 0), 1.0, 1.0, 0.0, true)

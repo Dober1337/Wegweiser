@@ -183,3 +183,16 @@ Daten: `WTF\Account\<KONTONAME>\SavedVariables\WegweiserRecorder.lua` – **ab u
 | 3 | Rezept lernen, Berufsfenster erneut öffnen | „Rezept bekannt“ |
 | 4 | `/ww berufe` | dieselbe Zeile unter „Am besten jetzt …“ |
 Hinweis: Wegweiser merkt sich die bekannten Rezepte erst, wenn das Berufsfenster einmal geöffnet war.
+
+## Jäger-Build (Version 0.16.0) – mit einem Jäger testen
+
+Der Jäger-Build hat keine festen Talent-Nummern: Wegweiser sucht die Talente beim Laden über den Namen im echten Baum.
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | Mit einem Jäger einloggen | KEINE rote Meldung „Talentbaum hat sich geändert“ |
+| 2 | `/ww build` | „Tierherrschaft (Leveling-Build)“, nächster Punkt |
+| 3 | Falls rot: `/ww build` | zeigt, welches Talent nicht gefunden wurde bzw. welche Reihen-/Pfeil-Voraussetzung nicht passt → Screenshot schicken |
+| 4 | `/ww build liste` | alle 19 Schritte mit deutschen Namen |
+| 5 | Talentfenster (ab Level 10 mit freiem Punkt) | goldener Rahmen um „Tödliche Aspekte“ |
+| 6 | `/ww talentdump` + `/reload` | Datei schicken – dann trage ich die festen Nummern ein |

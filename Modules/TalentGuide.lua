@@ -91,9 +91,11 @@ function Guide:Validate(build, tree)
 
     -- 1. Jeder Schritt: Talent vorhanden, Position und maxRank gleich?
     for i, step in ipairs(build.steps) do
-        local live = tree.byNode[step.nodeID]
-        if not live then
-            add(L.CHECK_NODE_MISSING, i, step.nodeID)
+        local live = step.nodeID and tree.byNode[step.nodeID]
+        if step._missingName then
+            add(L.CHECK_NAME_MISSING, i, step._missingName)
+        elseif not live then
+            add(L.CHECK_NODE_MISSING, i, step.nodeID or 0)
         else
             local name = live.name or ("#" .. step.nodeID)
             if live.maxRank ~= step.maxRank then
@@ -186,7 +188,38 @@ function Guide:Load()
     if not build then return nil, L.GUIDE_NO_BUILD end
     local tree = ns.TalentAPI:ReadTree()
     if not tree then return nil, L.TALENT_API_MISSING end
+    self:ResolveByName(build, tree)
     return build, tree
+end
+
+-- Builds ohne nodeID (resolveByName): Talent über seinen Namen im echten Baum
+-- suchen (deutscher Client: de, sonst en) und nodeID, Reihe, Spalte, maxRank
+-- aus dem Spiel übernehmen. Nicht gefundene Schritte bekommen _missingName.
+function Guide:ResolveByName(build, tree)
+    if not build.resolveByName or build._resolved then return end
+    local function norm(s) return s and s:lower():gsub("[%s%-]", "") end
+    for _, step in ipairs(build.steps) do
+        if not step.nodeID then
+            local wanted = norm((ns.locale == "deDE" and step.de) or step.en)
+            local found
+            -- zuerst im angegebenen Baum, dann in allen Bäumen
+            local searchTrees = { tree.trees[step.tree] }
+            for _, t in ipairs(tree.trees) do table.insert(searchTrees, t) end
+            for _, t in ipairs(searchTrees) do
+                for _, live in ipairs(t and t.talents or {}) do
+                    if norm(live.name) == wanted then found = live break end
+                end
+                if found then break end
+            end
+            if found then
+                step.nodeID, step.tier, step.column, step.maxRank = found.nodeID, found.tier, found.column, found.maxRank
+                step.tree = found.treeIndex
+            else
+                step._missingName = (ns.locale == "deDE" and step.de) or step.en
+            end
+        end
+    end
+    build._resolved = true
 end
 
 -- Kurzer Hinweis auf den nächsten Punkt (für Level-Up-Meldungen)
@@ -199,7 +232,8 @@ function Guide:PrintNext()
     local p = progress.nextPoint
     if p then
         ns:Print(L.GUIDE_NEXT, pointLine(p, tree.byNode[p.step.nodeID]))
-        ns:Print("   " .. loc(p.step.reason))
+        local reason = loc(p.step.reason)
+        if reason ~= "" then ns:Print("   " .. reason) end
         if settings().talentHighlight then
             ns:Print("   " .. L.GUIDE_HIGHLIGHT_HINT)
         end
@@ -225,7 +259,8 @@ function Guide:PrintSummary()
     local p = progress.nextPoint
     if p then
         ns:Print(L.GUIDE_NEXT, pointLine(p, tree.byNode[p.step.nodeID]))
-        ns:Print("   " .. loc(build.phases[p.step.phase]) .. ": " .. loc(p.step.reason))
+        local reason = loc(p.step.reason)
+        ns:Print("   " .. loc(build.phases[p.step.phase]) .. (reason ~= "" and (": " .. reason) or ""))
     else
         ns:Print(L.GUIDE_COMPLETE)
     end
