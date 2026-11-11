@@ -22,6 +22,7 @@ local function showHelp()
     ns:Print(L.HELP_QUESTS)
     ns:Print(L.HELP_ZONES)
     ns:Print(L.HELP_PROF)
+    ns:Print(L.HELP_TRAINER)
     ns:Print(L.HELP_BUILD)
     ns:Print(L.HELP_BUILD_LIST)
     ns:Print(L.HELP_BUILD_NOTES)
@@ -87,6 +88,8 @@ local commands = {
             ns:Print(L.REC_NOT_INSTALLED)
         end
     end,
+    lehrer     = function(_, rest) ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:TrainerCommand(rest) end) end,
+    trainer    = function(_, rest) ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:TrainerCommand(rest) end) end,
     berufe     = function() ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:PrintOverview() end) end,
     professions = function() ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:PrintOverview() end) end,
     zonen      = function() ns:RunOutOfCombat(function() ns.modules.ZoneGuide:PrintAdvice() end) end,

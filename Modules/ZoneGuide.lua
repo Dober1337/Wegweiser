@@ -226,13 +226,14 @@ end
 
 -- /ww zonecheck – uiMapIDs gegen das Spiel prüfen
 function ZG:CheckMapIDs()
-    local ids = {}
-    for id in pairs(ns.Zones) do table.insert(ids, id) end
+    local ids, all = {}, {}
+    for id, z in pairs(ns.Zones) do table.insert(ids, id); all[id] = z end
+    for id, en in pairs(ns.ExtraMaps or {}) do table.insert(ids, id); all[id] = { en = en } end
     table.sort(ids)
     ns:Print(L.ZG_CHECK_HEADER)
     local missing = 0
     for _, id in ipairs(ids) do
-        local z = ns.Zones[id]
+        local z = all[id]
         local info = C_Map.GetMapInfo(id)
         local parent = info and info.parentMapID and C_Map.GetMapInfo(info.parentMapID)
         if info then

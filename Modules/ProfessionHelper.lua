@@ -2,17 +2,19 @@
 -- Modules/ProfessionHelper.lua
 -- Modul 4: Berufe-Helfer.
 --
---   * /ww berufe – deine Berufe mit Skill/Limit, Art (Sammeln/Herstellen),
---     passender Partner-Beruf, Tipps für die Klasse, Nebenberufe
---   * automatisch: kurz vor dem Limit eines Rangs (z. B. 70/75) und beim
---     Erreichen des Limits -> "zum Lehrer für den nächsten Rang"
---     (sonst sammeln/herstellen Anfänger weiter, ohne dass der Skill steigt)
---   * einmalig ab Level 5 ohne Hauptberuf: freundlicher Hinweis
+--   * /ww berufe – deine Berufe mit Skill/Limit, nächster Rang (ab welchem
+--     Skill/Level, beim Lehrer/Buch/Quest), bei Sammelberufen: was gerade
+--     Punkte gibt, Partner-Beruf, Tipps für die Klasse, Nebenberufe
+--   * /ww lehrer <Beruf> – setzt EINEN Wegpunkt zum nächsten passenden
+--     Horde-Lehrer (nur auf Anfrage, kein dauerhafter Marker);
+--     /ww lehrer aus – Wegpunkt entfernen
+--   * automatisch (nur Chat, nie ein Wegpunkt):
+--       - nächster Rang ist lernbar (Skill + Level erreicht)
+--       - Limit des aktuellen Rangs erreicht
+--       - ab Level 5 ohne Hauptberuf: einmaliger Tipp
 --
--- Skill und Limit kommen direkt aus dem Spiel (C_SkillInfo, geprüft im
--- Forever-UI-Quellcode). Empfehlungen aus Data/Professions.lua (Quelle,
--- verified = false). Level-Voraussetzungen der Ränge zeigen wir bewusst
--- NICHT an – die Quellen widersprechen sich; der Lehrer sagt es dir im Spiel.
+-- Skill und Limit direkt aus dem Spiel (C_SkillInfo). Ränge, Abbau-Farben,
+-- Lehrer: Data/Professions.lua (goldgoblin, verified = false).
 -- ============================================================
 
 local _, ns = ...
@@ -21,15 +23,20 @@ local L = ns.L
 local PH = {}
 ns.modules.ProfessionHelper = PH
 
+local RANK_BY_CAP = { [75] = 1, [150] = 2, [225] = 3, [300] = 4 }
+
 local function settings()
     return ns.db and ns.db.settings or ns.defaults.settings
+end
+
+local function factionKey()
+    return UnitFactionGroup("player") == "Horde" and "HORDE" or "ALLIANCE"
 end
 
 -- ------------------------------------------------------------
 -- Berufe aus dem Spiel lesen
 -- ------------------------------------------------------------
 
--- Liefert eine Liste { id, name, rank, maxRank, kind } der gelernten Berufe.
 function PH:GetMyProfessions()
     local list = {}
     if not C_SkillInfo then return list end
@@ -49,13 +56,50 @@ function PH:GetMyProfessions()
     return list
 end
 
--- Name eines Berufs in Spielsprache (auch wenn nicht gelernt), sonst englisch
 local function profName(id)
     if C_SkillInfo and C_SkillInfo.GetSkillLineInfoByID then
         local ok, info = pcall(C_SkillInfo.GetSkillLineInfoByID, id)
         if ok and info and info.name and info.name ~= "" then return info.name end
     end
-    return L["PROF_NAME_" .. id]   -- Namen stehen in Locales/
+    return L["PROF_NAME_" .. id]
+end
+
+-- Nächster Rang eines Berufs: Index (2–4) und Daten, oder nil (schon Fachmann)
+function PH:NextRank(p)
+    local current = RANK_BY_CAP[p.maxRank]
+    if not current or current >= 4 then return nil end
+    local ranks = ns.ProfessionRanks[p.id]
+    local r = ranks and ranks[current + 1]
+    if not r then return nil end
+    return current + 1, r
+end
+
+-- Text: "Geselle ab Skill 50 und Stufe 10 beim Lehrer"
+function PH:RankText(index, r)
+    local text = string.format(L.PROF_RANK_AT, L["PROF_RANK_" .. index], r.skill)
+    if r.level then text = text .. string.format(L.PROF_RANK_LEVEL, r.level) end
+    text = text .. " " .. L["PROF_HOW_" .. r.how]
+    return text
+end
+
+-- Sammelberuf: welche Vorkommen geben bei diesem Skill (sicher/oft) Punkte?
+function PH:GatherAdvice(p)
+    local nodes = ns.GatherNodes[p.id]
+    if not nodes then return nil end
+    local orange, yellow, green, nextNode = {}, {}, {}, nil
+    for _, n in ipairs(nodes) do
+        local name = (ns.locale == "deDE") and n.de or n.en
+        if p.rank >= n.min and p.rank < n.yellow then
+            table.insert(orange, name)
+        elseif p.rank >= n.yellow and p.rank < n.green then
+            table.insert(yellow, name)
+        elseif p.rank >= n.green and p.rank < n.grey then
+            table.insert(green, name)
+        elseif p.rank < n.min and (not nextNode or n.min < nextNode.min) then
+            nextNode = { name = name, min = n.min }
+        end
+    end
+    return orange, yellow, green, nextNode
 end
 
 -- ------------------------------------------------------------
@@ -75,20 +119,35 @@ function PH:PrintOverview()
     else
         ns:Print(L.PROF_HEADER)
         for _, p in ipairs(mine) do
-            local color = (p.rank >= p.maxRank and p.maxRank < 300) and "|cffff5555"
-                or (p.rank >= p.maxRank - ns.ProfessionCapWarning.value and p.maxRank < 300) and "|cffffd100"
-                or "|cffffffff"
-            ns:Print("   %s%s %d/%d|r  |cff999999(%s, #%d)|r", color, p.name, p.rank, p.maxRank,
-                L["PROF_KIND_" .. p.kind], p.id)
-            -- Partner-Beruf für Herstellungsberufe
+            local atCap = p.rank >= p.maxRank and p.maxRank < 300
+            ns:Print("   %s%s %d/%d|r  |cff999999(%s, #%d)|r", atCap and "|cffff5555" or "|cffffffff",
+                p.name, p.rank, p.maxRank, L["PROF_KIND_" .. p.kind], p.id)
+            -- nächster Rang
+            local idx, r = self:NextRank(p)
+            if idx then
+                local ready = p.rank >= r.skill and (not r.level or UnitLevel("player") >= r.level)
+                ns:Print("      %s%s|r", ready and "|cff55ff55" or "|cffcccccc", self:RankText(idx, r))
+                if r.note then ns:Print("      |cffffd100" .. L[r.note] .. "|r") end
+            end
+            -- Sammelberufe: was gibt gerade Punkte?
+            local orange, yellow, green, nextNode = self:GatherAdvice(p)
+            if orange and #orange > 0 then ns:Print("      " .. L.PROF_GATHER_ORANGE, table.concat(orange, ", ")) end
+            if yellow and #yellow > 0 then ns:Print("      " .. L.PROF_GATHER_YELLOW, table.concat(yellow, ", ")) end
+            if orange and #orange == 0 and #yellow == 0 and #green > 0 then
+                ns:Print("      " .. L.PROF_GATHER_GREEN, table.concat(green, ", "))
+            end
+            if nextNode and (not orange or #orange == 0) then
+                ns:Print("      " .. L.PROF_GATHER_NEXT, nextNode.name, nextNode.min)
+            end
+            -- Partner-Beruf
             local data = ns.Professions[p.id]
             if data.uses and not have[data.uses] then
                 ns:Print("      " .. L.PROF_NEEDS, profName(data.uses))
             end
         end
+        ns:Print("   " .. L.PROF_TRAINER_HINT)
     end
 
-    -- Weniger als 2 Hauptberufe: Vorschläge
     if primary < 2 then
         ns:Print(L.PROF_FREE_SLOTS, 2 - primary)
         local _, classFile = UnitClass("player")
@@ -105,37 +164,137 @@ function PH:PrintOverview()
         ns:Print("   " .. L.PROF_GOLD_TIP)
     end
 
-    -- Nebenberufe, die man noch nicht hat
     if not have[185] then ns:Print("   " .. L.PROF_TIP_COOKING) end
     if not have[129] then ns:Print("   " .. L.PROF_TIP_FIRSTAID) end
+    if factionKey() == "HORDE" then ns:Print("   " .. L.PROF_VENDOR_CAMP) end
     ns:Print("|cff999999" .. L.PROF_SOURCE_NOTE .. "|r")
 end
 
 -- ------------------------------------------------------------
--- Automatische Hinweise
+-- /ww lehrer <Beruf> – Wegpunkt nur auf Anfrage
 -- ------------------------------------------------------------
 
-local warned = {}     -- id:maxRank:stufe -> true (pro Sitzung einmal)
+-- Weltposition eines Kartenpunkts (für Entfernungen), oder nil
+local function worldPos(mapID, x, y)
+    if not C_Map.GetWorldPosFromMapPos or not CreateVector2D then return nil end
+    local ok, continent, pos = pcall(C_Map.GetWorldPosFromMapPos, mapID, CreateVector2D(x, y))
+    if ok and continent and pos then return continent, pos end
+    return nil
+end
+
+local function playerWorldPos()
+    local mapID = C_Map.GetBestMapForUnit("player")
+    local p = mapID and C_Map.GetPlayerMapPosition(mapID, "player")
+    if not p then return nil end
+    local x, y = p:GetXY()
+    return worldPos(mapID, x, y)
+end
+
+-- Beruf aus Eingabe finden: Name im Spiel oder deutscher/englischer Name (Anfang reicht)
+local function findProfession(text)
+    text = (text or ""):lower()
+    if text == "" then return nil end
+    for id, data in pairs(ns.Professions) do
+        for _, candidate in ipairs({ profName(id), L["PROF_NAME_" .. id], data.en }) do
+            if candidate and candidate:lower():sub(1, #text) == text then return id end
+        end
+    end
+    return nil
+end
+
+-- Bester Lehrer: lehrt den nötigen Rang, möglichst nah (gleicher Kontinent)
+function PH:FindTrainer(id)
+    local list = ns.ProfessionTrainers[factionKey()] and ns.ProfessionTrainers[factionKey()][id]
+    if not list then return nil end
+    local nextIdx
+    for _, p in ipairs(self:GetMyProfessions()) do
+        if p.id == id then nextIdx = self:NextRank(p) end
+    end
+    local needsHigher = nextIdx and nextIdx >= 2
+    local pc, pp = playerWorldPos()
+    local best, bestDist
+    for _, t in ipairs(list) do
+        local fits = not (needsHigher and t.apprentice) and not (t.artisanOnly and nextIdx ~= 4)
+        if fits then
+            local tc, tp = worldPos(t.map, t.x / 100, t.y / 100)
+            local dist = math.huge / 2
+            if pc and tc and pc == tc then
+                dist = math.sqrt((tp.x - pp.x) ^ 2 + (tp.y - pp.y) ^ 2)
+            end
+            if not best or dist < bestDist then best, bestDist = t, dist end
+        end
+    end
+    return best
+end
+
+function PH:TrainerCommand(rest)
+    local text = rest or ""   -- alles nach "lehrer", z. B. "bergbau"
+    if text:lower() == "aus" or text:lower() == "off" then
+        if C_Map.ClearUserWaypoint then C_Map.ClearUserWaypoint() end
+        ns:Print(L.PROF_WAY_CLEARED)
+        return
+    end
+    local id = findProfession(text)
+    if not id then
+        ns:Print(L.PROF_WAY_USAGE)
+        return
+    end
+    local t = self:FindTrainer(id)
+    if not t then
+        ns:Print(L.PROF_WAY_NONE, profName(id))
+        return
+    end
+    local info = C_Map.GetMapInfo(t.map)
+    local mapName = info and info.name or ("#" .. t.map)
+    local point = { uiMapID = t.map, position = CreateVector2D(t.x / 100, t.y / 100) }
+    local ok = C_Map.CanSetUserWaypointOnMap == nil or C_Map.CanSetUserWaypointOnMap(t.map)
+    if ok and C_Map.SetUserWaypoint then
+        C_Map.SetUserWaypoint(point)
+        if C_SuperTrack and C_SuperTrack.SetSuperTrackedUserWaypoint then
+            C_SuperTrack.SetSuperTrackedUserWaypoint(true)
+        end
+        ns:Print(L.PROF_WAY_SET, profName(id), t.name, mapName, t.x, t.y)
+    else
+        ns:Print(L.PROF_WAY_TEXT, profName(id), t.name, mapName, t.x, t.y)
+    end
+end
+
+-- ------------------------------------------------------------
+-- Automatische Hinweise (nur Chat)
+-- ------------------------------------------------------------
+
+local warned = {}
 local checkPending = false
 
 function PH:CheckCaps()
     if not settings().profHelper then return end
-    local margin = ns.ProfessionCapWarning.value
+    local level = UnitLevel("player")
     for _, p in ipairs(self:GetMyProfessions()) do
-        if p.maxRank < 300 then
-            local stage
-            if p.rank >= p.maxRank then stage = "AT"
-            elseif p.rank >= p.maxRank - margin then stage = "NEAR" end
-            if stage then
-                local key = p.id .. ":" .. p.maxRank .. ":" .. stage
-                if not warned[key] then
-                    warned[key] = true
-                    if stage == "AT" then
-                        ns:Notify(L.PROF_AT_CAP, p.name, p.rank, p.maxRank)
-                    else
-                        ns:Print(L.PROF_NEAR_CAP, p.name, p.rank, p.maxRank)
-                    end
+        local idx, r = self:NextRank(p)
+        if idx then
+            local key = p.id .. ":" .. p.maxRank
+            local hasTrainer = r.how == "TRAINER" and ns.ProfessionTrainers[factionKey()]
+                and ns.ProfessionTrainers[factionKey()][p.id]
+            local levelOk = not r.level or level >= r.level
+            local atCap = p.rank >= p.maxRank
+            if p.rank >= r.skill and levelOk and not warned[key .. ":ready"] then
+                warned[key .. ":ready"] = true
+                -- Am Limit wichtiger (Skill steigt nicht mehr) -> zusätzlich groß anzeigen
+                if atCap then
+                    warned[key .. ":cap"] = true
+                    ns:Notify(L.PROF_AT_CAP, p.name, p.rank, p.maxRank)
+                    ns:Print("   " .. self:RankText(idx, r))
+                else
+                    ns:Print(L.PROF_CAN_LEARN, p.name, p.rank, p.maxRank, self:RankText(idx, r))
                 end
+                if hasTrainer then ns:Print("   " .. L.PROF_WAY_TIP, p.name:lower()) end
+            elseif p.rank >= r.skill and not levelOk and not warned[key .. ":lvl"] then
+                warned[key .. ":lvl"] = true
+                ns:Print(L.PROF_NEED_LEVEL, p.name, L["PROF_RANK_" .. idx], r.level)
+            end
+            if atCap and not warned[key .. ":cap"] then
+                warned[key .. ":cap"] = true
+                ns:Notify(L.PROF_AT_CAP, p.name, p.rank, p.maxRank)
             end
         end
     end
@@ -178,7 +337,10 @@ function PH:OnInitialize()
     end)
     ns:RegisterEvent("PLAYER_LEVEL_UP", function()
         C_Timer.After(4, function()
-            ns:RunOutOfCombat(function() PH:CheckNoProfession() end, true)
+            ns:RunOutOfCombat(function()
+                PH:CheckCaps()          -- evtl. jetzt hoch genug für den nächsten Rang
+                PH:CheckNoProfession()
+            end, true)
         end)
     end)
 end

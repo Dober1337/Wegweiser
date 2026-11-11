@@ -144,3 +144,16 @@ Daten: `WTF\Account\<KONTONAME>\SavedVariables\WegweiserRecorder.lua` – **ab u
 | 3 | Beruf genau am Limit (75/75) | Hinweis „Limit erreicht!“ (auch in der Bildschirmmitte, falls eingeschaltet) |
 | 4 | Charakter ab Level 5 ohne Hauptberuf | einmal „Tipp: Du hast noch keinen Hauptberuf …“ |
 | 5 | `/ww config` | neues Häkchen „Berufe-Helfer“ |
+
+## Berufe-Helfer mit Rängen, Abbau-Tipps und Lehrer-Wegpunkt (Version 0.13.0)
+
+`/reload` reicht (keine neuen Dateien).
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | `/ww berufe` | je Beruf: „Nächster Rang: Geselle ab Skill 50 (und Stufe 10) beim Lehrer“; bei Bergbau/Kräuterkunde: was gerade Punkte gibt bzw. „Als Nächstes: … ab Skill …“ |
+| 2 | Beruf erreicht Skill 50 (bzw. 125/200) | „… du kannst jetzt den nächsten Rang lernen!“ + „Wegpunkt zum Lehrer: /ww lehrer …“ (kein Wegpunkt automatisch!) |
+| 3 | `/ww lehrer bergbau` | Wegpunkt (Pfeil) zum nächsten passenden Lehrer, Chat nennt Name, Ort, Koordinaten |
+| 4 | `/ww lehrer aus` | Wegpunkt verschwindet |
+| 5 | Zum Lehrer gehen | stimmt der Name/Ort? Lehrt er den Rang? (bitte melden, falls nicht) |
+| 6 | `/ww zonecheck` | jetzt auch Orgrimmar, Donnerfels, Unterstadt (1454/1456/1458) |
