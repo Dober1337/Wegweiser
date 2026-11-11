@@ -36,6 +36,7 @@ ns.QuestRules = {
     -- Reihenfolge der Prüfung: die erste passende Kategorie gewinnt.
     --   DONE   – fertig, nur noch abgeben
     --   SKIP   – grau: steht VOR "Gruppe", weil eine graue Gruppenquest keine EP mehr bringt
+    --            (Reihenfolge vom Spieler bestätigt, Nov 2026)
     --   GROUP  – Elite/Dungeon/Schlachtzug oder empfohlene Gruppe
     --   danach die Farbe (TOO_HARD, GOOD, STILL_WORTH)
     order = { "DONE", "SKIP", "GROUP", "TOO_HARD", "GOOD", "STILL_WORTH" },

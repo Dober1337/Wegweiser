@@ -13,7 +13,8 @@
 --   * Neue Quest angenommen -> kurze Bewertung im Chat
 --   * Levelaufstieg -> Hinweis, wenn Quests grau oder machbar geworden sind
 --
--- Questie: wird erkannt, falls installiert (keine Pflicht). Dann weisen wir
+-- Questie: wird erkannt, falls installiert (keine Pflicht). Läuft in Forever
+-- laut Spieler einwandfrei (Nov 2026). Dann weisen wir
 -- auf dessen Karten-Markierungen hin. Questies interne Daten nutzen wir
 -- (noch) nicht – das kommt erst mit der Routenplanung.
 -- ============================================================
