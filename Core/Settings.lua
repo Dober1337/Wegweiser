@@ -30,6 +30,8 @@ ns.defaults = {
         questAcceptHint = true,   -- Bewertung im Chat, wenn eine Quest angenommen wird
         questOfferHint  = true,   -- Hinweis beim Questgeber, bevor man annimmt
         questLogIcons   = true,   -- Symbole im Questlog
+        -- Zonen
+        zoneMapLevels   = true,   -- Levelbereiche auf der Weltkarte
         talentBuild   = "SHAMAN_RESTORATION_LEVELING_HYBRID", -- gewählter Build (pro Klasse passend)
     },
     talentDump = {},   -- Ergebnis von /ww talentdump, pro Klasse

@@ -47,6 +47,8 @@ function ns:OnDatabaseReady()
     addCheckbox("questOfferHint",  L.OPT_QOFFER,    L.OPT_QOFFER_TT)
     addCheckbox("questLogIcons",   L.OPT_QICONS,    L.OPT_QICONS_TT)
     addCheckbox("questAcceptHint", L.OPT_QACCEPT,   L.OPT_QACCEPT_TT)
+    -- Zonen
+    addCheckbox("zoneMapLevels",   L.OPT_MAPLVL,    L.OPT_MAPLVL_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.
 

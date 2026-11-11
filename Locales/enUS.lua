@@ -126,3 +126,8 @@ L.ZG_PROBE_SAVED         = "Saved. Type /reload so it is written to the file."
 -- Routen-Recorder (eigenes Addon WegweiserRecorder)
 L.HELP_ROUTE            = "/ww route – route recording (needs the WegweiserRecorder addon)"
 L.REC_NOT_INSTALLED     = "Route recording is a separate addon: install the folder \"WegweiserRecorder\" next to Wegweiser in your AddOns folder."
+
+-- Weltkarte
+L.WML_LABEL              = "%s: level %s"
+L.OPT_MAPLVL             = "Level ranges on the world map"
+L.OPT_MAPLVL_TT          = "Shows the level range of a zone on the world map (hover over a zone or open its map)."
