@@ -200,6 +200,9 @@ function Guide:PrintNext()
     if p then
         ns:Print(L.GUIDE_NEXT, pointLine(p, tree.byNode[p.step.nodeID]))
         ns:Print("   " .. loc(p.step.reason))
+        if settings().talentHighlight then
+            ns:Print("   " .. L.GUIDE_HIGHLIGHT_HINT)
+        end
     end
 end
 

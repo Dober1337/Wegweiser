@@ -41,6 +41,7 @@ function ns:OnDatabaseReady()
     addCheckbox("onScreen",      L.OPT_ONSCREEN, L.OPT_ONSCREEN_TT)
     -- Modul: Talent-Leitfaden
     addCheckbox("talentGuide",   L.OPT_GUIDE,    L.OPT_GUIDE_TT)
+    addCheckbox("talentHighlight", L.OPT_HIGHLIGHT, L.OPT_HIGHLIGHT_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.
 

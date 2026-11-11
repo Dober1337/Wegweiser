@@ -54,3 +54,19 @@ sind auch die aktuellen Ränge drin.
 | 6 | Nächster Levelaufstieg | nach „Du hast 1 freien Talentpunkt …“ kommt „Als Nächstes: …“ |
 | 7 | Punkt wie empfohlen verteilen, `/ww build` | Fortschritt +1, nächster Punkt rückt weiter |
 | 8 | (optional) Punkt woanders hinsetzen, `/ww build` | gelber Hinweis „… steht auf 1, der Build sieht 0 vor“ |
+
+## Phase 3 – Markierung im Talentfenster (Version 0.3.0)
+
+**Neue Datei → WoW komplett neu starten.**
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | Talentfenster öffnen (N), ohne freien Punkt | kein goldener Rahmen; über den Build-Talenten kleine blaue Ziel-Ränge („» 5/5“ …) |
+| 2 | Maus über Donnernde Stöße | unten im Tooltip: „Wegweiser: als Nächstes im Build – Ziel 5/5 (ab Level 13)“ + Begründung |
+| 3 | Levelaufstieg auf 13, Talentfenster öffnen | Donnernde Stöße pulsiert golden; Tooltip „Wegweiser: jetzt skillen – …“ |
+| 4 | Punkt in Donnernde Stöße setzen (+ ggf. Übernehmen) | Rahmen verschwindet (kein freier Punkt mehr) |
+| 5 | Talente, die fertig sind (z. B. später Donnernde Stöße 5/5) | kleines grünes Häkchen oben rechts |
+| 6 | `/ww config` → „Markierung im Talentfenster“ aus | keine Markierungen mehr |
+| 7 | Im Kampf Talentfenster öffnen | keine Fehlermeldung; Markierungen kommen nach dem Kampf |
+
+Bitte Screenshot vom Talentfenster schicken – dann passe ich Größe/Position der Markierungen an.

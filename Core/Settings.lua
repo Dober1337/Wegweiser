@@ -24,6 +24,7 @@ ns.defaults = {
         onScreen      = false,
         -- Modul: Talent-Leitfaden
         talentGuide   = true,
+        talentHighlight = true,   -- Markierungen im Blizzard-Talentfenster
         talentBuild   = "SHAMAN_RESTORATION_LEVELING_HYBRID", -- gewählter Build (pro Klasse passend)
     },
     talentDump = {},   -- Ergebnis von /ww talentdump, pro Klasse

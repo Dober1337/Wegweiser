@@ -79,3 +79,13 @@ L.CHECK_POSITION        = "%s: expected tree %d row %d column %d, game says tree
 L.CHECK_GATE            = "Point %d (%s): needs %d points in the tree, only %d at that time."
 L.CHECK_ARROW           = "Point %d (%s): requires %s at rank %d first."
 L.CHECK_TOO_MANY        = "%s: build plans rank %d, but the maximum is %d."
+
+-- Markierungen im Talentfenster
+L.OPT_HIGHLIGHT         = "Highlight in talent window"
+L.OPT_HIGHLIGHT_TT      = "Gold frame on the talent to pick now, target ranks for later talents, check marks for finished ones."
+L.GUIDE_HIGHLIGHT_HINT  = "It is marked with a gold frame in the talent window."
+L.HL_TT_NOW             = "Wegweiser: pick now – %s"
+L.HL_TT_DONE            = "Wegweiser: done as planned."
+L.HL_TT_NEXT            = "Wegweiser: next in the build – target %d/%d (from level %d)"
+L.HL_TT_LATER           = "Wegweiser: later in the build – target %d/%d (from level %d)"
+L.HL_TT_DEVIATION       = "Wegweiser: the build plans %d point(s) here, you have %d. No problem – just a note."

@@ -79,3 +79,13 @@ L.CHECK_POSITION        = "%s: erwartet Baum %d Reihe %d Spalte %d, das Spiel sa
 L.CHECK_GATE            = "Punkt %d (%s): braucht %d Punkte im Baum, zu diesem Zeitpunkt sind es erst %d."
 L.CHECK_ARROW           = "Punkt %d (%s): setzt zuerst %s auf %d voraus."
 L.CHECK_TOO_MANY        = "%s: Build plant Rang %d, Maximum ist %d."
+
+-- Markierungen im Talentfenster
+L.OPT_HIGHLIGHT         = "Markierung im Talentfenster"
+L.OPT_HIGHLIGHT_TT      = "Goldener Rahmen um das Talent, das jetzt dran ist, Ziel-Ränge für spätere Talente, Häkchen für erledigte."
+L.GUIDE_HIGHLIGHT_HINT  = "Im Talentfenster ist es golden umrandet."
+L.HL_TT_NOW             = "Wegweiser: jetzt skillen – %s"
+L.HL_TT_DONE            = "Wegweiser: wie geplant verteilt."
+L.HL_TT_NEXT            = "Wegweiser: als Nächstes im Build – Ziel %d/%d (ab Level %d)"
+L.HL_TT_LATER           = "Wegweiser: später im Build – Ziel %d/%d (ab Level %d)"
+L.HL_TT_DEVIATION       = "Wegweiser: Der Build sieht hier %d Punkt(e) vor, du hast %d. Kein Problem – nur ein Hinweis."
