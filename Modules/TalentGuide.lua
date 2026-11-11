@@ -220,7 +220,10 @@ end
 function Guide:ResolveByName(build, tree)
     if not build.resolveByName or build._resolved then return end
     local function norm(s) return s and s:lower():gsub("[%s%-]", "") end
+    local missing = 0
     for _, step in ipairs(build.steps) do
+        if step._byName then step.nodeID = nil end   -- erneuter Versuch: frisch suchen
+        step._missingName = nil
         if not step.nodeID then
             local wanted = norm((ns.locale == "deDE" and step.de) or step.en)
             local found
@@ -236,12 +239,17 @@ function Guide:ResolveByName(build, tree)
             if found then
                 step.nodeID, step.tier, step.column, step.maxRank = found.nodeID, found.tier, found.column, found.maxRank
                 step.tree = found.treeIndex
+                step._byName = true
             else
                 step._missingName = (ns.locale == "deDE" and step.de) or step.en
+                missing = missing + 1
             end
         end
     end
-    build._resolved = true
+    -- Nur als erledigt merken, wenn alles gefunden wurde – sonst beim nächsten
+    -- Aufruf erneut suchen (z. B. wenn die Talentdaten beim Einloggen noch fehlten)
+    build._points = nil
+    build._resolved = (missing == 0)
 end
 
 -- Wie kann man Talente zurücksetzen? (zur Laufzeit ermittelt)
