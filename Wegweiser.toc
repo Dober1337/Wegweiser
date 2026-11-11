@@ -3,7 +3,7 @@
 ## Notes: Beginner helper for WoW Forever: level-up tips, talent guide and more.
 ## Notes-deDE: Einsteiger-Helfer für WoW Forever: Level-Up-Tipps, Talent-Leitfaden und mehr.
 ## Author: Wegweiser-Team
-## Version: 0.9.1
+## Version: 0.10.0
 ## SavedVariables: WegweiserDB, WegweiserRouteDB
 # WegweiserRouteDB: alte Aufzeichnung aus Version 0.7 – bleibt geladen, damit
 # das Addon "WegweiserRecorder" sie übernehmen kann. Später entfernen.

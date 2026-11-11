@@ -24,6 +24,7 @@ local function showHelp()
     ns:Print(L.HELP_BUILD_LIST)
     ns:Print(L.HELP_BUILD_NOTES)
     ns:Print(L.HELP_QUESTS)
+    ns:Print(L.HELP_ZONES)
     ns:Print(L.HELP_ROUTE)
     ns:Print(L.HELP_TALENTDUMP)
     ns:Print(L.HELP_TEST)
@@ -74,6 +75,9 @@ local commands = {
             ns:Print(L.REC_NOT_INSTALLED)
         end
     end,
+    zonen      = function() ns:RunOutOfCombat(function() ns.modules.ZoneGuide:PrintAdvice() end) end,
+    zones      = function() ns:RunOutOfCombat(function() ns.modules.ZoneGuide:PrintAdvice() end) end,
+    zonecheck  = function() ns:RunOutOfCombat(function() ns.modules.ZoneGuide:CheckMapIDs() end) end,
     zoneinfo   = function() ns:RunOutOfCombat(function() ns.modules.ZoneGuide:Probe() end) end,
     questinfo  = function() ns.modules.QuestAdvisor:PrintOfferDebug() end,
     quests     = function() ns:RunOutOfCombat(function() ns.modules.QuestAdvisor:PrintOverview() end) end,

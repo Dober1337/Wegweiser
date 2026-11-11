@@ -120,3 +120,15 @@ Der Recorder ist ein **eigenes Addon**. Installation:
 | 8 | `/wwrec melden` | Meldungen wieder aus, Aufzeichnung läuft still weiter |
 
 Daten: `WTF\Account\<KONTONAME>\SavedVariables\WegweiserRecorder.lua` – **ab und zu sichern**.
+
+## Stufe 1 – Zonen-Wegweiser (Version 0.10.0)
+
+`/reload` reicht (keine neuen Dateien).
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | `/ww zonecheck` | Liste aller Zonen: Nummer, deutscher Name im Spiel, (englischer Name, Kontinent). Kein „FEHLT“, und Namen passen zusammen – Screenshot schicken |
+| 2 | `/ww zonen` | „Du bist in Das Brachland (10–25) – passt zu deinem Level“, Anzahl lohnender Quests, gute Zonen für dein Level |
+| 3 | Weltkarte: Maus über andere Zonen (Durotar, Steinkrallengebirge, …) | „Stufe x–y“ in passender Farbe |
+| 4 | Levelaufstieg mit kaum lohnenden Quests | „Nur noch N Quest(s), die sich lohnen – Zeit weiterzuziehen?“ + Vorschläge |
+| 5 | (später) in eine zu niedrige Zone gehen, z. B. Durotar ab Level 11 | „Durotar (1–10) ist jetzt zu niedrig für dich …“ + Vorschläge |
