@@ -166,7 +166,8 @@ table.insert(ns.TalentBuilds, {
     source    = "WOWHEAD",
     sourceUrl = "https://www.wowhead.com/forever/de/guide/classes/hunter/beast-mastery/dps-leveling-tips",
     resolveByName = true,        -- Talente über den Namen im Spiel-Baum finden
-    structureVerified = false,
+    structureVerified = true,    -- im Spiel bestätigt: alle 19 Namen im deutschen Client gefunden,
+                                 -- Reihen/Pfeile passen (Spieler, Nov 2026, Version 0.19.4)
     positionsVerified = false,
     orderVerified     = false,
     verified          = false,
