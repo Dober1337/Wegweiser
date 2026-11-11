@@ -277,3 +277,6 @@ L.GUIDE_RESET_FRAME     = "To fix it: \"Reset\" at the top of the talent window,
 L.GUIDE_RESET_TRAINER   = "To fix it: ask your class trainer to \"unlearn talents\" (costs gold), then spend the points again."
 L.GUIDE_RESET_UNKNOWN   = "To fix it: reset your talents (talent window or class trainer), then spend the points again."
 L.GUIDE_UNDO_HINT       = "Not applied yet: undo it in the talent window (free)."
+L.PROF_TRAINER_SAVED    = "Location of %s saved as %s trainer – /ww trainer will find them from now on."
+L.PROF_WAY_NAMES        = "According to the guide: %s"
+L.PROF_WAY_LEARN        = "Visit one of these trainers once – Wegweiser then remembers the location for /ww trainer."

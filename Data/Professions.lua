@@ -201,6 +201,18 @@ ns.ProfessionTrainers = {
     },
 }
 
+-- Horde-Lehrer, die die Quelle NUR mit Namen und Ort nennt (ohne Koordinaten).
+-- Werden angezeigt, solange Wegweiser noch keinen Ort kennt.
+ns.ProfessionTrainerNames = {
+    src = SRC2, verified = false,
+    HORDE = {
+        [171] = { "Whuut (Orgrimmar)", "Yelmak (Orgrimmar)", "Doktor Herbert Halsey (Unterstadt)" },
+        [202] = { "Thund (Orgrimmar)", "Nogg (Orgrimmar)", "Mukdrak (Klingenhügel, Durotar)" },
+        [165] = { "Una (Donnerfels)", "Chaw Stronghide (Dorf der Bluthufe, Mulgore)", "Shelene Rhobart (bei Brill, Tirisfal)" },
+        [185] = { "Cook Torka (Klingenhügel, Durotar)", "Zamja (Orgrimmar)", "Aska Mistrunner (Donnerfels)" },
+    },
+}
+
 -- Händlergunst-Rezepthändler der Horde (neues Handelslager westlich vom Wegekreuz)
 ns.ProfessionVendorCamp = { HORDE = { map = 1413, x = 49.8, y = 29.6 }, src = SRC2, verified = false }
 

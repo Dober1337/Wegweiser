@@ -214,9 +214,40 @@ local function findProfession(text)
 end
 
 -- Bester Lehrer: lehrt den nötigen Rang, möglichst nah (gleicher Kontinent)
+-- Von dir besuchte Lehrer (pro Fraktion und Beruf, accountweit gemerkt)
+local function learnedTrainers(id, create)
+    if not ns.db then return nil end
+    ns.db.knownTrainers = ns.db.knownTrainers or {}
+    local f = factionKey()
+    ns.db.knownTrainers[f] = ns.db.knownTrainers[f] or {}
+    if create and not ns.db.knownTrainers[f][id] then ns.db.knownTrainers[f][id] = {} end
+    return ns.db.knownTrainers[f][id]
+end
+
+-- Wird beim Öffnen eines Berufslehrers aufgerufen (Modules/ProfessionRoutes.lua)
+function PH:RememberTrainer(id)
+    if not UnitExists("npc") then return end
+    local name = UnitName("npc")
+    if not name or (issecretvalue and issecretvalue(name)) then return end
+    local mapID = C_Map.GetBestMapForUnit("player")
+    local pos = mapID and C_Map.GetPlayerMapPosition(mapID, "player")
+    if not pos then return end
+    local x, y = pos:GetXY()
+    if not x or (issecretvalue and issecretvalue(x)) then return end
+    local list = learnedTrainers(id, true)
+    for _, t in ipairs(list) do
+        if t.name == name then t.map, t.x, t.y = mapID, x * 100, y * 100 return end
+    end
+    table.insert(list, { name = name, map = mapID, x = x * 100, y = y * 100, learned = true })
+    ns:Print(L.PROF_TRAINER_SAVED, name, profName(id))
+end
+
 function PH:FindTrainer(id)
-    local list = ns.ProfessionTrainers[factionKey()] and ns.ProfessionTrainers[factionKey()][id]
-    if not list then return nil end
+    local list = {}
+    local static = ns.ProfessionTrainers[factionKey()] and ns.ProfessionTrainers[factionKey()][id]
+    for _, t in ipairs(static or {}) do table.insert(list, t) end
+    for _, t in ipairs(learnedTrainers(id, false) or {}) do table.insert(list, t) end
+    if #list == 0 then return nil end
     local nextIdx
     for _, p in ipairs(self:GetMyProfessions()) do
         if p.id == id then nextIdx = self:NextRank(p) end
@@ -253,6 +284,9 @@ function PH:TrainerCommand(rest)
     local t = self:FindTrainer(id)
     if not t then
         ns:Print(L.PROF_WAY_NONE, profName(id))
+        local names = ns.ProfessionTrainerNames[factionKey()] and ns.ProfessionTrainerNames[factionKey()][id]
+        if names then ns:Print("   " .. L.PROF_WAY_NAMES, table.concat(names, ", ")) end
+        ns:Print("   " .. L.PROF_WAY_LEARN)
         return
     end
     local info = C_Map.GetMapInfo(t.map)

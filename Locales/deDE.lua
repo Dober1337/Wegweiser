@@ -277,3 +277,6 @@ L.GUIDE_RESET_FRAME     = "Korrigieren: oben im Talentfenster „Zurücksetzen�
 L.GUIDE_RESET_TRAINER   = "Korrigieren: beim Klassenlehrer „Talente verlernen“ (kostet Gold), dann die Punkte neu verteilen."
 L.GUIDE_RESET_UNKNOWN   = "Korrigieren: Talente zurücksetzen (Talentfenster oder Klassenlehrer), dann die Punkte neu verteilen."
 L.GUIDE_UNDO_HINT       = "Noch nicht angewendet: im Talentfenster rückgängig machen (kostenlos)."
+L.PROF_TRAINER_SAVED    = "Ort von %s als %s-Lehrer gemerkt – /ww lehrer findet ihn ab jetzt."
+L.PROF_WAY_NAMES        = "Laut Guide: %s"
+L.PROF_WAY_LEARN        = "Besuch einen dieser Lehrer einmal – dann merkt sich Wegweiser den Ort für /ww lehrer."

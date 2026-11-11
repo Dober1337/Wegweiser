@@ -299,12 +299,21 @@ function PR:ShowAtTrainer()
         or C_Trainer.GetTrainerType() ~= Enum.TrainerType.Tradeskills then return end
 
     -- Welcher Beruf? Über die Fertigkeitslinie der angebotenen Dienste
-    local p
+    local p, lineName
     local num = GetNumTrainerServices and GetNumTrainerServices() or 0
     for i = 1, num do
+        lineName = lineName or (GetTrainerServiceSkillLine and GetTrainerServiceSkillLine(i))
         p = myProfessionByName(GetTrainerServiceSkillLine and GetTrainerServiceSkillLine(i))
         if p then break end
     end
+    -- Lehrer-Ort merken (auch für noch nicht gelernte Berufe, über den Namen)
+    local profID = p and p.id
+    if not profID and lineName then
+        for id in pairs(ns.Professions) do
+            if L["PROF_NAME_" .. id] == lineName then profID = id break end
+        end
+    end
+    if profID then ns.modules.ProfessionHelper:RememberTrainer(profID) end
     if not p then return end   -- Beruf (noch) nicht gelernt: Blizzard zeigt das Angebot selbst
     pendingRefresh = function() PR:ShowAtTrainer() end
     fill(getBox(ClassTrainerFrame), self:BuildLines(p))
