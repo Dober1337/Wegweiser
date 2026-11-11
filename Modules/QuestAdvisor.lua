@@ -9,9 +9,9 @@
 -- Anzeige:
 --   * Beim Questgeber (Questtext mit "Annehmen"-Knopf): Wegweiser-Kasten
 --     unter dem Questfenster mit Bewertung – schon VOR dem Annehmen
---   * Questlog: kleines Symbol links neben jedem Questtitel
+--   * Questlog: kleines Symbol rechts, neben Blizzards Verfolgen-Häkchen
 --     (nachträglicher Haken an Blizzards QuestLogQuests_Update; wir nutzen
---      nur den freien Platz links vom Titel, Blizzards Texte bleiben unverändert)
+--      nur einen freien Platz, Blizzards Texte und Symbole bleiben unverändert)
 --   * Questlog-Tooltip – Zeile "Wegweiser: ..." beim Drüberfahren
 --     (offizieller Haken: EventRegistry "QuestMapLogTitleButton.OnEnter")
 --   * /ww quests       – Übersicht aller Quests, nach Bewertung sortiert
@@ -204,12 +204,19 @@ function QA:DecorateQuestLog()
             local icon = logIcons[button]
             if not icon then
                 icon = button:CreateTexture(nil, "OVERLAY")
-                icon:SetSize(14, 14)
+                icon:SetSize(16, 16)
                 logIcons[button] = icon
             end
             icon:ClearAllPoints()
-            -- Links neben den Titel, in den freien Platz (Blizzard: Titel beginnt bei x = 31)
-            icon:SetPoint("TOPRIGHT", button.Text, "TOPLEFT", -4, 1)
+            -- Rechts, direkt links neben Blizzards Verfolgen-Häkchen. Dort sitzt
+            -- normalerweise das Questtyp-Symbol (TagTexture), das Forever aber
+            -- nie zeigt (Questtyp steht als Text da) – der Platz ist also frei.
+            -- Links neben dem Titel zeigt Forever eigene Symbole ("…", "?").
+            if button.Checkbox then
+                icon:SetPoint("RIGHT", button.Checkbox, "LEFT", -4, 0)
+            else
+                icon:SetPoint("TOPLEFT", button.Text, "TOPRIGHT", 4, 1)
+            end
             icon:SetTexture(cat.icon)
             icon:Show()
         end

@@ -93,7 +93,7 @@ Bitte Screenshot vom Talentfenster schicken – dann passe ich Größe/Position 
 
 | # | Test | Erwartung |
 |---|------|-----------|
-| 1 | Questlog öffnen (L) | links neben jedem Questtitel ein kleines Symbol (gelber/grüner/grauer Punkt, Totenkopf = zu schwer, Figur = Gruppe, Häkchen = fertig) |
+| 1 | Questlog öffnen (L) | rechts, links neben dem Verfolgen-Häkchen, ein kleines Symbol (gelber/grüner/grauer Punkt, Totenkopf = zu schwer, Figur = Gruppe, Häkchen = fertig) |
 | 2 | Maus über eine Quest | Tooltip erklärt das Symbol |
 | 3 | Beim Questgeber eine Quest öffnen (Text mit „Annehmen“) | unter dem Questfenster ein Kasten „Wegweiser: gut machbar“ o. ä. |
 | 4 | Dabei `/ww questinfo` | Rohdaten der Quest (Level, Schwierigkeit, Elite, Gruppe) – bitte Screenshot |

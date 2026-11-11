@@ -3,7 +3,7 @@
 ## Notes: Beginner helper for WoW Forever: level-up tips, talent guide and more.
 ## Notes-deDE: Einsteiger-Helfer für WoW Forever: Level-Up-Tipps, Talent-Leitfaden und mehr.
 ## Author: Wegweiser-Team
-## Version: 0.5.0
+## Version: 0.5.1
 ## SavedVariables: WegweiserDB
 ## IconTexture: Interface\Icons\INV_Misc_Map_01
 
