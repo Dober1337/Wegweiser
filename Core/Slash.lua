@@ -19,6 +19,7 @@ local L = ns.L
 -- Hilfe für Spieler: nur die Befehle, die man im Alltag braucht
 local function showHelp()
     ns:Print(L.HELP_HEADER)
+    ns:Print(L.HELP_LEARN)
     ns:Print(L.HELP_QUESTS)
     ns:Print(L.HELP_ZONES)
     ns:Print(L.HELP_PROF)
@@ -92,6 +93,8 @@ local commands = {
     guide      = function(_, rest) ns.modules.ProfessionHelper:GuideCommand(rest) end,
     lehrer     = function(_, rest) ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:TrainerCommand(rest) end) end,
     trainer    = function(_, rest) ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:TrainerCommand(rest) end) end,
+    lernen     = function() ns:RunOutOfCombat(function() ns.modules.TrainerSpells:PrintOverview() end) end,
+    learn      = function() ns:RunOutOfCombat(function() ns.modules.TrainerSpells:PrintOverview() end) end,
     berufe     = function() ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:PrintOverview() end) end,
     professions = function() ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:PrintOverview() end) end,
     zonen      = function() ns:RunOutOfCombat(function() ns.modules.ZoneGuide:PrintAdvice() end) end,

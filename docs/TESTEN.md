@@ -196,3 +196,15 @@ Der Jäger-Build hat keine festen Talent-Nummern: Wegweiser sucht die Talente be
 | 4 | `/ww build liste` | alle 19 Schritte mit deutschen Namen |
 | 5 | Talentfenster (ab Level 10 mit freiem Punkt) | goldener Rahmen um „Tödliche Aspekte“ |
 | 6 | `/ww talentdump` + `/reload` | Datei schicken – dann trage ich die festen Nummern ein |
+
+## Was lerne ich als Nächstes? (Version 0.17.0)
+
+**Neue Datei → WoW komplett neu starten.**
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | `/ww lernen` vor dem Lehrerbesuch | „Besuch einmal deinen Klassenlehrer …“ |
+| 2 | Klassenlehrer ansprechen | „N Fähigkeiten dieses Lehrers gemerkt …“; falls Filter „Nicht verfügbar“ aus: Tipp, ihn anzuhaken |
+| 3 | `/ww lernen` | „Jetzt lernbar: …“ und die nächsten Level mit ihren Fähigkeiten |
+| 4 | Levelaufstieg | „Neu beim Klassenlehrer: Fähigkeit (Rang x), …“ statt des allgemeinen Hinweises |
+| 5 | Level ohne neue Fähigkeiten | kein Lehrer-Hinweis |
