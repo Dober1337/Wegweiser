@@ -86,3 +86,16 @@ Bitte Screenshot vom Talentfenster schicken – dann passe ich Größe/Position 
 | 7 | Levelaufstieg | ggf. „Jetzt machbar: …“ / „Jetzt grau …“ |
 | 8 | Mit Questie installiert: `/ww quests` | letzte Zeile „Questie erkannt …“ |
 | 9 | `/ww config` | neue Häkchen „Quest-Berater“ und „Neue Quests bewerten“ |
+
+## Phase 4b – Quest-Berater im Questlog und beim Questgeber (Version 0.5.0)
+
+`/reload` reicht (keine neuen Dateien).
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | Questlog öffnen (L) | links neben jedem Questtitel ein kleines Symbol (gelber/grüner/grauer Punkt, Totenkopf = zu schwer, Figur = Gruppe, Häkchen = fertig) |
+| 2 | Maus über eine Quest | Tooltip erklärt das Symbol |
+| 3 | Beim Questgeber eine Quest öffnen (Text mit „Annehmen“) | unter dem Questfenster ein Kasten „Wegweiser: gut machbar“ o. ä. |
+| 4 | Dabei `/ww questinfo` | Rohdaten der Quest (Level, Schwierigkeit, Elite, Gruppe) – bitte Screenshot |
+| 5 | Annehmen / Fenster schließen | Kasten verschwindet |
+| 6 | Mit Questie | Symbole stören Questie nicht; nichts überlappt |

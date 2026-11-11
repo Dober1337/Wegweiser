@@ -41,13 +41,20 @@ ns.QuestRules = {
     --   danach die Farbe (TOO_HARD, GOOD, STILL_WORTH)
     order = { "DONE", "SKIP", "GROUP", "TOO_HARD", "GOOD", "STILL_WORTH" },
 
-    -- Anzeige je Kategorie: Farbe (r, g, b) und Text-Schlüssel in Locales/
+    -- Anzeige je Kategorie: Farbe (r, g, b), Text-Schlüssel in Locales/ und
+    -- Symbol im Questlog (Blizzard-Grafiken; erste Wahl, nach Screenshot anpassen)
     categories = {
-        DONE        = { color = { 0.3, 1.0, 0.3 },   label = "QA_DONE",        explain = "QA_DONE_TT" },
-        SKIP        = { color = { 0.6, 0.6, 0.6 },   label = "QA_SKIP",        explain = "QA_SKIP_TT" },
-        GROUP       = { color = { 1.0, 0.5, 0.25 },  label = "QA_GROUP",       explain = "QA_GROUP_TT" },
-        TOO_HARD    = { color = { 1.0, 0.25, 0.25 }, label = "QA_TOO_HARD",    explain = "QA_TOO_HARD_TT" },
-        GOOD        = { color = { 1.0, 0.82, 0.0 },  label = "QA_GOOD",        explain = "QA_GOOD_TT" },
-        STILL_WORTH = { color = { 0.25, 0.75, 0.25 },label = "QA_STILL_WORTH", explain = "QA_STILL_WORTH_TT" },
+        DONE        = { color = { 0.3, 1.0, 0.3 },   label = "QA_DONE",        explain = "QA_DONE_TT",
+                        icon = "Interface\\RaidFrame\\ReadyCheck-Ready" },
+        SKIP        = { color = { 0.6, 0.6, 0.6 },   label = "QA_SKIP",        explain = "QA_SKIP_TT",
+                        icon = "Interface\\COMMON\\Indicator-Gray" },
+        GROUP       = { color = { 1.0, 0.5, 0.25 },  label = "QA_GROUP",       explain = "QA_GROUP_TT",
+                        icon = "Interface\\FriendsFrame\\UI-Toast-FriendOnlineIcon" },
+        TOO_HARD    = { color = { 1.0, 0.25, 0.25 }, label = "QA_TOO_HARD",    explain = "QA_TOO_HARD_TT",
+                        icon = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8" },
+        GOOD        = { color = { 1.0, 0.82, 0.0 },  label = "QA_GOOD",        explain = "QA_GOOD_TT",
+                        icon = "Interface\\COMMON\\Indicator-Yellow" },
+        STILL_WORTH = { color = { 0.25, 0.75, 0.25 },label = "QA_STILL_WORTH", explain = "QA_STILL_WORTH_TT",
+                        icon = "Interface\\COMMON\\Indicator-Green" },
     },
 }

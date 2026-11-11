@@ -44,6 +44,8 @@ function ns:OnDatabaseReady()
     addCheckbox("talentHighlight", L.OPT_HIGHLIGHT, L.OPT_HIGHLIGHT_TT)
     -- Modul: Quest-Berater
     addCheckbox("questAdvisor",    L.OPT_QUESTS,    L.OPT_QUESTS_TT)
+    addCheckbox("questOfferHint",  L.OPT_QOFFER,    L.OPT_QOFFER_TT)
+    addCheckbox("questLogIcons",   L.OPT_QICONS,    L.OPT_QICONS_TT)
     addCheckbox("questAcceptHint", L.OPT_QACCEPT,   L.OPT_QACCEPT_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.

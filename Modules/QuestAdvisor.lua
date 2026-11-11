@@ -7,9 +7,14 @@
 --   lohnt sich gerade noch
 --
 -- Anzeige:
---   * /ww quests       – Übersicht aller Quests, nach Bewertung sortiert
+--   * Beim Questgeber (Questtext mit "Annehmen"-Knopf): Wegweiser-Kasten
+--     unter dem Questfenster mit Bewertung – schon VOR dem Annehmen
+--   * Questlog: kleines Symbol links neben jedem Questtitel
+--     (nachträglicher Haken an Blizzards QuestLogQuests_Update; wir nutzen
+--      nur den freien Platz links vom Titel, Blizzards Texte bleiben unverändert)
 --   * Questlog-Tooltip – Zeile "Wegweiser: ..." beim Drüberfahren
 --     (offizieller Haken: EventRegistry "QuestMapLogTitleButton.OnEnter")
+--   * /ww quests       – Übersicht aller Quests, nach Bewertung sortiert
 --   * Neue Quest angenommen -> kurze Bewertung im Chat
 --   * Levelaufstieg -> Hinweis, wenn Quests grau oder machbar geworden sind
 --
@@ -44,27 +49,44 @@ end
 -- Bewertung einer Quest
 -- ------------------------------------------------------------
 
+-- Ruft eine API-Funktion geschützt auf (bei angebotenen, noch nicht
+-- angenommenen Quests liefern manche Funktionen evtl. nichts oder Fehler).
+local function safe(func, ...)
+    if not func then return nil end
+    local ok, result = pcall(func, ...)
+    if ok then return result end
+    return nil
+end
+
 -- Liefert Kategorie-Schlüssel (z. B. "GOOD") und eine Info-Tabelle.
+-- Funktioniert für Quests im Questlog UND für angebotene Quests beim Questgeber.
 function QA:Evaluate(questID)
     local r = rules()
     local q = { questID = questID }
 
     local logIndex = C_QuestLog.GetLogIndexForQuestID(questID)
     local info = logIndex and C_QuestLog.GetInfo(logIndex)
+    q.inLog = info ~= nil
     if info then
         q.title          = info.title
         q.level          = info.difficultyLevel or info.level
         q.suggestedGroup = info.suggestedGroup or 0
     else
-        q.title = C_QuestLog.GetTitleForQuestID(questID)
+        q.title          = safe(C_QuestLog.GetTitleForQuestID, questID)
+        q.level          = safe(C_QuestLog.GetQuestDifficultyLevel, questID)
+        q.suggestedGroup = safe(C_QuestLog.GetSuggestedGroupSize, questID) or 0
     end
 
-    q.isComplete = C_QuestLog.IsComplete(questID) or C_QuestLog.ReadyForTurnIn(questID)
-    q.isElite    = C_QuestLog.IsEliteQuest and C_QuestLog.IsEliteQuest(questID)
-    local tag    = C_QuestLog.GetQuestTagInfo(questID)
+    q.isComplete = q.inLog and (C_QuestLog.IsComplete(questID) or C_QuestLog.ReadyForTurnIn(questID))
+    q.isElite    = safe(C_QuestLog.IsEliteQuest, questID)
+    local tag    = safe(C_QuestLog.GetQuestTagInfo, questID)
     q.tagID      = tag and tag.tagID
     q.tagName    = tag and tag.tagName
-    q.difficulty = C_PlayerInfo.GetContentDifficultyQuestForPlayer(questID)
+    q.difficulty = safe(C_PlayerInfo.GetContentDifficultyQuestForPlayer, questID)
+    -- Ersatz, falls das Spiel für eine angebotene Quest keine Schwierigkeit liefert
+    if q.difficulty == nil and safe(C_QuestLog.IsQuestTrivial, questID) then
+        q.difficulty = 0
+    end
 
     -- Welche Kategorien treffen zu?
     local matches = {}
@@ -81,8 +103,9 @@ function QA:Evaluate(questID)
             return key, q
         end
     end
-    q.category = byColor or "GOOD"
-    return q.category, q
+    -- Keine Schwierigkeit bekannt und nichts Besonderes: lieber nichts behaupten
+    q.category = nil
+    return nil, q
 end
 
 -- Alle Quests im Log (ohne Überschriften und versteckte Einträge)
@@ -143,12 +166,128 @@ local function onQuestLogEnter(_, button, questID)
     questID = questID or (button and button.questID)
     if not questID or not GameTooltip:IsOwned(button) then return end
     local key = QA:Evaluate(questID)
-    local cat = rules().categories[key]
+    local cat = key and rules().categories[key]
     if not cat then return end
     GameTooltip:AddLine(" ")
     GameTooltip:AddLine("Wegweiser: " .. L[cat.label], cat.color[1], cat.color[2], cat.color[3])
     GameTooltip:AddLine(L[cat.explain], 0.85, 0.85, 0.85, true)
     GameTooltip:Show()
+end
+
+-- ------------------------------------------------------------
+-- Symbole im Questlog
+-- ------------------------------------------------------------
+
+local logIcons = setmetatable({}, { __mode = "k" })  -- Blizzard-Titelknopf -> unser Symbol
+local decoratePending = false
+
+function QA:DecorateQuestLog()
+    for _, icon in pairs(logIcons) do icon:Hide() end
+    if not settings().questAdvisor or not settings().questLogIcons then return end
+    if not QuestScrollFrame or not QuestScrollFrame.titleFramePool then return end
+    -- Regel: Frames nur außerhalb des Kampfes verändern -> nach dem Kampf nachholen
+    if ns:InCombat() then
+        if not decoratePending then
+            decoratePending = true
+            ns:RunOutOfCombat(function()
+                decoratePending = false
+                QA:DecorateQuestLog()
+            end, true)
+        end
+        return
+    end
+    for button in QuestScrollFrame.titleFramePool:EnumerateActive() do
+        local questID = button.questID
+        local key = questID and self:Evaluate(questID)
+        local cat = key and rules().categories[key]
+        if cat and button.Text then
+            local icon = logIcons[button]
+            if not icon then
+                icon = button:CreateTexture(nil, "OVERLAY")
+                icon:SetSize(14, 14)
+                logIcons[button] = icon
+            end
+            icon:ClearAllPoints()
+            -- Links neben den Titel, in den freien Platz (Blizzard: Titel beginnt bei x = 31)
+            icon:SetPoint("TOPRIGHT", button.Text, "TOPLEFT", -4, 1)
+            icon:SetTexture(cat.icon)
+            icon:Show()
+        end
+    end
+end
+
+-- ------------------------------------------------------------
+-- Hinweis beim Questgeber (vor dem Annehmen)
+-- ------------------------------------------------------------
+
+local offerBox
+
+local function createOfferBox()
+    local box = CreateFrame("Frame", nil, QuestFrame, "BackdropTemplate")
+    box:SetPoint("TOPLEFT", QuestFrame, "BOTTOMLEFT", 0, -2)
+    box:SetPoint("TOPRIGHT", QuestFrame, "BOTTOMRIGHT", 0, -2)
+    box:SetHeight(52)
+    box:SetBackdrop({
+        bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+        edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+        edgeSize = 14, insets = { left = 3, right = 3, top = 3, bottom = 3 },
+    })
+    box:SetBackdropColor(0, 0, 0, 0.85)
+
+    box.icon = box:CreateTexture(nil, "ARTWORK")
+    box.icon:SetSize(18, 18)
+    box.icon:SetPoint("TOPLEFT", 10, -9)
+
+    box.title = box:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+    box.title:SetPoint("LEFT", box.icon, "RIGHT", 6, 0)
+    box.title:SetPoint("RIGHT", box, "RIGHT", -10, 0)
+    box.title:SetJustifyH("LEFT")
+
+    box.text = box:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+    box.text:SetPoint("TOPLEFT", box.icon, "BOTTOMLEFT", 0, -4)
+    box.text:SetPoint("RIGHT", box, "RIGHT", -10, 0)
+    box.text:SetJustifyH("LEFT")
+    box.text:SetWordWrap(true)
+    box:Hide()
+    return box
+end
+
+function QA:ShowOfferHint()
+    if offerBox then offerBox:Hide() end
+    if not settings().questAdvisor or not settings().questOfferHint then return end
+    if not QuestFrame or not GetQuestID then return end
+    local questID = GetQuestID()
+    if not questID or questID == 0 then return end
+
+    local key = self:Evaluate(questID)
+    local cat = key and rules().categories[key]
+    if not cat then return end
+
+    offerBox = offerBox or createOfferBox()
+    offerBox.icon:SetTexture(cat.icon)
+    offerBox.title:SetText("Wegweiser: " .. L[cat.label])
+    offerBox.title:SetTextColor(cat.color[1], cat.color[2], cat.color[3])
+    offerBox.text:SetText(L[cat.explain])
+    -- Höhe an den Text anpassen
+    offerBox:SetHeight(36 + (offerBox.text:GetStringHeight() or 14))
+    offerBox:Show()
+end
+
+-- /ww questinfo – Rohdaten der gerade angebotenen Quest (zum Prüfen im Spiel)
+function QA:PrintOfferDebug()
+    local questID = GetQuestID and GetQuestID()
+    if not questID or questID == 0 then
+        ns:Print(L.QA_DEBUG_NO_OFFER)
+        return
+    end
+    local key, q = self:Evaluate(questID)
+    ns:Print("questID=%s, Titel=%s, im Log=%s", tostring(questID), tostring(q.title), tostring(q.inLog))
+    ns:Print("Level=%s, Schwierigkeit=%s (0 grau,1 grün,2 gelb,3 orange,4 rot)", tostring(q.level), tostring(q.difficulty))
+    ns:Print("Elite=%s, Tag=%s, Gruppe=%s, Bewertung=%s", tostring(q.isElite), tostring(q.tagID), tostring(q.suggestedGroup), tostring(key))
+end
+
+function QA:HideOfferHint()
+    if offerBox then offerBox:Hide() end
 end
 
 -- ------------------------------------------------------------
@@ -187,12 +326,32 @@ function QA:OnInitialize()
         EventRegistry:RegisterCallback("QuestMapLogTitleButton.OnEnter", onQuestLogEnter, QA)
     end
 
+    -- Questlog: nach jedem Neuaufbau der Liste unsere Symbole setzen.
+    -- hooksecurefunc = nachträglicher Haken; Blizzards Funktion läuft unverändert.
+    if QuestLogQuests_Update then
+        hooksecurefunc("QuestLogQuests_Update", function() QA:DecorateQuestLog() end)
+    end
+
+    -- Questgeber: Questtext mit "Annehmen" wird angezeigt
+    ns:RegisterEvent("QUEST_DETAIL", function()
+        -- kurz warten, bis das Spiel die Questdaten bereitgestellt hat
+        C_Timer.After(0.1, function()
+            ns:RunOutOfCombat(function() QA:ShowOfferHint() end, true)
+        end)
+    end)
+    -- Andere Questfenster-Seiten oder Schließen -> Kasten weg
+    for _, event in ipairs({ "QUEST_FINISHED", "QUEST_PROGRESS", "QUEST_COMPLETE",
+                             "QUEST_GREETING", "GOSSIP_SHOW", "GOSSIP_CLOSED" }) do
+        ns:RegisterEvent(event, function() QA:HideOfferHint() end)
+    end
+
     ns:RegisterEvent("QUEST_ACCEPTED", function(_, questID)
         if not settings().questAdvisor or not settings().questAcceptHint then return end
         -- Questdaten sind manchmal erst einen Moment später vollständig
         C_Timer.After(0.5, function()
+            QA:HideOfferHint()
             local key, q = QA:Evaluate(questID)
-            local cat = rules().categories[key]
+            local cat = key and rules().categories[key]
             if cat and q.title then
                 ns:Print(L.QA_ACCEPTED, questLabel(q), colorCode(cat.color) .. L[cat.label] .. "|r")
             end
