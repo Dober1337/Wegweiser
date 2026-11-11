@@ -130,10 +130,11 @@ function PH:PrintOverview()
                 if r.note then ns:Print("      |cffffd100" .. L[r.note] .. "|r") end
             end
             -- Herstellungs-/Nebenberufe: womit jetzt am besten skillen?
-            local best, mats
-            if ns.modules.ProfessionRoutes then best, mats = ns.modules.ProfessionRoutes:BestLine(p) end
+            local best, mats, status
+            if ns.modules.ProfessionRoutes then best, mats, status = ns.modules.ProfessionRoutes:BestLine(p) end
             if best then
                 ns:Print("      " .. best)
+                if status then ns:Print("      " .. status) end
                 if mats then ns:Print("      |cffcccccc" .. L.PRO_MATS:format(mats) .. "|r") end
             end
             if ns.ProfessionGuideLinks and ns.ProfessionGuideLinks[p.id] then

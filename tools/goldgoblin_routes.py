@@ -25,6 +25,9 @@ def parse(path):
     for k, m in enumerate(starts):
         end = starts[k+1].start() if k+1 < len(starts) else m.start()+4000
         block = h[m.start():end]
+        # Rezeptquelle aus dem Aufklapp-Kopf, z. B. "Lehrer · ab Alchemie 50" oder "Startrezept · Alchemielehrer"
+        srcm = re.search(r'<details class="gg-(?:fa|fh)__recipe-dropdown"><summary>.*?<small>(.*?)</small>', block, re.S)
+        recipeSrc = clean(srcm.group(1)).strip() if srcm else None
         block = re.split(r'<details class="gg-(?:fa|fh|ck)__(?:recipe-dropdown|more)"', block)[0]
         rng = re.search(r'class="(?:wp-block-column )?range"[^>]*>(?:<p>)?([^<]+)|class="gg-ck__range">([^<]+)', block)
         if not rng: continue
@@ -51,7 +54,7 @@ def parse(path):
             t = re.sub(r'^Material[^:]*:\s*', '', t.strip())
             t = re.sub(r'\s+', ' ', t).strip(' ·')
             matsText = t or None
-        out.append({'matsText': matsText, 'range': r, 'color': (m.group(1) or m.group(2) or '').strip(),
+        out.append({'src': recipeSrc, 'matsText': matsText, 'range': r, 'color': (m.group(1) or m.group(2) or '').strip(),
                     'alt': inside_details(h, m.start()),
                     'count': int(cnt.group(1)) if cnt else None,
                     'product': prod and [prod.group(1), int(prod.group(2)), H.unescape(prod.group(3)).strip()],

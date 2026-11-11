@@ -62,6 +62,98 @@ local function matsLine(step)
 end
 
 -- ------------------------------------------------------------
+-- Bekannte Rezepte (pro Charakter gemerkt, beim Öffnen des Berufsfensters)
+-- ------------------------------------------------------------
+
+local function charKey()
+    local guid = UnitGUID("player")
+    if not guid or (issecretvalue and issecretvalue(guid)) then return nil end
+    return guid
+end
+
+local function knownStore(profID, create)
+    local key = charKey()
+    if not key or not ns.db then return nil end
+    ns.db.knownRecipes = ns.db.knownRecipes or {}
+    local char = ns.db.knownRecipes[key]
+    if not char and create then char = {}; ns.db.knownRecipes[key] = char end
+    if not char then return nil end
+    if create then char[profID] = { spells = {}, items = {}, names = {} } end
+    return char[profID]
+end
+
+-- Liest die gelernten Rezepte des offenen Berufsfensters ein.
+function PR:ScanKnownRecipes(profID)
+    if not C_TradeSkillUI or not C_TradeSkillUI.GetRecipeInfo then return end
+    local ids, partial
+    if C_TradeSkillUI.GetAllRecipeIDs then
+        ids = C_TradeSkillUI.GetAllRecipeIDs()
+    elseif C_TradeSkillUI.GetFilteredRecipeIDs then
+        ids = C_TradeSkillUI.GetFilteredRecipeIDs()
+        partial = true   -- Filter im Berufsfenster könnten Rezepte ausblenden
+    end
+    if not ids or #ids == 0 then return end
+    local store = knownStore(profID, true)
+    if not store then return end
+    store.partial = partial
+    for _, recipeID in ipairs(ids) do
+        local info = C_TradeSkillUI.GetRecipeInfo(recipeID)
+        if info and info.learned then
+            store.spells[recipeID] = true
+            if info.name then store.names[info.name:lower()] = true end
+            local ok, schem = pcall(C_TradeSkillUI.GetRecipeSchematic, recipeID, false)
+            if ok and schem and schem.outputItemID then store.items[schem.outputItemID] = true end
+        end
+    end
+end
+
+-- true = bekannt, false = sicher nicht bekannt, nil = weiß ich nicht
+function PR:IsKnown(profID, step)
+    if step.src == "START" then return true end
+    local store = knownStore(profID, false)
+    if not store then return nil end
+    if (step.kind == "spell" and store.spells[step.id]) or (step.kind == "item" and store.items[step.id]) then
+        return true
+    end
+    local name = stepName(step)
+    if name and store.names[name:lower()] then return true end
+    if store.partial then return nil end
+    return false
+end
+
+-- Bietet der offene Lehrer das Rezept an? "available" | "unavailable" | "used" | nil
+local function trainerOffer(step)
+    if not (ClassTrainerFrame and ClassTrainerFrame:IsShown() and GetNumTrainerServices) then return nil end
+    local name = stepName(step)
+    for i = 1, GetNumTrainerServices() do
+        local serviceName, serviceType = GetTrainerServiceInfo(i)
+        if serviceName and serviceName == name then return serviceType end
+    end
+    return nil
+end
+
+-- Status-Zeile zum Rezept des besten Schritts: Text, r, g, b – oder nil
+function PR:RecipeStatus(profID, step)
+    local offer = trainerOffer(step)
+    local known = self:IsKnown(profID, step)
+    if known or offer == "used" then
+        return L.PRO_RECIPE_KNOWN, 0.3, 1, 0.3
+    elseif offer == "available" then
+        return L.PRO_RECIPE_HERE, 0.3, 1, 0.3
+    elseif offer == "unavailable" then
+        return L.PRO_RECIPE_HERE_LATER, 1, 0.82, 0
+    end
+    local where = step.src and L["PRO_SRC_" .. step.src]
+    if where and step.srcSkill then where = where .. string.format(L.PRO_SRC_SKILL, step.srcSkill) end
+    if known == false then
+        return L.PRO_RECIPE_MISSING .. (where and (" – " .. where) or ""), 1, 0.82, 0
+    elseif where then
+        return L.PRO_RECIPE_FROM .. where, 0.8, 0.8, 0.8
+    end
+    return nil
+end
+
+-- ------------------------------------------------------------
 -- Bester Schritt für einen Skill
 -- ------------------------------------------------------------
 
@@ -105,6 +197,8 @@ function PR:BuildLines(p)
     local current, nextStep = self:GetSteps(p.id, p.rank)
     if current then
         table.insert(lines, { L.PRO_BEST:format(current.from, current.to, current.n or "?", stepName(current)), 1, 1, 1 })
+        local status, sr, sg, sb = self:RecipeStatus(p.id, current)
+        if status then table.insert(lines, { status, sr, sg, sb }) end
         local mats = matsLine(current)
         if mats then table.insert(lines, { L.PRO_MATS:format(mats), 0.8, 0.8, 0.8 }) end
     end
@@ -230,6 +324,7 @@ function PR:ShowAtProfession()
     local p = myProfession(info.professionID) or myProfession(info.parentProfessionID)
         or myProfessionByName(info.professionName)
     if not p then return end
+    self:ScanKnownRecipes(p.id)   -- bekannte Rezepte merken (für Lehrer und Chat)
     pendingRefresh = function() PR:ShowAtProfession() end
     fill(getBox(host, 52), self:BuildLines(p))
 end
@@ -240,7 +335,8 @@ function PR:BestLine(p)
     if not current then return nil end
     local text = L.PRO_BEST:format(current.from, current.to, current.n or "?", stepName(current))
     local mats = matsLine(current)
-    return text, mats
+    local status = self:RecipeStatus(p.id, current)
+    return text, mats, status
 end
 
 function PR:OnInitialize()
@@ -250,6 +346,10 @@ function PR:OnInitialize()
     ns:RegisterEvent("TRAINER_SHOW",   function() refreshCount = 0; later(function() PR:ShowAtTrainer() end) end)
     ns:RegisterEvent("TRAINER_UPDATE", function() later(function() PR:ShowAtTrainer() end) end)
     ns:RegisterEvent("TRADE_SKILL_SHOW", function() refreshCount = 0; later(function() PR:ShowAtProfession() end) end)
+    -- Neues Rezept gelernt oder Berufsfenster-Daten aktualisiert
+    ns:RegisterEvent("TRADE_SKILL_LIST_UPDATE", function()
+        if ProfessionsFrame and ProfessionsFrame:IsShown() then later(function() PR:ShowAtProfession() end) end
+    end)
     ns:RegisterEvent("SKILL_LINES_CHANGED", function()
         if ProfessionsFrame and ProfessionsFrame:IsShown() then later(function() PR:ShowAtProfession() end) end
     end)

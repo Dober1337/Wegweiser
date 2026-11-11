@@ -171,3 +171,15 @@ Daten: `WTF\Account\<KONTONAME>\SavedVariables\WegweiserRecorder.lua` – **ab u
 | 5 | `/ww guide alchemie` | Fenster mit markiertem Link → Strg+C, im Browser einfügen |
 | 6 | `/ww berufe` | zusätzlich „Am besten jetzt …“ + Material |
 | 7 | Klassenlehrer (nicht Beruf) | KEIN Kasten |
+
+## Rezept bekannt? (Version 0.15.0)
+
+`/reload` reicht.
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | Berufsfenster öffnen | unter „Am besten jetzt“: „Rezept noch nicht gelernt – beim Lehrer (ab Skill 50)“ bzw. „Rezept bekannt“ (Häkchen) |
+| 2 | Zum Lehrer, der das Rezept hat | „Dieses Rezept hier beim Lehrer lernen!“ |
+| 3 | Rezept lernen, Berufsfenster erneut öffnen | „Rezept bekannt“ |
+| 4 | `/ww berufe` | dieselbe Zeile unter „Am besten jetzt …“ |
+Hinweis: Wegweiser merkt sich die bekannten Rezepte erst, wenn das Berufsfenster einmal geöffnet war.
