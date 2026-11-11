@@ -155,17 +155,32 @@ local function readConditions(configID, conditionIDs)
 end
 
 -- Sortierte Liste unterschiedlicher (gerundeter) Werte
+-- Werte zu "Rasterlinien" zusammenfassen: Talente, die nur ein paar Pixel
+-- versetzt liegen, gehören zur selben Reihe/Spalte. (Beim Jäger liegt mindestens
+-- ein Talent leicht neben dem Raster – ohne das hier entstanden "Reihe 181".)
+-- Toleranz: ein Viertel des größten Abstands zwischen zwei Werten.
 local function distinctSorted(values)
-    local seen, list = {}, {}
-    for _, v in ipairs(values) do
-        local r = math.floor(v + 0.5)
-        if not seen[r] then
-            seen[r] = true
-            table.insert(list, r)
+    local sorted = {}
+    for _, v in ipairs(values) do table.insert(sorted, v) end
+    table.sort(sorted)
+    if #sorted == 0 then return sorted end
+    local maxGap = 0
+    for i = 2, #sorted do
+        maxGap = math.max(maxGap, sorted[i] - sorted[i - 1])
+    end
+    local tol = maxGap * 0.25
+    local centers, sum, count, start = {}, sorted[1], 1, sorted[1]
+    for i = 2, #sorted do
+        local v = sorted[i]
+        if v - start <= tol then
+            sum, count = sum + v, count + 1
+        else
+            table.insert(centers, sum / count)
+            sum, count, start = v, 1, v
         end
     end
-    table.sort(list)
-    return list
+    table.insert(centers, sum / count)
+    return centers
 end
 
 -- Kleinster Abstand zwischen benachbarten Werten (= Rasterabstand)
@@ -262,7 +277,15 @@ function TalentAPI:ReadTree()
         end
     end
     local ys = distinctSorted(allY)
-    local stepY, stepX, minY = gridStep(ys), gridStep(distinctSorted(allX)), ys[1]
+    -- Spaltenabstand je Baum ermitteln (Bäume liegen nebeneinander), kleinsten nehmen
+    local stepX
+    for _, tree in ipairs(trees) do
+        local xs = {}
+        for _, t in ipairs(tree.talents) do table.insert(xs, t.posX) end
+        local s = gridStep(distinctSorted(xs))
+        if s and (not stepX or s < stepX) then stepX = s end
+    end
+    local stepY, minY = gridStep(ys), ys[1]
     result.grid = { stepX = stepX, stepY = stepY, minY = minY }
 
     -- 3. Reihe/Spalte je Baum berechnen
