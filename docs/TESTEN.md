@@ -157,3 +157,17 @@ Daten: `WTF\Account\<KONTONAME>\SavedVariables\WegweiserRecorder.lua` – **ab u
 | 4 | `/ww lehrer aus` | Wegpunkt verschwindet |
 | 5 | Zum Lehrer gehen | stimmt der Name/Ort? Lehrt er den Rang? (bitte melden, falls nicht) |
 | 6 | `/ww zonecheck` | jetzt auch Orgrimmar, Donnerfels, Unterstadt (1454/1456/1458) |
+
+## Skill-Tipp beim Lehrer und im Berufsfenster (Version 0.14.0)
+
+**Neue Dateien → WoW komplett neu starten.**
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | Berufslehrer ansprechen (z. B. Alchemie) | rechts neben dem Lehrerfenster: Wegweiser-Kasten mit Skill, nächstem Rang („jetzt lernbar!“), „Am besten jetzt (Skill x–y): N× Rezept“, Material, „Danach ab …“ |
+| 2 | Berufsfenster öffnen | derselbe Kasten neben dem Berufsfenster |
+| 3 | Skill steigt bei offenem Berufsfenster | Kasten aktualisiert sich |
+| 4 | Sammelberuf (Kräuterkunde/Bergbau) | Kasten zeigt, was gerade Punkte gibt |
+| 5 | `/ww guide alchemie` | Fenster mit markiertem Link → Strg+C, im Browser einfügen |
+| 6 | `/ww berufe` | zusätzlich „Am besten jetzt …“ + Material |
+| 7 | Klassenlehrer (nicht Beruf) | KEIN Kasten |

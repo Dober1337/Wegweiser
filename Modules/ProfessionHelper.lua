@@ -129,6 +129,16 @@ function PH:PrintOverview()
                 ns:Print("      %s%s|r", ready and "|cff55ff55" or "|cffcccccc", self:RankText(idx, r))
                 if r.note then ns:Print("      |cffffd100" .. L[r.note] .. "|r") end
             end
+            -- Herstellungs-/Nebenberufe: womit jetzt am besten skillen?
+            local best, mats
+            if ns.modules.ProfessionRoutes then best, mats = ns.modules.ProfessionRoutes:BestLine(p) end
+            if best then
+                ns:Print("      " .. best)
+                if mats then ns:Print("      |cffcccccc" .. L.PRO_MATS:format(mats) .. "|r") end
+            end
+            if ns.ProfessionGuideLinks and ns.ProfessionGuideLinks[p.id] then
+                ns:Print("      |cff999999" .. L.PRO_GUIDE_CMD:format(p.name:lower()) .. "|r")
+            end
             -- Sammelberufe: was gibt gerade Punkte?
             local orange, yellow, green, nextNode = self:GatherAdvice(p)
             if orange and #orange > 0 then ns:Print("      " .. L.PROF_GATHER_ORANGE, table.concat(orange, ", ")) end
@@ -257,6 +267,40 @@ function PH:TrainerCommand(rest)
     else
         ns:Print(L.PROF_WAY_TEXT, profName(id), t.name, mapName, t.x, t.y)
     end
+end
+
+-- ------------------------------------------------------------
+-- /ww guide <Beruf> – Link zum Kopieren (Chat-Links sind in WoW nicht klickbar)
+-- ------------------------------------------------------------
+
+StaticPopupDialogs["WEGWEISER_COPY_LINK"] = {
+    text = "%s",
+    button1 = OKAY,
+    hasEditBox = 1,
+    editBoxWidth = 320,
+    OnShow = function(self, data)
+        -- Forever: dialog:GetEditBox() (geprüft in Blizzard_StaticPopup/StaticPopup.lua)
+        local eb = (self.GetEditBox and self:GetEditBox()) or self.editBox
+        if eb then
+            eb:SetText(data or "")
+            eb:HighlightText()
+            eb:SetFocus()
+        end
+    end,
+    EditBoxOnEscapePressed = function(editBox) editBox:GetParent():Hide() end,
+    EditBoxOnEnterPressed = function(editBox) editBox:GetParent():Hide() end,
+    timeout = 0, whileDead = 1, hideOnEscape = 1,
+}
+
+function PH:GuideCommand(rest)
+    local text = rest or ""
+    local id = text ~= "" and findProfession(text)
+    local link = id and ns.ProfessionGuideLinks[id] or (text == "" and ns.ProfessionGuideLinks.overview)
+    if not link then
+        ns:Print(L.PRO_GUIDE_USAGE)
+        return
+    end
+    StaticPopup_Show("WEGWEISER_COPY_LINK", L.PRO_COPY_TEXT, nil, link)
 end
 
 -- ------------------------------------------------------------

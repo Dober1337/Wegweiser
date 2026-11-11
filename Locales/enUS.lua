@@ -227,3 +227,17 @@ L.PROF_WAY_USAGE        = "Usage: /ww trainer mining (or herbalism, skinning, fi
 L.PROF_WAY_CLEARED      = "Waypoint removed."
 L.PROF_GATHER_GREEN     = "Only gives skill now and then: %s"
 L.PROF_GATHER_NEXT      = "Next: %s from skill %d"
+
+-- Berufe: Kasten beim Lehrer / im Berufsfenster
+L.OPT_PROFBOX           = "Skill advice at the trainer"
+L.OPT_PROFBOX_TT        = "Shows next to the trainer and profession window what to craft now to level the profession best."
+L.PRO_TITLE             = "Wegweiser: %s %d/%d"
+L.PRO_READY             = " – |cff55ff55you can learn it now!|r"
+L.PRO_BEST              = "Best now (skill %d–%d): %s× %s"
+L.PRO_MATS              = "Materials: %s"
+L.PRO_NEXT              = "Then from skill %d: %s"
+L.PRO_NO_ROUTE          = "No skill route for this profession yet."
+L.PRO_GUIDE_CMD         = "Detailed guide (link to copy): /ww guide %s"
+L.PRO_GUIDE_USAGE       = "Usage: /ww guide alchemy (or another profession); /ww guide alone = overview."
+L.PRO_COPY_TEXT         = "Copy the link with Ctrl+C and paste it into your browser:"
+L.HELP_GUIDE            = "/ww guide <profession> – link to the detailed profession guide (to copy)"

@@ -35,6 +35,7 @@ ns.defaults = {
         zoneAdvice      = true,   -- Hinweis, wenn die Zone zu niedrig wird
         -- Berufe
         profHelper      = true,   -- Hinweise kurz vor/am Rang-Limit, Tipps
+        profRouteBox    = true,   -- Kasten "womit skillen" beim Lehrer/im Berufsfenster
         talentBuild   = "SHAMAN_RESTORATION_LEVELING_HYBRID", -- gewählter Build (pro Klasse passend)
     },
     talentDump = {},   -- Ergebnis von /ww talentdump, pro Klasse

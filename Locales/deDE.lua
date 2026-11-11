@@ -227,3 +227,17 @@ L.PROF_WAY_USAGE        = "So geht's: /ww lehrer bergbau (oder kräuterkunde, k�
 L.PROF_WAY_CLEARED      = "Wegpunkt entfernt."
 L.PROF_GATHER_GREEN     = "Gibt nur noch gelegentlich Punkte: %s"
 L.PROF_GATHER_NEXT      = "Als Nächstes: %s ab Skill %d"
+
+-- Berufe: Kasten beim Lehrer / im Berufsfenster
+L.OPT_PROFBOX           = "Skill-Tipp beim Lehrer"
+L.OPT_PROFBOX_TT        = "Zeigt neben dem Lehrer- und dem Berufsfenster, womit du den Beruf jetzt am besten skillst."
+L.PRO_TITLE             = "Wegweiser: %s %d/%d"
+L.PRO_READY             = " – |cff55ff55jetzt lernbar!|r"
+L.PRO_BEST              = "Am besten jetzt (Skill %d–%d): %s× %s"
+L.PRO_MATS              = "Material: %s"
+L.PRO_NEXT              = "Danach ab Skill %d: %s"
+L.PRO_NO_ROUTE          = "Für diesen Beruf gibt es noch keine Skill-Route."
+L.PRO_GUIDE_CMD         = "Ausführlicher Guide (Link zum Kopieren): /ww guide %s"
+L.PRO_GUIDE_USAGE       = "So geht's: /ww guide alchemie (oder ein anderer Beruf); nur /ww guide = Übersicht."
+L.PRO_COPY_TEXT         = "Link mit Strg+C kopieren und im Browser einfügen:"
+L.HELP_GUIDE            = "/ww guide <Beruf> – Link zum ausführlichen Berufs-Guide (zum Kopieren)"
