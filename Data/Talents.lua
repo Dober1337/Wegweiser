@@ -146,6 +146,66 @@ table.insert(ns.TalentBuilds, {
 })
 
 -- ------------------------------------------------------------
+-- JÄGER – Tierherrschaft (Leveling), vom Spieler geliefert (Nov 2026)
+-- Verteilung 31 Tierherrschaft / 16 Treffsicherheit / 4 Überleben.
+-- STATUS: planned = true -> noch NICHT aktiv. Es fehlen nodeID, Reihe,
+-- Spalte und maxRank – die kommen aus /ww talentdump eines Jägers.
+-- Bis dahin stehen nur die englischen Namen der Quelle (en) drin.
+-- Baum-Nummern 1/2/3 = Reihenfolge im Talentfenster (laut Grafik:
+-- Tierherrschaft, Treffsicherheit, Überleben) – im Dump prüfen.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "HUNTER_BEASTMASTERY_LEVELING",
+    class     = "HUNTER",
+    spec      = "BEASTMASTERY",
+    buildType = "LEVELING",
+    variant   = "BM_MM",
+    source    = "PLAYER",
+    planned   = true,            -- erst nach Abgleich mit dem Talentdump aktivieren
+    structureVerified = false,
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+
+    title = { deDE = "Tierherrschaft (Leveling-Build)", enUS = "Beast Mastery (leveling build)" },
+    summary = {
+        deDE = "Leveling mit starkem Begleiter: erst Tierherrschaft bis Zorn des Wildtiers, dann Treffsicherheit.",
+        enUS = "Leveling with a strong pet: Beast Mastery up to Bestial Wrath first, then Marksmanship.",
+    },
+    distribution = { 31, 16, 4 },
+
+    phases = {
+        A = { deDE = "Phase A – Tierherrschaft",  enUS = "Phase A – Beast Mastery" },
+        B = { deDE = "Phase B – Treffsicherheit", enUS = "Phase B – Marksmanship" },
+        C = { deDE = "Phase C – Überleben",       enUS = "Phase C – Survival" },
+    },
+
+    -- Reihenfolge laut Spieler (Punkt 1 = Level 10 … Punkt 51 = Level 60)
+    steps = {
+        { phase = "A", tree = 1, en = "Deadly Aspects",       ranks = 5 },  -- Lvl 10–14
+        { phase = "A", tree = 1, en = "Focused Fire",         ranks = 2 },  -- 15–16
+        { phase = "A", tree = 1, en = "Endurance Training",   ranks = 3 },  -- 17–19
+        { phase = "A", tree = 1, en = "Bestial Swiftness",    ranks = 1 },  -- 20
+        { phase = "A", tree = 1, en = "Unleashed Fury",       ranks = 4 },  -- 21–24
+        { phase = "A", tree = 1, en = "Summon Hawk",          ranks = 1 },  -- 25
+        { phase = "A", tree = 1, en = "Unleashed Fury",       ranks = 1 },  -- 26 (5/5)
+        { phase = "A", tree = 1, en = "Ferocity",             ranks = 3 },  -- 27–29
+        { phase = "A", tree = 1, en = "Intimidation",         ranks = 1 },  -- 30
+        { phase = "A", tree = 1, en = "Bestial Discipline",   ranks = 2 },  -- 31–32
+        { phase = "A", tree = 1, en = "Ferocity",             ranks = 2 },  -- 33–34 (5/5)
+        { phase = "A", tree = 1, en = "Frenzy",               ranks = 5 },  -- 35–39
+        { phase = "A", tree = 1, en = "Bestial Wrath",        ranks = 1 },  -- 40
+        { phase = "B", tree = 2, en = "Lethal Attacks",       ranks = 5 },  -- 41–45
+        { phase = "B", tree = 2, en = "Careful Aim",          ranks = 5 },  -- 46–50
+        { phase = "B", tree = 2, en = "Improved Stings",      ranks = 3 },  -- 51–53
+        { phase = "B", tree = 2, en = "Rapid Killing",        ranks = 2 },  -- 54–55
+        { phase = "B", tree = 2, en = "Trueshot Aura",        ranks = 1 },  -- 56
+        { phase = "C", tree = 3, en = "Improved Tracking",    ranks = 4 },  -- 57–60
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
 -- Vorbereitet, noch ohne Daten (NICHTS erfinden – folgt später):
 -- ------------------------------------------------------------
 table.insert(ns.TalentBuilds, {
