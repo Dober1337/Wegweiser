@@ -1,0 +1,3 @@
+# Lua/TOC-Dateien mit Windows-tauglichen Zeilenenden auschecken ist nicht nötig;
+# WoW liest beides. Einheitlich LF im Repository.
+* text=auto eol=lf
