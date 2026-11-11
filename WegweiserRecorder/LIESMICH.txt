@@ -24,6 +24,17 @@ Installation
 2. WoW (neu) starten. Nach dem Einloggen steht im Chat:
    "Wegweiser Recorder: Aufzeichnung aktiv ..."
 
+Läuft der Recorder? So prüfst du es (dauert 10 Sekunden)
+1. Nach dem Einloggen steht im Chat (gelb):
+   "Wegweiser Recorder: Aufzeichnung aktiv (... Schritte für diesen Charakter)"
+2. Oder im Chat eingeben:  /wwrec
+   -> zeigt "Routen-Aufzeichnung: läuft" und die letzten Schritte.
+3. Nimm eine Quest an und gib danach /wwrec ein: die Zahl der Schritte
+   ist gestiegen und die Quest steht unter "Letzte Schritte".
+Kommt bei /wwrec gar nichts (oder "Unbekannter Befehl"), wird das Addon
+nicht geladen: Ordner-Ort prüfen (siehe Installation) und im AddOns-Menü
+in der Charakterauswahl nachsehen, ob "Wegweiser Recorder" angehakt ist.
+
 Befehle (alle FREIWILLIG – nötig ist keiner)
   /wwrec              Status und letzte Schritte
   /wwrec notiz Text   eigene Notiz an dieser Stelle (z. B. Tipp für andere)
