@@ -135,10 +135,11 @@ end
 
 local boxes = {}   -- je Blizzard-Fenster ein Kasten
 
-local function getBox(host)
+-- xOffset: Abstand nach rechts (im Berufsfenster Platz für Blizzards Berufs-Reiter lassen)
+local function getBox(host, xOffset)
     if boxes[host] then return boxes[host] end
     local box = CreateFrame("Frame", nil, host, "BackdropTemplate")
-    box:SetPoint("TOPLEFT", host, "TOPRIGHT", 4, -24)
+    box:SetPoint("TOPLEFT", host, "TOPRIGHT", xOffset or 4, -24)
     box:SetWidth(300)
     box:SetBackdrop({
         bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
@@ -230,7 +231,7 @@ function PR:ShowAtProfession()
         or myProfessionByName(info.professionName)
     if not p then return end
     pendingRefresh = function() PR:ShowAtProfession() end
-    fill(getBox(host), self:BuildLines(p))
+    fill(getBox(host, 52), self:BuildLines(p))
 end
 
 -- Chat-Variante für /ww berufe
