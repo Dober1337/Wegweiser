@@ -25,6 +25,9 @@ ns.defaults = {
         -- Modul: Talent-Leitfaden
         talentGuide   = true,
         talentHighlight = true,   -- Markierungen im Blizzard-Talentfenster
+        -- Modul: Quest-Berater
+        questAdvisor    = true,
+        questAcceptHint = true,   -- Bewertung im Chat, wenn eine Quest angenommen wird
         talentBuild   = "SHAMAN_RESTORATION_LEVELING_HYBRID", -- gewählter Build (pro Klasse passend)
     },
     talentDump = {},   -- Ergebnis von /ww talentdump, pro Klasse

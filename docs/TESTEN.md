@@ -70,3 +70,19 @@ sind auch die aktuellen Ränge drin.
 | 7 | Im Kampf Talentfenster öffnen | keine Fehlermeldung; Markierungen kommen nach dem Kampf |
 
 Bitte Screenshot vom Talentfenster schicken – dann passe ich Größe/Position der Markierungen an.
+
+## Phase 4 – Quest-Berater (Version 0.4.0)
+
+**Neue Dateien → WoW komplett neu starten.**
+
+| # | Test | Erwartung |
+|---|------|-----------|
+| 1 | `/ww quests` | alle Quests, gruppiert: fertig / gut machbar / lohnt sich gerade noch / Gruppe nötig / noch zu schwer / überspringen |
+| 2 | Vergleich mit Questlog-Farben | gelb = „gut machbar“, grün = „lohnt sich gerade noch“, grau = „überspringen“, orange/rot = „noch zu schwer“ |
+| 3 | Questlog öffnen (L), Maus über eine Quest | unten im Tooltip „Wegweiser: …“ mit Erklärung |
+| 4 | Neue Quest annehmen | Chat: „Neue Quest [x] Name: gut machbar“ (o. ä.) |
+| 5 | Elite-Quest im Log (Titel mit „+“) | „Gruppe nötig“ |
+| 6 | Quest fertig (alle Ziele) | „fertig – abgeben“ |
+| 7 | Levelaufstieg | ggf. „Jetzt machbar: …“ / „Jetzt grau …“ |
+| 8 | Mit Questie installiert: `/ww quests` | letzte Zeile „Questie erkannt …“ |
+| 9 | `/ww config` | neue Häkchen „Quest-Berater“ und „Neue Quests bewerten“ |

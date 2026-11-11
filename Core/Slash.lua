@@ -8,6 +8,7 @@
 --   /ww build        -> Talent-Leitfaden: Fortschritt + nächster Punkt
 --   /ww build liste  -> alle Schritte des Builds mit Häkchen
 --   /ww build hinweise -> bekannte Kompromisse des Builds
+--   /ww quests       -> Quest-Berater: alle Quests im Log bewertet
 --   /ww talentdump   -> Talentbaum auslesen und speichern
 --   /ww test         -> Beispiel-Hinweis zum Levelaufstieg
 -- ============================================================
@@ -22,6 +23,7 @@ local function showHelp()
     ns:Print(L.HELP_BUILD)
     ns:Print(L.HELP_BUILD_LIST)
     ns:Print(L.HELP_BUILD_NOTES)
+    ns:Print(L.HELP_QUESTS)
     ns:Print(L.HELP_TALENTDUMP)
     ns:Print(L.HELP_TEST)
 end
@@ -63,6 +65,7 @@ local commands = {
     points     = showPoints,
     talentdump = function() ns.modules.TalentDump:Start() end,
     build      = buildCommand,
+    quests     = function() ns:RunOutOfCombat(function() ns.modules.QuestAdvisor:PrintOverview() end) end,
     debug      = function() ns:RunOutOfCombat(function() ns.modules.TalentHighlight:Diagnose() end) end,
     test       = function()
         ns:Print(L.TEST_HEADER)
