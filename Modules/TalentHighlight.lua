@@ -245,6 +245,42 @@ local function onTooltip(_, button, tooltip)
 end
 
 -- ------------------------------------------------------------
+-- Diagnose (/ww debug) – zeigt, an welcher Stelle es hakt
+-- ------------------------------------------------------------
+
+function Highlight:Diagnose()
+    local function yn(v) return v and "|cff55ff55ja|r" or "|cffff5555nein|r" end
+    ns:Print("Debug – Version %s", tostring(ns.version))
+    ns:Print("  Einstellung talentGuide: %s, talentHighlight: %s",
+        yn(settings().talentGuide), yn(settings().talentHighlight))
+    ns:Print("  Blizzard_PlayerSpells geladen: %s", yn(C_AddOns.IsAddOnLoaded("Blizzard_PlayerSpells")))
+    ns:Print("  PlayerSpellsFrame vorhanden: %s, TalentsFrame: %s",
+        yn(PlayerSpellsFrame ~= nil), yn(PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame ~= nil))
+    ns:Print("  Haken gesetzt: %s", yn(talentsFrame ~= nil))
+    if talentsFrame then
+        ns:Print("  Fenster sichtbar: %s", yn(talentsFrame:IsShown()))
+        if talentsFrame.IsInspecting then ns:Print("  Betrachtet anderen Spieler: %s", yn(talentsFrame:IsInspecting())) end
+        if talentsFrame.IsActiveTabSelected then ns:Print("  Aktiver Reiter gewählt: %s", yn(talentsFrame:IsActiveTabSelected())) end
+    end
+    local guide = ns.modules.TalentGuide
+    local build, tree = guide:Load()
+    ns:Print("  Build gefunden: %s", yn(build ~= nil))
+    if build then
+        local problems = guide:Validate(build, tree)
+        ns:Print("  Build-Prüfung ohne Probleme: %s (%d)", yn(#problems == 0), #problems)
+        local ok = computeStates()
+        local count, found = 0, 0
+        for nodeID in pairs(nodeState) do
+            count = count + 1
+            if talentsFrame and talentsFrame:GetTalentButtonByNodeID(nodeID) then found = found + 1 end
+        end
+        ns:Print("  Zustände berechnet: %s, Talente im Build: %d, davon Knöpfe gefunden: %d", yn(ok), count, found)
+        local _, unspent = ns.TalentAPI:GetPoints()
+        ns:Print("  Freie Talentpunkte: %s", tostring(unspent))
+    end
+end
+
+-- ------------------------------------------------------------
 -- Einrichten, sobald das Talentfenster geladen ist
 -- ------------------------------------------------------------
 
@@ -256,7 +292,11 @@ local function setup()
         return
     end
     -- Nachträgliche Haken: Blizzards eigener Code läuft unverändert zuerst.
-    talentsFrame:HookScript("OnShow", function() Highlight:ScheduleRefresh() end)
+    talentsFrame:HookScript("OnShow", function()
+        Highlight:ScheduleRefresh()
+        -- Zweiter Versuch, falls Blizzard die Knöpfe beim ersten Mal noch nicht fertig hatte
+        C_Timer.After(1, function() Highlight:ScheduleRefresh() end)
+    end)
     talentsFrame:HookScript("OnHide", hideAll)
     if EventRegistry then
         EventRegistry:RegisterCallback("TalentDisplay.TooltipCreated", onTooltip, Highlight)

@@ -12,7 +12,8 @@
 --   * pro Baum: Name, Symbol, verteilte Punkte, Punkte-Voraussetzung je Reihe
 --   * pro Talent: nodeID, Name, Reihe (tier), Spalte (column), maxRank,
 --     aktueller Rang, Symbol, Rohposition (posX/posY), Pfeile zu anderen
---     Talenten (leadsTo) und die Bedingungen (gateRequired = nötige Punkte im Baum)
+--     Talenten (leadsTo), gateRequired (nötige Punkte im Baum gesamt),
+--     gateRemaining (laut Spiel noch fehlend) und gateConsistent (Gegenprobe)
 --
 -- Das eigentliche Auslesen macht ns.TalentAPI:ReadTree() (Core/TalentAPI.lua),
 -- das auch der Talent-Leitfaden benutzt.

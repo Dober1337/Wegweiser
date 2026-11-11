@@ -63,6 +63,7 @@ local commands = {
     points     = showPoints,
     talentdump = function() ns.modules.TalentDump:Start() end,
     build      = buildCommand,
+    debug      = function() ns:RunOutOfCombat(function() ns.modules.TalentHighlight:Diagnose() end) end,
     test       = function()
         ns:Print(L.TEST_HEADER)
         ns.modules.LevelUp:ShowLevelUpMessages(UnitLevel("player"), true)

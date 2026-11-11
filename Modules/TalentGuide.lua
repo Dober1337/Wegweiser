@@ -108,7 +108,7 @@ function Guide:Validate(build, tree)
     if #problems > 0 then return problems end
 
     -- 2. Reihenfolge durchspielen: Reihen-Voraussetzung und Pfeile erfüllt?
-    --    Die nötigen Punkte je Reihe kommen direkt aus dem Spiel (gateRequired).
+    --    gateRequired = (Reihe-1) * 5 Punkte im selben Baum (Core/TalentAPI.lua).
     local spentInTree, rank = {}, {}
     local sources = {}   -- Ziel-nodeID -> Liste der Talente, deren Pfeil darauf zeigt
     for _, live in pairs(tree.byNode) do

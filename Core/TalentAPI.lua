@@ -184,7 +184,12 @@ end
 --   result.trees[i].talents  = Liste der Talente des Baums i
 --   result.byNode[nodeID]    = Talent (mit .treeIndex)
 -- Jedes Talent hat: nodeID, name, icon, spellID, tier, column, maxRank,
--- rank, posX, posY, leadsTo, gateRequired (Punkte im Baum für diese Reihe).
+-- rank, posX, posY, leadsTo,
+--   gateRequired  = Punkte, die im Baum INSGESAMT nötig sind ((Reihe-1) * 5)
+--   gateRemaining = Punkte, die laut Spiel NOCH fehlen (Rohwert der API)
+-- Achtung: Die API (spentAmountRequired) liefert die RESTLICHEN Punkte,
+-- nicht die Gesamtzahl – bestätigt per Tooltip "Gebt noch 2 Punkte ... aus"
+-- bei 3 verteilten Punkten (Spieler, Nov 2026).
 -- Reihe/Spalte werden aus der Pixel-Position berechnet (Raster).
 function TalentAPI:ReadTree()
     if not self:IsAvailable() then return nil, "NO_API" end
@@ -227,11 +232,10 @@ function TalentAPI:ReadTree()
             if first then
                 talent.name, talent.icon, talent.spellID = first.name, first.icon, first.spellID
             end
-            -- Punkte-Voraussetzung der Reihe (größter Wert der Bedingungen)
-            talent.gateRequired = 0
+            -- Noch fehlende Punkte für diese Reihe (Rohwert, nur zur Info)
             for _, c in ipairs(talent.conditions) do
-                if (c.spentAmountRequired or 0) > talent.gateRequired then
-                    talent.gateRequired = c.spentAmountRequired
+                if c.spentAmountRequired and c.spentAmountRequired > 0 then
+                    talent.gateRemaining = c.spentAmountRequired
                 end
             end
 
@@ -268,7 +272,7 @@ function TalentAPI:ReadTree()
             if not minX or t.posX < minX then minX = t.posX end
         end
         local maxColumn = 0
-        tree.tierGates = {}   -- Reihe -> nötige Punkte im Baum (aus dem Spiel)
+        local perTier = ns:Const("POINTS_PER_TIER") or 5
         for _, t in ipairs(tree.talents) do
             if stepY and minY then
                 t.tier = math.floor((t.posY - minY) / stepY + 0.5) + 1
@@ -277,7 +281,13 @@ function TalentAPI:ReadTree()
                 t.column = math.floor((t.posX - minX) / stepX + 0.5) + 1
                 if t.column > maxColumn then maxColumn = t.column end
             end
-            if t.tier then tree.tierGates[t.tier] = t.gateRequired end
+            if t.tier then
+                t.gateRequired = (t.tier - 1) * perTier
+                -- Gegenprobe: verteilt + noch fehlend = Gesamtbedarf?
+                if t.gateRemaining then
+                    t.gateConsistent = ((tree.spent or 0) + t.gateRemaining == t.gateRequired)
+                end
+            end
         end
         -- Belegt ein Baum keine 4 Spalten, kann die Spaltenzählung verschoben sein.
         tree.columnsUsed = maxColumn
