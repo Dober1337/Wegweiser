@@ -5,7 +5,11 @@ Was macht das Addon?
 Es zeichnet beim ganz normalen Spielen deine Questroute auf: welche Quest du
 wo annimmst, erledigst und abgibst, wann du aufsteigst, wohin du fliegst.
 Daraus bauen wir Leveling-Routen für das kostenlose Einsteiger-Addon
-"Wegweiser". Du musst nichts anders machen als sonst.
+"Wegweiser".
+
+>>> DU MUSST NICHTS EINGEBEN. <<<
+Das Addon startet von selbst bei jedem Einloggen und zeichnet automatisch
+auf. Einfach installieren und ganz normal spielen.
 
 Was wird NICHT gespeichert?
 Kein Charaktername, kein Realm, keine Chat-Nachrichten, keine Gilde.
@@ -20,11 +24,12 @@ Installation
 2. WoW (neu) starten. Nach dem Einloggen steht im Chat:
    "Wegweiser Recorder: Aufzeichnung aktiv ..."
 
-Befehle (im Chat eingeben)
+Befehle (alle FREIWILLIG – nötig ist keiner)
   /wwrec              Status und letzte Schritte
   /wwrec notiz Text   eigene Notiz an dieser Stelle (z. B. Tipp für andere)
-  /wwrec pause        Aufzeichnung anhalten (z. B. beim Farmen)
-  /wwrec start        weiter aufzeichnen
+  /wwrec pause        Aufzeichnung anhalten (gilt nur bis zum nächsten
+                      Einloggen – danach läuft sie automatisch wieder)
+  /wwrec start        sofort weiter aufzeichnen
   /wwrec melden       jeden Schritt im Chat anzeigen (an/aus)
 
 Daten schicken
@@ -33,5 +38,9 @@ Die Aufzeichnung steht in dieser Datei (wird beim Ausloggen geschrieben):
 <KONTONAME> ist der einzige Ordner unter "Account" (oft eine Nummer wie 12345678#1).
 Diese Datei bitte ab und zu schicken – nicht erst mit 60. Zwischendurch eine
 Kopie zu sichern schadet auch nicht.
+
+Falls das Addon nach einem WoW-Patch als "veraltet" angezeigt wird:
+im AddOns-Menü (Charakterauswahl) "Veraltete AddOns laden" anhaken oder
+die neue Version holen – sonst lädt WoW es nicht und es zeichnet nichts auf.
 
 Danke fürs Mitmachen!
