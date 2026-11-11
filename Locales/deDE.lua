@@ -120,3 +120,5 @@ L.OPT_QOFFER_TT         = "Zeigt unter dem Questfenster eine Bewertung, bevor du
 L.OPT_QICONS            = "Symbole im Questlog"
 L.OPT_QICONS_TT         = "Zeigt ein kleines Symbol neben jedem Questtitel. Maus drüber zeigt die Erklärung."
 L.QA_DEBUG_NO_OFFER      = "Öffne zuerst eine Quest beim Questgeber (den Text mit dem „Annehmen“-Knopf)."
+L.ZG_NO_MAP              = "Deine aktuelle Zone konnte nicht ermittelt werden."
+L.ZG_PROBE_SAVED         = "Gespeichert. Gib /reload ein, damit es in die Datei geschrieben wird."

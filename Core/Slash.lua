@@ -65,6 +65,7 @@ local commands = {
     points     = showPoints,
     talentdump = function() ns.modules.TalentDump:Start() end,
     build      = buildCommand,
+    zoneinfo   = function() ns:RunOutOfCombat(function() ns.modules.ZoneGuide:Probe() end) end,
     questinfo  = function() ns.modules.QuestAdvisor:PrintOfferDebug() end,
     quests     = function() ns:RunOutOfCombat(function() ns.modules.QuestAdvisor:PrintOverview() end) end,
     debug      = function() ns:RunOutOfCombat(function() ns.modules.TalentHighlight:Diagnose() end) end,
