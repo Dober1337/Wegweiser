@@ -82,7 +82,7 @@ L.CHECK_TOO_MANY        = "%s: build plans rank %d, but the maximum is %d."
 
 -- Markierungen im Talentfenster
 L.OPT_HIGHLIGHT         = "Highlight in talent window"
-L.OPT_HIGHLIGHT_TT      = "Gold frame on the talent to pick now, target ranks for later talents, check marks for finished ones."
+L.OPT_HIGHLIGHT_TT      = "Marks the talent that is up next with its target rank – with a gold frame when you have a free point."
 L.GUIDE_HIGHLIGHT_HINT  = "It is marked with a gold frame in the talent window."
 L.HL_TT_NOW             = "Wegweiser: pick now – %s"
 L.HL_TT_DONE            = "Wegweiser: done as planned."

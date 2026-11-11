@@ -82,7 +82,7 @@ L.CHECK_TOO_MANY        = "%s: Build plant Rang %d, Maximum ist %d."
 
 -- Markierungen im Talentfenster
 L.OPT_HIGHLIGHT         = "Markierung im Talentfenster"
-L.OPT_HIGHLIGHT_TT      = "Goldener Rahmen um das Talent, das jetzt dran ist, Ziel-Ränge für spätere Talente, Häkchen für erledigte."
+L.OPT_HIGHLIGHT_TT      = "Markiert das Talent, das gerade dran ist, mit seinem Ziel-Rang – mit freiem Punkt zusätzlich golden umrandet."
 L.GUIDE_HIGHLIGHT_HINT  = "Im Talentfenster ist es golden umrandet."
 L.HL_TT_NOW             = "Wegweiser: jetzt skillen – %s"
 L.HL_TT_DONE            = "Wegweiser: wie geplant verteilt."

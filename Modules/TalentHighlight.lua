@@ -2,11 +2,14 @@
 -- Modules/TalentHighlight.lua
 -- Modul 5b: Markierungen direkt im Blizzard-Talentfenster.
 --
---   * Talent, das JETZT dran ist (freier Punkt vorhanden):
---       pulsierender goldener Rahmen + Tooltip "Wegweiser: jetzt skillen – ..."
---   * Talente, die später im Build kommen: kleine Markierung mit Ziel-Rang ("» 3/5")
---   * Talente, die schon wie geplant verteilt sind: kleines Häkchen
---   * Abweichende Punkte: gelber Hinweis im Tooltip, kein Zwang
+--   Sichtbar markiert wird NUR das Talent des aktuellen Build-Schritts
+--   (Wunsch des Spielers: übersichtlich, nicht der ganze Baum):
+--   * Ziel-Rang des Schritts darüber, z. B. "» 5/5" bei Donnernde Stöße.
+--     Ist der Schritt fertig, wandert die Markierung zum nächsten Talent.
+--   * Mit freiem Talentpunkt zusätzlich: pulsierender goldener Rahmen.
+--   Im Tooltip (nur beim Drüberfahren) stehen für alle Build-Talente
+--   Hinweise: "jetzt skillen", "später im Build", "wie geplant verteilt"
+--   und bei Abweichungen ein gelber Hinweis, kein Zwang.
 --
 -- Technik (geprüft im Forever-UI-Quellcode, Build 1.60.1.70888):
 --   * Das Talentfenster ist PlayerSpellsFrame.TalentsFrame aus dem Blizzard-Addon
@@ -78,9 +81,9 @@ local function createOverlay(button)
     o.glow, o.glowAnim = glow, anim
 
     -- Ziel-Rang für spätere Punkte, z. B. "» 3/5"
-    local target = o:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    target:SetPoint("BOTTOM", o, "TOP", 0, 0)
-    target:SetTextColor(0.75, 0.85, 1.0)
+    local target = o:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    target:SetPoint("BOTTOM", o, "TOP", 0, 1)
+    target:SetTextColor(GOLD[1], GOLD[2], GOLD[3])
     target:SetShadowOffset(1, -1)
     o.target = target
 
@@ -146,6 +149,17 @@ local function computeStates()
             s.nextPoint = p
         end
     end
+    -- Aktueller Schritt und sein Ziel-Rang (Rang am Ende dieses Schritts)
+    local currentStep = progress.nextPoint and progress.nextPoint.step
+    local stepTarget
+    for _, p in ipairs(points) do
+        if p.step == currentStep then stepTarget = p.targetRank end
+    end
+    if currentStep and nodeState[currentStep.nodeID] then
+        nodeState[currentStep.nodeID].isCurrentStep = true
+        nodeState[currentStep.nodeID].stepTarget = stepTarget
+    end
+
     for nodeID, s in pairs(nodeState) do
         if progress.nextPoint and progress.nextPoint.step.nodeID == nodeID and unspent > 0 then
             s.state = "NOW"
@@ -193,17 +207,15 @@ function Highlight:Refresh()
 
     for nodeID, s in pairs(nodeState) do
         local button = talentsFrame:GetTalentButtonByNodeID(nodeID)
-        if button and button:IsShown() and s.state ~= "NONE" then
+        -- Nur das Talent des aktuellen Schritts wird sichtbar markiert.
+        if button and button:IsShown() and s.isCurrentStep then
             local o = getOverlay(button)
             o:Show()
+            o.target:SetText(string.format("» %d/%d", s.stepTarget or s.want, s.maxRank))
+            o.target:Show()
             if s.state == "NOW" then
                 o.glow:Show()
                 o.glowAnim:Play()
-            elseif s.state == "DONE" then
-                o.check:Show()
-            elseif s.state == "LATER" then
-                o.target:SetText(string.format("» %d/%d", s.want, s.maxRank))
-                o.target:Show()
             end
         end
     end
@@ -235,7 +247,7 @@ local function onTooltip(_, button, tooltip)
         tooltip:AddLine(L.HL_TT_DONE, 0.3, 1.0, 0.3, true)
     elseif s.state == "LATER" and s.nextPoint then
         local text = s.isNextButNoPoint and L.HL_TT_NEXT or L.HL_TT_LATER
-        tooltip:AddLine(string.format(text, s.want, s.maxRank, s.nextPoint.level), 0.75, 0.85, 1.0, true)
+        tooltip:AddLine(string.format(text, s.isCurrentStep and s.stepTarget or s.want, s.maxRank, s.nextPoint.level), 0.75, 0.85, 1.0, true)
         tooltip:AddLine(loc(s.nextPoint.step.reason), 0.8, 0.8, 0.8, true)
     end
     if s.deviation then
