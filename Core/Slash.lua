@@ -16,18 +16,29 @@
 local _, ns = ...
 local L = ns.L
 
+-- Hilfe für Spieler: nur die Befehle, die man im Alltag braucht
 local function showHelp()
     ns:Print(L.HELP_HEADER)
-    ns:Print(L.HELP_CONFIG)
-    ns:Print(L.HELP_POINTS)
+    ns:Print(L.HELP_QUESTS)
+    ns:Print(L.HELP_ZONES)
     ns:Print(L.HELP_BUILD)
     ns:Print(L.HELP_BUILD_LIST)
     ns:Print(L.HELP_BUILD_NOTES)
-    ns:Print(L.HELP_QUESTS)
-    ns:Print(L.HELP_ZONES)
-    ns:Print(L.HELP_ROUTE)
-    ns:Print(L.HELP_TALENTDUMP)
+    ns:Print(L.HELP_POINTS)
+    if WegweiserRecorder then ns:Print(L.HELP_ROUTE) end
+    ns:Print(L.HELP_CONFIG)
+    ns:Print(L.HELP_DEV_HINT)
+end
+
+-- Prüf-Befehle für die Entwicklung (Ausgaben teils nur auf Deutsch)
+local function showDevHelp()
+    ns:Print(L.HELP_DEV_HEADER)
     ns:Print(L.HELP_TEST)
+    ns:Print(L.HELP_TALENTDUMP)
+    ns:Print("/ww debug – Talentfenster-Markierung prüfen")
+    ns:Print("/ww questinfo – Rohdaten der angebotenen Quest")
+    ns:Print("/ww zoneinfo – Rohdaten der aktuellen Zone")
+    ns:Print("/ww zonecheck – Karten-Nummern gegen das Spiel prüfen")
 end
 
 local function showPoints()
@@ -88,6 +99,7 @@ local commands = {
         ns:RunOutOfCombat(function() ns.modules.LevelUp:CheckTalentPoints() end, true)
     end,
     help       = showHelp,
+    dev        = showDevHelp,
     hilfe      = showHelp,
 }
 

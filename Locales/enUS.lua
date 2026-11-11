@@ -156,3 +156,7 @@ L.ZG_NOTE_SOUTHERN_BARRENS = "Tip: the southern part of the Barrens."
 L.ZG_NOTE_SHIMMERING_FLATS = "Tip: the Shimmering Flats in Thousand Needles."
 L.ZG_NOTE_NORTHERN_STV     = "Tip: the northern part of Stranglethorn Vale."
 L.ZG_NOTE_RIVERGLADES      = "Tip: also the new zone Riverglades."
+
+-- Hilfe
+L.HELP_DEV_HINT         = "|cff999999Test commands for developers: /ww dev|r"
+L.HELP_DEV_HEADER       = "Test commands (for developers, some output in German only):"

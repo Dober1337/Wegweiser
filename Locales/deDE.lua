@@ -156,3 +156,7 @@ L.ZG_NOTE_SOUTHERN_BARRENS = "Tipp: der südliche Teil des Brachlands."
 L.ZG_NOTE_SHIMMERING_FLATS = "Tipp: die Schimmernde Ebene in Tausend Nadeln."
 L.ZG_NOTE_NORTHERN_STV     = "Tipp: der nördliche Teil des Schlingendorntals."
 L.ZG_NOTE_RIVERGLADES      = "Tipp: auch die neue Zone Riverglades."
+
+-- Hilfe
+L.HELP_DEV_HINT         = "|cff999999Prüf-Befehle für die Entwicklung: /ww dev|r"
+L.HELP_DEV_HEADER       = "Prüf-Befehle (für die Entwicklung):"

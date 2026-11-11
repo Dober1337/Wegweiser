@@ -1,0 +1,11 @@
+# Konfiguration für den CurseForge/Wago-Packager (BigWigsMods/packager).
+# Wird erst benutzt, wenn das Addon dort veröffentlicht wird.
+package-as: Wegweiser
+
+ignore:
+  - .claude
+  - docs
+  - dist
+  - tools
+  - WegweiserRecorder
+  - .gitattributes
