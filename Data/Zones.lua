@@ -18,6 +18,7 @@
 --   mapIDVerified  true, wenn die uiMapID im Spiel bestätigt ist.
 --                  Die uiMapIDs stammen aus WoW Classic (Classic-Fallback,
 --                  ungeprüft) – Prüfung im Spiel mit /ww zonecheck.
+--                  Bestätigt per /ww zonecheck (Spieler, 11.11.2026): 1411, 1412, 1413, 1416, 1417, 1418.
 -- ============================================================
 
 local _, ns = ...
@@ -26,8 +27,8 @@ local SRC = "mobalytics 2026-11-10"
 
 ns.Zones = {
     -- ===== Kalimdor (uiMapID 1414) =====
-    [1411] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = false, en = "Durotar" }, -- Durotar
-    [1412] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = false, en = "Mulgore" }, -- Mulgore
+    [1411] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = true, en = "Durotar" }, -- Durotar
+    [1412] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = true, en = "Mulgore" }, -- Mulgore
     [1438] = { min = 1,  max = 10, src = SRC, verified = false, mapIDVerified = false, en = "Teldrassil" }, -- Teldrassil
     [1439] = { min = 10, max = 20, src = SRC, verified = false, mapIDVerified = false, en = "Darkshore" }, -- Darkshore
     [1413] = { min = 10, max = 25, src = SRC, verified = false, mapIDVerified = true , en = "The Barrens" }, -- The Barrens (ID per /ww zoneinfo bestätigt)
@@ -58,10 +59,10 @@ ns.Zones = {
     [1431] = { min = 18, max = 30, src = SRC, verified = false, mapIDVerified = false, en = "Duskwood" }, -- Duskwood
     [1437] = { min = 20, max = 30, src = SRC, verified = false, mapIDVerified = false, en = "Wetlands" }, -- Wetlands
     [1424] = { min = 20, max = 30, src = SRC, verified = false, mapIDVerified = false, en = "Hillsbrad Foothills" }, -- Hillsbrad Foothills
-    [1416] = { min = 30, max = 40, src = SRC, verified = false, mapIDVerified = false, en = "Alterac Mountains" }, -- Alterac Mountains
-    [1417] = { min = 30, max = 40, src = SRC, verified = false, mapIDVerified = false, en = "Arathi Highlands" }, -- Arathi Highlands
+    [1416] = { min = 30, max = 40, src = SRC, verified = false, mapIDVerified = true, en = "Alterac Mountains" }, -- Alterac Mountains
+    [1417] = { min = 30, max = 40, src = SRC, verified = false, mapIDVerified = true, en = "Arathi Highlands" }, -- Arathi Highlands
     [1434] = { min = 30, max = 45, src = SRC, verified = false, mapIDVerified = false, en = "Stranglethorn Vale" }, -- Stranglethorn Vale
-    [1418] = { min = 35, max = 45, src = SRC, verified = false, mapIDVerified = false, en = "Badlands" }, -- Badlands
+    [1418] = { min = 35, max = 45, src = SRC, verified = false, mapIDVerified = true, en = "Badlands" }, -- Badlands
     [1435] = { min = 35, max = 45, src = SRC, verified = false, mapIDVerified = false, en = "Swamp of Sorrows" }, -- Swamp of Sorrows
     [1425] = { min = 40, max = 50, src = SRC, verified = false, mapIDVerified = false, en = "The Hinterlands" }, -- The Hinterlands
     [1427] = { min = 43, max = 50, src = SRC, verified = false, mapIDVerified = false, en = "Searing Gorge" }, -- Searing Gorge
