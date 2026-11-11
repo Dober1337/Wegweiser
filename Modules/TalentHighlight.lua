@@ -134,12 +134,19 @@ end
 -- ------------------------------------------------------------
 
 -- Füllt nodeState neu. Rückgabe: true, wenn etwas anzuzeigen ist.
+local lastProblem   -- erstes Problem der Build-Prüfung (für den Hinweis im Talentfenster)
+
 local function computeStates()
     wipe(nodeState)
+    lastProblem = nil
     local guide = ns.modules.TalentGuide
     local build, tree = guide:Load()
     if not build then return false end
-    if #guide:Validate(build, tree) > 0 then return false end  -- Warnung kommt schon beim Einloggen
+    local problems = guide:Validate(build, tree)
+    if #problems > 0 then
+        lastProblem = problems[1]
+        return false
+    end
 
     local points = guide:ExpandPoints(build)
     local progress = guide:GetProgress(build, tree)
@@ -218,7 +225,13 @@ function Highlight:Refresh()
         ns:RunOutOfCombat(function() Highlight:Refresh() end, true)
         return
     end
-    if not computeStates() then return end
+    local ok = computeStates()
+    if self.problemText then
+        -- Build passt nicht zum Baum: sichtbar machen statt einfach nichts anzuzeigen
+        self.problemText:SetText(lastProblem and (L.HL_PROBLEM .. " " .. lastProblem) or "")
+        self.problemText:SetShown(lastProblem ~= nil)
+    end
+    if not ok then return end
 
     local full = settings().talentShowFull
     for nodeID, s in pairs(nodeState) do
@@ -387,6 +400,15 @@ local function setup()
     btn:SetScript("OnLeave", function() GameTooltip:Hide() end)
     btn:SetShown(isEnabled())
     Highlight.toggleButton = btn
+
+    -- Roter Hinweis neben dem Knopf, falls der Build nicht zum Baum passt
+    local problem = btn:CreateFontString(nil, "OVERLAY", "GameFontRedSmall")
+    problem:SetPoint("LEFT", btn, "RIGHT", 8, 0)
+    problem:SetPoint("RIGHT", talentsFrame, "BOTTOM", -110, 0)
+    problem:SetJustifyH("LEFT")
+    problem:SetWordWrap(false)
+    problem:Hide()
+    Highlight.problemText = problem
     if EventRegistry then
         EventRegistry:RegisterCallback("TalentDisplay.TooltipCreated", onTooltip, Highlight)
     end
