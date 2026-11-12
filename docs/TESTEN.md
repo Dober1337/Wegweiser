@@ -346,3 +346,15 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Ohne Kürschnerei, Maus über ein totes Tier mit rotem „Häutbar": darunter
   „Wegweiser: Kürschnerei ab etwa X" und „Du hast Kürschnerei nicht gelernt."
 - Mit Kürschnerei: „Kürschnerei ab etwa X (du: Y)", auch bei lebenden Tieren.
+
+## Version 0.36.0 – Taschen, Reparatur, graue Gegenstände
+
+- Händler öffnen: Unter dem Händlerfenster erscheint ein Kasten mit
+  „Graue Gegenstände: X (Wert …)" + Knopf „Graues verkaufen" und
+  „Reparatur: …" + Knopf „Reparieren". Nichts passiert ohne Knopfdruck.
+- Knopf „Graues verkaufen": alle grauen Gegenstände werden verkauft, Summe im Chat.
+  (Versehentlich verkauft? Rückkauf-Reiter des Händlers.)
+- Händler ohne Amboss: „Dieser Händler repariert nicht".
+- Taschen bis auf 3 freie Plätze füllen: gelber Hinweis. Ganz voll: eigener Hinweis.
+- Ausrüstung unter 25 % oder kaputt: gelber Hinweis.
+- Abschaltbar: /ww config (zwei Häkchen).

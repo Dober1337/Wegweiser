@@ -40,6 +40,9 @@ ns.defaults = {
         -- Reisen
         travelHints     = true,   -- Flugpunkt-Hinweise, Ruhestein-Bestätigung
         gatherTooltip   = true,   -- Kraut/Erz/Tier: ab welcher Fertigkeit (Tooltip)
+        -- Taschen & Händler
+        invHints        = true,   -- Hinweis: Taschen fast voll, Ausrüstung kaputt
+        merchantHelper  = true,   -- Händler: Graues verkaufen, Reparieren (auf Knopfdruck)
         -- Build-Wahl steht in talentBuildByClass (pro Klasse). Ohne Wahl gilt der
         -- Einsteiger-Tipp der Klasse (TalentGuide:GetBuild).
     },
