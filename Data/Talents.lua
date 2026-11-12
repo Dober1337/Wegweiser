@@ -1399,8 +1399,8 @@ table.insert(ns.TalentBuilds, {
 -- HEXENMEISTER – Dämonologie (Leveling)
 -- QUELLE: Wowhead
 --   https://www.wowhead.com/forever/guide/classes/warlock/demonology/dps-leveling-tips
--- (Liste + Grafik kamen zuerst mit dem Link zur Übersicht overview-pve-dps;
---  laut Spieler ist es derselbe Build.)
+-- Liste + Grafik von der Leveling-Seite mit dem Stand aus der Übersicht
+-- (overview-pve-dps) verglichen: identisch (2026-11-12).
 -- Reihenfolge laut Spieler (Liste + Grafik, 20/31/0).
 -- nodeID/Reihe/Spalte/maxRank aus dem Hexenmeister-Talentdump (2026-11-12),
 -- Zuordnung über die Position auf der Wowhead-Grafik.
