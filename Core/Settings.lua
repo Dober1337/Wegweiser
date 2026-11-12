@@ -65,6 +65,9 @@ ns:RegisterEvent("ADDON_LOADED", function(_, loadedName)
 
     WegweiserDB = WegweiserDB or {}
     fillDefaults(WegweiserDB, ns.defaults)
+    -- Alter Standardwert aus frühen Versionen (Heal-Hybrid für alle Schamanen).
+    -- War keine Wahl des Spielers, deshalb entfernen: jetzt gilt der Einsteiger-Tipp.
+    if WegweiserDB.settings then WegweiserDB.settings.talentBuild = nil end
     ns.db = WegweiserDB
 
     -- Andere Teile des Addons (Einstellungsfenster, Module) starten.

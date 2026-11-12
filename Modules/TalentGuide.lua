@@ -78,7 +78,8 @@ end
 function Guide:GetBuild()
     local _, classFile = UnitClass("player")
     local byClass = settings().talentBuildByClass
-    local wanted = (byClass and byClass[classFile]) or settings().talentBuild
+    -- Nur eine echte Wahl des Spielers zählt (alter Standardwert "talentBuild" wird ignoriert)
+    local wanted = byClass and byClass[classFile]
     -- Ohne eigene Wahl: zuerst der Einsteiger-Tipp der Klasse, sonst der erste Leveling-Build
     local fallback, beginner
     for _, build in ipairs(ns.TalentBuilds or {}) do
