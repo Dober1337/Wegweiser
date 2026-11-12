@@ -286,3 +286,8 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 
 - `/ww build wahl` zeigt „Meucheln", „Kampf" und „Feingefühl – Leveling".
 - Je `/ww build liste` mit der Wowhead-Liste vergleichen (16/35/0, 2/27/22).
+
+## Version 0.29.0 – Hexenmeister: drei Builds
+
+- `/ww build wahl` zeigt „Gebrechen", „Dämonologie" und „Zerstörung – Leveling".
+- Je `/ww build liste` mit der Wowhead-Liste vergleichen (41/7/3, 20/31/0, 23/5/23).

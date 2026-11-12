@@ -1339,4 +1339,171 @@ table.insert(ns.TalentBuilds, {
     notes = {},
 })
 
+-- ------------------------------------------------------------
+-- HEXENMEISTER – Gebrechen (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/warlock/affliction/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 41/7/3).
+-- nodeID/Reihe/Spalte/maxRank aus dem Hexenmeister-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "WARLOCK_AFFLICTION_LEVELING",
+    class     = "WARLOCK",
+    spec      = "AFFLICTION",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/warlock/affliction/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Gebrechen (Leveling-Build)", enUS = "Affliction (leveling build)" },
+    menu  = { deDE = "Gebrechen – Leveling", enUS = "Affliction – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Gebrechen: Verderbnis und Entziehen, früh etwas Begleiter-Stärke, dann Gebrechen bis Zermürben.",
+        enUS = "Wowhead's leveling pick for Affliction: Corruption and drains, some early pet power, then Affliction up to Wrack.",
+    },
+    distribution = { 41, 7, 3 },
+    phases = {
+        A = { deDE = "Phase A – Gebrechen (Grundlage)", enUS = "Phase A – Affliction (basics)" },
+        B = { deDE = "Phase B – Dämonologie (Begleiter)", enUS = "Phase B – Demonology (pet)" },
+        C = { deDE = "Phase C – Gebrechen & Rest", enUS = "Phase C – Affliction & rest" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105924, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 10: Improved Corruption / Verbesserte Verderbnis
+        { phase = "A", nodeID = 105925, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 3 }, -- Lvl 15: Suppression / Unterdrückung
+        { phase = "B", nodeID = 105906, tree = 2, tier = 1, column = 4, maxRank = 5, ranks = 5 }, -- Lvl 18: Unholy Power / Unheilige Macht
+        { phase = "B", nodeID = 105899, tree = 2, tier = 2, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 23: Demonic Energies / Dämonische Energien
+        { phase = "C", nodeID = 105920, tree = 1, tier = 2, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 25: Improved Drains / Verbessertes Entziehen
+        { phase = "C", nodeID = 105916, tree = 1, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 28: Amplify Curse / Fluch verstärken
+        { phase = "C", nodeID = 105919, tree = 1, tier = 3, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 29: Improved Bane of Agony / Verbessertes Omen der Pein
+        { phase = "C", nodeID = 105925, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 2 }, -- Lvl 31: Suppression / Unterdrückung
+        { phase = "C", nodeID = 105917, tree = 1, tier = 3, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 33: Pandemic / Pandemie
+        { phase = "C", nodeID = 105921, tree = 1, tier = 1, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 36: Improved Life Tap / Verbesserter Aderlass
+        { phase = "C", nodeID = 105912, tree = 1, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 37: Siphon Life / Lebensentzug
+        { phase = "C", nodeID = 105911, tree = 1, tier = 5, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 38: Soul Siphon / Seelenentzug
+        { phase = "C", nodeID = 105921, tree = 1, tier = 1, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 41: Improved Life Tap / Verbesserter Aderlass
+        { phase = "C", nodeID = 105910, tree = 1, tier = 6, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 42: Shadow Mastery / Schattenbeherrschung
+        { phase = "C", nodeID = 105909, tree = 1, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 47: Wrack / Zermürben
+        { phase = "C", nodeID = 110876, tree = 1, tier = 4, column = 1, maxRank = 5, ranks = 5 }, -- Lvl 48: Malevolence / Böswilligkeit
+        { phase = "C", nodeID = 105918, tree = 1, tier = 3, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 53: Fel Concentration / Teufelskonzentration
+        { phase = "C", nodeID = 105914, tree = 1, tier = 4, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 56: Nightfall / Einbruch der Nacht
+        { phase = "C", nodeID = 105889, tree = 3, tier = 1, column = 2, maxRank = 5, ranks = 3 }, -- Lvl 58: Improved Shadow Bolt / Verbesserter Schattenblitz
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- HEXENMEISTER – Dämonologie (Quelle: allgemeine Übersicht, keine Leveling-Seite)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/warlock/demonology/overview-pve-dps
+-- Reihenfolge laut Spieler (Liste + Grafik, 20/31/0).
+-- nodeID/Reihe/Spalte/maxRank aus dem Hexenmeister-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "WARLOCK_DEMONOLOGY_LEVELING",
+    class     = "WARLOCK",
+    spec      = "DEMONOLOGY",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/warlock/demonology/overview-pve-dps",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Dämonologie (Build)", enUS = "Demonology (build)" },
+    menu  = { deDE = "Dämonologie – Leveling", enUS = "Demonology – leveling" },
+    summary = {
+        deDE = "Wowheads Dämonologie-Empfehlung: starker Begleiter bis Dämonischer Pakt, danach Gebrechen.",
+        enUS = "Wowhead's Demonology pick: strong pet up to Demonic Pact, then Affliction.",
+    },
+    distribution = { 20, 31, 0 },
+    phases = {
+        A = { deDE = "Phase A – Dämonologie", enUS = "Phase A – Demonology" },
+        B = { deDE = "Phase B – Gebrechen", enUS = "Phase B – Affliction" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105906, tree = 2, tier = 1, column = 4, maxRank = 5, ranks = 5 }, -- Lvl 10: Unholy Power / Unheilige Macht
+        { phase = "A", nodeID = 105899, tree = 2, tier = 2, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 15: Demonic Energies / Dämonische Energien
+        { phase = "A", nodeID = 105903, tree = 2, tier = 2, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 17: Fel Vitality / Teuflische Vitalität
+        { phase = "A", nodeID = 105898, tree = 2, tier = 3, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 20: Master Summoner / Meister der Beschwörung
+        { phase = "A", nodeID = 105901, tree = 2, tier = 3, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 22: Improved Sayaad / Verbesserte Sayaad
+        { phase = "A", nodeID = 105896, tree = 2, tier = 4, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 25: Demonic Brand / Dämonisches Brandmal
+        { phase = "A", nodeID = 105900, tree = 2, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 28: Demonic Sacrifice / Dämonische Opferung
+        { phase = "A", nodeID = 105895, tree = 2, tier = 4, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 29: Fel Domination / Teufelsbeherrschung
+        { phase = "A", nodeID = 105892, tree = 2, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 30: Soul Link / Seelenverbindung
+        { phase = "A", nodeID = 105893, tree = 2, tier = 5, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 31: Demonic Knowledge / Dämonisches Wissen
+        { phase = "A", nodeID = 105907, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 1 }, -- Lvl 34: Demonic Embrace / Dämonische Umarmung
+        { phase = "A", nodeID = 105891, tree = 2, tier = 6, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 35: Master Demonologist / Meister der Dämonologie
+        { phase = "A", nodeID = 105890, tree = 2, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 40: Demonic Pact / Dämonischer Pakt
+        { phase = "B", nodeID = 105924, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 41: Improved Corruption / Verbesserte Verderbnis
+        { phase = "B", nodeID = 105921, tree = 1, tier = 1, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 46: Improved Life Tap / Verbesserter Aderlass
+        { phase = "B", nodeID = 105925, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 48: Suppression / Unterdrückung
+        { phase = "B", nodeID = 105920, tree = 1, tier = 2, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 53: Improved Drains / Verbessertes Entziehen
+        { phase = "B", nodeID = 105917, tree = 1, tier = 3, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 56: Pandemic / Pandemie
+        { phase = "B", nodeID = 105916, tree = 1, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 59: Amplify Curse / Fluch verstärken
+        { phase = "B", nodeID = 110876, tree = 1, tier = 4, column = 1, maxRank = 5, ranks = 1 }, -- Lvl 60: Malevolence / Böswilligkeit
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- HEXENMEISTER – Zerstörung (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/warlock/destruction/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 23/5/23).
+-- nodeID/Reihe/Spalte/maxRank aus dem Hexenmeister-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "WARLOCK_DESTRUCTION_LEVELING",
+    class     = "WARLOCK",
+    spec      = "DESTRUCTION",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/warlock/destruction/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Zerstörung (Leveling-Build)", enUS = "Destruction (leveling build)" },
+    menu  = { deDE = "Zerstörung – Leveling", enUS = "Destruction – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Zerstörung: Schattenbrand und Feuersbrunst bis Feuer und Schwefel, dann Begleiter und Gebrechen.",
+        enUS = "Wowhead's leveling pick for Destruction: Shadowburn and Conflagrate up to Fire and Brimstone, then pet and Affliction.",
+    },
+    distribution = { 23, 5, 23 },
+    phases = {
+        A = { deDE = "Phase A – Zerstörung", enUS = "Phase A – Destruction" },
+        B = { deDE = "Phase B – Dämonologie (Begleiter)", enUS = "Phase B – Demonology (pet)" },
+        C = { deDE = "Phase C – Gebrechen", enUS = "Phase C – Affliction" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105888, tree = 3, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 10: Bane / Dunkle Macht
+        { phase = "A", nodeID = 105886, tree = 3, tier = 2, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 15: Aftermath / Nachwirkung
+        { phase = "A", nodeID = 105884, tree = 3, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 20: Shadowburn / Schattenbrand
+        { phase = "A", nodeID = 105887, tree = 3, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 21: Cataclysm / Katastrophe
+        { phase = "A", nodeID = 105885, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 1 }, -- Lvl 24: Molten Skin / Geschmolzene Haut
+        { phase = "A", nodeID = 105880, tree = 3, tier = 4, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 25: Conflagrate / Feuersbrunst
+        { phase = "A", nodeID = 105879, tree = 3, tier = 4, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 26: Agonizing Flames / Peinigende Flammen
+        { phase = "A", nodeID = 105885, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 1 }, -- Lvl 29: Molten Skin / Geschmolzene Haut
+        { phase = "A", nodeID = 105877, tree = 3, tier = 5, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 30: Fire and Brimstone / Feuer und Schwefel
+        { phase = "B", nodeID = 105906, tree = 2, tier = 1, column = 4, maxRank = 5, ranks = 5 }, -- Lvl 33: Unholy Power / Unheilige Macht
+        { phase = "C", nodeID = 105925, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 38: Suppression / Unterdrückung
+        { phase = "C", nodeID = 105921, tree = 1, tier = 1, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 43: Improved Life Tap / Verbesserter Aderlass
+        { phase = "C", nodeID = 105920, tree = 1, tier = 2, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 45: Improved Drains / Verbessertes Entziehen
+        { phase = "C", nodeID = 105916, tree = 1, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 48: Amplify Curse / Fluch verstärken
+        { phase = "C", nodeID = 105917, tree = 1, tier = 3, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 49: Pandemic / Pandemie
+        { phase = "C", nodeID = 105919, tree = 1, tier = 3, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 52: Improved Bane of Agony / Verbessertes Omen der Pein
+        { phase = "C", nodeID = 110876, tree = 1, tier = 4, column = 1, maxRank = 5, ranks = 5 }, -- Lvl 54: Malevolence / Böswilligkeit
+        { phase = "C", nodeID = 105911, tree = 1, tier = 5, column = 3, maxRank = 3, ranks = 2 }, -- Lvl 59: Soul Siphon / Seelenentzug
+    },
+    notes = {},
+})
+
 -- Endgame-Builds bekommen buildType = "ENDGAME" und dieselbe Struktur.
