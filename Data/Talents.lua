@@ -214,20 +214,125 @@ table.insert(ns.TalentBuilds, {
 -- ------------------------------------------------------------
 -- Vorbereitet, noch ohne Daten (NICHTS erfinden – folgt später):
 -- ------------------------------------------------------------
+-- ------------------------------------------------------------
+-- SCHAMANE – Spellhancer (Leveling)
+-- QUELLE: Wowhead, Elementar-Leveling-Guide, "Spellhance 31-60":
+--   https://www.wowhead.com/forever/guide/classes/shaman/elemental/dps-leveling-tips#best-leveling-builds-spellhance-31-60
+-- Kein reiner Elementar-Build: zuerst Verstärkung, dann Wiederherstellung (Mana),
+-- dann Elementar. nodeID/Reihe/Spalte/maxRank aus dem Schamanen-Talentdump
+-- (2026-11-11), Positionen mit Wowhead-Grafik abgeglichen (18/25/8).
+-- ------------------------------------------------------------
 table.insert(ns.TalentBuilds, {
-    key = "SHAMAN_ELEMENTAL_LEVELING", class = "SHAMAN", spec = "ELEMENTAL",
-    buildType = "LEVELING", variant = nil, source = nil, planned = true,
-    structureVerified = false, orderVerified = false, verified = false,
-    title = { deDE = "Elementar (Leveling-Build)", enUS = "Elemental (leveling build)" },
-    menu  = { deDE = "Elementar – Leveling", enUS = "Elemental – leveling" },
-    steps = {},
+    key       = "SHAMAN_SPELLHANCE_LEVELING",
+    class     = "SHAMAN",
+    spec      = "ELEMENTAL",
+    buildType = "LEVELING",
+    variant   = "SPELLHANCE",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/shaman/elemental/dps-leveling-tips#best-leveling-builds-spellhance-31-60",
+    structureVerified = true,          -- Positionen = Talentdump, Grafik abgeglichen
+    positionsVerified = true,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Spellhancer (Leveling-Build)", enUS = "Spellhancer (leveling build)" },
+    menu  = { deDE = "Spellhancer – Leveling (Zauber + Verstärkung)", enUS = "Spellhancer – leveling (spells + enhancement)" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung im Elementar-Guide. Kein reiner Elementar-Build: erst Verstärkung, dann Mana-Talente, dann Elementar für Schocks und Blitze.",
+        enUS = "Wowhead's leveling pick in the Elemental guide. Not a pure Elemental build: Enhancement first, then mana talents, then Elemental for shocks and lightning.",
+    },
+    distribution = { 18, 25, 8 },
+    phases = {
+        A = { deDE = "Phase A – Verstärkung (Questen)",       enUS = "Phase A – Enhancement (questing)" },
+        B = { deDE = "Phase B – Wiederherstellung (Mana)",    enUS = "Phase B – Restoration (mana)" },
+        C = { deDE = "Phase C – Elementar (Schocks & Blitze)", enUS = "Phase C – Elemental (shocks & lightning)" },
+    },
+    steps = {
+        { phase = "A", nodeID = 104753, tree = 2, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Thundering Strikes / Donnernde Stöße
+        { phase = "A", nodeID = 104755, tree = 2, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Mental Dexterity / Geistige Gewandtheit
+        { phase = "A", nodeID = 104751, tree = 2, tier = 2, column = 3, maxRank = 3, ranks = 2 }, -- Improved Lightning Shield / Verbesserter Blitzschlagschild
+        { phase = "A", nodeID = 104749, tree = 2, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Shamanistic Focus / Schamanistischer Fokus
+        { phase = "A", nodeID = 104750, tree = 2, tier = 3, column = 1, maxRank = 3, ranks = 3 }, -- Elemental Weapons / Elementarwaffen
+        { phase = "A", nodeID = 104751, tree = 2, tier = 2, column = 3, maxRank = 3, ranks = 1 }, -- Improved Lightning Shield / Verbesserter Blitzschlagschild
+        { phase = "A", nodeID = 104752, tree = 2, tier = 4, column = 4, maxRank = 2, ranks = 2 }, -- Improved Ghost Wolf / Verbesserter Geisterwolf
+        { phase = "A", nodeID = 104743, tree = 2, tier = 4, column = 3, maxRank = 1, ranks = 1 }, -- Stormstrike / Sturmschlag
+        { phase = "A", nodeID = 104747, tree = 2, tier = 4, column = 2, maxRank = 5, ranks = 2 }, -- Flurry / Schlaghagel
+        { phase = "A", nodeID = 104742, tree = 2, tier = 5, column = 3, maxRank = 2, ranks = 2 }, -- Improved Stormstrike / Verbesserter Sturmschlag
+        { phase = "A", nodeID = 104744, tree = 2, tier = 5, column = 2, maxRank = 2, ranks = 2 }, -- Mental Quickness / Geistige Schnelligkeit
+        { phase = "A", nodeID = 104745, tree = 2, tier = 5, column = 1, maxRank = 1, ranks = 1 }, -- Spirit Weapons / Waffen der Geister
+        { phase = "B", nodeID = 104729, tree = 3, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Tidal Focus / Gezeitenfokus
+        { phase = "B", nodeID = 104734, tree = 3, tier = 2, column = 1, maxRank = 3, ranks = 3 }, -- Mindfulness / Achtsamkeit
+        { phase = "C", nodeID = 104772, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Concussion / Erschütterung
+        { phase = "C", nodeID = 104770, tree = 1, tier = 2, column = 4, maxRank = 3, ranks = 3 }, -- Call of Flame / Ruf der Flamme
+        { phase = "C", nodeID = 104769, tree = 1, tier = 2, column = 1, maxRank = 3, ranks = 2 }, -- Elemental Devastation / Elementarverwüstung
+        { phase = "C", nodeID = 104768, tree = 1, tier = 3, column = 1, maxRank = 1, ranks = 1 }, -- Elemental Focus / Elementarfokus
+        { phase = "C", nodeID = 104769, tree = 1, tier = 2, column = 1, maxRank = 3, ranks = 1 }, -- Elemental Devastation / Elementarverwüstung
+        { phase = "C", nodeID = 104773, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 3 }, -- Convection / Konvektion
+        { phase = "C", nodeID = 104764, tree = 1, tier = 4, column = 1, maxRank = 2, ranks = 2 }, -- Trial by Fire / Feuerprobe
+        { phase = "C", nodeID = 104762, tree = 1, tier = 4, column = 4, maxRank = 1, ranks = 1 }, -- Earthbound / Erdgebunden
+    },
+    notes = {
+        { deDE = "Für reines Elementar (Fernkampf-Zauberer) ist dieser Build nicht gedacht – ein eigener Build kann später folgen.",
+          enUS = "Not meant for pure Elemental (ranged caster) – a separate build may follow later." },
+    },
 })
+
+-- ------------------------------------------------------------
+-- SCHAMANE – Verstärkung (Leveling)
+-- QUELLE: Wowhead, Verstärkungs-Leveling-Guide:
+--   https://www.wowhead.com/forever/guide/classes/shaman/enhancement/dps-leveling-tips
+-- nodeID/Reihe/Spalte/maxRank aus dem Schamanen-Talentdump (2026-11-11),
+-- Positionen mit Wowhead-Grafik abgeglichen (18/25/8).
+-- ------------------------------------------------------------
 table.insert(ns.TalentBuilds, {
-    key = "SHAMAN_ENHANCEMENT_LEVELING", class = "SHAMAN", spec = "ENHANCEMENT",
-    buildType = "LEVELING", variant = nil, source = nil, planned = true,
-    structureVerified = false, orderVerified = false, verified = false,
+    key       = "SHAMAN_ENHANCEMENT_LEVELING",
+    class     = "SHAMAN",
+    spec      = "ENHANCEMENT",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/shaman/enhancement/dps-leveling-tips",
+    structureVerified = true,
+    positionsVerified = true,
+    orderVerified     = false,
+    verified          = false,
     title = { deDE = "Verstärkung (Leveling-Build)", enUS = "Enhancement (leveling build)" },
     menu  = { deDE = "Verstärkung – Leveling", enUS = "Enhancement – leveling" },
-    steps = {},
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Verstärkung: Nahkampf mit Sturmschlag, später Mana- und Elementar-Talente.",
+        enUS = "Wowhead's leveling pick for Enhancement: melee with Stormstrike, later mana and Elemental talents.",
+    },
+    distribution = { 18, 25, 8 },
+    phases = {
+        A = { deDE = "Phase A – Verstärkung (Questen)",       enUS = "Phase A – Enhancement (questing)" },
+        B = { deDE = "Phase B – Wiederherstellung (Mana)",    enUS = "Phase B – Restoration (mana)" },
+        C = { deDE = "Phase C – Elementar (Schocks & Blitze)", enUS = "Phase C – Elemental (shocks & lightning)" },
+    },
+    steps = {
+        { phase = "A", nodeID = 104753, tree = 2, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Thundering Strikes / Donnernde Stöße
+        { phase = "A", nodeID = 104755, tree = 2, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Mental Dexterity / Geistige Gewandtheit
+        { phase = "A", nodeID = 104756, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 2 }, -- Ancestral Knowledge / Wissen der Ahnen
+        { phase = "A", nodeID = 104749, tree = 2, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Shamanistic Focus / Schamanistischer Fokus
+        { phase = "A", nodeID = 104750, tree = 2, tier = 3, column = 1, maxRank = 3, ranks = 3 }, -- Elemental Weapons / Elementarwaffen
+        { phase = "A", nodeID = 104748, tree = 2, tier = 3, column = 4, maxRank = 3, ranks = 1 }, -- Anticipation / Vorahnung
+        { phase = "A", nodeID = 104752, tree = 2, tier = 4, column = 4, maxRank = 2, ranks = 1 }, -- Improved Ghost Wolf / Verbesserter Geisterwolf
+        { phase = "A", nodeID = 104743, tree = 2, tier = 4, column = 3, maxRank = 1, ranks = 1 }, -- Stormstrike / Sturmschlag
+        { phase = "A", nodeID = 104752, tree = 2, tier = 4, column = 4, maxRank = 2, ranks = 1 }, -- Improved Ghost Wolf / Verbesserter Geisterwolf
+        { phase = "A", nodeID = 104747, tree = 2, tier = 4, column = 2, maxRank = 5, ranks = 2 }, -- Flurry / Schlaghagel
+        { phase = "A", nodeID = 104742, tree = 2, tier = 5, column = 3, maxRank = 2, ranks = 2 }, -- Improved Stormstrike / Verbesserter Sturmschlag
+        { phase = "A", nodeID = 104744, tree = 2, tier = 5, column = 2, maxRank = 2, ranks = 2 }, -- Mental Quickness / Geistige Schnelligkeit
+        { phase = "A", nodeID = 104745, tree = 2, tier = 5, column = 1, maxRank = 1, ranks = 1 }, -- Spirit Weapons / Waffen der Geister
+        { phase = "B", nodeID = 104729, tree = 3, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Tidal Focus / Gezeitenfokus
+        { phase = "B", nodeID = 104734, tree = 3, tier = 2, column = 1, maxRank = 3, ranks = 3 }, -- Mindfulness / Achtsamkeit
+        { phase = "C", nodeID = 104772, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Concussion / Erschütterung
+        { phase = "C", nodeID = 104770, tree = 1, tier = 2, column = 4, maxRank = 3, ranks = 3 }, -- Call of Flame / Ruf der Flamme
+        { phase = "C", nodeID = 104769, tree = 1, tier = 2, column = 1, maxRank = 3, ranks = 2 }, -- Elemental Devastation / Elementarverwüstung
+        { phase = "C", nodeID = 104768, tree = 1, tier = 3, column = 1, maxRank = 1, ranks = 1 }, -- Elemental Focus / Elementarfokus
+        { phase = "C", nodeID = 104769, tree = 1, tier = 2, column = 1, maxRank = 3, ranks = 1 }, -- Elemental Devastation / Elementarverwüstung
+        { phase = "C", nodeID = 104767, tree = 1, tier = 2, column = 2, maxRank = 5, ranks = 3 }, -- Reverberation / Nachklingen
+        { phase = "C", nodeID = 104764, tree = 1, tier = 4, column = 1, maxRank = 2, ranks = 2 }, -- Trial by Fire / Feuerprobe
+        { phase = "C", nodeID = 104762, tree = 1, tier = 4, column = 4, maxRank = 1, ranks = 1 }, -- Earthbound / Erdgebunden
+    },
+    notes = {},
 })
+
 -- Endgame-Builds bekommen buildType = "ENDGAME" und dieselbe Struktur.
