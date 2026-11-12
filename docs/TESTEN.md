@@ -296,3 +296,9 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 
 - `/ww build wahl` zeigt „Waffen", „Furor" und „Schutz (Tank) – Leveling".
 - Je `/ww build liste` mit der Wowhead-Liste vergleichen (35/16/0, 11/40/0, 0/19/32).
+
+## Version 0.31.0 – Heilig-Priester
+
+- `/ww build wahl` beim Priester zeigt jetzt auch „Heilig (Heal) – Leveling".
+- Endstand 16/35/0 nach Wowhead, die Reihenfolge ist ein Wegweiser-Vorschlag
+  (Wowhead gibt keine vor). `/ww build hinweise` sagt das auch im Spiel.

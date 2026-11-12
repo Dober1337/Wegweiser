@@ -1396,11 +1396,11 @@ table.insert(ns.TalentBuilds, {
 })
 
 -- ------------------------------------------------------------
--- HEXENMEISTER – Dämonologie (Quelle: allgemeine Übersicht, keine Leveling-Seite)
+-- HEXENMEISTER – Dämonologie (Leveling)
 -- QUELLE: Wowhead
---   https://www.wowhead.com/forever/guide/classes/warlock/demonology/overview-pve-dps
--- Leveling-Seite (noch nicht abgeglichen, ob dort derselbe Build steht):
 --   https://www.wowhead.com/forever/guide/classes/warlock/demonology/dps-leveling-tips
+-- (Liste + Grafik kamen zuerst mit dem Link zur Übersicht overview-pve-dps;
+--  laut Spieler ist es derselbe Build.)
 -- Reihenfolge laut Spieler (Liste + Grafik, 20/31/0).
 -- nodeID/Reihe/Spalte/maxRank aus dem Hexenmeister-Talentdump (2026-11-12),
 -- Zuordnung über die Position auf der Wowhead-Grafik.
@@ -1412,16 +1412,16 @@ table.insert(ns.TalentBuilds, {
     buildType = "LEVELING",
     variant   = "STANDARD",
     source    = "WOWHEAD",
-    sourceUrl = "https://www.wowhead.com/forever/guide/classes/warlock/demonology/overview-pve-dps",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/warlock/demonology/dps-leveling-tips",
     structureVerified = true,    -- alle Talente im Dump gefunden
     positionsVerified = false,
     orderVerified     = false,
     verified          = false,
-    title = { deDE = "Dämonologie (Build)", enUS = "Demonology (build)" },
+    title = { deDE = "Dämonologie (Leveling-Build)", enUS = "Demonology (leveling build)" },
     menu  = { deDE = "Dämonologie – Leveling", enUS = "Demonology – leveling" },
     summary = {
-        deDE = "Wowheads Dämonologie-Empfehlung: starker Begleiter bis Dämonischer Pakt, danach Gebrechen.",
-        enUS = "Wowhead's Demonology pick: strong pet up to Demonic Pact, then Affliction.",
+        deDE = "Wowheads Leveling-Empfehlung für Dämonologie: starker Begleiter bis Dämonischer Pakt, danach Gebrechen.",
+        enUS = "Wowhead's leveling pick for Demonology: strong pet up to Demonic Pact, then Affliction.",
     },
     distribution = { 20, 31, 0 },
     phases = {
@@ -1680,6 +1680,70 @@ table.insert(ns.TalentBuilds, {
         { phase = "B", nodeID = 105934, tree = 2, tier = 3, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 58: Blood Craze / Blutwahnsinn
     },
     notes = {},
+})
+
+-- ------------------------------------------------------------
+-- PRIESTER – Heilig, Heiler (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/priest/holy/healer-leveling-tips
+-- ENDSTAND (16/35/0) laut Wowhead-Grafik. Wowhead gibt für Heilig KEINE
+-- Punkte-Reihenfolge an. Die Reihenfolge unten ist ein VORSCHLAG von Wegweiser
+-- (auf Wunsch des Spielers): erst Schaden fürs Questen (Heiligspezialisierung,
+-- Göttlicher Furor), dann Heilung, Gebet der Besserung, zum Schluss Mana.
+-- Reihen-Voraussetzungen und Pfeile sind eingehalten (geprüft).
+-- nodeID/Reihe/Spalte/maxRank aus dem Priester-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "PRIEST_HOLY_LEVELING",
+    class     = "PRIEST",
+    spec      = "HOLY",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/priest/holy/healer-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Heilig – Heiler (Leveling-Build)", enUS = "Holy – healer (leveling build)" },
+    menu  = { deDE = "Heilig (Heal) – Leveling", enUS = "Holy (healer) – leveling" },
+    summary = {
+        deDE = "Endstand nach Wowhead, Reihenfolge von Wegweiser vorgeschlagen: erst Schaden fürs Questen, dann Heilung bis Gebet der Besserung, zum Schluss Mana aus Disziplin.",
+        enUS = "End result from Wowhead, order suggested by Wegweiser: damage for questing first, then healing up to Prayer of Mending, mana from Discipline last.",
+    },
+    distribution = { 16, 35, 0 },
+    phases = {
+        A = { deDE = "Phase A – Heilig-Schaden (Questen)", enUS = "Phase A – Holy damage (questing)" },
+        B = { deDE = "Phase B – Heilung", enUS = "Phase B – healing" },
+        C = { deDE = "Phase C – Disziplin (Mana)", enUS = "Phase C – Discipline (mana)" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105850, tree = 1, tier = 1, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 10: Wand Specialization / Zauberstab-Spezialisierung
+        { phase = "A", nodeID = 110855, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 12: Holy Specialization / Heiligspezialisierung
+        { phase = "A", nodeID = 105863, tree = 2, tier = 2, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 17: Divine Fury / Göttlicher Furor
+        { phase = "A", nodeID = 105862, tree = 2, tier = 3, column = 1, maxRank = 1, ranks = 1 }, -- Lvl 22: Holy Nova / Heilige Nova
+        { phase = "B", nodeID = 105860, tree = 2, tier = 3, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 23: Inspiration / Inspiration
+        { phase = "B", nodeID = 105866, tree = 2, tier = 1, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 26: Improved Renew / Verbesserte Erneuerung
+        { phase = "B", nodeID = 105859, tree = 2, tier = 4, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 29: Holy Reach / Heilige Reichweite
+        { phase = "B", nodeID = 105858, tree = 2, tier = 4, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 31: Improved Healing / Verbesserte Heilung
+        { phase = "B", nodeID = 105856, tree = 2, tier = 4, column = 4, maxRank = 1, ranks = 1 }, -- Lvl 34: Holy Bond / Heilige Bindung
+        { phase = "B", nodeID = 105853, tree = 2, tier = 5, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 35: Spiritual Guidance / Geistige Führung
+        { phase = "B", nodeID = 105852, tree = 2, tier = 6, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 40: Spiritual Healing / Spirituelle Heilung
+        { phase = "B", nodeID = 105855, tree = 2, tier = 5, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 43: Litany of Light / Litanei des Lichts
+        { phase = "B", nodeID = 105854, tree = 2, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 45: Spirit of Redemption / Geist der Erlösung
+        { phase = "B", nodeID = 105851, tree = 2, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 46: Prayer of Mending / Gebet der Besserung
+        { phase = "C", nodeID = 105849, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 47: Twin Disciplines / Zwillingsdisziplinen
+        { phase = "C", nodeID = 105837, tree = 1, tier = 2, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 52: Mental Strength / Mentale Stärke
+        { phase = "C", nodeID = 105844, tree = 1, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 57: Inner Focus / Innerer Fokus
+        { phase = "C", nodeID = 105843, tree = 1, tier = 3, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 58: Meditation / Meditation
+    },
+    notes = {
+        { deDE = "Wowhead gibt für Heilig nur den fertigen Baum vor, keine Reihenfolge. Die Reihenfolge ist ein Vorschlag von Wegweiser.",
+          enUS = "Wowhead only shows the finished tree for Holy, no order. The order is a suggestion by Wegweiser." },
+        { deDE = "Geist der Erlösung (Level 45) bringt beim Leveln wenig, ist aber Voraussetzung für Gebet der Besserung.",
+          enUS = "Spirit of Redemption (level 45) does little while leveling but is required for Prayer of Mending." },
+    },
 })
 
 -- Endgame-Builds bekommen buildType = "ENDGAME" und dieselbe Struktur.
