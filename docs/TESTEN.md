@@ -330,3 +330,13 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Zone mit unbekanntem Flugpunkt betreten: gelber Hinweis.
 - Ruhestein-Tooltip: keine eigene Wegweiser-Zeile mehr (Blizzard zeigt den Ort selbst).
 - `/ww flugdebug`: Zone, Kontinent, gefundene Flugpunkte, Zahl der gespeicherten bekannten.
+
+## Version 0.35.0 – Sammel-Infos im Tooltip
+
+- Maus über ein Kraut / Erzvorkommen in der Welt: blaue Zeile „Wegweiser: Kräuterkunde ab …
+  · gelb · grün · grau" und darunter deine Fertigkeit mit Farbe.
+  Ohne den Beruf: „Du hast … nicht gelernt."
+- Mit Kürschnerei: Maus über ein Tier (auch lebend): „Kürschnerei ab etwa X (du: Y)",
+  grün = geht, rot = zu niedrig. Stimmt das mit dem Spiel überein?
+- Kräuter über Skill 205 zeigen nur „ab X" (Quelle nennt dort keine Farben).
+- Abschaltbar: /ww config → „Sammel-Infos im Tooltip".

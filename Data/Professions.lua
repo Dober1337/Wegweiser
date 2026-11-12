@@ -146,7 +146,32 @@ ns.GatherNodes = {
         { de = "Khadgars Schnurrbart", en = "Khadgar's Whisker", min = 185, yellow = 210, green = 235, grey = 285 },
         { de = "Winterbiss",          en = "Wintersbite",        min = 195, yellow = 220, green = 245, grey = 295 },
         { de = "Feuerblüte",          en = "Firebloom",          min = 205, yellow = 230, green = 255, grey = 305 },
+        -- Ab hier nennt goldgoblin ("Weitere Classic-Kräuter ab Skill 210") nur den
+        -- Mindest-Skill, keine Farben. Namen genau wie in der Quelle.
+        { de = "Lila Lotus",          en = "Purple Lotus",       min = 210 },
+        { de = "Arthas’ Tränen",      en = "Arthas' Tears",      min = 220 },
+        { de = "Sonnengras",          en = "Sungrass",           min = 230 },
+        { de = "Blindkraut",          en = "Blindweed",          min = 235 },
+        { de = "Geisterpilz",         en = "Ghost Mushroom",     min = 245 },
+        { de = "Gromsblut",           en = "Gromsblood",         min = 250 },
+        { de = "Goldener Sansam",     en = "Golden Sansam",      min = 260 },
+        { de = "Traumblatt",          en = "Dreamfoil",          min = 270 },
+        { de = "Bergsilberweisling",  en = "Mountain Silversage", min = 280 },
+        { de = "Pestblüte",           en = "Plaguebloom",        min = 285 },
+        { de = "Eiskappe",            en = "Icecap",             min = 290 },
+        { de = "Schwarzer Lotus",     en = "Black Lotus",        min = 300 },
     },
+}
+
+-- Kürschnerei: Faustformel aus der goldgoblin-Forever-Seite
+-- https://classic.goldgoblin.net/berufe/kuerschnerei-forever/ (2026-11-12):
+--   "Bis Skill 100: höchstens etwa Skill ÷ 10 + 10 als Gegnerstufe; ab 100: Skill ÷ 5."
+-- Umgekehrt (benötigter Skill für Gegnerstufe L):
+--   L <= 10 -> 1,  L <= 20 -> (L - 10) * 10,  sonst L * 5
+ns.SkinningRule = {
+    src = "https://classic.goldgoblin.net/berufe/kuerschnerei-forever/",
+    verified = false,
+    approx = true,   -- "Faustformel" laut Quelle
 }
 
 -- Horde-Lehrer mit Wegpunkt (nur Einträge MIT Koordinaten aus der Quelle).

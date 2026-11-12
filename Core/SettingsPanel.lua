@@ -56,6 +56,7 @@ function ns:OnDatabaseReady()
     addCheckbox("profRouteBox",    L.OPT_PROFBOX,   L.OPT_PROFBOX_TT)
 
     addCheckbox("travelHints",     L.OPT_TRAVEL,    L.OPT_TRAVEL_TT)
+    addCheckbox("gatherTooltip",   L.OPT_GATHERTT,  L.OPT_GATHERTT_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.
 

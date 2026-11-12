@@ -89,7 +89,12 @@ function PH:GatherAdvice(p)
     local orange, yellow, green, nextNode = {}, {}, {}, nil
     for _, n in ipairs(nodes) do
         local name = (ns.locale == "deDE") and n.de or n.en
-        if p.rank >= n.min and p.rank < n.yellow then
+        if not n.yellow then
+            -- Nur Mindest-Skill bekannt (keine Farben in der Quelle)
+            if p.rank < n.min and (not nextNode or n.min < nextNode.min) then
+                nextNode = { name = name, min = n.min }
+            end
+        elseif p.rank >= n.min and p.rank < n.yellow then
             table.insert(orange, name)
         elseif p.rank >= n.yellow and p.rank < n.green then
             table.insert(yellow, name)
