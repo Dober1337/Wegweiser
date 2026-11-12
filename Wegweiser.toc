@@ -3,7 +3,7 @@
 ## Notes: Beginner helper for WoW Forever: quest advisor, zone guide with level ranges on the map, talent guide and level-up tips.
 ## Notes-deDE: Einsteiger-Helfer für WoW Forever: Quest-Berater, Zonen-Wegweiser mit Levelbereichen auf der Karte, Talent-Leitfaden und Level-Up-Tipps.
 ## Author: Wegweiser-Team
-## Version: 0.27.0
+## Version: 0.28.0
 ## SavedVariables: WegweiserDB
 ## IconTexture: Interface\Icons\INV_Misc_Map_01
 ## Category: Quests

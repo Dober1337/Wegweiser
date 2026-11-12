@@ -281,3 +281,8 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - `/ww build wahl` zeigt „Meucheln – Leveling".
 - `/ww build liste` mit der Wowhead-Liste vergleichen (21/30/0).
 - Hat der Schurke schon anders verteilt (z. B. Kampf zuerst), meldet der Leitfaden das als Abweichung.
+
+## Version 0.28.0 – Schurke: Kampf und Feingefühl
+
+- `/ww build wahl` zeigt „Meucheln", „Kampf" und „Feingefühl – Leveling".
+- Je `/ww build liste` mit der Wowhead-Liste vergleichen (16/35/0, 2/27/22).
