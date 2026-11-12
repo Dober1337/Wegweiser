@@ -2,21 +2,22 @@
 -- Modules/Travel.lua
 -- Reise-Hilfen für Einsteiger:
 --   * Flugpunkte: Hinweis beim Betreten einer Zone, wenn es dort einen
---     Flugpunkt deiner Fraktion gibt, den du noch nicht entdeckt hast.
---     /ww flug zeigt sie und setzt einen Wegpunkt zum nächsten.
---   * Ruhestein: /ww ruhestein zeigt, wo er gebunden ist; dieselbe Zeile
---     steht im Tooltip des Ruhesteins; Bestätigung nach dem Binden.
+--     Flugpunkt deiner Fraktion gibt, den du noch nicht kennst.
+--     /ww flug zeigt sie und setzt einen Wegpunkt zum nächsten neuen.
+--   * Ruhestein: /ww ruhestein zeigt, wo er gebunden ist; Bestätigung nach
+--     dem Binden. (Den Ort im Tooltip zeigt Blizzard schon selbst.)
 --
--- Keine eigenen Spieldaten: Flugpunkte (Name, Position, entdeckt ja/nein,
--- Fraktion) liefert das Spiel selbst über C_TaxiMap.GetTaxiNodesForMap –
--- dieselbe Quelle, die Blizzards Weltkarte für die Flugpunkt-Symbole nutzt.
--- Geprüft im Forever-UI-Quellcode (Branch "forever", Nov 2026):
---   C_TaxiMap.GetTaxiNodesForMap / ShouldMapShowTaxiNodes,
---   Enum.FlightPathFaction, MapTaxiNodeInfo.isUndiscovered,
---   GetBindLocation, C_Container.PlayerHasHearthstone, HEARTHSTONE_BOUND,
---   TooltipDataProcessor.AddTooltipPostCall.
--- OB Forever die Flugpunkte für die alten Zonen tatsächlich befüllt, ist
--- noch NICHT im Spiel bestätigt -> /ww flug zeigt es (sonst Hinweis).
+-- Keine eigenen Spieldaten. Im Spiel geprüft (Forever, Nov 2026):
+--   * C_TaxiMap.GetTaxiNodesForMap(Karte) liefert ALLE Flugpunkte des
+--     Kontinents (Name, Position, Fraktion 0/1/2), aber "isUndiscovered" ist
+--     immer false -> taugt nicht für "kenne ich schon".
+--   * Beim Flugmeister liefert die Flugkarte (NumTaxiNodes / TaxiNodeName /
+--     TaxiNodeGetType) alle Flugpunkte der eigenen Fraktion: CURRENT und
+--     REACHABLE = bekannt, DISTANT = noch nicht entdeckt.
+--   -> Wegweiser merkt sich beim Flugmeister pro Charakter die bekannten
+--      Flugpunkte und gleicht sie über den Namen ab.
+-- Welche Flugpunkte in der aktuellen Zone liegen, ergibt
+-- C_Map.GetMapInfoAtPosition auf der Kontinentkarte.
 -- ============================================================
 
 local _, ns = ...
@@ -35,6 +36,14 @@ local function isSecret(v)
     return issecretvalue and issecretvalue(v)
 end
 
+-- Gespeicherte Daten pro Charakter (bleibt lokal in der SavedVariables-Datei)
+local function charData()
+    local key = (UnitName("player") or "?") .. "-" .. (GetRealmName() or "?")
+    ns.db.chars = ns.db.chars or {}
+    ns.db.chars[key] = ns.db.chars[key] or {}
+    return ns.db.chars[key]
+end
+
 -- ------------------------------------------------------------
 -- Flugpunkte
 -- ------------------------------------------------------------
@@ -49,22 +58,82 @@ local function nodeForMyFaction(node)
     return true
 end
 
--- Liefert: alle Flugpunkte der Zone (eigene Fraktion), die unentdeckten,
--- oder nil + Fehlergrund
+-- Alte, nicht mehr genutzte Einträge (im Spiel z. B. "zzOLDPowderfuse Port")
+local function isJunk(node)
+    return not node.name or node.name:find("^zz") ~= nil
+end
+
+-- Karte auf Zonen-Ebene bringen (Stadtkarten/Unterkarten -> Zone)
+local function zoneOf(info)
+    local ZONE = Enum and Enum.UIMapType and Enum.UIMapType.Zone or 3
+    while info and info.mapType and info.mapType > ZONE and info.parentMapID and info.parentMapID > 0 do
+        info = C_Map.GetMapInfo(info.parentMapID)
+    end
+    return info
+end
+
+local function continentOf(mapID)
+    local CONT = Enum and Enum.UIMapType and Enum.UIMapType.Continent or 2
+    local info = C_Map.GetMapInfo(mapID)
+    while info do
+        if info.mapType == CONT then return info.mapID end
+        if not info.parentMapID or info.parentMapID == 0 then return nil end
+        info = C_Map.GetMapInfo(info.parentMapID)
+    end
+end
+
+-- Flugpunkte der aktuellen Zone (eigene Fraktion), Positionen auf der Zonenkarte.
+-- Rückgabe: Liste oder nil + Grund
 function Travel:GetZoneNodes(mapID)
-    if not (C_TaxiMap and C_TaxiMap.GetTaxiNodesForMap) then return nil, "NO_API" end
-    -- Hinweis: ShouldMapShowTaxiNodes meldet in Forever für Das Brachland "false"
-    -- (Weltkarte zeigt dort keine Flugpunkte). Wir fragen trotzdem direkt ab.
-    local ok, nodes = pcall(C_TaxiMap.GetTaxiNodesForMap, mapID)
-    if not ok or type(nodes) ~= "table" or #nodes == 0 then return nil, "NO_DATA" end
-    local mine, undiscovered = {}, {}
-    for _, node in ipairs(nodes) do
-        if nodeForMyFaction(node) then
-            table.insert(mine, node)
-            if node.isUndiscovered then table.insert(undiscovered, node) end
+    if not (C_TaxiMap and C_TaxiMap.GetTaxiNodesForMap and C_Map.GetMapInfoAtPosition) then
+        return nil, "NO_API"
+    end
+    local zoneInfo = zoneOf(C_Map.GetMapInfo(mapID))
+    local continent = continentOf(mapID)
+    if not zoneInfo or not continent then return nil, "NO_MAP" end
+
+    local ok, contNodes = pcall(C_TaxiMap.GetTaxiNodesForMap, continent)
+    if not ok or type(contNodes) ~= "table" or #contNodes == 0 then return nil, "NO_DATA" end
+    local ok2, zoneNodes = pcall(C_TaxiMap.GetTaxiNodesForMap, zoneInfo.mapID)
+    local zonePos = {}
+    if ok2 and type(zoneNodes) == "table" then
+        for _, node in ipairs(zoneNodes) do zonePos[node.nodeID] = node.position end
+    end
+
+    local result = {}
+    for _, node in ipairs(contNodes) do
+        if nodeForMyFaction(node) and not isJunk(node) then
+            local cx, cy = node.position:GetXY()
+            local at = zoneOf(C_Map.GetMapInfoAtPosition(continent, cx, cy))
+            local pos = zonePos[node.nodeID]
+            if at and at.mapID == zoneInfo.mapID and pos then
+                table.insert(result, { name = node.name, position = pos, nodeID = node.nodeID })
+            end
         end
     end
-    return mine, undiscovered
+    return result, zoneInfo
+end
+
+-- Beim Flugmeister: bekannte Flugpunkte merken (CURRENT/REACHABLE)
+local function rememberFlightMaster()
+    if not (NumTaxiNodes and TaxiNodeName and TaxiNodeGetType) then return end
+    local known, count = {}, 0
+    for i = 1, NumTaxiNodes() do
+        local kind = TaxiNodeGetType(i)
+        if kind == "CURRENT" or kind == "REACHABLE" then
+            known[TaxiNodeName(i)] = true
+            count = count + 1
+        end
+    end
+    if count > 0 then
+        local data = charData()
+        data.knownFlight = known
+        data.knownFlightDate = date("%Y-%m-%d %H:%M")
+    end
+end
+
+local function knownSet()
+    return charData().knownFlight
 end
 
 local function playerPos(mapID)
@@ -112,89 +181,79 @@ function Travel:FlightCommand(rest)
     end
     local mapID = C_Map.GetBestMapForUnit("player")
     if not mapID then ns:Print(L.ZG_NO_MAP) return end
-    local info = C_Map.GetMapInfo(mapID)
-    local zone = info and info.name or ("#" .. mapID)
 
-    local mine, undiscovered = self:GetZoneNodes(mapID)
-    if not mine then
-        ns:Print(L.TRAVEL_FP_NODATA, zone, tostring(undiscovered))
+    local nodes, zoneInfo = self:GetZoneNodes(mapID)
+    if not nodes then
+        ns:Print(L.TRAVEL_FP_NODATA, tostring(zoneInfo))
         return
     end
-    if #mine == 0 then
+    local zone = zoneInfo.name or ("#" .. zoneInfo.mapID)
+    if #nodes == 0 then
         ns:Print(L.TRAVEL_FP_NONE, zone)
         return
     end
+    local known = knownSet()
     ns:Print(L.TRAVEL_FP_HEADER, zone)
-    for _, node in ipairs(mine) do
+    local new = {}
+    for _, node in ipairs(nodes) do
         local x, y = coords(node)
-        ns:Print("   %s %s (%.0f, %.0f)", node.isUndiscovered and L.TRAVEL_FP_NEW or L.TRAVEL_FP_KNOWN, node.name, x, y)
+        local label
+        if not known then label = L.TRAVEL_FP_UNSURE
+        elseif known[node.name] then label = L.TRAVEL_FP_KNOWN
+        else label = L.TRAVEL_FP_NEW; table.insert(new, node) end
+        ns:Print("   %s %s (%.0f, %.0f)", label, node.name, x, y)
     end
-    if #undiscovered == 0 then
+    if not known then
+        ns:Print(L.TRAVEL_FP_ASKMASTER)
+        return
+    end
+    if #new == 0 then
         ns:Print(L.TRAVEL_FP_ALLKNOWN)
         return
     end
-    local target = nearest(mapID, undiscovered)
+    local target = nearest(zoneInfo.mapID, new)
     local x, y = coords(target)
-    if setWaypoint(mapID, target) then
+    if setWaypoint(zoneInfo.mapID, target) then
         ns:Print(L.TRAVEL_FP_WAY, target.name, x, y)
     else
         ns:Print(L.TRAVEL_FP_WAYTEXT, target.name, x, y)
     end
 end
 
--- /ww flugdebug – was liefert das Spiel? (Zone, übergeordnete Karten, Flugmeister)
+-- /ww flugdebug – was liefert das Spiel? (für die Entwicklung)
 function Travel:Debug()
     local mapID = C_Map.GetBestMapForUnit("player")
-    local probe = { date = date("%Y-%m-%d %H:%M"), maps = {} }
-    local id = mapID
-    while id and id > 0 do
-        local info = C_Map.GetMapInfo(id)
-        local show = C_TaxiMap.ShouldMapShowTaxiNodes and C_TaxiMap.ShouldMapShowTaxiNodes(id)
-        local ok, nodes = pcall(C_TaxiMap.GetTaxiNodesForMap, id)
-        local n, und = 0, 0
-        local list = {}
-        if ok and type(nodes) == "table" then
-            for _, node in ipairs(nodes) do
-                n = n + 1
-                if node.isUndiscovered then und = und + 1 end
-                local x, y = node.position:GetXY()
-                table.insert(list, { name = node.name, faction = node.faction, undiscovered = node.isUndiscovered,
-                                     x = math.floor(x * 1000) / 10, y = math.floor(y * 1000) / 10 })
-            end
-        end
-        ns:Print("Karte %d (%s): show=%s, Flugpunkte=%d, davon unentdeckt=%d",
-            id, info and info.name or "?", tostring(show), n, und)
-        table.insert(probe.maps, { mapID = id, name = info and info.name, show = show, nodes = list })
-        id = info and info.parentMapID
+    if not mapID then ns:Print(L.ZG_NO_MAP) return end
+    local nodes, zoneInfo = self:GetZoneNodes(mapID)
+    ns:Print("Karte %d, Zone: %s, Kontinent: %s", mapID,
+        type(zoneInfo) == "table" and (zoneInfo.name .. " #" .. zoneInfo.mapID) or tostring(zoneInfo),
+        tostring(continentOf(mapID)))
+    for _, node in ipairs(nodes or {}) do
+        local x, y = coords(node)
+        ns:Print("   %s (%.1f, %.1f) nodeID %d", node.name, x, y, node.nodeID)
     end
-    ns.db.taxiProbe = probe
-    ns:Print("Gespeichert in WegweiserDB.taxiProbe (nach /reload in der SavedVariables-Datei).")
-end
-
--- Beim Flugmeister: was meldet die Flugkarte? (für die Entwicklung gespeichert)
--- Forevers Flugkarte (Blizzard_UIPanels_Game/Shared/TaxiFrame.lua) nutzt die
--- klassischen Funktionen NumTaxiNodes / TaxiNodeName / TaxiNodeGetType.
-local function probeFlightMaster()
-    if not (NumTaxiNodes and TaxiNodeName and TaxiNodeGetType) then return end
-    local list = {}
-    for i = 1, NumTaxiNodes() do
-        table.insert(list, { name = TaxiNodeName(i), type = TaxiNodeGetType(i) })
-    end
-    ns.db.taxiMasterProbe = { date = date("%Y-%m-%d %H:%M"), mapID = C_Map.GetBestMapForUnit("player"), nodes = list }
+    local data = charData()
+    local n = 0
+    for _ in pairs(data.knownFlight or {}) do n = n + 1 end
+    ns:Print("Bekannte Flugpunkte gespeichert: %d (%s)", n, data.knownFlightDate or "noch nie beim Flugmeister")
 end
 
 -- Hinweis beim Betreten einer Zone (einmal pro Zone und Sitzung)
 function Travel:ZoneHint()
     if not enabled() then return end
     local mapID = C_Map.GetBestMapForUnit("player")
-    if not mapID or hintedZones[mapID] then return end
-    local mine, undiscovered = self:GetZoneNodes(mapID)
-    if not mine then return end
-    hintedZones[mapID] = true
-    if #undiscovered == 0 then return end
+    if not mapID then return end
+    local nodes, zoneInfo = self:GetZoneNodes(mapID)
+    if not nodes or hintedZones[zoneInfo.mapID] then return end
+    hintedZones[zoneInfo.mapID] = true
+    local known = knownSet()
+    if not known then return end   -- ohne Flugmeister-Besuch nichts behaupten
     local names = {}
-    for _, node in ipairs(undiscovered) do table.insert(names, node.name) end
-    ns:Notify(L.TRAVEL_FP_HINT, table.concat(names, ", "))
+    for _, node in ipairs(nodes) do
+        if not known[node.name] then table.insert(names, node.name) end
+    end
+    if #names == 0 then return end
+    ns:Notify(L.TRAVEL_FP_HINT, table.concat(names, "; "))
     ns:Print("   " .. L.TRAVEL_FP_HINT2)
 end
 
@@ -225,21 +284,6 @@ function Travel:HearthCommand()
     ns:Print("   " .. L.TRAVEL_HS_TIP)
 end
 
-local function hookTooltip()
-    if not (TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall
-            and Enum and Enum.TooltipDataType and Enum.TooltipDataType.Item) then
-        return
-    end
-    TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, function(tooltip, data)
-        if not enabled() or not data or isSecret(data.id) then return end
-        if not HEARTHSTONE_ITEM_ID or data.id ~= HEARTHSTONE_ITEM_ID then return end
-        local where = bindLocation()
-        if where then
-            tooltip:AddLine(string.format(L.TRAVEL_HS_TOOLTIP, where), 0.4, 0.8, 1.0)
-        end
-    end)
-end
-
 function Travel:OnInitialize()
     ns:RegisterEvent("ZONE_CHANGED_NEW_AREA", function()
         C_Timer.After(4, function()
@@ -252,7 +296,11 @@ function Travel:OnInitialize()
         end)
     end)
     ns:RegisterEvent("TAXIMAP_OPENED", function()
-        C_Timer.After(0.2, probeFlightMaster)
+        C_Timer.After(0.2, function()
+            rememberFlightMaster()
+            -- Nach dem Entdecken eines neuen Flugpunkts darf die Zone neu gemeldet werden
+            wipe(hintedZones)
+        end)
     end)
     ns:RegisterEvent("HEARTHSTONE_BOUND", function()
         if not enabled() then return end
@@ -261,5 +309,4 @@ function Travel:OnInitialize()
             if where then ns:Notify(L.TRAVEL_HS_NOW, where) end
         end)
     end)
-    hookTooltip()
 end

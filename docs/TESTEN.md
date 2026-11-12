@@ -320,3 +320,13 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - `/ww ruhestein`: zeigt den Ort. Maus über den Ruhestein: blaue Zeile „Wegweiser: gebunden an …".
 - Beim Gastwirt neu binden: Bestätigung „Ruhestein jetzt gebunden an …".
 - Abschaltbar: /ww config → „Flugpunkte und Ruhestein".
+
+## Version 0.34.0 – Flugpunkte über den Flugmeister
+
+- Erst `/ww flug` OHNE vorherigen Flugmeister-Besuch: Flugpunkte mit „?" und Bitte,
+  einen Flugmeister anzusprechen.
+- Flugmeister ansprechen (Flugkarte öffnen), dann `/ww flug`: „bekannt"/„neu" muss stimmen.
+  Im Brachland erwartet: Crossroads, Camp Taurajo, Ratchet.
+- Zone mit unbekanntem Flugpunkt betreten: gelber Hinweis.
+- Ruhestein-Tooltip: keine eigene Wegweiser-Zeile mehr (Blizzard zeigt den Ort selbst).
+- `/ww flugdebug`: Zone, Kontinent, gefundene Flugpunkte, Zahl der gespeicherten bekannten.
