@@ -1152,4 +1152,64 @@ table.insert(ns.TalentBuilds, {
     notes = {},
 })
 
+-- ------------------------------------------------------------
+-- SCHURKE – Meucheln (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/rogue/assassination/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 21/30/0).
+-- nodeID/Reihe/Spalte/maxRank aus dem Schurken-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "ROGUE_ASSASSINATION_LEVELING",
+    class     = "ROGUE",
+    spec      = "ASSASSINATION",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/rogue/assassination/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Meucheln (Leveling-Build)", enUS = "Assassination (leveling build)" },
+    menu  = { deDE = "Meucheln – Leveling", enUS = "Assassination – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Meucheln: Tücke, Kaltblütigkeit und Gifte bis Toxin, danach Kampf bis Blitzender Stahl.",
+        enUS = "Wowhead's leveling pick for Assassination: Malice, Cold Blood and poisons up to Venom, then Combat up to Flash of Steel.",
+    },
+    distribution = { 21, 30, 0 },
+    phases = {
+        A = { deDE = "Phase A – Meucheln", enUS = "Phase A – Assassination" },
+        B = { deDE = "Phase B – Kampf", enUS = "Phase B – Combat" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105741, tree = 2, tier = 1, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 10: Efficient Strikes / Effiziente Schläge
+        { phase = "A", nodeID = 105723, tree = 1, tier = 1, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 12: Remorseless Attacks / Gnadenlose Angriffe
+        { phase = "A", nodeID = 105722, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 14: Malice / Tücke
+        { phase = "A", nodeID = 105739, tree = 1, tier = 2, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 19: Improved Slice and Dice / Verbessertes Zerhäckseln
+        { phase = "A", nodeID = 105716, tree = 1, tier = 3, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 22: Lethality / Tödlichkeit
+        { phase = "A", nodeID = 105720, tree = 1, tier = 3, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 24: Vigor / Lebenskraft
+        { phase = "A", nodeID = 105718, tree = 1, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 26: Blood Splatter / Blutspritzer
+        { phase = "A", nodeID = 105715, tree = 1, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 27: Cold Blood / Kaltblütigkeit
+        { phase = "A", nodeID = 105713, tree = 1, tier = 4, column = 3, maxRank = 5, ranks = 4 }, -- Lvl 28: Improved Poisons / Verbesserte Gifte
+        { phase = "A", nodeID = 105712, tree = 1, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 32: Venom / Toxin
+        { phase = "B", nodeID = 105708, tree = 2, tier = 1, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 33: Coup de Grace / Gnadenstoß
+        { phase = "B", nodeID = 105738, tree = 2, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 36: Deflection / Abwehr
+        { phase = "B", nodeID = 105737, tree = 2, tier = 2, column = 3, maxRank = 3, ranks = 2 }, -- Lvl 39: Precision / Präzision
+        { phase = "B", nodeID = 105735, tree = 2, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 41: Riposte / Riposte
+        { phase = "B", nodeID = 105759, tree = 2, tier = 3, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 42: Composure / Gelassenheit
+        { phase = "B", nodeID = 105737, tree = 2, tier = 2, column = 3, maxRank = 3, ranks = 1 }, -- Lvl 44: Precision / Präzision
+        { phase = "B", nodeID = 105736, tree = 2, tier = 3, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 45: Endurance / Durchhaltevermögen
+        { phase = "B", nodeID = 105726, tree = 2, tier = 4, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 46: Weapon Expertise / Waffenexperte
+        { phase = "B", nodeID = 105730, tree = 2, tier = 4, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 48: Aggression / Aggression
+        { phase = "B", nodeID = 105728, tree = 2, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 51: Blade Flurry / Klingenwirbel
+        { phase = "B", nodeID = 113635, tree = 2, tier = 5, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 52: Dual Wield Specialization / Beidhändigkeitsspezialisierung
+        { phase = "B", nodeID = 108100, tree = 2, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 54: Flawless Execution / Perfekte Ausführung
+        { phase = "B", nodeID = 105727, tree = 2, tier = 5, column = 3, maxRank = 5, ranks = 1 }, -- Lvl 55: Hack and Slash / Niedermetzeln
+        { phase = "B", nodeID = 105740, tree = 2, tier = 6, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 56: Flash of Steel / Blitzender Stahl
+    },
+    notes = {},
+})
+
 -- Endgame-Builds bekommen buildType = "ENDGAME" und dieselbe Struktur.

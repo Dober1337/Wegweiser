@@ -275,3 +275,9 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - `/ww build wahl` zeigt „Schatten – Leveling" und „Disziplin (Heal) – Leveling".
 - Je `/ww build liste` mit der Wowhead-Liste vergleichen (16/3/32, 28/18/5).
 - Heilig folgt, sobald die Talent-Reihenfolge da ist.
+
+## Version 0.27.0 – Schurke: Meucheln
+
+- `/ww build wahl` zeigt „Meucheln – Leveling".
+- `/ww build liste` mit der Wowhead-Liste vergleichen (21/30/0).
+- Hat der Schurke schon anders verteilt (z. B. Kampf zuerst), meldet der Leitfaden das als Abweichung.
