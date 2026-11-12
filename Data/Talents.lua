@@ -1506,4 +1506,178 @@ table.insert(ns.TalentBuilds, {
     notes = {},
 })
 
+-- ------------------------------------------------------------
+-- KRIEGER – Waffen (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/warrior/arms/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 35/16/0).
+-- nodeID/Reihe/Spalte/maxRank aus dem Krieger-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "WARRIOR_ARMS_LEVELING",
+    class     = "WARRIOR",
+    spec      = "ARMS",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/warrior/arms/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Waffen (Leveling-Build)", enUS = "Arms (leveling build)" },
+    menu  = { deDE = "Waffen – Leveling", enUS = "Arms – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Waffen: Zweihänder mit Tiefe Wunden und Weitreichende Stöße bis Tödlicher Stoß, danach Furor.",
+        enUS = "Wowhead's leveling pick for Arms: two-hander with Deep Wounds and Sweeping Strikes up to Mortal Strike, then Fury.",
+    },
+    distribution = { 35, 16, 0 },
+    phases = {
+        A = { deDE = "Phase A – Waffen", enUS = "Phase A – Arms" },
+        B = { deDE = "Phase B – Furor", enUS = "Phase B – Fury" },
+        C = { deDE = "Phase C – restliche Waffen-Punkte", enUS = "Phase C – remaining Arms points" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105956, tree = 1, tier = 1, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 10: Improved Rend / Verbessertes Verwunden
+        { phase = "A", nodeID = 105957, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 2 }, -- Lvl 13: Deflection / Abwehr
+        { phase = "A", nodeID = 105952, tree = 1, tier = 2, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 15: Improved Overpower / Verbessertes Überwältigen
+        { phase = "A", nodeID = 105954, tree = 1, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 17: Improved Tactical Mastery / Verbesserter Taktiker
+        { phase = "A", nodeID = 105950, tree = 1, tier = 3, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 20: Deep Wounds / Tiefe Wunden
+        { phase = "A", nodeID = 105951, tree = 1, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 23: Anger Management / Aggressionskontrolle
+        { phase = "A", nodeID = 105955, tree = 1, tier = 2, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 24: Improved Charge / Verbesserter Sturmangriff
+        { phase = "A", nodeID = 105948, tree = 1, tier = 4, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 25: Two-Handed Weapon Specialization / Zweihandwaffen-Spezialisierung
+        { phase = "A", nodeID = 105947, tree = 1, tier = 4, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 28: Impale / Durchbohren
+        { phase = "A", nodeID = 110524, tree = 1, tier = 5, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 30: Bloodthrill / Rausch des Blutes
+        { phase = "A", nodeID = 105945, tree = 1, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 32: Sweeping Strikes / Weitreichende Stöße
+        { phase = "A", nodeID = 105944, tree = 1, tier = 5, column = 3, maxRank = 5, ranks = 2 }, -- Lvl 33: Weaponmaster / Waffenmeister
+        { phase = "A", nodeID = 110858, tree = 1, tier = 6, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 35: Improved Slam / Verbessertes Zerschmettern
+        { phase = "A", nodeID = 105944, tree = 1, tier = 5, column = 3, maxRank = 5, ranks = 3 }, -- Lvl 36: Weaponmaster / Waffenmeister
+        { phase = "A", nodeID = 110858, tree = 1, tier = 6, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 39: Improved Slam / Verbessertes Zerschmettern
+        { phase = "A", nodeID = 105941, tree = 1, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 40: Mortal Strike / Tödlicher Stoß
+        { phase = "B", nodeID = 105939, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 41: Cruelty / Grausamkeit
+        { phase = "B", nodeID = 110857, tree = 2, tier = 2, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 46: Lingering Rage / Schwelende Wut
+        { phase = "B", nodeID = 105931, tree = 2, tier = 3, column = 4, maxRank = 5, ranks = 3 }, -- Lvl 51: Enrage / Wutanfall
+        { phase = "B", nodeID = 105935, tree = 2, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 54: Piercing Howl / Durchdringendes Heulen
+        { phase = "B", nodeID = 105931, tree = 2, tier = 3, column = 4, maxRank = 5, ranks = 2 }, -- Lvl 55: Enrage / Wutanfall
+        { phase = "C", nodeID = 105955, tree = 1, tier = 2, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 57: Improved Charge / Verbesserter Sturmangriff
+        { phase = "C", nodeID = 105957, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 3 }, -- Lvl 58: Deflection / Abwehr
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- KRIEGER – Furor (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/warrior/fury/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 11/40/0).
+-- nodeID/Reihe/Spalte/maxRank aus dem Krieger-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "WARRIOR_FURY_LEVELING",
+    class     = "WARRIOR",
+    spec      = "FURY",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/warrior/fury/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Furor (Leveling-Build)", enUS = "Fury (leveling build)" },
+    menu  = { deDE = "Furor – Leveling", enUS = "Fury – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Furor: zwei Waffen mit Grausamkeit und Schlaghagel bis Blutdurst, danach Waffen.",
+        enUS = "Wowhead's leveling pick for Fury: dual wield with Cruelty and Flurry up to Bloodthirst, then Arms.",
+    },
+    distribution = { 11, 40, 0 },
+    phases = {
+        A = { deDE = "Phase A – Furor", enUS = "Phase A – Fury" },
+        B = { deDE = "Phase B – Waffen", enUS = "Phase B – Arms" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105939, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 10: Cruelty / Grausamkeit
+        { phase = "A", nodeID = 105937, tree = 2, tier = 2, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 15: Unbridled Wrath / Entfesselter Zorn
+        { phase = "A", nodeID = 105931, tree = 2, tier = 3, column = 4, maxRank = 5, ranks = 2 }, -- Lvl 20: Enrage / Wutanfall
+        { phase = "A", nodeID = 105934, tree = 2, tier = 3, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 22: Blood Craze / Blutwahnsinn
+        { phase = "A", nodeID = 113636, tree = 2, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 25: Reckless Swings / Tollkühne Schwünge
+        { phase = "A", nodeID = 105933, tree = 2, tier = 4, column = 1, maxRank = 5, ranks = 4 }, -- Lvl 26: Dual Wield Specialization / Beidhändigkeits-Spezialisierung
+        { phase = "A", nodeID = 105927, tree = 2, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 30: Death Wish / Todeswunsch
+        { phase = "A", nodeID = 113569, tree = 2, tier = 5, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 31: Gore Drinker / Blutgier
+        { phase = "A", nodeID = 105933, tree = 2, tier = 4, column = 1, maxRank = 5, ranks = 1 }, -- Lvl 33: Dual Wield Specialization / Beidhändigkeits-Spezialisierung
+        { phase = "A", nodeID = 105931, tree = 2, tier = 3, column = 4, maxRank = 5, ranks = 1 }, -- Lvl 34: Enrage / Wutanfall
+        { phase = "A", nodeID = 105928, tree = 2, tier = 6, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 35: Flurry / Schlaghagel
+        { phase = "A", nodeID = 105977, tree = 2, tier = 6, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 38: Improved Whirlwind / Verbesserter Wirbelwind
+        { phase = "A", nodeID = 105930, tree = 2, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 40: Bloodthirst / Blutdurst
+        { phase = "A", nodeID = 105931, tree = 2, tier = 3, column = 4, maxRank = 5, ranks = 2 }, -- Lvl 41: Enrage / Wutanfall
+        { phase = "A", nodeID = 105953, tree = 2, tier = 3, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 43: Furious Precision / Zornige Präzision
+        { phase = "B", nodeID = 105957, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 46: Deflection / Abwehr
+        { phase = "B", nodeID = 105932, tree = 2, tier = 4, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 51: Improved Execute / Verbessertes Hinrichten
+        { phase = "B", nodeID = 105978, tree = 2, tier = 5, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 53: Improved Berserker Rage / Verbesserte Berserkerwut
+        { phase = "B", nodeID = 105952, tree = 1, tier = 2, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 55: Improved Overpower / Verbessertes Überwältigen
+        { phase = "B", nodeID = 105954, tree = 1, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 57: Improved Tactical Mastery / Verbesserter Taktiker
+        { phase = "B", nodeID = 105951, tree = 1, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 60: Anger Management / Aggressionskontrolle
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- KRIEGER – Schutz, Tank (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/warrior/protection/tank-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 0/19/32).
+-- nodeID/Reihe/Spalte/maxRank aus dem Krieger-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "WARRIOR_PROTECTION_TANK_LEVELING",
+    class     = "WARRIOR",
+    spec      = "PROTECTION",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/warrior/protection/tank-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Schutz – Tank (Leveling-Build)", enUS = "Protection – tank (leveling build)" },
+    menu  = { deDE = "Schutz (Tank) – Leveling", enUS = "Protection (tank) – leveling" },
+    summary = {
+        deDE = "Wowheads Tank-Leveling-Empfehlung für Schutz: Schild-Spezialisierung bis Schildschlag, danach Furor.",
+        enUS = "Wowhead's tank leveling pick for Protection: Shield Specialization up to Shield Slam, then Fury.",
+    },
+    distribution = { 0, 19, 32 },
+    phases = {
+        A = { deDE = "Phase A – Schutz", enUS = "Phase A – Protection" },
+        B = { deDE = "Phase B – Furor", enUS = "Phase B – Fury" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105976, tree = 3, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 10: Shield Specialization / Schild-Spezialisierung
+        { phase = "A", nodeID = 105969, tree = 3, tier = 2, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 15: Improved Revenge / Verbesserte Rache
+        { phase = "A", nodeID = 105972, tree = 3, tier = 2, column = 4, maxRank = 3, ranks = 2 }, -- Lvl 18: Improved Thunder Clap / Verbesserter Donnerknall
+        { phase = "A", nodeID = 105971, tree = 3, tier = 3, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 20: Master of Defense / Meister der Verteidigung
+        { phase = "A", nodeID = 105972, tree = 3, tier = 2, column = 4, maxRank = 3, ranks = 1 }, -- Lvl 22: Improved Thunder Clap / Verbesserter Donnerknall
+        { phase = "A", nodeID = 105970, tree = 3, tier = 3, column = 1, maxRank = 1, ranks = 1 }, -- Lvl 23: Last Stand / Letztes Gefecht
+        { phase = "A", nodeID = 110856, tree = 3, tier = 3, column = 4, maxRank = 3, ranks = 1 }, -- Lvl 24: Defiance / Trotz
+        { phase = "A", nodeID = 105966, tree = 3, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 25: Vanguard / Frontkämpfer
+        { phase = "A", nodeID = 110856, tree = 3, tier = 3, column = 4, maxRank = 3, ranks = 2 }, -- Lvl 26: Defiance / Trotz
+        { phase = "A", nodeID = 105974, tree = 3, tier = 1, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 28: Improved Bloodrage / Verbesserter Blutrausch
+        { phase = "A", nodeID = 105965, tree = 3, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 30: Concussion Blow / Erschütternder Schlag
+        { phase = "A", nodeID = 105961, tree = 3, tier = 5, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 31: Focused Rage / Fokussierte Wut
+        { phase = "A", nodeID = 105964, tree = 3, tier = 5, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 34: Improved Shield Wall / Verbesserter Schildwall
+        { phase = "A", nodeID = 105962, tree = 3, tier = 6, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 35: Bastion / Bastion
+        { phase = "A", nodeID = 105959, tree = 3, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 40: Shield Slam / Schildschlag
+        { phase = "A", nodeID = 105964, tree = 3, tier = 5, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 41: Improved Shield Wall / Verbesserter Schildwall
+        { phase = "B", nodeID = 105939, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 42: Cruelty / Grausamkeit
+        { phase = "B", nodeID = 105938, tree = 2, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 47: Booming Voice / Donnernde Stimme
+        { phase = "B", nodeID = 105931, tree = 2, tier = 3, column = 4, maxRank = 5, ranks = 5 }, -- Lvl 52: Enrage / Wutanfall
+        { phase = "B", nodeID = 105935, tree = 2, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 57: Piercing Howl / Durchdringendes Heulen
+        { phase = "B", nodeID = 105934, tree = 2, tier = 3, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 58: Blood Craze / Blutwahnsinn
+    },
+    notes = {},
+})
+
 -- Endgame-Builds bekommen buildType = "ENDGAME" und dieselbe Struktur.

@@ -291,3 +291,8 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 
 - `/ww build wahl` zeigt „Gebrechen", „Dämonologie" und „Zerstörung – Leveling".
 - Je `/ww build liste` mit der Wowhead-Liste vergleichen (41/7/3, 20/31/0, 23/5/23).
+
+## Version 0.30.0 – Krieger: drei Builds
+
+- `/ww build wahl` zeigt „Waffen", „Furor" und „Schutz (Tank) – Leveling".
+- Je `/ww build liste` mit der Wowhead-Liste vergleichen (35/16/0, 11/40/0, 0/19/32).
