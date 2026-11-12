@@ -678,4 +678,184 @@ table.insert(ns.TalentBuilds, {
     notes = {},
 })
 
+-- ------------------------------------------------------------
+-- MAGIER – Arkan (Leveling)
+-- QUELLE: Wowhead:
+--   https://www.wowhead.com/forever/guide/classes/mage/arcane/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 36/12/3).
+-- nodeID/Reihe/Spalte/maxRank aus dem Magier-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik ("Verbrennung" gibt es zweimal).
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "MAGE_ARCANE_LEVELING",
+    class     = "MAGE",
+    spec      = "ARCANE",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/mage/arcane/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Arkan (Leveling-Build)", enUS = "Arcane (leveling build)" },
+    menu  = { deDE = "Arkan – Leveling", enUS = "Arcane – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Arkan: Arkane Geschosse und Arkanschlag bis Arkane Instabilität, dann Feuer-Grundtalente, zum Schluss Arkane Macht.",
+        enUS = "Wowhead's leveling pick for Arcane: Arcane Missiles and Arcane Blast up to Arcane Instability, then basic Fire talents, Arcane Power last.",
+    },
+    distribution = { 36, 12, 3 },
+    phases = {
+        A = { deDE = "Phase A – Arkan", enUS = "Phase A – Arcane" },
+        B = { deDE = "Phase B – Feuer", enUS = "Phase B – Fire" },
+        C = { deDE = "Phase C – Arkane Macht & Rest", enUS = "Phase C – Arcane Power & rest" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105815, tree = 1, tier = 1, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 10: Wand Specialization / Zauberstab-Spezialisierung
+        { phase = "A", nodeID = 105778, tree = 3, tier = 1, column = 3, maxRank = 3, ranks = 1 }, -- Lvl 12: Precision / Präzision
+        { phase = "A", nodeID = 105813, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 3 }, -- Lvl 13: Improved Channeling / Verbesserte Kanalisierung
+        { phase = "A", nodeID = 105809, tree = 1, tier = 2, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 16: Missile Barrage / Geschosssalve
+        { phase = "A", nodeID = 105812, tree = 1, tier = 2, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 18: Arcane Subtlety / Arkanes Feingefühl
+        { phase = "A", nodeID = 105813, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 1 }, -- Lvl 20: Improved Channeling / Verbesserte Kanalisierung
+        { phase = "A", nodeID = 105806, tree = 1, tier = 3, column = 4, maxRank = 1, ranks = 1 }, -- Lvl 21: Arcane Blast / Arkanschlag
+        { phase = "A", nodeID = 105813, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 1 }, -- Lvl 22: Improved Channeling / Verbesserte Kanalisierung
+        { phase = "A", nodeID = 105810, tree = 1, tier = 2, column = 3, maxRank = 5, ranks = 3 }, -- Lvl 23: Arcane Concentration / Arkane Konzentration
+        { phase = "A", nodeID = 113627, tree = 1, tier = 4, column = 4, maxRank = 1, ranks = 1 }, -- Lvl 26: Arcane Wrath / Arkaner Zorn
+        { phase = "A", nodeID = 105810, tree = 1, tier = 2, column = 3, maxRank = 5, ranks = 2 }, -- Lvl 27: Arcane Concentration / Arkane Konzentration
+        { phase = "A", nodeID = 105803, tree = 1, tier = 4, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 29: Arcane Meditation / Arkane Meditation
+        { phase = "A", nodeID = 105778, tree = 3, tier = 1, column = 3, maxRank = 3, ranks = 1 }, -- Lvl 32: Precision / Präzision
+        { phase = "A", nodeID = 105800, tree = 1, tier = 5, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 33: Arcane Mind / Arkaner Geist
+        { phase = "A", nodeID = 105801, tree = 1, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 38: Presence of Mind / Geistesgegenwart
+        { phase = "A", nodeID = 105807, tree = 1, tier = 3, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 39: Arcane Impact / Arkaner Einschlag
+        { phase = "A", nodeID = 105799, tree = 1, tier = 6, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 42: Arcane Instability / Arkane Instabilität
+        { phase = "B", nodeID = 105795, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 45: Accelerant / Beschleuniger
+        { phase = "B", nodeID = 105796, tree = 2, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 50: Incineration / Verbrennung
+        { phase = "C", nodeID = 105798, tree = 1, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 55: Arcane Power / Arkane Macht
+        { phase = "C", nodeID = 105778, tree = 3, tier = 1, column = 3, maxRank = 3, ranks = 1 }, -- Lvl 56: Precision / Präzision
+        { phase = "C", nodeID = 105808, tree = 1, tier = 3, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 57: Arcane Geometry / Arkane Geometrie
+        { phase = "C", nodeID = 105797, tree = 2, tier = 3, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 59: Improved Fire Blast / Verbesserter Feuerschlag
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- MAGIER – Feuer
+-- QUELLE: Wowhead:
+--   https://www.wowhead.com/forever/guide/classes/mage/fire/overview-pve-dps
+-- ACHTUNG: Quelle ist die allgemeine Feuer-Übersicht (PvE-DPS), keine eigene
+-- Leveling-Seite. Reihenfolge so, wie der Spieler sie geschickt hat.
+-- Reihenfolge laut Spieler (Liste + Grafik, 18/31/2).
+-- nodeID/Reihe/Spalte/maxRank aus dem Magier-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik ("Verbrennung" gibt es zweimal).
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "MAGE_FIRE_LEVELING",
+    class     = "MAGE",
+    spec      = "FIRE",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/mage/fire/overview-pve-dps",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Feuer (Build)", enUS = "Fire (build)" },
+    menu  = { deDE = "Feuer – Leveling", enUS = "Fire – leveling" },
+    summary = {
+        deDE = "Wowheads Feuer-Empfehlung: Feuer-Grundlagen und Pyroschlag, dann Arkan für Mana, danach Feuer bis Verbrennung.",
+        enUS = "Wowhead's Fire pick: Fire basics and Pyroblast, then Arcane for mana, then Fire up to Combustion.",
+    },
+    distribution = { 18, 31, 2 },
+    phases = {
+        A = { deDE = "Phase A – Feuer", enUS = "Phase A – Fire" },
+        B = { deDE = "Phase B – Arkan (Kanalisierung & Salve)", enUS = "Phase B – Arcane (channeling & barrage)" },
+        C = { deDE = "Phase C – Feuer bis Verbrennung", enUS = "Phase C – Fire up to Combustion" },
+        D = { deDE = "Phase D – Arkan & Präzision", enUS = "Phase D – Arcane & Precision" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105795, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 10: Accelerant / Beschleuniger
+        { phase = "A", nodeID = 105778, tree = 3, tier = 1, column = 3, maxRank = 3, ranks = 1 }, -- Lvl 15: Precision / Präzision
+        { phase = "A", nodeID = 105796, tree = 2, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 16: Incineration / Verbrennung
+        { phase = "A", nodeID = 105790, tree = 2, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 21: Pyroblast / Pyroschlag
+        { phase = "A", nodeID = 105797, tree = 2, tier = 3, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 22: Improved Fire Blast / Verbesserter Feuerschlag
+        { phase = "A", nodeID = 105794, tree = 2, tier = 2, column = 1, maxRank = 5, ranks = 2 }, -- Lvl 24: Ignite / Entzünden
+        { phase = "A", nodeID = 105786, tree = 2, tier = 4, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 26: Heating Up / Aufwärmen
+        { phase = "A", nodeID = 105794, tree = 2, tier = 2, column = 1, maxRank = 5, ranks = 3 }, -- Lvl 27: Ignite / Entzünden
+        { phase = "B", nodeID = 105813, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 30: Improved Channeling / Verbesserte Kanalisierung
+        { phase = "B", nodeID = 105809, tree = 1, tier = 2, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 35: Missile Barrage / Geschosssalve
+        { phase = "B", nodeID = 105812, tree = 1, tier = 2, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 37: Arcane Subtlety / Arkanes Feingefühl
+        { phase = "C", nodeID = 105793, tree = 2, tier = 2, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 39: Flame Throwing / Flammenwerfen
+        { phase = "C", nodeID = 105784, tree = 2, tier = 5, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 41: Critical Mass / Kritische Masse
+        { phase = "C", nodeID = 105789, tree = 2, tier = 3, column = 1, maxRank = 3, ranks = 1 }, -- Lvl 44: Burning Soul / Brennende Seele
+        { phase = "C", nodeID = 105782, tree = 2, tier = 6, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 45: Fire Power / Feuermacht
+        { phase = "C", nodeID = 105789, tree = 2, tier = 3, column = 1, maxRank = 3, ranks = 2 }, -- Lvl 48: Burning Soul / Brennende Seele
+        { phase = "C", nodeID = 105781, tree = 2, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 50: Combustion / Verbrennung
+        { phase = "D", nodeID = 105778, tree = 3, tier = 1, column = 3, maxRank = 3, ranks = 1 }, -- Lvl 51: Precision / Präzision
+        { phase = "D", nodeID = 105810, tree = 1, tier = 2, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 52: Arcane Concentration / Arkane Konzentration
+        { phase = "D", nodeID = 105806, tree = 1, tier = 3, column = 4, maxRank = 1, ranks = 1 }, -- Lvl 57: Arcane Blast / Arkanschlag
+        { phase = "D", nodeID = 105803, tree = 1, tier = 4, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 58: Arcane Meditation / Arkane Meditation
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- MAGIER – Frost (Leveling)
+-- QUELLE: Wowhead:
+--   https://www.wowhead.com/forever/guide/classes/mage/frost/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 7/0/44).
+-- nodeID/Reihe/Spalte/maxRank aus dem Magier-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik ("Verbrennung" gibt es zweimal).
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "MAGE_FROST_LEVELING",
+    class     = "MAGE",
+    spec      = "FROST",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/mage/frost/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Frost (Leveling-Build)", enUS = "Frost (leveling build)" },
+    menu  = { deDE = "Frost – Leveling", enUS = "Frost – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Frost: Frostblitz, Eislanze und Zertrümmern bis Eisbarriere, zum Schluss etwas Arkan.",
+        enUS = "Wowhead's leveling pick for Frost: Frostbolt, Ice Lance and Shatter up to Ice Barrier, a little Arcane last.",
+    },
+    distribution = { 7, 0, 44 },
+    phases = {
+        A = { deDE = "Phase A – Frost", enUS = "Phase A – Frost" },
+        B = { deDE = "Phase B – Arkan", enUS = "Phase B – Arcane" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105815, tree = 1, tier = 1, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 10: Wand Specialization / Zauberstab-Spezialisierung
+        { phase = "A", nodeID = 105779, tree = 3, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 12: Improved Frostbolt / Verbesserter Frostblitz
+        { phase = "A", nodeID = 105774, tree = 3, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 17: Frostbite / Erfrierung
+        { phase = "A", nodeID = 105778, tree = 3, tier = 1, column = 3, maxRank = 3, ranks = 2 }, -- Lvl 20: Precision / Präzision
+        { phase = "A", nodeID = 105767, tree = 3, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 22: Ice Lance / Eislanze
+        { phase = "A", nodeID = 105771, tree = 3, tier = 3, column = 2, maxRank = 3, ranks = 1 }, -- Lvl 23: Improved Blizzard / Verbesserter Blizzard
+        { phase = "A", nodeID = 105777, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 3 }, -- Lvl 24: Ice Shards / Eissplitter
+        { phase = "A", nodeID = 105768, tree = 3, tier = 4, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 27: Shatter / Zertrümmern
+        { phase = "A", nodeID = 105777, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 2 }, -- Lvl 30: Ice Shards / Eissplitter
+        { phase = "A", nodeID = 105764, tree = 3, tier = 5, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 32: Fingers of Frost / Eisige Finger
+        { phase = "A", nodeID = 105766, tree = 3, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 34: Cold Snap / Kälteeinbruch
+        { phase = "A", nodeID = 105765, tree = 3, tier = 5, column = 1, maxRank = 3, ranks = 2 }, -- Lvl 35: Improved Cone of Cold / Verbesserter Kältekegel
+        { phase = "A", nodeID = 105763, tree = 3, tier = 6, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 37: Winter's Chill / Winterkälte
+        { phase = "A", nodeID = 105762, tree = 3, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 42: Ice Barrier / Eisbarriere
+        { phase = "A", nodeID = 105769, tree = 3, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 43: Ice Block / Eisblock
+        { phase = "A", nodeID = 105765, tree = 3, tier = 5, column = 1, maxRank = 3, ranks = 1 }, -- Lvl 44: Improved Cone of Cold / Verbesserter Kältekegel
+        { phase = "A", nodeID = 105778, tree = 3, tier = 1, column = 3, maxRank = 3, ranks = 1 }, -- Lvl 45: Precision / Präzision
+        { phase = "A", nodeID = 105771, tree = 3, tier = 3, column = 2, maxRank = 3, ranks = 2 }, -- Lvl 46: Improved Blizzard / Verbesserter Blizzard
+        { phase = "A", nodeID = 105772, tree = 3, tier = 3, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 48: Frost Channeling / Frost-Kanalisierung
+        { phase = "A", nodeID = 105776, tree = 3, tier = 2, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 51: Permafrost / Dauerfrost
+        { phase = "A", nodeID = 105770, tree = 3, tier = 4, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 54: Arctic Reach / Arktische Reichweite
+        { phase = "B", nodeID = 105802, tree = 1, tier = 1, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 56: Arcane Resilience / Arkane Widerstandsfähigkeit
+        { phase = "B", nodeID = 105812, tree = 1, tier = 2, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 59: Arcane Subtlety / Arkanes Feingefühl
+    },
+    notes = {},
+})
+
 -- Endgame-Builds bekommen buildType = "ENDGAME" und dieselbe Struktur.

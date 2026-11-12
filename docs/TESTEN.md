@@ -255,3 +255,11 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Auch unter Level 10: `/ww build wahl` zeigt die Builds mit Nummer.
 - `/ww build wahl 2` wählt Build 2, danach zeigt `/ww build liste` dessen Reihenfolge
   mit den deutschen Talentnamen aus dem Spiel.
+
+## Version 0.24.0 – Magier: drei Builds
+
+- `/ww build wahl` zeigt „Arkan – Leveling", „Feuer – Leveling", „Frost – Leveling".
+- `/ww build wahl 1` bis `3`, jeweils `/ww build liste` mit der Wowhead-Liste vergleichen.
+- Ab Level 10 im Talentfenster: Rahmen mit den Wowhead-Bildern vergleichen
+  (36/12/3, 18/31/2, 7/0/44). Im Feuer-Baum gibt es zwei Talente „Verbrennung":
+  oben (Reihe 1, 5 Ränge) und ganz unten (Reihe 7, 1 Rang).
