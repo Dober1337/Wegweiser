@@ -216,6 +216,10 @@ end
 function Highlight:Refresh()
     refreshPending = false
     hideAll()
+    if self.buildDropdown then
+        self.buildDropdown:SetShown(isEnabled())
+        if self.buildDropdown.GenerateMenu then self.buildDropdown:GenerateMenu() end
+    end
     if self.toggleButton then
         self.toggleButton:SetShown(isEnabled())
         self.toggleButton:SetText(settings().talentShowFull and L.HL_BTN_HIDE or L.HL_BTN_SHOW)
@@ -401,9 +405,34 @@ local function setup()
     btn:SetShown(isEnabled())
     Highlight.toggleButton = btn
 
-    -- Roter Hinweis neben dem Knopf, falls der Build nicht zum Baum passt
+    -- Auswahl des Leveling-Builds (Blizzard-Menü "WowStyle1DropdownTemplate",
+    -- geprüft im Forever-UI-Quellcode, Blizzard_Menu)
+    local dd = CreateFrame("DropdownButton", nil, talentsFrame, "WowStyle1DropdownTemplate")
+    dd:SetPoint("LEFT", btn, "RIGHT", 8, 0)
+    dd:SetWidth(230)
+    dd:SetFrameLevel(talentsFrame:GetFrameLevel() + 1500)
+    dd:SetDefaultText(L.HL_CHOOSE_BUILD)
+    local guide = ns.modules.TalentGuide
+    dd:SetupMenu(function(_, root)
+        for _, b in ipairs(guide:GetClassBuilds()) do
+            local ready = not b.planned and #(b.steps or {}) > 0
+            local text = guide.Loc(b.menu or b.title) .. (ready and "" or (" " .. L.GUIDE_PLANNED))
+            local radio = root:CreateRadio(text,
+                function() return guide:GetBuild() == b end,
+                function()
+                    if ns:InCombat() then return end
+                    guide:SelectBuild(b.key)
+                    ns:Print(L.GUIDE_SELECTED, guide.Loc(b.title))
+                    Highlight:ScheduleRefresh()
+                end, b.key)
+            if not ready and radio.SetEnabled then radio:SetEnabled(false) end
+        end
+    end)
+    Highlight.buildDropdown = dd
+
+    -- Roter Hinweis neben der Auswahl, falls der Build nicht zum Baum passt
     local problem = btn:CreateFontString(nil, "OVERLAY", "GameFontRedSmall")
-    problem:SetPoint("LEFT", btn, "RIGHT", 8, 0)
+    problem:SetPoint("LEFT", dd, "RIGHT", 8, 0)
     problem:SetPoint("RIGHT", talentsFrame, "BOTTOM", -110, 0)
     problem:SetJustifyH("LEFT")
     problem:SetWordWrap(false)

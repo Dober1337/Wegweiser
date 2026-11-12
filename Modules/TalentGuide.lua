@@ -44,9 +44,28 @@ Guide.Loc = loc
 
 -- Liefert den Build für die eigene Klasse (oder nil).
 -- Später: Auswahl in den Einstellungen. Bis dahin: erster fertiger Leveling-Build.
+-- Alle Leveling-Builds der eigenen Klasse (auch die noch geplanten)
+function Guide:GetClassBuilds()
+    local _, classFile = UnitClass("player")
+    local list = {}
+    for _, build in ipairs(ns.TalentBuilds or {}) do
+        if build.class == classFile and build.buildType == "LEVELING" then table.insert(list, build) end
+    end
+    return list
+end
+
+-- Gewählten Build für die eigene Klasse setzen (pro Klasse gemerkt)
+function Guide:SelectBuild(key)
+    local _, classFile = UnitClass("player")
+    local s = settings()
+    s.talentBuildByClass = s.talentBuildByClass or {}
+    s.talentBuildByClass[classFile] = key
+end
+
 function Guide:GetBuild()
     local _, classFile = UnitClass("player")
-    local wanted = settings().talentBuild
+    local byClass = settings().talentBuildByClass
+    local wanted = (byClass and byClass[classFile]) or settings().talentBuild
     local fallback
     for _, build in ipairs(ns.TalentBuilds or {}) do
         if build.class == classFile and not build.planned and #(build.steps or {}) > 0 then
@@ -343,6 +362,18 @@ function Guide:PrintSummary()
         ns:Print("   " .. (staged >= progress.offPoints and L.GUIDE_UNDO_HINT or self:ResetHint()))
     end
     ns:Print(L.GUIDE_MORE)
+end
+
+-- /ww build wahl – verfügbare Builds der Klasse
+function Guide:PrintChoices()
+    local current = self:GetBuild()
+    ns:Print(L.GUIDE_CHOICES)
+    for _, b in ipairs(self:GetClassBuilds()) do
+        local ready = not b.planned and #(b.steps or {}) > 0
+        ns:Print("   %s%s%s", (current == b) and "|cff55ff55» " or "  ", loc(b.menu or b.title),
+            ready and "|r" or (" |cff999999" .. L.GUIDE_PLANNED .. "|r"))
+    end
+    ns:Print(L.GUIDE_CHOICES_HINT)
 end
 
 -- /ww build liste – alle Schritte mit Häkchen

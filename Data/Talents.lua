@@ -46,6 +46,7 @@ table.insert(ns.TalentBuilds, {
         deDE = "Heal-Reiter (Leveling-Build)",
         enUS = "Healer Rider (leveling build)",
     },
+    menu = { deDE = "Heal – Leveling-Hybrid", enUS = "Healer – leveling hybrid" },
     summary = {
         deDE = "Leveling-Hybrid: Questen + Dungeon-Heilen. Reiner Heil-Build folgt für Endgame.",
         enUS = "Leveling hybrid: questing + dungeon healing. A pure healing build for endgame will follow.",
@@ -218,6 +219,7 @@ table.insert(ns.TalentBuilds, {
     buildType = "LEVELING", variant = nil, source = nil, planned = true,
     structureVerified = false, orderVerified = false, verified = false,
     title = { deDE = "Elementar (Leveling-Build)", enUS = "Elemental (leveling build)" },
+    menu  = { deDE = "Elementar – Leveling", enUS = "Elemental – leveling" },
     steps = {},
 })
 table.insert(ns.TalentBuilds, {
@@ -225,6 +227,7 @@ table.insert(ns.TalentBuilds, {
     buildType = "LEVELING", variant = nil, source = nil, planned = true,
     structureVerified = false, orderVerified = false, verified = false,
     title = { deDE = "Verstärkung (Leveling-Build)", enUS = "Enhancement (leveling build)" },
+    menu  = { deDE = "Verstärkung – Leveling", enUS = "Enhancement – leveling" },
     steps = {},
 })
 -- Endgame-Builds bekommen buildType = "ENDGAME" und dieselbe Struktur.

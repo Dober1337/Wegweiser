@@ -293,3 +293,10 @@ L.HL_LEGEND_DONE        = "Green: done as planned"
 L.HL_LEGEND_LATER       = "Blue: later in the build (target rank above)"
 L.HL_LEGEND_OFF         = "Red: differs from the build"
 L.HL_PROBLEM            = "Build does not match the tree (/ww build):"
+
+-- Build-Auswahl
+L.HL_CHOOSE_BUILD       = "Choose leveling build"
+L.GUIDE_PLANNED         = "(coming soon)"
+L.GUIDE_SELECTED        = "Build chosen: %s"
+L.GUIDE_CHOICES         = "Leveling builds for your class:"
+L.GUIDE_CHOICES_HINT    = "Choose in the talent window (menu at the bottom left)."

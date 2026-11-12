@@ -293,3 +293,10 @@ L.HL_LEGEND_DONE        = "Grün: wie geplant verteilt"
 L.HL_LEGEND_LATER       = "Blau: später im Build (Ziel-Rang darüber)"
 L.HL_LEGEND_OFF         = "Rot: weicht vom Build ab"
 L.HL_PROBLEM            = "Build passt nicht zum Baum (/ww build):"
+
+-- Build-Auswahl
+L.HL_CHOOSE_BUILD       = "Leveling-Build wählen"
+L.GUIDE_PLANNED         = "(folgt)"
+L.GUIDE_SELECTED        = "Build gewählt: %s"
+L.GUIDE_CHOICES         = "Leveling-Builds für deine Klasse:"
+L.GUIDE_CHOICES_HINT    = "Auswahl im Talentfenster (Menü unten links)."
