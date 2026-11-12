@@ -60,11 +60,14 @@ local function showPoints()
     end)
 end
 
--- /ww build [liste|hinweise]
-local function buildCommand(arg)
+-- /ww build [liste|hinweise|wahl [Nummer]]
+local function buildCommand(arg, rest)
     local guide = ns.modules.TalentGuide
     ns:RunOutOfCombat(function()
         if arg == "wahl" or arg == "choose" then
+            -- "/ww build wahl 2" wählt den 2. Build (geht auch unter Level 10)
+            local number = tonumber((rest or ""):match("^%S+%s+(%d+)"))
+            if number then guide:SelectByIndex(number) end
             guide:PrintChoices()
         elseif arg == "zeigen" or arg == "show" then
             ns.modules.TalentHighlight:ToggleFull()

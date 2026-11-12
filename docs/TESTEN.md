@@ -249,3 +249,9 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
   „Bär (Tank) – Leveling", „Gleichgewicht – Leveling" und „Heal – Leveling".
 - Jeden Build einmal auswählen: keine rote Fehlermeldung.
 - „Ganzer Build" mit den Wowhead-Bildern vergleichen: 9/32/10, 0/34/17, 38/0/13, 23/0/28.
+
+## Version 0.23.1 – Build-Auswahl per Chat
+
+- Auch unter Level 10: `/ww build wahl` zeigt die Builds mit Nummer.
+- `/ww build wahl 2` wählt Build 2, danach zeigt `/ww build liste` dessen Reihenfolge
+  mit den deutschen Talentnamen aus dem Spiel.

@@ -62,6 +62,19 @@ function Guide:SelectBuild(key)
     s.talentBuildByClass[classFile] = key
 end
 
+-- Auswahl über die Nummer aus "/ww build wahl" (Reihenfolge wie im Menü)
+function Guide:SelectByIndex(number)
+    local build = self:GetClassBuilds()[number]
+    if not build then
+        ns:Print(L.GUIDE_CHOICE_INVALID, number)
+        return
+    end
+    self:SelectBuild(build.key)
+    if ns.modules.TalentHighlight and ns.modules.TalentHighlight.Refresh then
+        ns.modules.TalentHighlight:Refresh()
+    end
+end
+
 function Guide:GetBuild()
     local _, classFile = UnitClass("player")
     local byClass = settings().talentBuildByClass
@@ -368,9 +381,9 @@ end
 function Guide:PrintChoices()
     local current = self:GetBuild()
     ns:Print(L.GUIDE_CHOICES)
-    for _, b in ipairs(self:GetClassBuilds()) do
+    for i, b in ipairs(self:GetClassBuilds()) do
         local ready = not b.planned and #(b.steps or {}) > 0
-        ns:Print("   %s%s%s", (current == b) and "|cff55ff55» " or "  ", loc(b.menu or b.title),
+        ns:Print("   %s%d. %s%s", (current == b) and "|cff55ff55» " or "  ", i, loc(b.menu or b.title),
             ready and "|r" or (" |cff999999" .. L.GUIDE_PLANNED .. "|r"))
     end
     ns:Print(L.GUIDE_CHOICES_HINT)
