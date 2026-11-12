@@ -444,4 +444,238 @@ table.insert(ns.TalentBuilds, {
     notes = {},
 })
 
+-- ------------------------------------------------------------
+-- DRUIDE – Wilder Kampf, Katze (Leveling)
+-- QUELLE: Wowhead:
+--   https://www.wowhead.com/forever/guide/classes/druid/feral/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 9/32/10).
+-- nodeID/Reihe/Spalte/maxRank aus dem Druiden-Talentdump (2026-11-12).
+-- Englisch -> Deutsch über die Position im Baum zugeordnet (Wowhead-Grafik).
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "DRUID_FERAL_LEVELING",
+    class     = "DRUID",
+    spec      = "FERAL",
+    buildType = "LEVELING",
+    variant   = "CAT",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/druid/feral/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Wilder Kampf – Katze (Leveling-Build)", enUS = "Feral – Cat (leveling build)" },
+    menu  = { deDE = "Katze – Leveling", enUS = "Cat – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Wilder Kampf (Schaden): erst Katzen-Talente, dann Wiederherstellung, zum Schluss Gleichgewicht.",
+        enUS = "Wowhead's leveling pick for Feral damage: cat talents first, then Restoration, Balance last.",
+    },
+    distribution = { 9, 32, 10 },
+    phases = {
+        A = { deDE = "Phase A – Wilder Kampf", enUS = "Phase A – Feral Combat" },
+        B = { deDE = "Phase B – Wiederherstellung", enUS = "Phase B – Restoration" },
+        C = { deDE = "Phase C – Gleichgewicht", enUS = "Phase C – Balance" },
+    },
+    steps = {
+        { phase = "A", nodeID = 104938, tree = 2, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 10: Ferocity / Wildheit
+        { phase = "A", nodeID = 104939, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 3 }, -- Lvl 15: Furor / Ingrimm
+        { phase = "A", nodeID = 104943, tree = 2, tier = 2, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 18: Feral Swiftness / Schnelligkeit der Wildnis
+        { phase = "A", nodeID = 104944, tree = 2, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 20: Feral Charge / Wilde Attacke
+        { phase = "A", nodeID = 104948, tree = 2, tier = 3, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 21: Savage Fury / Ungezähmte Wut
+        { phase = "A", nodeID = 104946, tree = 2, tier = 3, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 23: Sharpened Claws / Geschärfte Klauen
+        { phase = "A", nodeID = 104951, tree = 2, tier = 4, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 25: Predatory Discipline / Disziplin des Raubtiers
+        { phase = "A", nodeID = 104947, tree = 2, tier = 4, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 26: Blood Frenzy / Blutraserei
+        { phase = "A", nodeID = 104949, tree = 2, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 28: Lacerate / Aufschlitzen
+        { phase = "A", nodeID = 104952, tree = 2, tier = 4, column = 1, maxRank = 3, ranks = 1 }, -- Lvl 29: Predatory Strikes / Raubtierschläge
+        { phase = "A", nodeID = 104955, tree = 2, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 30: Leader of the Pack / Rudelführer
+        { phase = "A", nodeID = 104950, tree = 2, tier = 5, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 31: Natural Instinct / Instinkt der Natur
+        { phase = "A", nodeID = 104952, tree = 2, tier = 4, column = 1, maxRank = 3, ranks = 2 }, -- Lvl 33: Predatory Strikes / Raubtierschläge
+        { phase = "A", nodeID = 104953, tree = 2, tier = 6, column = 1, maxRank = 5, ranks = 5 }, -- Lvl 35: Rend and Tear / Beißen und Reißen
+        { phase = "A", nodeID = 104956, tree = 2, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 40: Primal Bite / Urtümlicher Biss
+        { phase = "A", nodeID = 113563, tree = 2, tier = 7, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 41: Shifting Power / Machtverschiebung
+        { phase = "B", nodeID = 104958, tree = 3, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 42: Heart of the Wild / Herz der Wildnis
+        { phase = "B", nodeID = 104922, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 5 }, -- Lvl 47: Naturalist / Naturalist
+        { phase = "C", nodeID = 104924, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 52: Genesis / Genesis
+        { phase = "C", nodeID = 104929, tree = 1, tier = 2, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 57: Nature's Reach / Reichweite der Natur
+        { phase = "C", nodeID = 104927, tree = 1, tier = 2, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 59: Nature's Majesty / Erhabenheit der Natur
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- DRUIDE – Wilder Kampf, Bär/Tank (Leveling, "Open World Feral Reflection")
+-- QUELLE: Wowhead:
+--   https://www.wowhead.com/forever/guide/classes/druid/feral/tank-leveling-tips#open-world-feral-reflection
+-- Reihenfolge laut Spieler (Liste + Grafik, 0/34/17).
+-- nodeID/Reihe/Spalte/maxRank aus dem Druiden-Talentdump (2026-11-12).
+-- Englisch -> Deutsch über die Position im Baum zugeordnet (Wowhead-Grafik).
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "DRUID_FERAL_TANK_LEVELING",
+    class     = "DRUID",
+    spec      = "FERAL",
+    buildType = "LEVELING",
+    variant   = "BEAR",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/druid/feral/tank-leveling-tips#open-world-feral-reflection",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Wilder Kampf – Bär (Tank-Leveling-Build)", enUS = "Feral – Bear (tank leveling build)" },
+    menu  = { deDE = "Bär (Tank) – Leveling", enUS = "Bear (tank) – leveling" },
+    summary = {
+        deDE = "Wowheads Tank-Leveling-Empfehlung für Wilder Kampf: Bär und Katze, dann Wiederherstellung für Reflexion und Rasche Heilung.",
+        enUS = "Wowhead's tank leveling pick for Feral: bear and cat, then Restoration for Reflection and Swiftmend.",
+    },
+    distribution = { 0, 34, 17 },
+    phases = {
+        A = { deDE = "Phase A – Wilder Kampf", enUS = "Phase A – Feral Combat" },
+        B = { deDE = "Phase B – Wiederherstellung", enUS = "Phase B – Restoration" },
+        C = { deDE = "Phase C – restlicher Wilder Kampf", enUS = "Phase C – remaining Feral Combat" },
+    },
+    steps = {
+        { phase = "A", nodeID = 104938, tree = 2, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 10: Ferocity / Wildheit
+        { phase = "A", nodeID = 104939, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 3 }, -- Lvl 15: Furor / Ingrimm
+        { phase = "A", nodeID = 104943, tree = 2, tier = 2, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 18: Feral Swiftness / Schnelligkeit der Wildnis
+        { phase = "A", nodeID = 104944, tree = 2, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 20: Feral Charge / Wilde Attacke
+        { phase = "A", nodeID = 104948, tree = 2, tier = 3, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 21: Savage Fury / Ungezähmte Wut
+        { phase = "A", nodeID = 104946, tree = 2, tier = 3, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 23: Sharpened Claws / Geschärfte Klauen
+        { phase = "A", nodeID = 104949, tree = 2, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 25: Lacerate / Aufschlitzen
+        { phase = "A", nodeID = 104951, tree = 2, tier = 4, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 26: Predatory Discipline / Disziplin des Raubtiers
+        { phase = "A", nodeID = 104952, tree = 2, tier = 4, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 27: Predatory Strikes / Raubtierschläge
+        { phase = "A", nodeID = 104955, tree = 2, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 30: Leader of the Pack / Rudelführer
+        { phase = "A", nodeID = 104950, tree = 2, tier = 5, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 31: Natural Instinct / Instinkt der Natur
+        { phase = "A", nodeID = 104947, tree = 2, tier = 4, column = 4, maxRank = 2, ranks = 1 }, -- Lvl 33: Blood Frenzy / Blutraserei
+        { phase = "A", nodeID = 104939, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 1 }, -- Lvl 34: Furor / Ingrimm
+        { phase = "A", nodeID = 104953, tree = 2, tier = 6, column = 1, maxRank = 5, ranks = 4 }, -- Lvl 35: Rend and Tear / Beißen und Reißen
+        { phase = "A", nodeID = 104939, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 1 }, -- Lvl 39: Furor / Ingrimm
+        { phase = "A", nodeID = 104956, tree = 2, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 40: Primal Bite / Urtümlicher Biss
+        { phase = "A", nodeID = 113563, tree = 2, tier = 7, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 41: Shifting Power / Machtverschiebung
+        { phase = "B", nodeID = 104958, tree = 3, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 42: Heart of the Wild / Herz der Wildnis
+        { phase = "B", nodeID = 104922, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 5 }, -- Lvl 47: Naturalist / Naturalist
+        { phase = "B", nodeID = 104919, tree = 3, tier = 2, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 52: Natural Shapeshifter / Schnellwandlung
+        { phase = "B", nodeID = 104920, tree = 3, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 55: Reflection / Reflexion
+        { phase = "B", nodeID = 104912, tree = 3, tier = 4, column = 4, maxRank = 1, ranks = 1 }, -- Lvl 58: Swiftmend / Rasche Heilung
+        { phase = "C", nodeID = 104953, tree = 2, tier = 6, column = 1, maxRank = 5, ranks = 1 }, -- Lvl 59: Rend and Tear / Beißen und Reißen
+        { phase = "C", nodeID = 104947, tree = 2, tier = 4, column = 4, maxRank = 2, ranks = 1 }, -- Lvl 60: Blood Frenzy / Blutraserei
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- DRUIDE – Gleichgewicht (Leveling)
+-- QUELLE: Wowhead:
+--   https://www.wowhead.com/forever/guide/classes/druid/balance/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 38/0/13).
+-- nodeID/Reihe/Spalte/maxRank aus dem Druiden-Talentdump (2026-11-12).
+-- Englisch -> Deutsch über die Position im Baum zugeordnet (Wowhead-Grafik).
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "DRUID_BALANCE_LEVELING",
+    class     = "DRUID",
+    spec      = "BALANCE",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/druid/balance/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Gleichgewicht (Leveling-Build)", enUS = "Balance (leveling build)" },
+    menu  = { deDE = "Gleichgewicht – Leveling", enUS = "Balance – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Gleichgewicht: Zauberschaden bis Moonkingestalt, dann Mana aus Wiederherstellung.",
+        enUS = "Wowhead's leveling pick for Balance: spell damage up to Moonkin Form, then mana from Restoration.",
+    },
+    distribution = { 38, 0, 13 },
+    phases = {
+        A = { deDE = "Phase A – Gleichgewicht", enUS = "Phase A – Balance" },
+        B = { deDE = "Phase B – Wiederherstellung (Mana)", enUS = "Phase B – Restoration (mana)" },
+        C = { deDE = "Phase C – restliches Gleichgewicht", enUS = "Phase C – remaining Balance" },
+    },
+    steps = {
+        { phase = "A", nodeID = 104923, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 10: Improved Wrath / Verbesserter Zorn
+        { phase = "A", nodeID = 104925, tree = 1, tier = 2, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 15: Moonglow / Mondschein
+        { phase = "A", nodeID = 104927, tree = 1, tier = 2, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 18: Nature's Majesty / Erhabenheit der Natur
+        { phase = "A", nodeID = 104929, tree = 1, tier = 2, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 20: Nature's Reach / Reichweite der Natur
+        { phase = "A", nodeID = 104931, tree = 1, tier = 2, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 22: Improved Moonfire / Verbessertes Mondfeuer
+        { phase = "A", nodeID = 104928, tree = 1, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 24: Nature's Splendor / Pracht der Natur
+        { phase = "A", nodeID = 104930, tree = 1, tier = 4, column = 1, maxRank = 1, ranks = 1 }, -- Lvl 25: Insect Swarm / Insektenschwarm
+        { phase = "A", nodeID = 104933, tree = 1, tier = 4, column = 3, maxRank = 5, ranks = 4 }, -- Lvl 26: Improved Starfire / Verbessertes Sternenfeuer
+        { phase = "A", nodeID = 104935, tree = 1, tier = 5, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 30: Eclipse / Finsternis
+        { phase = "A", nodeID = 104933, tree = 1, tier = 4, column = 3, maxRank = 5, ranks = 1 }, -- Lvl 33: Improved Starfire / Verbessertes Sternenfeuer
+        { phase = "A", nodeID = 104934, tree = 1, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 34: Nature's Grace / Anmut der Natur
+        { phase = "A", nodeID = 104936, tree = 1, tier = 6, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 35: Moonfury / Mondfuror
+        { phase = "A", nodeID = 104937, tree = 1, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 40: Moonkin Form / Moonkingestalt
+        { phase = "B", nodeID = 104957, tree = 3, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 41: Nature's Focus / Naturfokus
+        { phase = "B", nodeID = 104920, tree = 3, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 46: Reflection / Reflexion
+        { phase = "B", nodeID = 104922, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 5 }, -- Lvl 49: Naturalist / Naturalist
+        { phase = "C", nodeID = 104924, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 2 }, -- Lvl 54: Genesis / Genesis
+        { phase = "C", nodeID = 104932, tree = 1, tier = 4, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 56: Vengeance / Rache
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- DRUIDE – Wiederherstellung, Heiler (Leveling)
+-- QUELLE: Wowhead:
+--   https://www.wowhead.com/forever/guide/classes/druid/restoration/healer-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 23/0/28).
+-- nodeID/Reihe/Spalte/maxRank aus dem Druiden-Talentdump (2026-11-12).
+-- Englisch -> Deutsch über die Position im Baum zugeordnet (Wowhead-Grafik).
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "DRUID_RESTORATION_LEVELING",
+    class     = "DRUID",
+    spec      = "RESTORATION",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/druid/restoration/healer-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Wiederherstellung – Heiler (Leveling-Build)", enUS = "Restoration – healer (leveling build)" },
+    menu  = { deDE = "Heal – Leveling", enUS = "Healer – leveling" },
+    summary = {
+        deDE = "Wowheads Heiler-Leveling-Empfehlung: Zorn und erste Heilertalente, dann Gleichgewicht zum Questen, ab Level 44 Wiederherstellung.",
+        enUS = "Wowhead's healer leveling pick: Wrath and first healing talents, then Balance for questing, Restoration from level 44.",
+    },
+    distribution = { 23, 0, 28 },
+    phases = {
+        A = { deDE = "Phase A – Zorn & erste Heilertalente", enUS = "Phase A – Wrath & first healing talents" },
+        B = { deDE = "Phase B – Gleichgewicht (Questen)", enUS = "Phase B – Balance (questing)" },
+        C = { deDE = "Phase C – Wiederherstellung (Heilen)", enUS = "Phase C – Restoration (healing)" },
+    },
+    steps = {
+        { phase = "A", nodeID = 104923, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 10: Improved Wrath / Verbesserter Zorn
+        { phase = "A", nodeID = 104957, tree = 3, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 15: Nature's Focus / Naturfokus
+        { phase = "A", nodeID = 104920, tree = 3, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 20: Reflection / Reflexion
+        { phase = "A", nodeID = 104922, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 2 }, -- Lvl 23: Naturalist / Naturalist
+        { phase = "A", nodeID = 104918, tree = 3, tier = 3, column = 4, maxRank = 1, ranks = 1 }, -- Lvl 25: Bloom / Blüte
+        { phase = "B", nodeID = 104927, tree = 1, tier = 2, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 26: Nature's Majesty / Erhabenheit der Natur
+        { phase = "B", nodeID = 104924, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 3 }, -- Lvl 28: Genesis / Genesis
+        { phase = "B", nodeID = 104928, tree = 1, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 31: Nature's Splendor / Pracht der Natur
+        { phase = "B", nodeID = 104926, tree = 1, tier = 3, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 32: Improved Entangling Roots / Verbesserte Wucherwurzeln
+        { phase = "B", nodeID = 104924, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 1 }, -- Lvl 35: Genesis / Genesis
+        { phase = "B", nodeID = 104930, tree = 1, tier = 4, column = 1, maxRank = 1, ranks = 1 }, -- Lvl 36: Insect Swarm / Insektenschwarm
+        { phase = "B", nodeID = 104924, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 1 }, -- Lvl 37: Genesis / Genesis
+        { phase = "B", nodeID = 104925, tree = 1, tier = 2, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 38: Moonglow / Mondschein
+        { phase = "B", nodeID = 104934, tree = 1, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 41: Nature's Grace / Anmut der Natur
+        { phase = "B", nodeID = 110844, tree = 1, tier = 5, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 42: Overgrowth / Wildes Wachstum
+        { phase = "C", nodeID = 104916, tree = 3, tier = 3, column = 3, maxRank = 5, ranks = 4 }, -- Lvl 44: Gift of Nature / Geschenk der Natur
+        { phase = "C", nodeID = 104912, tree = 3, tier = 4, column = 4, maxRank = 1, ranks = 1 }, -- Lvl 48: Swiftmend / Rasche Heilung
+        { phase = "C", nodeID = 104916, tree = 3, tier = 3, column = 3, maxRank = 5, ranks = 1 }, -- Lvl 49: Gift of Nature / Geschenk der Natur
+        { phase = "C", nodeID = 104922, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 3 }, -- Lvl 50: Naturalist / Naturalist
+        { phase = "C", nodeID = 104921, tree = 3, tier = 5, column = 1, maxRank = 1, ranks = 1 }, -- Lvl 53: Nature's Swiftness / Schnelligkeit der Natur
+        { phase = "C", nodeID = 104914, tree = 3, tier = 4, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 54: Improved Rejuvenation / Verbesserte Verjüngung
+        { phase = "C", nodeID = 104911, tree = 3, tier = 5, column = 2, maxRank = 3, ranks = 1 }, -- Lvl 57: Living Spirit / Geist des Lebens
+        { phase = "C", nodeID = 104913, tree = 3, tier = 6, column = 3, maxRank = 5, ranks = 3 }, -- Lvl 58: Improved Regrowth / Verbessertes Nachwachsen
+    },
+    notes = {},
+})
+
 -- Endgame-Builds bekommen buildType = "ENDGAME" und dieselbe Struktur.

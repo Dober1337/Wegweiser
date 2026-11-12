@@ -242,3 +242,10 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
   (15/36/0), bei Überleben alle drei Bäume (16/9/26).
 - Priester und Jäger: Die Reihen und Spalten stimmen wieder. Das Spiel hat dort unsichtbare
   Zusatz-Talente außerhalb des Rasters; die werden jetzt ignoriert.
+
+## Version 0.23.0 – Druide: vier Leveling-Builds
+
+- Druide, Talentfenster öffnen: Das Auswahlfeld zeigt „Katze – Leveling",
+  „Bär (Tank) – Leveling", „Gleichgewicht – Leveling" und „Heal – Leveling".
+- Jeden Build einmal auswählen: keine rote Fehlermeldung.
+- „Ganzer Build" mit den Wowhead-Bildern vergleichen: 9/32/10, 0/34/17, 38/0/13, 23/0/28.
