@@ -976,7 +976,7 @@ table.insert(ns.TalentBuilds, {
 -- ------------------------------------------------------------
 -- PALADIN – Heilig, Heiler (Leveling)
 -- QUELLE: Wowhead
--- Link zum Guide fehlt noch (Spieler schickt ihn nach).
+--   https://www.wowhead.com/forever/guide/classes/paladin/holy/healer-leveling-tips
 -- Die Liste des Spielers begann erst bei Level 15. Level 10–14 = Göttliche
 -- Weisheit 5/5: das einzige Talent auf der Grafik, das in der Liste fehlt
 -- (Schutz Reihe 1, 5/5), und genau 5 fehlende Punkte.
@@ -991,7 +991,7 @@ table.insert(ns.TalentBuilds, {
     buildType = "LEVELING",
     variant   = "STANDARD",
     source    = "WOWHEAD",
-    sourceUrl = nil,      -- Link folgt
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/paladin/holy/healer-leveling-tips",
     structureVerified = true,    -- alle Talente im Dump gefunden
     positionsVerified = false,
     orderVerified     = false,
@@ -1399,6 +1399,8 @@ table.insert(ns.TalentBuilds, {
 -- HEXENMEISTER – Dämonologie (Quelle: allgemeine Übersicht, keine Leveling-Seite)
 -- QUELLE: Wowhead
 --   https://www.wowhead.com/forever/guide/classes/warlock/demonology/overview-pve-dps
+-- Leveling-Seite (noch nicht abgeglichen, ob dort derselbe Build steht):
+--   https://www.wowhead.com/forever/guide/classes/warlock/demonology/dps-leveling-tips
 -- Reihenfolge laut Spieler (Liste + Grafik, 20/31/0).
 -- nodeID/Reihe/Spalte/maxRank aus dem Hexenmeister-Talentdump (2026-11-12),
 -- Zuordnung über die Position auf der Wowhead-Grafik.
