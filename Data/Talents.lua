@@ -1034,4 +1034,122 @@ table.insert(ns.TalentBuilds, {
     notes = {},
 })
 
+-- ------------------------------------------------------------
+-- PRIESTER – Schatten (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/priest/shadow/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 16/3/32).
+-- nodeID/Reihe/Spalte/maxRank aus dem Priester-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "PRIEST_SHADOW_LEVELING",
+    class     = "PRIEST",
+    spec      = "SHADOW",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/priest/shadow/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Schatten (Leveling-Build)", enUS = "Shadow (leveling build)" },
+    menu  = { deDE = "Schatten – Leveling", enUS = "Shadow – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Schatten: Willensentzug und Gedankenschinden bis Schattengestalt, danach Mana und Haltbarkeit aus Disziplin.",
+        enUS = "Wowhead's leveling pick for Shadow: Spirit Tap and Mind Flay up to Shadowform, then mana and durability from Discipline.",
+    },
+    distribution = { 16, 3, 32 },
+    phases = {
+        A = { deDE = "Phase A – Schatten", enUS = "Phase A – Shadow" },
+        B = { deDE = "Phase B – Disziplin & Rest (Mana)", enUS = "Phase B – Discipline & rest (mana)" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105850, tree = 1, tier = 1, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 10: Wand Specialization / Zauberstab-Spezialisierung
+        { phase = "A", nodeID = 105833, tree = 3, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 12: Spirit Tap / Willensentzug
+        { phase = "A", nodeID = 105830, tree = 3, tier = 2, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 17: Improved Shadow Word: Pain / Verbessertes Schattenwort: Schmerz
+        { phase = "A", nodeID = 105829, tree = 3, tier = 2, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 19: Shadow Reach / Schattenreichweite
+        { phase = "A", nodeID = 110851, tree = 3, tier = 1, column = 1, maxRank = 5, ranks = 1 }, -- Lvl 21: Shadow Focus / Schattenfokus
+        { phase = "A", nodeID = 105826, tree = 3, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 22: Mind Flay / Gedankenschinden
+        { phase = "A", nodeID = 105825, tree = 3, tier = 3, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 23: Improved Mind Flay / Verbessertes Gedankenschinden
+        { phase = "A", nodeID = 110851, tree = 3, tier = 1, column = 1, maxRank = 5, ranks = 2 }, -- Lvl 25: Shadow Focus / Schattenfokus
+        { phase = "A", nodeID = 105821, tree = 3, tier = 4, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 27: Shadow Weaving / Schattenwirken
+        { phase = "A", nodeID = 105820, tree = 3, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 30: Vampiric Embrace / Vampirumarmung
+        { phase = "A", nodeID = 105831, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 1 }, -- Lvl 31: Improved Mind Blast / Verbesserter Gedankenschlag
+        { phase = "A", nodeID = 105819, tree = 3, tier = 5, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 32: Devouring Contagion / Verschlingende Ansteckung
+        { phase = "A", nodeID = 105831, tree = 3, tier = 2, column = 1, maxRank = 5, ranks = 3 }, -- Lvl 34: Improved Mind Blast / Verbesserter Gedankenschlag
+        { phase = "A", nodeID = 105818, tree = 3, tier = 6, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 37: Darkness / Dunkelheit
+        { phase = "A", nodeID = 105817, tree = 3, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 42: Shadowform / Schattengestalt
+        { phase = "B", nodeID = 105849, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 3 }, -- Lvl 43: Twin Disciplines / Zwillingsdisziplinen
+        { phase = "B", nodeID = 105848, tree = 1, tier = 2, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 46: Silent Resolve / Schweigsame Entschlossenheit
+        { phase = "B", nodeID = 105837, tree = 1, tier = 2, column = 3, maxRank = 5, ranks = 2 }, -- Lvl 49: Mental Strength / Mentale Stärke
+        { phase = "B", nodeID = 105843, tree = 1, tier = 3, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 51: Meditation / Meditation
+        { phase = "B", nodeID = 105867, tree = 2, tier = 1, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 54: Twilight Focus / Zwielichtfokus
+        { phase = "B", nodeID = 105824, tree = 3, tier = 5, column = 1, maxRank = 1, ranks = 1 }, -- Lvl 57: Silence / Stille
+        { phase = "B", nodeID = 105837, tree = 1, tier = 2, column = 3, maxRank = 5, ranks = 3 }, -- Lvl 58: Mental Strength / Mentale Stärke
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- PRIESTER – Disziplin, Heiler (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/priest/discipline/healer-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 28/18/5).
+-- nodeID/Reihe/Spalte/maxRank aus dem Priester-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "PRIEST_DISCIPLINE_LEVELING",
+    class     = "PRIEST",
+    spec      = "DISCIPLINE",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/priest/discipline/healer-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Disziplin – Heiler (Leveling-Build)", enUS = "Discipline – healer (leveling build)" },
+    menu  = { deDE = "Disziplin (Heal) – Leveling", enUS = "Discipline (healer) – leveling" },
+    summary = {
+        deDE = "Wowheads Heiler-Leveling-Empfehlung für Disziplin: Schild und Mana bis Sühne, dann Heilig-Schaden bis Heilige Nova, danach Willensentzug.",
+        enUS = "Wowhead's healer leveling pick for Discipline: shield and mana up to Penance, then Holy damage up to Holy Nova, then Spirit Tap.",
+    },
+    distribution = { 28, 18, 5 },
+    phases = {
+        A = { deDE = "Phase A – Disziplin", enUS = "Phase A – Discipline" },
+        B = { deDE = "Phase B – Heilig (Schaden)", enUS = "Phase B – Holy (damage)" },
+        C = { deDE = "Phase C – Willensentzug & Rest", enUS = "Phase C – Spirit Tap & rest" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105850, tree = 1, tier = 1, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 10: Wand Specialization / Zauberstab-Spezialisierung
+        { phase = "A", nodeID = 110853, tree = 1, tier = 1, column = 1, maxRank = 5, ranks = 3 }, -- Lvl 12: Power in Light / Macht im Licht
+        { phase = "A", nodeID = 110852, tree = 1, tier = 2, column = 2, maxRank = 3, ranks = 1 }, -- Lvl 15: Holy Precision / Heilige Präzision
+        { phase = "A", nodeID = 105837, tree = 1, tier = 2, column = 3, maxRank = 5, ranks = 4 }, -- Lvl 16: Mental Strength / Mentale Stärke
+        { phase = "A", nodeID = 105843, tree = 1, tier = 3, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 20: Meditation / Meditation
+        { phase = "A", nodeID = 105844, tree = 1, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 23: Inner Focus / Innerer Fokus
+        { phase = "A", nodeID = 105846, tree = 1, tier = 3, column = 3, maxRank = 3, ranks = 1 }, -- Lvl 24: Improved Power Word: Shield / Verbessertes Machtwort: Schild
+        { phase = "A", nodeID = 105841, tree = 1, tier = 4, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 25: Improved Inner Fire / Verbessertes inneres Feuer
+        { phase = "A", nodeID = 105846, tree = 1, tier = 3, column = 3, maxRank = 3, ranks = 2 }, -- Lvl 28: Improved Power Word: Shield / Verbessertes Machtwort: Schild
+        { phase = "A", nodeID = 105834, tree = 1, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 30: Penance / Sühne
+        { phase = "A", nodeID = 105839, tree = 1, tier = 4, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 31: Soul Warding / Seelenwehr
+        { phase = "B", nodeID = 105867, tree = 2, tier = 1, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 32: Twilight Focus / Zwielichtfokus
+        { phase = "B", nodeID = 110855, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 2 }, -- Lvl 35: Holy Specialization / Heiligspezialisierung
+        { phase = "B", nodeID = 105863, tree = 2, tier = 2, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 37: Divine Fury / Göttlicher Furor
+        { phase = "B", nodeID = 105862, tree = 2, tier = 3, column = 1, maxRank = 1, ranks = 1 }, -- Lvl 42: Holy Nova / Heilige Nova
+        { phase = "C", nodeID = 105833, tree = 3, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 43: Spirit Tap / Willensentzug
+        { phase = "C", nodeID = 105842, tree = 1, tier = 3, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 48: Mental Agility / Mentale Beweglichkeit
+        { phase = "C", nodeID = 110853, tree = 1, tier = 1, column = 1, maxRank = 5, ranks = 2 }, -- Lvl 51: Power in Light / Macht im Licht
+        { phase = "C", nodeID = 110855, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 3 }, -- Lvl 53: Holy Specialization / Heiligspezialisierung
+        { phase = "C", nodeID = 105861, tree = 2, tier = 3, column = 2, maxRank = 3, ranks = 1 }, -- Lvl 56: Blessed Recovery / Gesegnete Erholung
+        { phase = "C", nodeID = 105857, tree = 2, tier = 4, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 57: Searing Light / Sengendes Licht
+        { phase = "C", nodeID = 105837, tree = 1, tier = 2, column = 3, maxRank = 5, ranks = 1 }, -- Lvl 59: Mental Strength / Mentale Stärke
+        { phase = "C", nodeID = 105859, tree = 2, tier = 4, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 60: Holy Reach / Heilige Reichweite
+    },
+    notes = {},
+})
+
 -- Endgame-Builds bekommen buildType = "ENDGAME" und dieselbe Struktur.

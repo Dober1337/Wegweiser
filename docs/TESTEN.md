@@ -269,3 +269,9 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - `/ww build wahl` zeigt „Vergeltung – Leveling", „Schutz (Tank) – Leveling", „Heal – Leveling".
 - Je `/ww build liste` mit der Wowhead-Liste vergleichen (14/6/31, 0/32/19, 34/5/12).
 - Heal: Level 10–14 „Göttliche Weisheit 5/5" ist aus der Grafik abgeleitet (Liste begann bei 15).
+
+## Version 0.26.0 – Priester: Schatten und Disziplin
+
+- `/ww build wahl` zeigt „Schatten – Leveling" und „Disziplin (Heal) – Leveling".
+- Je `/ww build liste` mit der Wowhead-Liste vergleichen (16/3/32, 28/18/5).
+- Heilig folgt, sobald die Talent-Reihenfolge da ist.
