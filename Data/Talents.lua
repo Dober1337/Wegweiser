@@ -739,11 +739,9 @@ table.insert(ns.TalentBuilds, {
 })
 
 -- ------------------------------------------------------------
--- MAGIER – Feuer
+-- MAGIER – Feuer (Leveling)
 -- QUELLE: Wowhead:
---   https://www.wowhead.com/forever/guide/classes/mage/fire/overview-pve-dps
--- ACHTUNG: Quelle ist die allgemeine Feuer-Übersicht (PvE-DPS), keine eigene
--- Leveling-Seite. Reihenfolge so, wie der Spieler sie geschickt hat.
+--   https://www.wowhead.com/forever/guide/classes/mage/fire/dps-leveling-tips
 -- Reihenfolge laut Spieler (Liste + Grafik, 18/31/2).
 -- nodeID/Reihe/Spalte/maxRank aus dem Magier-Talentdump (2026-11-12),
 -- Zuordnung über die Position auf der Wowhead-Grafik ("Verbrennung" gibt es zweimal).
@@ -755,16 +753,16 @@ table.insert(ns.TalentBuilds, {
     buildType = "LEVELING",
     variant   = "STANDARD",
     source    = "WOWHEAD",
-    sourceUrl = "https://www.wowhead.com/forever/guide/classes/mage/fire/overview-pve-dps",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/mage/fire/dps-leveling-tips",
     structureVerified = true,    -- alle Talente im Dump gefunden
     positionsVerified = false,
     orderVerified     = false,
     verified          = false,
-    title = { deDE = "Feuer (Build)", enUS = "Fire (build)" },
+    title = { deDE = "Feuer (Leveling-Build)", enUS = "Fire (leveling build)" },
     menu  = { deDE = "Feuer – Leveling", enUS = "Fire – leveling" },
     summary = {
-        deDE = "Wowheads Feuer-Empfehlung: Feuer-Grundlagen und Pyroschlag, dann Arkan für Mana, danach Feuer bis Verbrennung.",
-        enUS = "Wowhead's Fire pick: Fire basics and Pyroblast, then Arcane for mana, then Fire up to Combustion.",
+        deDE = "Wowheads Leveling-Empfehlung für Feuer: Feuer-Grundlagen und Pyroschlag, dann Arkan für Mana, danach Feuer bis Verbrennung.",
+        enUS = "Wowhead's leveling pick for Fire: Fire basics and Pyroblast, then Arcane for mana, then Fire up to Combustion.",
     },
     distribution = { 18, 31, 2 },
     phases = {
