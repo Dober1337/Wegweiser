@@ -125,16 +125,39 @@ local function onObject(tooltip, data)
     if hit then addNodeLines(tooltip, hit.prof, hit.node) end
 end
 
-local function onUnit(tooltip)
+-- Zeigt das Spiel selbst "Häutbar"? (Blizzard-Text UNIT_SKINNABLE_LEATHER,
+-- im Spiel bestätigt: rote Zeile "Häutbar" im Tooltip toter Tiere)
+local function hasSkinnableLine(data)
+    local want = UNIT_SKINNABLE_LEATHER
+    if not want or not data or not data.lines then return false end
+    for _, line in ipairs(data.lines) do
+        local t = line.leftText
+        if t and not isSecret(t) and t == want then return true end
+    end
+    return false
+end
+
+local function onUnit(tooltip, data)
     if not enabled() then return end
     local unit = select(2, tooltip:GetUnit())
+    if (not unit or isSecret(unit)) and UnitExists("mouseover") then unit = "mouseover" end
     if not unit or isSecret(unit) or UnitIsPlayer(unit) then return end
-    local rank = skill(SKINNING)
-    if not rank then return end                 -- nur für Kürschner
-    if not isSkinnableType(unit) then return end
+
+    local blizzSkinnable = hasSkinnableLine(data)
+    if not blizzSkinnable and not isSkinnableType(unit) then return end
     local level = UnitLevel(unit)
     if not level or isSecret(level) or level < 1 then return end
     local need = GT:SkinningNeeded(level)
+
+    local rank = skill(SKINNING)
+    if not rank then
+        -- Ohne Kürschnerei nur dort etwas sagen, wo das Spiel "Häutbar" zeigt
+        if blizzSkinnable then
+            tooltip:AddLine(string.format(L.GT_SKIN_NOSKILL, profName(SKINNING), need), 0.4, 0.8, 1.0)
+            tooltip:AddLine(string.format(L.GT_NOT_LEARNED, profName(SKINNING)), 0.6, 0.6, 0.6)
+        end
+        return
+    end
     local color = rank >= need and COLOR.GREEN or COLOR.RED
     tooltip:AddLine(string.format(L.GT_SKIN, profName(SKINNING), color .. need .. "|r", rank), 0.4, 0.8, 1.0)
 end

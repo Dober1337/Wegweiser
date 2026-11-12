@@ -340,3 +340,9 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
   grün = geht, rot = zu niedrig. Stimmt das mit dem Spiel überein?
 - Kräuter über Skill 205 zeigen nur „ab X" (Quelle nennt dort keine Farben).
 - Abschaltbar: /ww config → „Sammel-Infos im Tooltip".
+
+## Version 0.35.1 – Kürschnerei-Zeile
+
+- Ohne Kürschnerei, Maus über ein totes Tier mit rotem „Häutbar": darunter
+  „Wegweiser: Kürschnerei ab etwa X" und „Du hast Kürschnerei nicht gelernt."
+- Mit Kürschnerei: „Kürschnerei ab etwa X (du: Y)", auch bei lebenden Tieren.
