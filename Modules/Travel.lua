@@ -53,11 +53,10 @@ end
 -- oder nil + Fehlergrund
 function Travel:GetZoneNodes(mapID)
     if not (C_TaxiMap and C_TaxiMap.GetTaxiNodesForMap) then return nil, "NO_API" end
-    if C_TaxiMap.ShouldMapShowTaxiNodes and not C_TaxiMap.ShouldMapShowTaxiNodes(mapID) then
-        return nil, "NOT_SHOWN"
-    end
+    -- Hinweis: ShouldMapShowTaxiNodes meldet in Forever für Das Brachland "false"
+    -- (Weltkarte zeigt dort keine Flugpunkte). Wir fragen trotzdem direkt ab.
     local ok, nodes = pcall(C_TaxiMap.GetTaxiNodesForMap, mapID)
-    if not ok or type(nodes) ~= "table" then return nil, "NO_DATA" end
+    if not ok or type(nodes) ~= "table" or #nodes == 0 then return nil, "NO_DATA" end
     local mine, undiscovered = {}, {}
     for _, node in ipairs(nodes) do
         if nodeForMyFaction(node) then
@@ -143,6 +142,47 @@ function Travel:FlightCommand(rest)
     end
 end
 
+-- /ww flugdebug – was liefert das Spiel? (Zone, übergeordnete Karten, Flugmeister)
+function Travel:Debug()
+    local mapID = C_Map.GetBestMapForUnit("player")
+    local probe = { date = date("%Y-%m-%d %H:%M"), maps = {} }
+    local id = mapID
+    while id and id > 0 do
+        local info = C_Map.GetMapInfo(id)
+        local show = C_TaxiMap.ShouldMapShowTaxiNodes and C_TaxiMap.ShouldMapShowTaxiNodes(id)
+        local ok, nodes = pcall(C_TaxiMap.GetTaxiNodesForMap, id)
+        local n, und = 0, 0
+        local list = {}
+        if ok and type(nodes) == "table" then
+            for _, node in ipairs(nodes) do
+                n = n + 1
+                if node.isUndiscovered then und = und + 1 end
+                local x, y = node.position:GetXY()
+                table.insert(list, { name = node.name, faction = node.faction, undiscovered = node.isUndiscovered,
+                                     x = math.floor(x * 1000) / 10, y = math.floor(y * 1000) / 10 })
+            end
+        end
+        ns:Print("Karte %d (%s): show=%s, Flugpunkte=%d, davon unentdeckt=%d",
+            id, info and info.name or "?", tostring(show), n, und)
+        table.insert(probe.maps, { mapID = id, name = info and info.name, show = show, nodes = list })
+        id = info and info.parentMapID
+    end
+    ns.db.taxiProbe = probe
+    ns:Print("Gespeichert in WegweiserDB.taxiProbe (nach /reload in der SavedVariables-Datei).")
+end
+
+-- Beim Flugmeister: was meldet die Flugkarte? (für die Entwicklung gespeichert)
+-- Forevers Flugkarte (Blizzard_UIPanels_Game/Shared/TaxiFrame.lua) nutzt die
+-- klassischen Funktionen NumTaxiNodes / TaxiNodeName / TaxiNodeGetType.
+local function probeFlightMaster()
+    if not (NumTaxiNodes and TaxiNodeName and TaxiNodeGetType) then return end
+    local list = {}
+    for i = 1, NumTaxiNodes() do
+        table.insert(list, { name = TaxiNodeName(i), type = TaxiNodeGetType(i) })
+    end
+    ns.db.taxiMasterProbe = { date = date("%Y-%m-%d %H:%M"), mapID = C_Map.GetBestMapForUnit("player"), nodes = list }
+end
+
 -- Hinweis beim Betreten einer Zone (einmal pro Zone und Sitzung)
 function Travel:ZoneHint()
     if not enabled() then return end
@@ -176,7 +216,10 @@ function Travel:HearthCommand()
     else
         ns:Print(L.TRAVEL_HS_UNKNOWN)
     end
-    if C_Container and C_Container.PlayerHasHearthstone and not C_Container.PlayerHasHearthstone() then
+    -- HEARTHSTONE_ITEM_ID ist eine Blizzard-Konstante (Blizzard_FrameXMLBase/Constants.lua).
+    -- C_Container.PlayerHasHearthstone meldete in Forever fälschlich "keiner da".
+    if HEARTHSTONE_ITEM_ID and C_Item and C_Item.GetItemCount
+       and C_Item.GetItemCount(HEARTHSTONE_ITEM_ID) == 0 then
         ns:Print("   " .. L.TRAVEL_HS_MISSING)
     end
     ns:Print("   " .. L.TRAVEL_HS_TIP)
@@ -189,8 +232,7 @@ local function hookTooltip()
     end
     TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, function(tooltip, data)
         if not enabled() or not data or isSecret(data.id) then return end
-        local hsID = C_Container and C_Container.PlayerHasHearthstone and C_Container.PlayerHasHearthstone()
-        if not hsID or data.id ~= hsID then return end
+        if not HEARTHSTONE_ITEM_ID or data.id ~= HEARTHSTONE_ITEM_ID then return end
         local where = bindLocation()
         if where then
             tooltip:AddLine(string.format(L.TRAVEL_HS_TOOLTIP, where), 0.4, 0.8, 1.0)
@@ -208,6 +250,9 @@ function Travel:OnInitialize()
         C_Timer.After(6, function()
             ns:RunOutOfCombat(function() Travel:ZoneHint() end, true)
         end)
+    end)
+    ns:RegisterEvent("TAXIMAP_OPENED", function()
+        C_Timer.After(0.2, probeFlightMaster)
     end)
     ns:RegisterEvent("HEARTHSTONE_BOUND", function()
         if not enabled() then return end

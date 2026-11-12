@@ -45,6 +45,7 @@ local function showDevHelp()
     ns:Print("/ww questinfo – Rohdaten der angebotenen Quest")
     ns:Print("/ww zoneinfo – Rohdaten der aktuellen Zone")
     ns:Print("/ww zonecheck – Karten-Nummern gegen das Spiel prüfen")
+    ns:Print("/ww flugdebug – Flugpunkt-Daten des Spiels prüfen")
 end
 
 local function showPoints()
@@ -104,6 +105,7 @@ local commands = {
     flight     = function(_, rest) ns:RunOutOfCombat(function() ns.modules.Travel:FlightCommand(rest) end) end,
     ruhestein  = function() ns.modules.Travel:HearthCommand() end,
     hearth     = function() ns.modules.Travel:HearthCommand() end,
+    flugdebug  = function() ns:RunOutOfCombat(function() ns.modules.Travel:Debug() end) end,
     lehrer     = function(_, rest) ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:TrainerCommand(rest) end) end,
     trainer    = function(_, rest) ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:TrainerCommand(rest) end) end,
     lernen     = function() ns:RunOutOfCombat(function() ns.modules.TrainerSpells:PrintOverview() end) end,
