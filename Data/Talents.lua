@@ -856,4 +856,182 @@ table.insert(ns.TalentBuilds, {
     notes = {},
 })
 
+-- ------------------------------------------------------------
+-- PALADIN – Vergeltung (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/paladin/retribution/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 14/6/31).
+-- nodeID/Reihe/Spalte/maxRank aus dem Paladin-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "PALADIN_RETRIBUTION_LEVELING",
+    class     = "PALADIN",
+    spec      = "RETRIBUTION",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/paladin/retribution/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Vergeltung (Leveling-Build)", enUS = "Retribution (leveling build)" },
+    menu  = { deDE = "Vergeltung – Leveling", enUS = "Retribution – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Vergeltung: Zweihand-Nahkampf bis Entfesselter Zorn, danach Stärke, Siegel und Mana.",
+        enUS = "Wowhead's leveling pick for Retribution: two-handed melee up to Unsealed Wrath, then strength, seals and mana.",
+    },
+    distribution = { 14, 6, 31 },
+    phases = {
+        A = { deDE = "Phase A – Vergeltung", enUS = "Phase A – Retribution" },
+        B = { deDE = "Phase B – Heilig & Schutz (Stärke, Siegel, Mana)", enUS = "Phase B – Holy & Protection (strength, seals, mana)" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105706, tree = 3, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 10: Benediction / Segnung
+        { phase = "A", nodeID = 105705, tree = 3, tier = 2, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 15: Improved Judgement / Verbessertes Richturteil
+        { phase = "A", nodeID = 105701, tree = 3, tier = 2, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 17: Sanctified Judgement / Gesegnetes Richturteil
+        { phase = "A", nodeID = 105696, tree = 3, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 20: Seal of Command / Siegel des Befehls
+        { phase = "A", nodeID = 105699, tree = 3, tier = 3, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 21: Pursuit of Justice / Streben nach Gerechtigkeit
+        { phase = "A", nodeID = 105703, tree = 3, tier = 2, column = 2, maxRank = 3, ranks = 2 }, -- Lvl 23: Conviction / Überzeugung
+        { phase = "A", nodeID = 105700, tree = 3, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 25: Sacred Arbiter / Heiliger Richter
+        { phase = "A", nodeID = 105697, tree = 3, tier = 4, column = 4, maxRank = 3, ranks = 3 }, -- Lvl 26: Two-Handed Weapon Specialization / Zweihandwaffen-Spezialisierung
+        { phase = "A", nodeID = 105703, tree = 3, tier = 2, column = 2, maxRank = 3, ranks = 1 }, -- Lvl 29: Conviction / Überzeugung
+        { phase = "A", nodeID = 105693, tree = 3, tier = 5, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 30: Vengeance / Rache
+        { phase = "A", nodeID = 105694, tree = 3, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 33: Repentance / Buße
+        { phase = "A", nodeID = 105331, tree = 3, tier = 3, column = 2, maxRank = 2, ranks = 1 }, -- Lvl 34: Unyielding Faith / Unumstößlicher Glaube
+        { phase = "A", nodeID = 110882, tree = 3, tier = 6, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 35: Champion of the Light / Champion des Lichts
+        { phase = "A", nodeID = 105692, tree = 3, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 40: Unsealed Wrath / Entfesselter Zorn
+        { phase = "B", nodeID = 113630, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 41: Divine Strength / Göttliche Stärke
+        { phase = "B", nodeID = 105334, tree = 1, tier = 2, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 46: Improved Seals / Verbesserte Siegel
+        { phase = "B", nodeID = 105332, tree = 2, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 51: Divine Intellect / Göttliche Weisheit
+        { phase = "B", nodeID = 105638, tree = 2, tier = 2, column = 1, maxRank = 3, ranks = 1 }, -- Lvl 56: Precision / Präzision
+        { phase = "B", nodeID = 105704, tree = 1, tier = 3, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 57: Holy Conduit / Heiliges Medium
+        { phase = "B", nodeID = 110871, tree = 1, tier = 2, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 59: Reverence / Andacht
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- PALADIN – Schutz, Tank (Leveling)
+-- QUELLE: Wowhead
+--   https://www.wowhead.com/forever/guide/classes/paladin/protection/tank-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 0/32/19).
+-- nodeID/Reihe/Spalte/maxRank aus dem Paladin-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "PALADIN_PROTECTION_TANK_LEVELING",
+    class     = "PALADIN",
+    spec      = "PROTECTION",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/paladin/protection/tank-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Schutz – Tank (Leveling-Build)", enUS = "Protection – tank (leveling build)" },
+    menu  = { deDE = "Schutz (Tank) – Leveling", enUS = "Protection (tank) – leveling" },
+    summary = {
+        deDE = "Wowheads Tank-Leveling-Empfehlung für Schutz: erst Vergeltungs-Grundlagen, dann Schutz bis Schildgeschworen.",
+        enUS = "Wowhead's tank leveling pick for Protection: Retribution basics first, then Protection up to Shieldsworn.",
+    },
+    distribution = { 0, 32, 19 },
+    phases = {
+        A = { deDE = "Phase A – Vergeltung (Grundlage)", enUS = "Phase A – Retribution (basics)" },
+        B = { deDE = "Phase B – Schutz", enUS = "Phase B – Protection" },
+        C = { deDE = "Phase C – restliche Punkte", enUS = "Phase C – remaining points" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105706, tree = 3, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 10: Benediction / Segnung
+        { phase = "A", nodeID = 105701, tree = 3, tier = 2, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 15: Sanctified Judgement / Gesegnetes Richturteil
+        { phase = "A", nodeID = 105703, tree = 3, tier = 2, column = 2, maxRank = 3, ranks = 2 }, -- Lvl 18: Conviction / Überzeugung
+        { phase = "A", nodeID = 105699, tree = 3, tier = 3, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 20: Pursuit of Justice / Streben nach Gerechtigkeit
+        { phase = "B", nodeID = 105626, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 22: Redoubt / Verschanzen
+        { phase = "B", nodeID = 105638, tree = 2, tier = 2, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 27: Precision / Präzision
+        { phase = "B", nodeID = 105637, tree = 2, tier = 2, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 30: Guardian's Favor / Gunst des Hüters
+        { phase = "B", nodeID = 105625, tree = 2, tier = 3, column = 1, maxRank = 1, ranks = 1 }, -- Lvl 32: Templar's Bulwark / Bollwerk des Templers
+        { phase = "B", nodeID = 110874, tree = 2, tier = 3, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 33: Shield Specialization / Schild-Spezialisierung
+        { phase = "B", nodeID = 105630, tree = 2, tier = 3, column = 4, maxRank = 5, ranks = 2 }, -- Lvl 35: Toughness / Zähigkeit
+        { phase = "B", nodeID = 110878, tree = 2, tier = 4, column = 1, maxRank = 1, ranks = 1 }, -- Lvl 37: Swift Judgement / Schnelles Richturteil
+        { phase = "B", nodeID = 105634, tree = 2, tier = 4, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 38: Improved Righteous Fury / Verbesserter Zorn der Gerechtigkeit
+        { phase = "B", nodeID = 105630, tree = 2, tier = 3, column = 4, maxRank = 5, ranks = 1 }, -- Lvl 41: Toughness / Zähigkeit
+        { phase = "B", nodeID = 105628, tree = 2, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 42: Holy Shield / Heiliger Schild
+        { phase = "B", nodeID = 105627, tree = 2, tier = 5, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 43: Reckoning / Abrechnung
+        { phase = "B", nodeID = 110879, tree = 2, tier = 6, column = 3, maxRank = 3, ranks = 3 }, -- Lvl 48: Iron Creed / Eiserner Glaube
+        { phase = "B", nodeID = 105632, tree = 2, tier = 2, column = 4, maxRank = 2, ranks = 1 }, -- Lvl 51: Sacred Duty / Heilige Pflicht
+        { phase = "B", nodeID = 110875, tree = 2, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 52: Shieldsworn / Schildgeschworen
+        { phase = "C", nodeID = 105705, tree = 3, tier = 2, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 53: Improved Judgement / Verbessertes Richturteil
+        { phase = "C", nodeID = 105702, tree = 3, tier = 3, column = 1, maxRank = 3, ranks = 1 }, -- Lvl 55: Vindication / Rechtschaffene Schwächung
+        { phase = "C", nodeID = 105700, tree = 3, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 56: Sacred Arbiter / Heiliger Richter
+        { phase = "C", nodeID = 105702, tree = 3, tier = 3, column = 1, maxRank = 3, ranks = 2 }, -- Lvl 57: Vindication / Rechtschaffene Schwächung
+        { phase = "C", nodeID = 105703, tree = 3, tier = 2, column = 2, maxRank = 3, ranks = 1 }, -- Lvl 59: Conviction / Überzeugung
+        { phase = "C", nodeID = 105632, tree = 2, tier = 2, column = 4, maxRank = 2, ranks = 1 }, -- Lvl 60: Sacred Duty / Heilige Pflicht
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- PALADIN – Heilig, Heiler (Leveling)
+-- QUELLE: Wowhead
+-- Link zum Guide fehlt noch (Spieler schickt ihn nach).
+-- Die Liste des Spielers begann erst bei Level 15. Level 10–14 = Göttliche
+-- Weisheit 5/5: das einzige Talent auf der Grafik, das in der Liste fehlt
+-- (Schutz Reihe 1, 5/5), und genau 5 fehlende Punkte.
+-- Reihenfolge laut Spieler (Liste + Grafik, 34/5/12).
+-- nodeID/Reihe/Spalte/maxRank aus dem Paladin-Talentdump (2026-11-12),
+-- Zuordnung über die Position auf der Wowhead-Grafik.
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "PALADIN_HOLY_LEVELING",
+    class     = "PALADIN",
+    spec      = "HOLY",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = nil,      -- Link folgt
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Heilig – Heiler (Leveling-Build)", enUS = "Holy – healer (leveling build)" },
+    menu  = { deDE = "Heal – Leveling", enUS = "Healer – leveling" },
+    summary = {
+        deDE = "Wowheads Heiler-Leveling-Empfehlung: Mana und Heilfokus, dann Vergeltung zum Questen, ab Level 34 Heilig bis Lichtwacht.",
+        enUS = "Wowhead's healer leveling pick: mana and healing focus, then Retribution for questing, Holy up to Light's Vigil from level 34.",
+    },
+    distribution = { 34, 5, 12 },
+    phases = {
+        A = { deDE = "Phase A – Grundlage (Weisheit, Fokus, Andacht)", enUS = "Phase A – basics (wisdom, focus, reverence)" },
+        B = { deDE = "Phase B – Vergeltung (Questen)", enUS = "Phase B – Retribution (questing)" },
+        C = { deDE = "Phase C – Heilig (Heilen)", enUS = "Phase C – Holy (healing)" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105332, tree = 2, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 10: Divine Intellect / Göttliche Weisheit
+        { phase = "A", nodeID = 105335, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 15: Spiritual Focus / Spiritueller Fokus
+        { phase = "A", nodeID = 110871, tree = 1, tier = 2, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 20: Reverence / Andacht
+        { phase = "B", nodeID = 105706, tree = 3, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 22: Benediction / Segnung
+        { phase = "B", nodeID = 105705, tree = 3, tier = 2, column = 1, maxRank = 2, ranks = 2 }, -- Lvl 27: Improved Judgement / Verbessertes Richturteil
+        { phase = "B", nodeID = 105703, tree = 3, tier = 2, column = 2, maxRank = 3, ranks = 3 }, -- Lvl 29: Conviction / Überzeugung
+        { phase = "B", nodeID = 105699, tree = 3, tier = 3, column = 4, maxRank = 2, ranks = 2 }, -- Lvl 32: Pursuit of Justice / Streben nach Gerechtigkeit
+        { phase = "C", nodeID = 105333, tree = 1, tier = 2, column = 1, maxRank = 3, ranks = 3 }, -- Lvl 34: Healing Light / Heilendes Licht
+        { phase = "C", nodeID = 105329, tree = 1, tier = 3, column = 2, maxRank = 5, ranks = 5 }, -- Lvl 37: Illumination / Illumination
+        { phase = "C", nodeID = 105325, tree = 1, tier = 3, column = 1, maxRank = 1, ranks = 1 }, -- Lvl 42: Divine Favor / Göttliche Gunst
+        { phase = "C", nodeID = 110873, tree = 1, tier = 4, column = 2, maxRank = 2, ranks = 2 }, -- Lvl 43: Infusion of Light / Lichtinfusion
+        { phase = "C", nodeID = 105330, tree = 1, tier = 4, column = 3, maxRank = 1, ranks = 1 }, -- Lvl 45: Oath of Light / Eid des Lichts
+        { phase = "C", nodeID = 105324, tree = 1, tier = 4, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 46: Divine Precision / Göttliche Präzision
+        { phase = "C", nodeID = 105323, tree = 1, tier = 5, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 47: Holy Shock / Heiliger Schock
+        { phase = "C", nodeID = 113631, tree = 1, tier = 5, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 48: Boundless Light / Grenzenloses Licht
+        { phase = "C", nodeID = 105324, tree = 1, tier = 4, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 50: Divine Precision / Göttliche Präzision
+        { phase = "C", nodeID = 110872, tree = 1, tier = 5, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 51: Consecrated Ground / Geweihter Boden
+        { phase = "C", nodeID = 105321, tree = 1, tier = 6, column = 3, maxRank = 5, ranks = 5 }, -- Lvl 52: Holy Power / Heilige Kraft
+        { phase = "C", nodeID = 105320, tree = 1, tier = 7, column = 2, maxRank = 1, ranks = 1 }, -- Lvl 57: Light's Vigil / Lichtwacht
+        { phase = "C", nodeID = 110872, tree = 1, tier = 5, column = 1, maxRank = 2, ranks = 1 }, -- Lvl 58: Consecrated Ground / Geweihter Boden
+        { phase = "C", nodeID = 105704, tree = 1, tier = 3, column = 3, maxRank = 2, ranks = 2 }, -- Lvl 59: Holy Conduit / Heiliges Medium
+    },
+    notes = {},
+})
+
 -- Endgame-Builds bekommen buildType = "ENDGAME" und dieselbe Struktur.

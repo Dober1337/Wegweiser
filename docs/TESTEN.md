@@ -263,3 +263,9 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Ab Level 10 im Talentfenster: Rahmen mit den Wowhead-Bildern vergleichen
   (36/12/3, 18/31/2, 7/0/44). Im Feuer-Baum gibt es zwei Talente „Verbrennung":
   oben (Reihe 1, 5 Ränge) und ganz unten (Reihe 7, 1 Rang).
+
+## Version 0.25.0 – Paladin: drei Builds
+
+- `/ww build wahl` zeigt „Vergeltung – Leveling", „Schutz (Tank) – Leveling", „Heal – Leveling".
+- Je `/ww build liste` mit der Wowhead-Liste vergleichen (14/6/31, 0/32/19, 34/5/12).
+- Heal: Level 10–14 „Göttliche Weisheit 5/5" ist aus der Grafik abgeleitet (Liste begann bei 15).
