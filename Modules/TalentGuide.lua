@@ -79,14 +79,18 @@ function Guide:GetBuild()
     local _, classFile = UnitClass("player")
     local byClass = settings().talentBuildByClass
     local wanted = (byClass and byClass[classFile]) or settings().talentBuild
-    local fallback
+    -- Ohne eigene Wahl: zuerst der Einsteiger-Tipp der Klasse, sonst der erste Leveling-Build
+    local fallback, beginner
     for _, build in ipairs(ns.TalentBuilds or {}) do
         if build.class == classFile and not build.planned and #(build.steps or {}) > 0 then
             if build.key == wanted then return build end
-            if not fallback and build.buildType == "LEVELING" then fallback = build end
+            if build.buildType == "LEVELING" then
+                if not fallback then fallback = build end
+                if not beginner and build.beginner then beginner = build end
+            end
         end
     end
-    return fallback
+    return beginner or fallback
 end
 
 -- Wandelt die Schritte in eine Liste einzelner Punkte um.
@@ -346,6 +350,7 @@ function Guide:PrintSummary()
     if not build then ns:Print(tree) return end
 
     ns:Print("|cffffd100%s|r – %s", loc(build.title), loc(build.summary))
+    if build.beginner then ns:Print("%s %s", L.GUIDE_BEGINNER_TAG, loc(build.beginner)) end
 
     local problems = self:Validate(build, tree)
     if #problems > 0 then
@@ -383,8 +388,9 @@ function Guide:PrintChoices()
     ns:Print(L.GUIDE_CHOICES)
     for i, b in ipairs(self:GetClassBuilds()) do
         local ready = not b.planned and #(b.steps or {}) > 0
-        ns:Print("   %s%d. %s%s", (current == b) and "|cff55ff55» " or "  ", i, loc(b.menu or b.title),
-            ready and "|r" or (" |cff999999" .. L.GUIDE_PLANNED .. "|r"))
+        ns:Print("   %s%d. %s%s%s", (current == b) and "|cff55ff55» " or "  ", i, loc(b.menu or b.title),
+            ready and "|r" or (" |cff999999" .. L.GUIDE_PLANNED .. "|r"),
+            b.beginner and (" " .. L.GUIDE_BEGINNER_TAG) or "")
     end
     ns:Print(L.GUIDE_CHOICES_HINT)
 end

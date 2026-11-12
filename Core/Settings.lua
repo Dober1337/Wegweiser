@@ -37,7 +37,8 @@ ns.defaults = {
         -- Berufe
         profHelper      = true,   -- Hinweise kurz vor/am Rang-Limit, Tipps
         profRouteBox    = true,   -- Kasten "womit skillen" beim Lehrer/im Berufsfenster
-        talentBuild   = "SHAMAN_RESTORATION_LEVELING_HYBRID", -- gewählter Build (pro Klasse passend)
+        -- Build-Wahl steht in talentBuildByClass (pro Klasse). Ohne Wahl gilt der
+        -- Einsteiger-Tipp der Klasse (TalentGuide:GetBuild).
     },
     talentDump = {},   -- Ergebnis von /ww talentdump, pro Klasse
 }

@@ -302,3 +302,11 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - `/ww build wahl` beim Priester zeigt jetzt auch „Heilig (Heal) – Leveling".
 - Endstand 16/35/0 nach Wowhead, die Reihenfolge ist ein Wegweiser-Vorschlag
   (Wowhead gibt keine vor). `/ww build hinweise` sagt das auch im Spiel.
+
+## Version 0.32.0 – Einsteiger-Tipp pro Klasse
+
+- Talentfenster: Im Auswahlfeld steht bei einem Build grün „(Einsteiger-Tipp)".
+- `/ww build wahl` zeigt die Markierung ebenfalls, `/ww build` nennt den Grund.
+- Neue Charaktere ohne eigene Wahl bekommen automatisch den Einsteiger-Tipp.
+  Eine schon getroffene Wahl bleibt erhalten.
+- Prüfen: Wird der Name im Auswahlfeld abgeschnitten?

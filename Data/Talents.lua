@@ -175,6 +175,8 @@ table.insert(ns.TalentBuilds, {
 
     title = { deDE = "Tierherrschaft (Leveling-Build)", enUS = "Beast Mastery (leveling build)" },
     menu  = { deDE = "Tierherrschaft – Leveling", enUS = "Beast Mastery – leveling" },
+    -- EINSTEIGER-TIPP: Wegweiser-Einschätzung, gestützt auf Forever-Einsteigerlisten (siehe docs/EINSTEIGER.md)
+    beginner = { deDE = "Der Begleiter hält die Gegner fest, du kämpfst aus der Distanz. Verzeiht Fehler am meisten.", enUS = "Your pet holds the enemies while you fight from range. The most forgiving choice." },
     summary = {
         deDE = "Leveling mit starkem Begleiter: erst Tierherrschaft bis Zorn des Wildtiers, dann Treffsicherheit.",
         enUS = "Leveling with a strong pet: Beast Mastery up to Bestial Wrath first, then Marksmanship.",
@@ -298,6 +300,8 @@ table.insert(ns.TalentBuilds, {
     verified          = false,
     title = { deDE = "Verstärkung (Leveling-Build)", enUS = "Enhancement (leveling build)" },
     menu  = { deDE = "Verstärkung – Leveling", enUS = "Enhancement – leveling" },
+    -- EINSTEIGER-TIPP: Wegweiser-Einschätzung, gestützt auf Forever-Einsteigerlisten (siehe docs/EINSTEIGER.md)
+    beginner = { deDE = "Zweihänder, Windzorn und Totems: stark und selbstständig beim Questen.", enUS = "Two-hander, Windfury and totems: strong and self-sufficient while questing." },
     summary = {
         deDE = "Wowheads Leveling-Empfehlung für Verstärkung: Nahkampf mit Sturmschlag, später Mana- und Elementar-Talente.",
         enUS = "Wowhead's leveling pick for Enhancement: melee with Stormstrike, later mana and Elemental talents.",
@@ -466,6 +470,8 @@ table.insert(ns.TalentBuilds, {
     verified          = false,
     title = { deDE = "Wilder Kampf – Katze (Leveling-Build)", enUS = "Feral – Cat (leveling build)" },
     menu  = { deDE = "Katze – Leveling", enUS = "Cat – leveling" },
+    -- EINSTEIGER-TIPP: Wegweiser-Einschätzung, gestützt auf Forever-Einsteigerlisten (siehe docs/EINSTEIGER.md)
+    beginner = { deDE = "Katze ohne Manaprobleme, Bär als Notfall. Gleichgewicht und Heilen leveln solo deutlich zäher.", enUS = "Cat with no mana problems, bear for emergencies. Balance and healing level much slower solo." },
     summary = {
         deDE = "Wowheads Leveling-Empfehlung für Wilder Kampf (Schaden): erst Katzen-Talente, dann Wiederherstellung, zum Schluss Gleichgewicht.",
         enUS = "Wowhead's leveling pick for Feral damage: cat talents first, then Restoration, Balance last.",
@@ -819,6 +825,8 @@ table.insert(ns.TalentBuilds, {
     verified          = false,
     title = { deDE = "Frost (Leveling-Build)", enUS = "Frost (leveling build)" },
     menu  = { deDE = "Frost – Leveling", enUS = "Frost – leveling" },
+    -- EINSTEIGER-TIPP: Wegweiser-Einschätzung, gestützt auf Forever-Einsteigerlisten (siehe docs/EINSTEIGER.md)
+    beginner = { deDE = "Frost verlangsamt die Gegner: Abstand halten fällt am leichtesten.", enUS = "Frost slows enemies: keeping your distance is easiest." },
     summary = {
         deDE = "Wowheads Leveling-Empfehlung für Frost: Frostblitz, Eislanze und Zertrümmern bis Eisbarriere, zum Schluss etwas Arkan.",
         enUS = "Wowhead's leveling pick for Frost: Frostbolt, Ice Lance and Shatter up to Ice Barrier, a little Arcane last.",
@@ -878,6 +886,8 @@ table.insert(ns.TalentBuilds, {
     verified          = false,
     title = { deDE = "Vergeltung (Leveling-Build)", enUS = "Retribution (leveling build)" },
     menu  = { deDE = "Vergeltung – Leveling", enUS = "Retribution – leveling" },
+    -- EINSTEIGER-TIPP: Wegweiser-Einschätzung, gestützt auf Forever-Einsteigerlisten (siehe docs/EINSTEIGER.md)
+    beginner = { deDE = "Platte, Selbstheilung und Siegel: robust und einfach zu spielen.", enUS = "Plate, self-healing and seals: sturdy and simple to play." },
     summary = {
         deDE = "Wowheads Leveling-Empfehlung für Vergeltung: Zweihand-Nahkampf bis Entfesselter Zorn, danach Stärke, Siegel und Mana.",
         enUS = "Wowhead's leveling pick for Retribution: two-handed melee up to Unsealed Wrath, then strength, seals and mana.",
@@ -1056,6 +1066,8 @@ table.insert(ns.TalentBuilds, {
     verified          = false,
     title = { deDE = "Schatten (Leveling-Build)", enUS = "Shadow (leveling build)" },
     menu  = { deDE = "Schatten – Leveling", enUS = "Shadow – leveling" },
+    -- EINSTEIGER-TIPP: Wegweiser-Einschätzung, gestützt auf Forever-Einsteigerlisten (siehe docs/EINSTEIGER.md)
+    beginner = { deDE = "Schaden über Zeit, Willensentzug füllt Mana nach: der übliche Weg zum Leveln allein.", enUS = "Damage over time, Spirit Tap refills mana: the usual way to level solo." },
     summary = {
         deDE = "Wowheads Leveling-Empfehlung für Schatten: Willensentzug und Gedankenschinden bis Schattengestalt, danach Mana und Haltbarkeit aus Disziplin.",
         enUS = "Wowhead's leveling pick for Shadow: Spirit Tap and Mind Flay up to Shadowform, then mana and durability from Discipline.",
@@ -1234,6 +1246,8 @@ table.insert(ns.TalentBuilds, {
     verified          = false,
     title = { deDE = "Kampf (Leveling-Build)", enUS = "Combat (leveling build)" },
     menu  = { deDE = "Kampf – Leveling", enUS = "Combat – leveling" },
+    -- EINSTEIGER-TIPP: Wegweiser-Einschätzung, gestützt auf Forever-Einsteigerlisten (siehe docs/EINSTEIGER.md)
+    beginner = { deDE = "Einfacher Ablauf (Finsterer Stoß, Zerhäckseln), Verstohlenheit spart Wege.", enUS = "Simple rotation (Sinister Strike, Slice and Dice), stealth saves walking." },
     summary = {
         deDE = "Wowheads Leveling-Empfehlung für Kampf: Abwehr, Riposte und Klingenwirbel bis Adrenalinrausch, danach Meucheln.",
         enUS = "Wowhead's leveling pick for Combat: Deflection, Riposte and Blade Flurry up to Adrenaline Rush, then Assassination.",
@@ -1361,6 +1375,8 @@ table.insert(ns.TalentBuilds, {
     verified          = false,
     title = { deDE = "Gebrechen (Leveling-Build)", enUS = "Affliction (leveling build)" },
     menu  = { deDE = "Gebrechen – Leveling", enUS = "Affliction – leveling" },
+    -- EINSTEIGER-TIPP: Wegweiser-Einschätzung, gestützt auf Forever-Einsteigerlisten (siehe docs/EINSTEIGER.md)
+    beginner = { deDE = "Dämon als Schutz, Schaden über Zeit und Aderlass: kaum Pausen zum Trinken.", enUS = "A demon for protection, damage over time and Life Tap: hardly any breaks to drink." },
     summary = {
         deDE = "Wowheads Leveling-Empfehlung für Gebrechen: Verderbnis und Entziehen, früh etwas Begleiter-Stärke, dann Gebrechen bis Zermürben.",
         enUS = "Wowhead's leveling pick for Affliction: Corruption and drains, some early pet power, then Affliction up to Wrack.",
@@ -1530,6 +1546,8 @@ table.insert(ns.TalentBuilds, {
     verified          = false,
     title = { deDE = "Waffen (Leveling-Build)", enUS = "Arms (leveling build)" },
     menu  = { deDE = "Waffen – Leveling", enUS = "Arms – leveling" },
+    -- EINSTEIGER-TIPP: Wegweiser-Einschätzung, gestützt auf Forever-Einsteigerlisten (siehe docs/EINSTEIGER.md)
+    beginner = { deDE = "Zweihänder mit Tiefe Wunden und Weitreichende Stöße. Krieger ist trotzdem die anspruchsvollste Klasse zum Leveln.", enUS = "Two-hander with Deep Wounds and Sweeping Strikes. Warrior is still the most demanding class to level." },
     summary = {
         deDE = "Wowheads Leveling-Empfehlung für Waffen: Zweihänder mit Tiefe Wunden und Weitreichende Stöße bis Tödlicher Stoß, danach Furor.",
         enUS = "Wowhead's leveling pick for Arms: two-hander with Deep Wounds and Sweeping Strikes up to Mortal Strike, then Fury.",

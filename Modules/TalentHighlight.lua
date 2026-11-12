@@ -417,6 +417,7 @@ local function setup()
         for _, b in ipairs(guide:GetClassBuilds()) do
             local ready = not b.planned and #(b.steps or {}) > 0
             local text = guide.Loc(b.menu or b.title) .. (ready and "" or (" " .. L.GUIDE_PLANNED))
+                .. (b.beginner and (" " .. L.GUIDE_BEGINNER_TAG) or "")
             local radio = root:CreateRadio(text,
                 function() return guide:GetBuild() == b end,
                 function()
