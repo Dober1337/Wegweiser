@@ -310,3 +310,13 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Neue Charaktere ohne eigene Wahl bekommen automatisch den Einsteiger-Tipp.
   Eine schon getroffene Wahl bleibt erhalten.
 - Prüfen: Wird der Name im Auswahlfeld abgeschnitten?
+
+## Version 0.33.0 – Flugpunkte und Ruhestein
+
+- `/ww flug`: listet die Flugpunkte deiner Zone („bekannt"/„neu") und setzt einen
+  Wegpunkt zum nächsten neuen. `/ww flug aus` entfernt ihn.
+  WICHTIG zu prüfen: Kommen überhaupt Flugpunkte? Stimmt „bekannt"/„neu"?
+- In eine Zone mit unbekanntem Flugpunkt reisen: gelber Hinweis (einmal pro Zone).
+- `/ww ruhestein`: zeigt den Ort. Maus über den Ruhestein: blaue Zeile „Wegweiser: gebunden an …".
+- Beim Gastwirt neu binden: Bestätigung „Ruhestein jetzt gebunden an …".
+- Abschaltbar: /ww config → „Flugpunkte und Ruhestein".

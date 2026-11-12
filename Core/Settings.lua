@@ -37,6 +37,8 @@ ns.defaults = {
         -- Berufe
         profHelper      = true,   -- Hinweise kurz vor/am Rang-Limit, Tipps
         profRouteBox    = true,   -- Kasten "womit skillen" beim Lehrer/im Berufsfenster
+        -- Reisen
+        travelHints     = true,   -- Flugpunkt-Hinweise, Ruhestein im Tooltip
         -- Build-Wahl steht in talentBuildByClass (pro Klasse). Ohne Wahl gilt der
         -- Einsteiger-Tipp der Klasse (TalentGuide:GetBuild).
     },

@@ -54,6 +54,8 @@ function ns:OnDatabaseReady()
     -- Berufe
     addCheckbox("profHelper",      L.OPT_PROF,      L.OPT_PROF_TT)
     addCheckbox("profRouteBox",    L.OPT_PROFBOX,   L.OPT_PROFBOX_TT)
+
+    addCheckbox("travelHints",     L.OPT_TRAVEL,    L.OPT_TRAVEL_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.
 
