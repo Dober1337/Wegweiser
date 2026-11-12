@@ -158,17 +158,22 @@ end
 -- Werte zu "Rasterlinien" zusammenfassen: Talente, die nur ein paar Pixel
 -- versetzt liegen, gehören zur selben Reihe/Spalte. (Beim Jäger liegt mindestens
 -- ein Talent leicht neben dem Raster – ohne das hier entstanden "Reihe 181".)
--- Toleranz: ein Viertel des größten Abstands zwischen zwei Werten.
+-- Toleranz: ein Viertel des TYPISCHEN Abstands (Median der echten Lücken).
+-- Nicht der größte Abstand: Einzelne "Geister-Talente" weit außerhalb des Baums
+-- (z. B. beim Jäger y = 39300) würden die Toleranz sonst riesig machen.
 local function distinctSorted(values)
     local sorted = {}
     for _, v in ipairs(values) do table.insert(sorted, v) end
     table.sort(sorted)
     if #sorted == 0 then return sorted end
-    local maxGap = 0
+    local gaps = {}
     for i = 2, #sorted do
-        maxGap = math.max(maxGap, sorted[i] - sorted[i - 1])
+        local d = sorted[i] - sorted[i - 1]
+        if d > 5 then table.insert(gaps, d) end
     end
-    local tol = maxGap * 0.25
+    table.sort(gaps)
+    local typical = gaps[math.floor((#gaps + 1) / 2)] or 0
+    local tol = typical * 0.25
     local centers, sum, count, start = {}, sorted[1], 1, sorted[1]
     for i = 2, #sorted do
         local v = sorted[i]
@@ -294,6 +299,8 @@ function TalentAPI:ReadTree()
 
     -- 3. Reihe/Spalte je Baum berechnen
     for _, tree in ipairs(trees) do
+        -- linke Kante des Baums: kleinste x-Position (Ausreißer liegen bisher rechts/unten,
+        -- werden unten über "Spalte > 4" aussortiert)
         local minX
         for _, t in ipairs(tree.talents) do
             if not minX or t.posX < minX then minX = t.posX end
@@ -316,6 +323,21 @@ function TalentAPI:ReadTree()
                 end
             end
         end
+        -- Talente außerhalb des Rasters (Reihe > 7 oder Spalte > 4) sind alte,
+        -- unsichtbare Einträge (im Jäger-/Priester-Dump gefunden) -> ignorieren
+        local kept = {}
+        maxColumn = 0
+        for _, t in ipairs(tree.talents) do
+            if t.tier and t.column and t.tier >= 1 and t.tier <= 7 and t.column >= 1 and t.column <= 4 then
+                table.insert(kept, t)
+                if t.column > maxColumn then maxColumn = t.column end
+            else
+                result.byNode[t.nodeID] = nil
+                result.offGrid = result.offGrid or {}
+                table.insert(result.offGrid, t)
+            end
+        end
+        tree.talents = kept
         -- Belegt ein Baum keine 4 Spalten, kann die Spaltenzählung verschoben sein.
         tree.columnsUsed = maxColumn
         tree.columnsCertain = (maxColumn == 4)

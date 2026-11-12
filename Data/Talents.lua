@@ -174,6 +174,7 @@ table.insert(ns.TalentBuilds, {
     verified          = false,
 
     title = { deDE = "Tierherrschaft (Leveling-Build)", enUS = "Beast Mastery (leveling build)" },
+    menu  = { deDE = "Tierherrschaft – Leveling", enUS = "Beast Mastery – leveling" },
     summary = {
         deDE = "Leveling mit starkem Begleiter: erst Tierherrschaft bis Zorn des Wildtiers, dann Treffsicherheit.",
         enUS = "Leveling with a strong pet: Beast Mastery up to Bestial Wrath first, then Marksmanship.",
@@ -331,6 +332,114 @@ table.insert(ns.TalentBuilds, {
         { phase = "C", nodeID = 104767, tree = 1, tier = 2, column = 2, maxRank = 5, ranks = 3 }, -- Reverberation / Nachklingen
         { phase = "C", nodeID = 104764, tree = 1, tier = 4, column = 1, maxRank = 2, ranks = 2 }, -- Trial by Fire / Feuerprobe
         { phase = "C", nodeID = 104762, tree = 1, tier = 4, column = 4, maxRank = 1, ranks = 1 }, -- Earthbound / Erdgebunden
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- JÄGER – Treffsicherheit (Leveling)
+-- QUELLE: Wowhead, Treffsicherheit-Leveling-Guide:
+--   https://www.wowhead.com/forever/guide/classes/hunter/marksmanship/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 15/36/0).
+-- nodeID/Reihe/Spalte/maxRank aus dem Talentdump aller Klassen (2026-11-12).
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "HUNTER_MARKSMANSHIP_LEVELING",
+    class     = "HUNTER",
+    spec      = "MARKSMANSHIP",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/hunter/marksmanship/dps-leveling-tips",
+    structureVerified = true,    -- alle Talente im Dump gefunden
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Treffsicherheit (Leveling-Build)", enUS = "Marksmanship (leveling build)" },
+    menu  = { deDE = "Treffsicherheit – Leveling", enUS = "Marksmanship – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Treffsicherheit: Fernkampfschaden zuerst, danach Begleiter-Talente aus Tierherrschaft.",
+        enUS = "Wowhead's leveling pick for Marksmanship: ranged damage first, then pet talents from Beast Mastery.",
+    },
+    distribution = { 15, 36, 0 },
+    phases = {
+        A = { deDE = "Phase A – Treffsicherheit",                         enUS = "Phase A – Marksmanship" },
+        B = { deDE = "Phase B – Tierherrschaft & restliche Treffsicherheit", enUS = "Phase B – Beast Mastery & remaining Marksmanship" },
+    },
+    steps = {
+        { phase = "A", nodeID = 105011, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lethal Attacks / Tödliche Angriffe
+        { phase = "A", nodeID = 105008, tree = 2, tier = 2, column = 3, maxRank = 5, ranks = 5 }, -- Careful Aim / Sorgfältiges Zielen
+        { phase = "A", nodeID = 105005, tree = 2, tier = 3, column = 1, maxRank = 2, ranks = 2 }, -- Rapid Killing / Schneller Tod
+        { phase = "A", nodeID = 105009, tree = 2, tier = 2, column = 2, maxRank = 5, ranks = 3 }, -- Efficiency / Effizienz
+        { phase = "A", nodeID = 105004, tree = 2, tier = 4, column = 2, maxRank = 1, ranks = 1 }, -- Trueshot Aura / Aura des Volltreffers
+        { phase = "A", nodeID = 105002, tree = 2, tier = 4, column = 3, maxRank = 5, ranks = 4 }, -- Mortal Shots / Todbringende Schüsse
+        { phase = "A", nodeID = 104999, tree = 2, tier = 5, column = 1, maxRank = 2, ranks = 2 }, -- Rapid Recuperation / Rasche Erholung
+        { phase = "A", nodeID = 105002, tree = 2, tier = 4, column = 3, maxRank = 5, ranks = 1 }, -- Mortal Shots / Todbringende Schüsse
+        { phase = "A", nodeID = 105009, tree = 2, tier = 2, column = 2, maxRank = 5, ranks = 2 }, -- Efficiency / Effizienz
+        { phase = "B", nodeID = 104998, tree = 2, tier = 6, column = 3, maxRank = 5, ranks = 5 }, -- Ranged Weapon Specialization / Distanzwaffen-Spezialisierung
+        { phase = "B", nodeID = 104960, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Deadly Aspects / Tödliche Aspekte
+        { phase = "B", nodeID = 104975, tree = 1, tier = 2, column = 1, maxRank = 2, ranks = 2 }, -- Focused Fire / Konzentriertes Feuer
+        { phase = "B", nodeID = 104976, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 3 }, -- Endurance Training / Belastbarkeit-Ausbildung
+        { phase = "B", nodeID = 104970, tree = 1, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Bestial Swiftness / Erhöhte Tiergeschwindigkeit
+        { phase = "B", nodeID = 105000, tree = 2, tier = 5, column = 4, maxRank = 1, ranks = 1 }, -- Scatter Shot / Streuschuss
+        { phase = "B", nodeID = 104969, tree = 1, tier = 3, column = 3, maxRank = 5, ranks = 4 }, -- Unleashed Fury / Entfesselter Zorn
+        { phase = "B", nodeID = 105006, tree = 2, tier = 3, column = 2, maxRank = 5, ranks = 5 }, -- Improved Arcane Shot / Verbesserter arkaner Schuss
+    },
+    notes = {},
+})
+
+-- ------------------------------------------------------------
+-- JÄGER – Überleben (Leveling)
+-- QUELLE: Wowhead, Überleben-Leveling-Guide:
+--   https://www.wowhead.com/forever/guide/classes/hunter/survival/dps-leveling-tips
+-- Reihenfolge laut Spieler (Liste + Grafik, 16/9/26).
+-- nodeID/Reihe/Spalte/maxRank aus dem Talentdump aller Klassen (2026-11-12).
+-- ------------------------------------------------------------
+table.insert(ns.TalentBuilds, {
+    key       = "HUNTER_SURVIVAL_LEVELING",
+    class     = "HUNTER",
+    spec      = "SURVIVAL",
+    buildType = "LEVELING",
+    variant   = "STANDARD",
+    source    = "WOWHEAD",
+    sourceUrl = "https://www.wowhead.com/forever/guide/classes/hunter/survival/dps-leveling-tips",
+    structureVerified = true,
+    positionsVerified = false,
+    orderVerified     = false,
+    verified          = false,
+    title = { deDE = "Überleben (Leveling-Build)", enUS = "Survival (leveling build)" },
+    menu  = { deDE = "Überleben – Leveling", enUS = "Survival – leveling" },
+    summary = {
+        deDE = "Wowheads Leveling-Empfehlung für Überleben: zuerst Überleben, dann Begleiter-Talente, zum Schluss Treffsicherheit.",
+        enUS = "Wowhead's leveling pick for Survival: Survival first, then pet talents, Marksmanship last.",
+    },
+    distribution = { 16, 9, 26 },
+    phases = {
+        A = { deDE = "Phase A – Überleben",       enUS = "Phase A – Survival" },
+        B = { deDE = "Phase B – Tierherrschaft",  enUS = "Phase B – Beast Mastery" },
+        C = { deDE = "Phase C – Treffsicherheit", enUS = "Phase C – Marksmanship" },
+    },
+    steps = {
+        { phase = "A", nodeID = 104996, tree = 3, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Improved Tracking / Verbessertes Fährtenlesen
+        { phase = "A", nodeID = 104993, tree = 3, tier = 2, column = 2, maxRank = 2, ranks = 2 }, -- Savage Strikes / Wilde Schläge
+        { phase = "A", nodeID = 104992, tree = 3, tier = 2, column = 3, maxRank = 5, ranks = 3 }, -- Survivalist / Überlebenskünstler
+        { phase = "A", nodeID = 104986, tree = 3, tier = 3, column = 3, maxRank = 1, ranks = 1 }, -- Deterrence / Abschreckung
+        { phase = "A", nodeID = 104987, tree = 3, tier = 3, column = 2, maxRank = 3, ranks = 3 }, -- Surefooted / Sicherer Stand
+        { phase = "A", nodeID = 104991, tree = 3, tier = 3, column = 1, maxRank = 2, ranks = 1 }, -- Clever Traps / Falleneffizienz
+        { phase = "A", nodeID = 104989, tree = 3, tier = 4, column = 3, maxRank = 1, ranks = 1 }, -- Counterattack / Gegenangriff
+        { phase = "A", nodeID = 110861, tree = 3, tier = 4, column = 2, maxRank = 5, ranks = 4 }, -- Predator's Edge / Vorteil des Raubtiers
+        { phase = "A", nodeID = 104981, tree = 3, tier = 5, column = 4, maxRank = 1, ranks = 1 }, -- Strider Kick / Streichertritt
+        { phase = "A", nodeID = 104983, tree = 3, tier = 5, column = 1, maxRank = 2, ranks = 2 }, -- Resourcefulness / Einfallsreichtum
+        { phase = "A", nodeID = 110861, tree = 3, tier = 4, column = 2, maxRank = 5, ranks = 1 }, -- Predator's Edge / Vorteil des Raubtiers
+        { phase = "A", nodeID = 104985, tree = 3, tier = 5, column = 2, maxRank = 2, ranks = 2 }, -- Expose Prey / Beute aufspüren
+        { phase = "B", nodeID = 104960, tree = 1, tier = 1, column = 2, maxRank = 5, ranks = 5 }, -- Deadly Aspects / Tödliche Aspekte
+        { phase = "B", nodeID = 104975, tree = 1, tier = 2, column = 1, maxRank = 2, ranks = 2 }, -- Focused Fire / Konzentriertes Feuer
+        { phase = "B", nodeID = 104976, tree = 1, tier = 1, column = 3, maxRank = 5, ranks = 3 }, -- Endurance Training / Belastbarkeit-Ausbildung
+        { phase = "B", nodeID = 104970, tree = 1, tier = 3, column = 2, maxRank = 1, ranks = 1 }, -- Bestial Swiftness / Erhöhte Tiergeschwindigkeit
+        { phase = "B", nodeID = 104969, tree = 1, tier = 3, column = 3, maxRank = 5, ranks = 4 }, -- Unleashed Fury / Entfesselter Zorn
+        { phase = "B", nodeID = 104966, tree = 1, tier = 4, column = 4, maxRank = 1, ranks = 1 }, -- Summon Hawk / Falke beschwören
+        { phase = "C", nodeID = 105011, tree = 2, tier = 1, column = 3, maxRank = 5, ranks = 5 }, -- Lethal Attacks / Tödliche Angriffe
+        { phase = "C", nodeID = 105008, tree = 2, tier = 2, column = 3, maxRank = 5, ranks = 4 }, -- Careful Aim / Sorgfältiges Zielen
     },
     notes = {},
 })

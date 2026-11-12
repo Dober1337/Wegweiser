@@ -232,3 +232,13 @@ Der Jäger-Build hat keine festen Talent-Nummern: Wegweiser sucht die Talente be
 | 4 | Fenster schließen/öffnen, `/reload` | Wahl bleibt erhalten |
 | 5 | `/ww build zeigen` | schaltet ebenfalls um |
 Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
+
+## Version 0.22.0 – Jäger: drei Leveling-Builds
+
+- Jäger, Talentfenster öffnen: Das Auswahlfeld unten links zeigt
+  „Tierherrschaft – Leveling", „Treffsicherheit – Leveling" und „Überleben – Leveling".
+- Jeden Build einmal auswählen: Es darf keine rote Fehlermeldung erscheinen.
+- Die Ansicht „ganzer Build" zeigt bei Treffsicherheit nur Treffsicherheit und Tierherrschaft
+  (15/36/0), bei Überleben alle drei Bäume (16/9/26).
+- Priester und Jäger: Die Reihen und Spalten stimmen wieder. Das Spiel hat dort unsichtbare
+  Zusatz-Talente außerhalb des Rasters; die werden jetzt ignoriert.
