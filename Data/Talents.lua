@@ -235,7 +235,7 @@ table.insert(ns.TalentBuilds, {
     orderVerified     = false,
     verified          = false,
     title = { deDE = "Spellhancer (Leveling-Build)", enUS = "Spellhancer (leveling build)" },
-    menu  = { deDE = "Spellhancer – Leveling (Zauber + Verstärkung)", enUS = "Spellhancer – leveling (spells + enhancement)" },
+    menu  = { deDE = "Spellhancer – Leveling", enUS = "Spellhancer – leveling" },
     summary = {
         deDE = "Wowheads Leveling-Empfehlung im Elementar-Guide. Kein reiner Elementar-Build: erst Verstärkung, dann Mana-Talente, dann Elementar für Schocks und Blitze.",
         enUS = "Wowhead's leveling pick in the Elemental guide. Not a pure Elemental build: Enhancement first, then mana talents, then Elemental for shocks and lightning.",
