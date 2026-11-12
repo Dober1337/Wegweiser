@@ -330,7 +330,7 @@ L.TRAVEL_HS_NOW        = "Ruhestein jetzt gebunden an: %s"
 -- Sammel-Tooltip (Modules/GatherTooltip.lua)
 L.OPT_GATHERTT         = "Sammel-Infos im Tooltip"
 L.OPT_GATHERTT_TT      = "Maus über Kraut, Erz oder Tier: ab welcher Fertigkeit es geht und welche Farbe es für dich hat."
-L.GT_NODE_FULL         = "Wegweiser: %s ab %d · gelb %s · grün %s · grau %s"
+L.GT_NODE_FULL         = "Wegweiser: %s ab orange %s · gelb %s · grün %s · grau %s"
 L.GT_NODE_MIN          = "Wegweiser: %s ab %d"
 L.GT_NOT_LEARNED       = "Du hast %s nicht gelernt."
 L.GT_YOU               = "Deine Fertigkeit: %d – %s"

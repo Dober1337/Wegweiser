@@ -76,7 +76,7 @@ end
 
 local function addNodeLines(tooltip, prof, n)
     local head = n.yellow
-        and string.format(L.GT_NODE_FULL, profName(prof), n.min,
+        and string.format(L.GT_NODE_FULL, profName(prof), COLOR.ORANGE .. n.min .. "|r",
             COLOR.YELLOW .. n.yellow .. "|r", COLOR.GREEN .. n.green .. "|r", COLOR.GREY .. n.grey .. "|r")
         or string.format(L.GT_NODE_MIN, profName(prof), n.min)
     tooltip:AddLine(head, 0.4, 0.8, 1.0)

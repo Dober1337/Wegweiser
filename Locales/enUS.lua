@@ -330,7 +330,7 @@ L.TRAVEL_HS_NOW        = "Hearthstone now bound to: %s"
 -- Gathering tooltip (Modules/GatherTooltip.lua)
 L.OPT_GATHERTT         = "Gathering info in tooltips"
 L.OPT_GATHERTT_TT      = "Mouse over a herb, ore or beast: the skill needed and which colour it has for you."
-L.GT_NODE_FULL         = "Wegweiser: %s from %d · yellow %s · green %s · grey %s"
+L.GT_NODE_FULL         = "Wegweiser: %s from orange %s · yellow %s · green %s · grey %s"
 L.GT_NODE_MIN          = "Wegweiser: %s from %d"
 L.GT_NOT_LEARNED       = "You have not learned %s."
 L.GT_YOU               = "Your skill: %d – %s"
