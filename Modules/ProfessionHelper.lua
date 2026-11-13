@@ -262,6 +262,12 @@ function PH:FindTrainer(id)
     local best, bestDist
     for _, t in ipairs(list) do
         local fits = not (needsHigher and t.apprentice) and not (t.artisanOnly and nextIdx ~= 4)
+        if fits and t.ranks then
+            -- Lehrer lehrt nur bestimmte Ränge; ohne den Beruf = Lehrling (Rang 1)
+            local want, ok = nextIdx or 1, false
+            for _, r in ipairs(t.ranks) do if r == want then ok = true end end
+            fits = ok
+        end
         if fits then
             local tc, tp = worldPos(t.map, t.x / 100, t.y / 100)
             local dist = math.huge / 2

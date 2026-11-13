@@ -145,6 +145,8 @@ function PR:RecipeStatus(profID, step)
     end
     local where = step.src and L["PRO_SRC_" .. step.src]
     if where and step.srcSkill then where = where .. string.format(L.PRO_SRC_SKILL, step.srcSkill) end
+    local who = step.srcWho and step.srcWho[(UnitFactionGroup("player") or ""):upper()]
+    if where and who then where = where .. ": " .. who end
     if known == false then
         return L.PRO_RECIPE_MISSING .. (where and (" – " .. where) or ""), 1, 0.82, 0
     elseif where then

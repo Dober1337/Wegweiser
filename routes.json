@@ -1,0 +1,3962 @@
+{
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/alchemie.html": [
+  {
+   "src": null,
+   "matsText": null,
+   "range": "1-10",
+   "color": "red",
+   "alt": false,
+   "count": 9,
+   "product": [
+    "spell",
+    1245246,
+    "Schwaches Arkanelixier"
+   ],
+   "mats": [
+    [
+     9,
+     "item",
+     2447,
+     "Friedensblume"
+    ],
+    [
+     9,
+     "item",
+     3371,
+     "Leere Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "10-55",
+   "color": "red",
+   "alt": false,
+   "count": 45,
+   "product": [
+    "item",
+    5997,
+    "Elixier der schwachen Verteidigung"
+   ],
+   "mats": [
+    [
+     45,
+     "item",
+     765,
+     "Silberblatt"
+    ],
+    [
+     45,
+     "item",
+     2447,
+     "Friedensblume"
+    ],
+    [
+     45,
+     "item",
+     3371,
+     "Leere Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "55-65",
+   "color": "red",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "item",
+    2455,
+    "Schwacher Manatrank"
+   ],
+   "mats": [
+    [
+     10,
+     "item",
+     785,
+     "Maguskönigskraut"
+    ],
+    [
+     10,
+     "item",
+     2447,
+     "Friedensblume"
+    ],
+    [
+     10,
+     "item",
+     3371,
+     "Leere Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "65-90",
+   "color": "yellow",
+   "alt": false,
+   "count": 27,
+   "product": [
+    "item",
+    2458,
+    "Elixier der schwachen Seelenstärke"
+   ],
+   "mats": [
+    [
+     54,
+     "item",
+     2449,
+     "Erdwurzel"
+    ],
+    [
+     27,
+     "item",
+     2447,
+     "Friedensblume"
+    ],
+    [
+     27,
+     "item",
+     3371,
+     "Leere Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "90-120",
+   "color": "red",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "item",
+    3383,
+    "Elixier der Weisheit"
+   ],
+   "mats": [
+    [
+     30,
+     "item",
+     785,
+     "Maguskönigskraut"
+    ],
+    [
+     60,
+     "item",
+     2450,
+     "Wilddornrose"
+    ],
+    [
+     30,
+     "item",
+     3371,
+     "Leere Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "120-130",
+   "color": "red",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "item",
+    3385,
+    "Geringer Manatrank"
+   ],
+   "mats": [
+    [
+     10,
+     "item",
+     785,
+     "Maguskönigskraut"
+    ],
+    [
+     10,
+     "item",
+     3820,
+     "Würgetang"
+    ],
+    [
+     10,
+     "item",
+     3371,
+     "Leere Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "130-150",
+   "color": "red",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    7837,
+    "Feueröl"
+   ],
+   "mats": [
+    [
+     40,
+     "item",
+     6359,
+     "Feuerflossenschnapper"
+    ],
+    [
+     20,
+     "item",
+     3371,
+     "Leere Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "150-165",
+   "color": "red",
+   "alt": false,
+   "count": 15,
+   "product": [
+    "spell",
+    7845,
+    "Elixier der Feuermacht"
+   ],
+   "mats": [
+    [
+     30,
+     "item",
+     6371,
+     "Feueröl"
+    ],
+    [
+     15,
+     "item",
+     3356,
+     "Königsblut"
+    ],
+    [
+     15,
+     "item",
+     3372,
+     "Verbleite Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "165-195",
+   "color": "yellow",
+   "alt": false,
+   "count": 36,
+   "product": [
+    "item",
+    3827,
+    "Manatrank"
+   ],
+   "mats": [
+    [
+     36,
+     "item",
+     3820,
+     "Würgetang"
+    ],
+    [
+     36,
+     "item",
+     3356,
+     "Königsblut"
+    ],
+    [
+     36,
+     "item",
+     3372,
+     "Verbleite Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "195-225",
+   "color": "yellow",
+   "alt": false,
+   "count": 36,
+   "product": [
+    "spell",
+    7259,
+    "Naturschutztrank"
+   ],
+   "mats": [
+    [
+     36,
+     "item",
+     3357,
+     "Lebenswurz"
+    ],
+    [
+     36,
+     "item",
+     3820,
+     "Würgetang"
+    ],
+    [
+     36,
+     "item",
+     3372,
+     "Verbleite Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "225-230",
+   "color": "yellow",
+   "alt": false,
+   "count": 12,
+   "product": [
+    "spell",
+    7259,
+    "Naturschutztrank"
+   ],
+   "mats": [
+    [
+     12,
+     "item",
+     3357,
+     "Lebenswurz"
+    ],
+    [
+     12,
+     "item",
+     3820,
+     "Würgetang"
+    ],
+    [
+     12,
+     "item",
+     3372,
+     "Verbleite Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "230-240",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "item",
+    6149,
+    "Großer Manatrank"
+   ],
+   "mats": [
+    [
+     20,
+     "item",
+     3358,
+     "Khadgars Schnurrbart"
+    ],
+    [
+     20,
+     "item",
+     3821,
+     "Golddorn"
+    ],
+    [
+     20,
+     "item",
+     3372,
+     "Verbleite Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "240-265",
+   "color": "yellow",
+   "alt": false,
+   "count": 35,
+   "product": [
+    "item",
+    9154,
+    "Trunk der Untotenentdeckung"
+   ],
+   "mats": [
+    [
+     35,
+     "item",
+     8836,
+     "Arthas‘ Tränen"
+    ],
+    [
+     35,
+     "item",
+     8925,
+     "Kristallphiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "265-275",
+   "color": "red",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "item",
+    13443,
+    "Überragender Manatrank"
+   ],
+   "mats": [
+    [
+     20,
+     "item",
+     8838,
+     "Sonnengras"
+    ],
+    [
+     20,
+     "item",
+     8839,
+     "Blindkraut"
+    ],
+    [
+     10,
+     "item",
+     8925,
+     "Kristallphiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "290-300",
+   "color": "yellow",
+   "alt": false,
+   "count": 17,
+   "product": [
+    "item",
+    250943,
+    "Erheblicher Trank der Raserei"
+   ],
+   "mats": [
+    [
+     51,
+     "item",
+     13466,
+     "Pestblüte"
+    ],
+    [
+     34,
+     "item",
+     8839,
+     "Blindkraut"
+    ],
+    [
+     17,
+     "item",
+     18256,
+     "Magieerfüllte Phiole"
+    ]
+   ]
+  }
+ ],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/angeln.html": [],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/bergbau.html": [],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/erste-hilfe.html": [
+  {
+   "src": null,
+   "matsText": "50× Leinenstoff Orange bis 30 · danach gelb; ab 45 grün",
+   "range": "1-40",
+   "color": "red",
+   "alt": false,
+   "count": 50,
+   "product": [
+    "item",
+    1251,
+    "Leinenverband"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": "80× Leinenstoff Orange bis 50 · dann gelb bis 75",
+   "range": "40-75",
+   "color": "yellow",
+   "alt": false,
+   "count": 40,
+   "product": [
+    "item",
+    2581,
+    "Schwerer Leinenverband"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "75-80",
+   "color": "yellow",
+   "alt": false,
+   "count": 12,
+   "product": [
+    "item",
+    2581,
+    "Schwerer Leinenverband"
+   ],
+   "mats": [
+    [
+     24,
+     "item",
+     2589,
+     "Leinenstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "80-115",
+   "color": "yellow",
+   "alt": false,
+   "count": 50,
+   "product": [
+    "item",
+    3530,
+    "Wollverband"
+   ],
+   "mats": [
+    [
+     50,
+     "item",
+     2592,
+     "Wollstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "115-150",
+   "color": "yellow",
+   "alt": false,
+   "count": 50,
+   "product": [
+    "item",
+    3531,
+    "Schwerer Wollverband"
+   ],
+   "mats": [
+    [
+     100,
+     "item",
+     2592,
+     "Wollstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": "29× Wilddornrose, 58× Milde Gewürze, 29× Leere Phiole Orange bis 85 · dann gelb",
+   "range": "75-100",
+   "color": "red",
+   "alt": false,
+   "count": 29,
+   "product": [
+    "item",
+    858,
+    "Geringer Heiltrank"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": "15× Wollstoff Gelb in diesem Bereich",
+   "range": "100-110",
+   "color": "yellow",
+   "alt": false,
+   "count": 15,
+   "product": [
+    "item",
+    3530,
+    "Wollverband"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": "44× Beulengras, 44× Scharfe Gewürze, 44× Verbleite Phiole Orange bis 135 · danach gelb",
+   "range": "110-150",
+   "color": "red",
+   "alt": false,
+   "count": 44,
+   "product": [
+    "item",
+    929,
+    "Heiltrank"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": "42× Seidenstoff Gelb ab Skill 150 · ab 180 grün",
+   "range": "150-180",
+   "color": "yellow",
+   "alt": false,
+   "count": 42,
+   "product": [
+    "item",
+    6450,
+    "Seidenverband"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": "92× Seidenstoff Gelb ab 180 · ab 210 grün",
+   "range": "180-210",
+   "color": "yellow",
+   "alt": false,
+   "count": 46,
+   "product": [
+    "item",
+    6451,
+    "Schwerer Seidenverband"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": "19× Magiestoff Gelb ab 210 · bis 225 gelb",
+   "range": "210-225",
+   "color": "yellow",
+   "alt": false,
+   "count": 19,
+   "product": [
+    "item",
+    8544,
+    "Magiestoffverband"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": "ca. 29× Magiestoff Buch von Deneb / Balai",
+   "range": "225-240",
+   "color": "yellow",
+   "alt": false,
+   "count": 29,
+   "product": [
+    "item",
+    8544,
+    "Magiestoffverband"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": "ca. 60× Magiestoff Fraktionsarzt ab 240",
+   "range": "240-260",
+   "color": "yellow",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "item",
+    8545,
+    "Schwerer Magiestoffverband"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "260-275",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "item",
+    14529,
+    "Runenstoffverband"
+   ],
+   "mats": [
+    [
+     20,
+     "item",
+     14047,
+     "Runenstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "275-300",
+   "color": "yellow",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "item",
+    13446,
+    "Erheblicher Heiltrank"
+   ],
+   "mats": [
+    [
+     30,
+     "item",
+     13464,
+     "Goldener Sansam"
+    ],
+    [
+     90,
+     "item",
+     3713,
+     "Beruhigende Gewürze"
+    ],
+    [
+     30,
+     "item",
+     8925,
+     "Kristallphiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": "ca. 50× Runenstoff Fraktionsarzt ab 260",
+   "range": "260-290",
+   "color": "yellow",
+   "alt": false,
+   "count": 50,
+   "product": [
+    "item",
+    14529,
+    "Runenstoffverband"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": "ca. 30× Runenstoff Fraktionsarzt ab 290",
+   "range": "290-300",
+   "color": "yellow",
+   "alt": false,
+   "count": 15,
+   "product": [
+    "item",
+    14530,
+    "Schwerer Runenstoffverband"
+   ],
+   "mats": []
+  }
+ ],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/ingenieurskunst.html": [
+  {
+   "src": null,
+   "matsText": null,
+   "range": "1-30",
+   "color": "yellow",
+   "alt": false,
+   "count": 60,
+   "product": [
+    "item",
+    4357,
+    "Raues Sprengpulver"
+   ],
+   "mats": [
+    [
+     60,
+     "item",
+     2835,
+     "Rauer Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "30-50",
+   "color": "yellow",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "item",
+    4359,
+    "Eine Hand voll Kupferbolzen"
+   ],
+   "mats": [
+    [
+     30,
+     "item",
+     2840,
+     "Kupferbarren"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "50-51",
+   "color": "red",
+   "alt": false,
+   "count": 1,
+   "product": [
+    "item",
+    6219,
+    "Bogenlichtschraubenschlüssel"
+   ],
+   "mats": [
+    [
+     6,
+     "item",
+     2840,
+     "Kupferbarren"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "51-75",
+   "color": "yellow",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "item",
+    4360,
+    "Raue Kupferbombe"
+   ],
+   "mats": [
+    [
+     30,
+     "item",
+     2840,
+     "Kupferbarren"
+    ],
+    [
+     30,
+     "item",
+     4359,
+     "Eine Hand voll Kupferbolzen"
+    ],
+    [
+     60,
+     "item",
+     4357,
+     "Raues Sprengpulver"
+    ],
+    [
+     30,
+     "item",
+     2589,
+     "Leinenstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "75-90",
+   "color": "yellow",
+   "alt": false,
+   "count": 60,
+   "product": [
+    "item",
+    4364,
+    "Grobes Sprengpulver"
+   ],
+   "mats": [
+    [
+     60,
+     "item",
+     2836,
+     "Grober Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "90-100",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "item",
+    4365,
+    "Grobes Dynamit"
+   ],
+   "mats": [
+    [
+     60,
+     "item",
+     4364,
+     "Grobes Sprengpulver"
+    ],
+    [
+     20,
+     "item",
+     2589,
+     "Leinenstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "100-105",
+   "color": "red",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "item",
+    4404,
+    "Silberkontakt"
+   ],
+   "mats": [
+    [
+     5,
+     "item",
+     2842,
+     "Silberbarren"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "105-125",
+   "color": "yellow",
+   "alt": false,
+   "count": 25,
+   "product": [
+    "item",
+    4371,
+    "Bronzeröhre"
+   ],
+   "mats": [
+    [
+     50,
+     "item",
+     2841,
+     "Bronzebarren"
+    ],
+    [
+     25,
+     "item",
+     2880,
+     "Schwacher Fluxus"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "125-135",
+   "color": "red",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "item",
+    4406,
+    "Standardzielfernrohr"
+   ],
+   "mats": [
+    [
+     10,
+     "item",
+     4371,
+     "Bronzeröhre"
+    ],
+    [
+     10,
+     "item",
+     1206,
+     "Moosachat"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "135-150",
+   "color": "yellow",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "item",
+    4377,
+    "Schweres Sprengpulver"
+   ],
+   "mats": [
+    [
+     30,
+     "item",
+     2838,
+     "Schwerer Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "150-160",
+   "color": "yellow",
+   "alt": false,
+   "count": 15,
+   "product": [
+    "item",
+    4382,
+    "Bronzegerüst"
+   ],
+   "mats": [
+    [
+     30,
+     "item",
+     2841,
+     "Bronzebarren"
+    ],
+    [
+     15,
+     "item",
+     2319,
+     "Mittleres Leder"
+    ],
+    [
+     15,
+     "item",
+     2592,
+     "Wollstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "160-175",
+   "color": "red",
+   "alt": false,
+   "count": 15,
+   "product": [
+    "item",
+    4384,
+    "Explodierendes Schaf"
+   ],
+   "mats": [
+    [
+     30,
+     "item",
+     4377,
+     "Schweres Sprengpulver"
+    ],
+    [
+     15,
+     "item",
+     4375,
+     "Surrendes bronzenes Dingsda"
+    ],
+    [
+     15,
+     "item",
+     4382,
+     "Bronzegerüst"
+    ],
+    [
+     30,
+     "item",
+     2592,
+     "Wollstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "175-194",
+   "color": "green",
+   "alt": false,
+   "count": 60,
+   "product": [
+    "item",
+    10505,
+    "Robustes Sprengpulver"
+   ],
+   "mats": [
+    [
+     120,
+     "item",
+     7912,
+     "Robuster Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "194-195",
+   "color": "yellow",
+   "alt": false,
+   "count": 1,
+   "product": [
+    "item",
+    10498,
+    "Gyromatischer Mikroregler"
+   ],
+   "mats": [
+    [
+     4,
+     "item",
+     3859,
+     "Stahlbarren"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "195-200",
+   "color": "yellow",
+   "alt": false,
+   "count": 6,
+   "product": [
+    "item",
+    10559,
+    "Mithrilrohr"
+   ],
+   "mats": [
+    [
+     18,
+     "item",
+     3860,
+     "Mithrilbarren"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "200-215",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "item",
+    10560,
+    "Instabiler Auslöser"
+   ],
+   "mats": [
+    [
+     20,
+     "item",
+     3860,
+     "Mithrilbarren"
+    ],
+    [
+     20,
+     "item",
+     4338,
+     "Magiestoff"
+    ],
+    [
+     20,
+     "item",
+     10505,
+     "Robustes Sprengpulver"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "215-238",
+   "color": "green",
+   "alt": false,
+   "count": 40,
+   "product": [
+    "item",
+    10561,
+    "Mithrilgehäuse"
+   ],
+   "mats": [
+    [
+     120,
+     "item",
+     3860,
+     "Mithrilbarren"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "238-250",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "item",
+    10562,
+    "Hochexplosive Bombe"
+   ],
+   "mats": [
+    [
+     40,
+     "item",
+     10561,
+     "Mithrilgehäuse"
+    ],
+    [
+     20,
+     "item",
+     10560,
+     "Instabiler Auslöser"
+    ],
+    [
+     40,
+     "item",
+     10505,
+     "Robustes Sprengpulver"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "250-260",
+   "color": "green",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "item",
+    15992,
+    "Dichtes Sprengpulver"
+   ],
+   "mats": [
+    [
+     60,
+     "item",
+     12365,
+     "Verdichteter Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "260-285",
+   "color": "yellow",
+   "alt": false,
+   "count": 35,
+   "product": [
+    "item",
+    15994,
+    "Thoriumapparat"
+   ],
+   "mats": [
+    [
+     105,
+     "item",
+     12359,
+     "Thoriumbarren"
+    ],
+    [
+     35,
+     "item",
+     14047,
+     "Runenstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "285-300",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "item",
+    16000,
+    "Thoriumröhre"
+   ],
+   "mats": [
+    [
+     120,
+     "item",
+     12359,
+     "Thoriumbarren"
+    ]
+   ]
+  }
+ ],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/kochkunst.html": [
+  {
+   "src": null,
+   "matsText": null,
+   "range": "1-50",
+   "color": "orange",
+   "alt": false,
+   "count": 55,
+   "product": [
+    "item",
+    6290,
+    "Glänzender Kleinfisch"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     6291,
+     "Roher glänzender Kleinfisch"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "50-100",
+   "color": "yellow",
+   "alt": false,
+   "count": 55,
+   "product": [
+    "spell",
+    7753,
+    "Langkiefer-Schlammschnapper"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     6289,
+     "Roher Langkiefer-Schlammschnapper"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "100-150",
+   "color": "yellow",
+   "alt": false,
+   "count": 55,
+   "product": [
+    "spell",
+    7755,
+    "Stachelbartwels"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     6308,
+     "Roher Stachelbartwels"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "150-175",
+   "color": "yellow",
+   "alt": false,
+   "count": 25,
+   "product": [
+    "spell",
+    3376,
+    "Seltsam schmackhaftes Omelett"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     3685,
+     "Raptorei"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "175-225",
+   "color": "yellow",
+   "alt": false,
+   "count": 50,
+   "product": [
+    "spell",
+    20916,
+    "Mithrilkopfforelle"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     8365,
+     "Rohe Mithrilkopfforelle"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "225-275",
+   "color": "yellow",
+   "alt": false,
+   "count": 65,
+   "product": [
+    "spell",
+    18238,
+    "Tüpfelgelbschwanz"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     4603,
+     "Roher Tüpfelgelbschwanz"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "275-300",
+   "color": "yellow",
+   "alt": false,
+   "count": 35,
+   "product": [
+    "spell",
+    18244,
+    "Gedünsteter Sonnenschuppenlachs"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     13760,
+     "Roher Sonnenschuppenlachs"
+    ],
+    [
+     1,
+     "item",
+     13759,
+     "Roher Nachtflossenschnapper"
+    ]
+   ]
+  }
+ ],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/kraeuterkunde.html": [],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/kuerschnerei.html": [],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/lederverarbeitung.html": [
+  {
+   "src": null,
+   "matsText": null,
+   "range": "1-30",
+   "color": "",
+   "alt": false,
+   "count": 33,
+   "product": [
+    "spell",
+    2881,
+    "Leichtes Leder"
+   ],
+   "mats": [
+    [
+     100,
+     "item",
+     2934,
+     "Verdorbene Lederfetzen"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "30-45",
+   "color": "",
+   "alt": false,
+   "count": 24,
+   "product": [
+    "spell",
+    2152,
+    "Leichtes Rüstungsset"
+   ],
+   "mats": [
+    [
+     24,
+     "item",
+     2318,
+     "Leichtes Leder"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "45-55",
+   "color": "",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "spell",
+    3756,
+    "Geprägte Lederhandschuhe"
+   ],
+   "mats": [
+    [
+     30,
+     "item",
+     2318,
+     "Leichtes Leder"
+    ],
+    [
+     20,
+     "item",
+     2320,
+     "Grober Faden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "55-75",
+   "color": "",
+   "alt": false,
+   "count": 21,
+   "product": [
+    "spell",
+    3756,
+    "Geprägte Lederhandschuhe"
+   ],
+   "mats": [
+    [
+     63,
+     "item",
+     2318,
+     "Leichtes Leder"
+    ],
+    [
+     42,
+     "item",
+     2320,
+     "Grober Faden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "75-80",
+   "color": "",
+   "alt": false,
+   "count": 8,
+   "product": [
+    "spell",
+    20648,
+    "Mittleres Leder"
+   ],
+   "mats": [
+    [
+     32,
+     "item",
+     2318,
+     "Leichtes Leder"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "80-90",
+   "color": "",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "spell",
+    3817,
+    "Geschmeidiger mittlerer Balg"
+   ],
+   "mats": [
+    [
+     10,
+     "item",
+     4232,
+     "Mittlerer Balg"
+    ],
+    [
+     10,
+     "item",
+     4289,
+     "Salz"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "90-100",
+   "color": "",
+   "alt": false,
+   "count": 19,
+   "product": [
+    "spell",
+    3763,
+    "Feiner Ledergürtel"
+   ],
+   "mats": [
+    [
+     114,
+     "item",
+     2318,
+     "Leichtes Leder"
+    ],
+    [
+     38,
+     "item",
+     2320,
+     "Grober Faden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "100-115",
+   "color": "",
+   "alt": false,
+   "count": 16,
+   "product": [
+    "spell",
+    2168,
+    "Dunkler Lederumhang"
+   ],
+   "mats": [
+    [
+     128,
+     "item",
+     2319,
+     "Mittleres Leder"
+    ],
+    [
+     16,
+     "item",
+     2321,
+     "Feiner Faden"
+    ],
+    [
+     16,
+     "item",
+     4340,
+     "Grauer Farbstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "115-125",
+   "color": "",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "spell",
+    3766,
+    "Dunkler Ledergürtel"
+   ],
+   "mats": [
+    [
+     10,
+     "item",
+     4246,
+     "Feiner Ledergürtel"
+    ],
+    [
+     10,
+     "item",
+     4233,
+     "Geschmeidiger mittlerer Balg"
+    ],
+    [
+     20,
+     "item",
+     2321,
+     "Feiner Faden"
+    ],
+    [
+     10,
+     "item",
+     4340,
+     "Grauer Farbstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "125-130",
+   "color": "",
+   "alt": false,
+   "count": 7,
+   "product": [
+    "spell",
+    20649,
+    "Schweres Leder"
+   ],
+   "mats": [
+    [
+     35,
+     "item",
+     2319,
+     "Mittleres Leder"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "130-140",
+   "color": "",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    3818,
+    "Geschmeidiger schwerer Balg"
+   ],
+   "mats": [
+    [
+     20,
+     "item",
+     4235,
+     "Schwerer Balg"
+    ],
+    [
+     60,
+     "item",
+     4289,
+     "Salz"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "140-155",
+   "color": "",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    3764,
+    "Lederhandschuhe des Hügelwächters"
+   ],
+   "mats": [
+    [
+     280,
+     "item",
+     2319,
+     "Mittleres Leder"
+    ],
+    [
+     80,
+     "item",
+     2321,
+     "Feiner Faden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "155-165",
+   "color": "",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "spell",
+    7151,
+    "Barbarische Schultern"
+   ],
+   "mats": [
+    [
+     80,
+     "item",
+     4234,
+     "Schweres Leder"
+    ],
+    [
+     10,
+     "item",
+     4236,
+     "Geschmeidiger schwerer Balg"
+    ],
+    [
+     20,
+     "item",
+     2321,
+     "Feiner Faden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "165-175",
+   "color": "",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "spell",
+    7156,
+    "Wächterhandschuhe"
+   ],
+   "mats": [
+    [
+     40,
+     "item",
+     4234,
+     "Schweres Leder"
+    ],
+    [
+     10,
+     "item",
+     4236,
+     "Geschmeidiger schwerer Balg"
+    ],
+    [
+     10,
+     "item",
+     4291,
+     "Seidenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "175-195",
+   "color": "",
+   "alt": false,
+   "count": 26,
+   "product": [
+    "spell",
+    7156,
+    "Wächterhandschuhe"
+   ],
+   "mats": [
+    [
+     104,
+     "item",
+     4234,
+     "Schweres Leder"
+    ],
+    [
+     26,
+     "item",
+     4236,
+     "Geschmeidiger schwerer Balg"
+    ],
+    [
+     26,
+     "item",
+     4291,
+     "Seidenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "195-210",
+   "color": "",
+   "alt": false,
+   "count": 21,
+   "product": [
+    "spell",
+    10507,
+    "Stirnband des Nachtschleichers"
+   ],
+   "mats": [
+    [
+     105,
+     "item",
+     4304,
+     "Dickes Leder"
+    ],
+    [
+     42,
+     "item",
+     4291,
+     "Seidenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "210-225",
+   "color": "",
+   "alt": false,
+   "count": 15,
+   "product": [
+    "spell",
+    10548,
+    "Hose des Nachtschleichers"
+   ],
+   "mats": [
+    [
+     210,
+     "item",
+     4304,
+     "Dickes Leder"
+    ],
+    [
+     60,
+     "item",
+     4291,
+     "Seidenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "225-235",
+   "color": "",
+   "alt": false,
+   "count": 12,
+   "product": [
+    "spell",
+    10558,
+    "Stiefel des Nachtschleichers"
+   ],
+   "mats": [
+    [
+     192,
+     "item",
+     4304,
+     "Dickes Leder"
+    ],
+    [
+     24,
+     "item",
+     8343,
+     "Schwerer Seidenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "235-250",
+   "color": "",
+   "alt": false,
+   "count": 15,
+   "product": [
+    "spell",
+    19049,
+    "Tückische Lederstulpen"
+   ],
+   "mats": [
+    [
+     120,
+     "item",
+     8170,
+     "Unverwüstliches Leder"
+    ],
+    [
+     15,
+     "item",
+     2325,
+     "Schwarzer Farbstoff"
+    ],
+    [
+     15,
+     "item",
+     14341,
+     "Runenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "250-265",
+   "color": "",
+   "alt": false,
+   "count": 21,
+   "product": [
+    "spell",
+    19049,
+    "Tückische Lederstulpen"
+   ],
+   "mats": [
+    [
+     168,
+     "item",
+     8170,
+     "Unverwüstliches Leder"
+    ],
+    [
+     21,
+     "item",
+     2325,
+     "Schwarzer Farbstoff"
+    ],
+    [
+     21,
+     "item",
+     14341,
+     "Runenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "265-285",
+   "color": "",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    19082,
+    "Runenverziertes Lederstirnband"
+   ],
+   "mats": [
+    [
+     280,
+     "item",
+     8170,
+     "Unverwüstliches Leder"
+    ],
+    [
+     200,
+     "item",
+     14047,
+     "Runenstoff"
+    ],
+    [
+     20,
+     "item",
+     14341,
+     "Runenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "285-300",
+   "color": "",
+   "alt": false,
+   "count": 33,
+   "product": [
+    "spell",
+    19082,
+    "Runenverziertes Lederstirnband"
+   ],
+   "mats": [
+    [
+     462,
+     "item",
+     8170,
+     "Unverwüstliches Leder"
+    ],
+    [
+     330,
+     "item",
+     14047,
+     "Runenstoff"
+    ],
+    [
+     33,
+     "item",
+     14341,
+     "Runenfaden"
+    ]
+   ]
+  }
+ ],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/schmiedekunst.html": [
+  {
+   "src": null,
+   "matsText": null,
+   "range": "1-25",
+   "color": "",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "spell",
+    2660,
+    "Rauer Wetzstein"
+   ],
+   "mats": [
+    [
+     30,
+     "item",
+     2835,
+     "Rauer Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "25-50",
+   "color": "",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "spell",
+    3320,
+    "Rauer Schleifstein"
+   ],
+   "mats": [
+    [
+     60,
+     "item",
+     2835,
+     "Rauer Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "50-67",
+   "color": "",
+   "alt": false,
+   "count": 36,
+   "product": [
+    "spell",
+    3326,
+    "Grober Schleifstein"
+   ],
+   "mats": [
+    [
+     72,
+     "item",
+     2836,
+     "Grober Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "67-75",
+   "color": "",
+   "alt": false,
+   "count": 8,
+   "product": [
+    "spell",
+    3323,
+    "Runenverzierte Kupferstulpen"
+   ],
+   "mats": [
+    [
+     64,
+     "item",
+     2840,
+     "Kupferbarren"
+    ],
+    [
+     16,
+     "item",
+     3470,
+     "Rauer Schleifstein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "75-80",
+   "color": "",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "spell",
+    2666,
+    "Runenverzierter Kupfergürtel"
+   ],
+   "mats": [
+    [
+     50,
+     "item",
+     2840,
+     "Kupferbarren"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "80-95",
+   "color": "yellow",
+   "alt": false,
+   "count": 18,
+   "product": [
+    "item",
+    2857,
+    "Runenverzierter Kupfergürtel"
+   ],
+   "mats": [
+    [
+     180,
+     "item",
+     2840,
+     "Kupferbarren"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "95-100",
+   "color": "",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "spell",
+    2672,
+    "Gemusterte bronzene Armschienen"
+   ],
+   "mats": [
+    [
+     25,
+     "item",
+     2841,
+     "Bronzebarren"
+    ],
+    [
+     10,
+     "item",
+     3478,
+     "Grober Schleifstein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "100-112",
+   "color": "",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    3337,
+    "Schwerer Schleifstein"
+   ],
+   "mats": [
+    [
+     60,
+     "item",
+     2838,
+     "Schwerer Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "112-125",
+   "color": "",
+   "alt": false,
+   "count": 13,
+   "product": [
+    "spell",
+    2672,
+    "Gemusterte bronzene Armschienen"
+   ],
+   "mats": [
+    [
+     65,
+     "item",
+     2841,
+     "Bronzebarren"
+    ],
+    [
+     26,
+     "item",
+     3478,
+     "Grober Schleifstein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "125-140",
+   "color": "",
+   "alt": false,
+   "count": 24,
+   "product": [
+    "spell",
+    2742,
+    "Bronzenes Kurzschwert"
+   ],
+   "mats": [
+    [
+     120,
+     "item",
+     2841,
+     "Bronzebarren"
+    ],
+    [
+     96,
+     "item",
+     2880,
+     "Schwacher Fluxus"
+    ],
+    [
+     48,
+     "item",
+     2319,
+     "Mittleres Leder"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "140-150",
+   "color": "",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "spell",
+    9985,
+    "Bronzener Kriegshammer"
+   ],
+   "mats": [
+    [
+     80,
+     "item",
+     2841,
+     "Bronzebarren"
+    ],
+    [
+     10,
+     "item",
+     3466,
+     "Starker Fluxus"
+    ],
+    [
+     10,
+     "item",
+     2319,
+     "Mittleres Leder"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "150-170",
+   "color": "yellow",
+   "alt": false,
+   "count": 29,
+   "product": [
+    "spell",
+    9985,
+    "Bronzener Kriegshammer"
+   ],
+   "mats": [
+    [
+     232,
+     "item",
+     2841,
+     "Bronzebarren"
+    ],
+    [
+     29,
+     "item",
+     3466,
+     "Starker Fluxus"
+    ],
+    [
+     29,
+     "item",
+     2319,
+     "Mittleres Leder"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "170-175",
+   "color": "yellow",
+   "alt": false,
+   "count": 9,
+   "product": [
+    "spell",
+    3501,
+    "Grüne Eisenarmschienen"
+   ],
+   "mats": [
+    [
+     54,
+     "item",
+     3575,
+     "Eisenbarren"
+    ],
+    [
+     9,
+     "item",
+     2605,
+     "Grüner Farbstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "175-180",
+   "color": "yellow",
+   "alt": false,
+   "count": 8,
+   "product": [
+    "item",
+    7966,
+    "Robuster Schleifstein"
+   ],
+   "mats": [
+    [
+     32,
+     "item",
+     7912,
+     "Robuster Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "180-195",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    7223,
+    "Goldene Schuppenarmschienen"
+   ],
+   "mats": [
+    [
+     100,
+     "item",
+     3859,
+     "Stahlbarren"
+    ],
+    [
+     40,
+     "spell",
+     3337,
+     "Schwerer Schleifstein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "195-210",
+   "color": "yellow",
+   "alt": false,
+   "count": 21,
+   "product": [
+    "item",
+    7919,
+    "Schwere Mithrilstulpen"
+   ],
+   "mats": [
+    [
+     126,
+     "item",
+     3860,
+     "Mithrilbarren"
+    ],
+    [
+     84,
+     "item",
+     4338,
+     "Magiestoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "210-215",
+   "color": "yellow",
+   "alt": false,
+   "count": 7,
+   "product": [
+    "spell",
+    9935,
+    "Stahlplattenhelm"
+   ],
+   "mats": [
+    [
+     98,
+     "item",
+     3859,
+     "Stahlbarren"
+    ],
+    [
+     7,
+     "item",
+     7966,
+     "Robuster Schleifstein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "215-225",
+   "color": "",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "spell",
+    9959,
+    "Schwere Mithrilbrustplatte"
+   ],
+   "mats": [
+    [
+     160,
+     "item",
+     3860,
+     "Mithrilbarren"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "225-230",
+   "color": "yellow",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "item",
+    12404,
+    "Verdichteter Wetzstein"
+   ],
+   "mats": [
+    [
+     5,
+     "item",
+     12365,
+     "Verdichteter Stein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "230-240",
+   "color": "yellow",
+   "alt": false,
+   "count": 16,
+   "product": [
+    "item",
+    7933,
+    "Schwere Mithrilstiefel"
+   ],
+   "mats": [
+    [
+     224,
+     "item",
+     3860,
+     "Mithrilbarren"
+    ],
+    [
+     64,
+     "item",
+     4304,
+     "Dickes Leder"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "240-255",
+   "color": "yellow",
+   "alt": false,
+   "count": 15,
+   "product": [
+    "item",
+    12416,
+    "Strahlender Gürtel"
+   ],
+   "mats": [
+    [
+     150,
+     "item",
+     12359,
+     "Thoriumbarren"
+    ],
+    [
+     30,
+     "item",
+     7077,
+     "Herz des Feuers"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "255-270",
+   "color": "yellow",
+   "alt": false,
+   "count": 15,
+   "product": [
+    "item",
+    12773,
+    "Verschnörkelte Thoriumhandaxt"
+   ],
+   "mats": [
+    [
+     300,
+     "item",
+     12359,
+     "Thoriumbarren"
+    ],
+    [
+     30,
+     "item",
+     12799,
+     "Großer Opal"
+    ],
+    [
+     30,
+     "item",
+     12644,
+     "Verdichteter Schleifstein"
+    ],
+    [
+     60,
+     "item",
+     8170,
+     "Unverwüstliches Leder"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "270-290",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "item",
+    12426,
+    "Imperiale Plattenstiefel"
+   ],
+   "mats": [
+    [
+     680,
+     "item",
+     12359,
+     "Thoriumbarren"
+    ],
+    [
+     20,
+     "item",
+     7910,
+     "Sternrubin"
+    ],
+    [
+     20,
+     "item",
+     7909,
+     "Aquamarin"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "290-300",
+   "color": "yellow",
+   "alt": false,
+   "count": 10,
+   "product": [
+    "item",
+    12429,
+    "Imperiale Plattengamaschen"
+   ],
+   "mats": [
+    [
+     440,
+     "item",
+     12359,
+     "Thoriumbarren"
+    ],
+    [
+     20,
+     "item",
+     7910,
+     "Sternrubin"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "240-245",
+   "color": "yellow",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "item",
+    12424,
+    "Imperialer Plattengürtel"
+   ],
+   "mats": [
+    [
+     110,
+     "item",
+     12359,
+     "Thoriumbarren"
+    ],
+    [
+     30,
+     "item",
+     8170,
+     "Unverwüstliches Leder"
+    ],
+    [
+     5,
+     "item",
+     7909,
+     "Aquamarin"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "245-270",
+   "color": "yellow",
+   "alt": false,
+   "count": 27,
+   "product": [
+    "item",
+    12425,
+    "Imperiale Plattenarmschienen"
+   ],
+   "mats": [
+    [
+     540,
+     "item",
+     12359,
+     "Thoriumbarren"
+    ],
+    [
+     27,
+     "item",
+     7910,
+     "Sternrubin"
+    ]
+   ]
+  }
+ ],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/schneiderei.html": [
+  {
+   "src": null,
+   "matsText": null,
+   "range": "1-30",
+   "color": "yellow",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "spell",
+    2963,
+    "Leinenstoffballen"
+   ],
+   "mats": [
+    [
+     60,
+     "item",
+     2589,
+     "Leinenstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "30-55",
+   "color": "yellow",
+   "alt": false,
+   "count": 28,
+   "product": [
+    "spell",
+    8776,
+    "Leinengürtel"
+   ],
+   "mats": [
+    [
+     28,
+     "spell",
+     2963,
+     "Leinenstoffballen"
+    ],
+    [
+     28,
+     "item",
+     2320,
+     "Grober Faden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "55-80",
+   "color": "yellow",
+   "alt": false,
+   "count": 45,
+   "product": [
+    "spell",
+    2964,
+    "Wollstoffballen"
+   ],
+   "mats": [
+    [
+     135,
+     "item",
+     2592,
+     "Wollstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "80-95",
+   "color": "yellow",
+   "alt": false,
+   "count": 22,
+   "product": [
+    "spell",
+    2402,
+    "Wollcape"
+   ],
+   "mats": [
+    [
+     22,
+     "spell",
+     2964,
+     "Wollstoffballen"
+    ],
+    [
+     22,
+     "item",
+     2321,
+     "Feiner Faden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "95-100",
+   "color": "yellow",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "spell",
+    3848,
+    "Doppelt genähte Wollschultern"
+   ],
+   "mats": [
+    [
+     15,
+     "spell",
+     2964,
+     "Wollstoffballen"
+    ],
+    [
+     10,
+     "item",
+     2321,
+     "Feiner Faden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "100-120",
+   "color": "yellow",
+   "alt": false,
+   "count": 54,
+   "product": [
+    "item",
+    4305,
+    "Seidenstoffballen"
+   ],
+   "mats": [
+    [
+     216,
+     "item",
+     4306,
+     "Seidenstoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "120-125",
+   "color": "yellow",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "item",
+    4318,
+    "Handschuhe der Meditation"
+   ],
+   "mats": [
+    [
+     20,
+     "spell",
+     2964,
+     "Wollstoffballen"
+    ],
+    [
+     15,
+     "item",
+     2321,
+     "Feiner Faden"
+    ],
+    [
+     5,
+     "item",
+     3383,
+     "Elixier der Weisheit"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "125-140",
+   "color": "yellow",
+   "alt": false,
+   "count": 24,
+   "product": [
+    "item",
+    4318,
+    "Handschuhe der Meditation"
+   ],
+   "mats": [
+    [
+     96,
+     "spell",
+     2964,
+     "Wollstoffballen"
+    ],
+    [
+     72,
+     "item",
+     2321,
+     "Feiner Faden"
+    ],
+    [
+     24,
+     "item",
+     3383,
+     "Elixier der Weisheit"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "140-150",
+   "color": "yellow",
+   "alt": false,
+   "count": 23,
+   "product": [
+    "item",
+    4339,
+    "Magiestoffballen"
+   ],
+   "mats": [
+    [
+     115,
+     "item",
+     4338,
+     "Magiestoff"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "150-170",
+   "color": "red",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    8791,
+    "Purpurrote Seidenweste"
+   ],
+   "mats": [
+    [
+     80,
+     "spell",
+     3839,
+     "Seidenstoffballen"
+    ],
+    [
+     40,
+     "item",
+     2604,
+     "Roter Farbstoff"
+    ],
+    [
+     40,
+     "item",
+     2321,
+     "Feiner Faden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "170-190",
+   "color": "yellow",
+   "alt": false,
+   "count": 26,
+   "product": [
+    "spell",
+    8799,
+    "Purpurrote Seidenpantalons"
+   ],
+   "mats": [
+    [
+     104,
+     "item",
+     4305,
+     "Seidenstoffballen"
+    ],
+    [
+     52,
+     "item",
+     2604,
+     "Roter Farbstoff"
+    ],
+    [
+     52,
+     "item",
+     4291,
+     "Seidenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": "76 Magiestoffballen, 76 schwere Seidenfäden",
+   "range": "190-215",
+   "color": "yellow",
+   "alt": false,
+   "count": 38,
+   "product": [
+    "item",
+    10003,
+    "Schwarze Magiestoffhandschuhe"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": "104 Magiestoffballen, 52 Seidenfäden",
+   "range": "215-225",
+   "color": "yellow",
+   "alt": false,
+   "count": 26,
+   "product": [
+    "item",
+    10050,
+    "Magiestofftasche"
+   ],
+   "mats": []
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "225-240",
+   "color": "yellow",
+   "alt": false,
+   "count": 24,
+   "product": [
+    "item",
+    13856,
+    "Runenstoffgürtel"
+   ],
+   "mats": [
+    [
+     72,
+     "item",
+     14048,
+     "Runenstoffballen"
+    ],
+    [
+     24,
+     "item",
+     14341,
+     "Runenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "240-265",
+   "color": "yellow",
+   "alt": false,
+   "count": 43,
+   "product": [
+    "item",
+    13863,
+    "Runenstoffhandschuhe"
+   ],
+   "mats": [
+    [
+     172,
+     "item",
+     14048,
+     "Runenstoffballen"
+    ],
+    [
+     172,
+     "item",
+     8170,
+     "Unverwüstliches Leder"
+    ],
+    [
+     43,
+     "item",
+     14341,
+     "Runenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "265-290",
+   "color": "yellow",
+   "alt": false,
+   "count": 60,
+   "product": [
+    "item",
+    254123,
+    "Runenstoffmanschetten"
+   ],
+   "mats": [
+    [
+     300,
+     "item",
+     14048,
+     "Runenstoffballen"
+    ],
+    [
+     60,
+     "item",
+     14227,
+     "Eisenweberseide"
+    ],
+    [
+     60,
+     "item",
+     14341,
+     "Runenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "290-300",
+   "color": "yellow",
+   "alt": false,
+   "count": 14,
+   "product": [
+    "item",
+    15802,
+    "Mondstoffstiefel"
+   ],
+   "mats": [
+    [
+     84,
+     "item",
+     14048,
+     "Runenstoffballen"
+    ],
+    [
+     56,
+     "item",
+     14342,
+     "Mondstoff"
+    ],
+    [
+     28,
+     "item",
+     7971,
+     "Schwarze Perle"
+    ],
+    [
+     14,
+     "item",
+     14341,
+     "Runenfaden"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "225-250",
+   "color": "red",
+   "alt": false,
+   "count": 40,
+   "product": [
+    "spell",
+    1257465,
+    "Runenstoffreagenzientasche"
+   ],
+   "mats": [
+    [
+     200,
+     "item",
+     14048,
+     "Runenstoffballen"
+    ],
+    [
+     80,
+     "item",
+     8170,
+     "Unverwüstliches Leder"
+    ],
+    [
+     40,
+     "item",
+     14341,
+     "Runenfaden"
+    ],
+    [
+     40,
+     "item",
+     249431,
+     "Viridianfarbstoff"
+    ]
+   ]
+  }
+ ],
+ "/tmp/claude-0/-home-user-wegweiser/bc5d722a-42ae-5410-a24e-420eb0426e71/scratchpad/gg2/verzauberkunst.html": [
+  {
+   "src": null,
+   "matsText": null,
+   "range": "20-70",
+   "color": "yellow",
+   "alt": false,
+   "count": 50,
+   "product": [
+    "spell",
+    7428,
+    "Armschiene – Schwaches Abwehren"
+   ],
+   "mats": [
+    [
+     50,
+     "item",
+     10938,
+     "Geringe Magieessenz"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "70-100",
+   "color": "yellow",
+   "alt": false,
+   "count": 33,
+   "product": [
+    "spell",
+    7426,
+    "Brust – Schwache Absorption"
+   ],
+   "mats": [
+    [
+     33,
+     "item",
+     10938,
+     "Geringe Magieessenz"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "100-109",
+   "color": "yellow",
+   "alt": false,
+   "count": 18,
+   "product": [
+    "spell",
+    7426,
+    "Brust – Schwache Absorption"
+   ],
+   "mats": [
+    [
+     18,
+     "item",
+     10938,
+     "Geringe Magieessenz"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "110-130",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    7793,
+    "Zweihandwaffe – Geringe Intelligenz"
+   ],
+   "mats": [
+    [
+     80,
+     "item",
+     10938,
+     "Geringe Magieessenz"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "130-150",
+   "color": "yellow",
+   "alt": false,
+   "count": 32,
+   "product": [
+    "spell",
+    7793,
+    "Zweihandwaffe – Geringe Intelligenz"
+   ],
+   "mats": [
+    [
+     128,
+     "item",
+     10938,
+     "Geringe Magieessenz"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "1-2",
+   "color": "red",
+   "alt": false,
+   "count": 1,
+   "product": [
+    "spell",
+    7421,
+    "Runenverzierte Kupferrute"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     6217,
+     "Kupferrute"
+    ],
+    [
+     1,
+     "item",
+     247786,
+     "Magiepartikel"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "2-20",
+   "color": "red",
+   "alt": false,
+   "count": 18,
+   "product": [
+    "spell",
+    7418,
+    "Armschiene – Minderwertige Ausdauer"
+   ],
+   "mats": [
+    [
+     18,
+     "item",
+     247786,
+     "Magiepartikel"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "20-70",
+   "color": "red",
+   "alt": false,
+   "count": 50,
+   "product": [
+    "spell",
+    7420,
+    "Brust – Minderwertige Ausdauer"
+   ],
+   "mats": [
+    [
+     50,
+     "item",
+     10940,
+     "Seltsamer Staub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "70-100",
+   "color": "red",
+   "alt": false,
+   "count": 30,
+   "product": [
+    "spell",
+    7457,
+    "Armschiene – Schwache Ausdauer"
+   ],
+   "mats": [
+    [
+     60,
+     "item",
+     10940,
+     "Seltsamer Staub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "100-109",
+   "color": "yellow",
+   "alt": false,
+   "count": 9,
+   "product": [
+    "spell",
+    7771,
+    "Umhang – Schwacher Schutz"
+   ],
+   "mats": [
+    [
+     18,
+     "item",
+     10940,
+     "Seltsamer Staub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "109-110",
+   "color": "red",
+   "alt": false,
+   "count": 1,
+   "product": [
+    "spell",
+    7795,
+    "Runenverzierte Silberrute"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     6338,
+     "Silberrute"
+    ],
+    [
+     3,
+     "item",
+     10940,
+     "Seltsamer Staub"
+    ],
+    [
+     4,
+     "item",
+     10938,
+     "Geringe Magieessenz"
+    ],
+    [
+     1,
+     "item",
+     1210,
+     "Schattenedelstein"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "110-130",
+   "color": "yellow",
+   "alt": false,
+   "count": 32,
+   "product": [
+    "spell",
+    7771,
+    "Umhang – Schwacher Schutz"
+   ],
+   "mats": [
+    [
+     64,
+     "item",
+     10940,
+     "Seltsamer Staub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "130-150",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    7863,
+    "Stiefel – Schwache Ausdauer"
+   ],
+   "mats": [
+    [
+     80,
+     "item",
+     10940,
+     "Seltsamer Staub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "150-151",
+   "color": "red",
+   "alt": false,
+   "count": 1,
+   "product": [
+    "spell",
+    13628,
+    "Runenverzierte Goldrute"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     11128,
+     "Goldrute"
+    ],
+    [
+     1,
+     "item",
+     5500,
+     "Schillernde Perle"
+    ],
+    [
+     1,
+     "item",
+     11082,
+     "Große Astralessenz"
+    ],
+    [
+     1,
+     "item",
+     11083,
+     "Seelenstaub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "151-165",
+   "color": "yellow",
+   "alt": false,
+   "count": 16,
+   "product": [
+    "item",
+    20745,
+    "Schwaches Manaöl"
+   ],
+   "mats": [
+    [
+     16,
+     "item",
+     11083,
+     "Seelenstaub"
+    ],
+    [
+     32,
+     "item",
+     17034,
+     "Ahornsamen"
+    ],
+    [
+     16,
+     "item",
+     3372,
+     "Verbleite Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "165-200",
+   "color": "yellow",
+   "alt": false,
+   "count": 47,
+   "product": [
+    "spell",
+    13637,
+    "Stiefel – Geringe Beweglichkeit"
+   ],
+   "mats": [
+    [
+     47,
+     "item",
+     11083,
+     "Seelenstaub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "200-201",
+   "color": "red",
+   "alt": false,
+   "count": 1,
+   "product": [
+    "spell",
+    13702,
+    "Runenverzierte Echtsilberrute"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     11144,
+     "Echtsilberrute"
+    ],
+    [
+     1,
+     "item",
+     7971,
+     "Schwarze Perle"
+    ],
+    [
+     1,
+     "item",
+     11135,
+     "Große Mystikeressenz"
+    ],
+    [
+     1,
+     "item",
+     11137,
+     "Visionenstaub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "201-220",
+   "color": "yellow",
+   "alt": false,
+   "count": 25,
+   "product": [
+    "item",
+    20746,
+    "Geringes Zauberöl"
+   ],
+   "mats": [
+    [
+     25,
+     "item",
+     11137,
+     "Visionenstaub"
+    ],
+    [
+     50,
+     "item",
+     17035,
+     "Dornenrankensamen"
+    ],
+    [
+     25,
+     "item",
+     3372,
+     "Verbleite Phiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "220-225",
+   "color": "red",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "spell",
+    13746,
+    "Umhang – Große Verteidigung"
+   ],
+   "mats": [
+    [
+     5,
+     "item",
+     11137,
+     "Visionenstaub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "225-230",
+   "color": "yellow",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "spell",
+    13815,
+    "Handschuhe – Beweglichkeit"
+   ],
+   "mats": [
+    [
+     5,
+     "item",
+     11137,
+     "Visionenstaub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "230-235",
+   "color": "yellow",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "spell",
+    13836,
+    "Stiefel – Ausdauer"
+   ],
+   "mats": [
+    [
+     10,
+     "item",
+     11137,
+     "Visionenstaub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "235-250",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    13858,
+    "Brust – Überragende Ausdauer"
+   ],
+   "mats": [
+    [
+     60,
+     "item",
+     11137,
+     "Visionenstaub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "250-265",
+   "color": "yellow",
+   "alt": false,
+   "count": 20,
+   "product": [
+    "spell",
+    25127,
+    "Geringes Manaöl"
+   ],
+   "mats": [
+    [
+     20,
+     "item",
+     11176,
+     "Traumstaub"
+    ],
+    [
+     20,
+     "item",
+     8831,
+     "Lila Lotus"
+    ],
+    [
+     20,
+     "item",
+     8925,
+     "Kristallphiole"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "265-294",
+   "color": "yellow",
+   "alt": false,
+   "count": 32,
+   "product": [
+    "spell",
+    20017,
+    "Schild – Große Ausdauer"
+   ],
+   "mats": [
+    [
+     192,
+     "item",
+     11176,
+     "Traumstaub"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "294-295",
+   "color": "yellow",
+   "alt": false,
+   "count": 1,
+   "product": [
+    "spell",
+    20051,
+    "Runenverzierte Arkanitrute"
+   ],
+   "mats": [
+    [
+     1,
+     "item",
+     16206,
+     "Arkanitrute"
+    ],
+    [
+     1,
+     "item",
+     13926,
+     "Goldene Perle"
+    ],
+    [
+     10,
+     "item",
+     16204,
+     "Illusionsstaub"
+    ],
+    [
+     4,
+     "item",
+     16203,
+     "Große ewige Essenz"
+    ],
+    [
+     4,
+     "item",
+     14343,
+     "Kleiner glänzender Splitter"
+    ],
+    [
+     2,
+     "item",
+     14344,
+     "Großer glänzender Splitter"
+    ]
+   ]
+  },
+  {
+   "src": null,
+   "matsText": null,
+   "range": "295-300",
+   "color": "yellow",
+   "alt": false,
+   "count": 5,
+   "product": [
+    "spell",
+    20015,
+    "Umhang – Überragende Verteidigung"
+   ],
+   "mats": [
+    [
+     40,
+     "item",
+     16204,
+     "Illusionsstaub"
+    ]
+   ]
+  }
+ ]
+}

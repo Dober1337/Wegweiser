@@ -98,19 +98,22 @@ ns.ProfessionRanks = {
     [186] = GATHER,   -- Bergbau: "Ab Skill 50/125/200 beim Lehrer"
     [182] = GATHER,   -- Kräuterkunde: gleich
     [393] = GATHER,   -- Kürschnerei: "Ab Fertigkeit 50/125/200"
-    [171] = craft(nil),                    -- Alchemie: Fachmann ab 200, Stufe 35
+    [171] = craft("PROF_ART_171"),         -- Alchemie: Fachmann bei Rogvar (Stonard)
     [164] = craft("PROF_ART_164"),         -- Schmiedekunst: Fachmann-Lehrer in Beutebucht
     [202] = craft("PROF_ART_202"),         -- Ingenieurskunst: Fachmann bei Buzzek Bracketswing, Gadgetzan
     [165] = craft("PROF_ART_165"),         -- Lederverarbeitung: Expertenlehrer in Donnerfels lehren Fachmann nicht
-    [197] = craft(nil),                    -- Schneiderei: Geselle Skill 50 / Stufe 10
+    [197] = craft("PROF_ART_197"),         -- Schneiderei: Fachmann bei Daryl Stack (Tarrens Mühle)
     [333] = craft("PROF_ART_333"),         -- Verzauberkunst: einziger Fachmann-Lehrer Annora in Uldaman
-    [185] = { [2] = { skill = 50, level = 10, how = "TRAINER" },          -- Kochkunst
-              [3] = { skill = 125, level = 20, how = "BOOK" },
-              [4] = { skill = 225, level = 35, how = "QUEST" } },
+    -- Kochkunst (goldgoblin kochkunst-forever, "Lehrer und Berufsränge", 2026-11-13):
+    -- Geselle "Berufsskill 50" beim Lehrer, Experte "Berufsskill 125" per Buch,
+    -- Fachmann "Berufsskill 225 · Charakterstufe 35" per Quest. Keine weiteren Stufen genannt.
+    [185] = { [2] = { skill = 50, how = "TRAINER" },
+              [3] = { skill = 125, how = "BOOK", note = "PROF_EXP_185" },
+              [4] = { skill = 225, level = 35, how = "QUEST", note = "PROF_ART_185" } },
     [356] = { [2] = { skill = 50, level = 10, how = "TRAINER" },          -- Angeln
-              [3] = { skill = 125, level = 20, how = "BOOK" },
+              [3] = { skill = 125, level = 20, how = "BOOK", note = "PROF_EXP_356" },
               [4] = { skill = 225, level = 35, how = "QUEST", note = "PROF_ART_356" } },
-    [129] = { [2] = { skill = 50, level = 10, how = "TRAINER" },          -- Erste Hilfe
+    [129] = { [2] = { skill = 50, how = "TRAINER" },                      -- Erste Hilfe (Quelle: keine Stufe)
               [3] = { skill = 125, how = "BOOK", note = "PROF_EXP_129" },
               [4] = { skill = 225, level = 35, how = "QUEST", note = "PROF_ART_129" } },
 }
@@ -206,22 +209,68 @@ ns.ProfessionTrainers = {
             { name = "Kulleg Stonehorn", map = 1444, x = 74.5, y = 43.0 },                    -- Camp Mojache
         },
         [356] = {   -- Angeln
-            { name = "Uthan Stillwater", map = 1412, x = 44.6, y = 60.6 },
-            { name = "Lau'Tiki",         map = 1411, x = 53.2, y = 81.6 },
-            { name = "Lumak",            map = 1454, x = 69.8, y = 29.6 },
-            { name = "Armand Cromwell",  map = 1458, x = 80.8, y = 31.2 },
-            { name = "Kah Mistrunner",   map = 1456, x = 56.0, y = 46.8 },
-            { name = "Clyde Kellen",     map = 1420, x = 67.2, y = 51.0 },
-            { name = "Katoom",           map = 1425, x = 80.2, y = 81.4 },
-            { name = "Kil'Hiwana",       map = 1440, x = 10.8, y = 33.6 },
-            { name = "Lui'Mala",         map = 1443, x = 22.6, y = 72.6 },
+            { name = "Uthan Stillwater", map = 1412, x = 44.6, y = 60.6, ranks = { 1, 2 } },
+            { name = "Lau'Tiki",         map = 1411, x = 53.2, y = 81.6, ranks = { 1, 2 } },
+            { name = "Lumak",            map = 1454, x = 69.8, y = 29.6, ranks = { 1, 2 } },
+            { name = "Armand Cromwell",  map = 1458, x = 80.8, y = 31.2, ranks = { 1, 2 } },
+            { name = "Kah Mistrunner",   map = 1456, x = 56.0, y = 46.8, ranks = { 1, 2 } },
+            { name = "Clyde Kellen",     map = 1420, x = 67.2, y = 51.0, ranks = { 1, 2 } },
+            { name = "Katoom",           map = 1425, x = 80.2, y = 81.4, ranks = { 1, 2 } },
+            { name = "Kil'Hiwana",       map = 1440, x = 10.8, y = 33.6, ranks = { 1, 2 } },
+            { name = "Lui'Mala",         map = 1443, x = 22.6, y = 72.6, ranks = { 1, 2 } },
+            -- laut goldgoblin angeln-forever: Experte per Buch, Fachmann per Quest
+            { name = "Der alte Mann Heming", map = 1434, x = 27.4, y = 77.0, ranks = { 3 } },   -- Beutebucht (Buch)
+            { name = "Nat Pagle",            map = 1445, x = 58.6, y = 60.0, ranks = { 4 } },   -- Düstermarschen (Quest)
         },
-        [185] = {   -- Kochkunst (nur Einträge mit Koordinaten)
-            { name = "Mudduk",           map = 1434, x = 31.4, y = 28.0 },                    -- Grom'gol
-            { name = "Slagg",            map = 1417, x = 74.0, y = 33.8 },                    -- Hammerfall
+        [185] = {   -- Kochkunst: Lehrer = Lehrling+Geselle, Experte per Buch, Fachmann per Quest
+            { name = "Zamja",            map = 1454, x = 57.6, y = 53.6, ranks = { 1, 2 } },  -- Orgrimmar
+            { name = "Mudduk",           map = 1434, x = 31.4, y = 28.0, ranks = { 1, 2 } },  -- Grom'gol
+            { name = "Slagg",            map = 1417, x = 74.0, y = 33.8, ranks = { 1, 2 } },  -- Hammerfall
+            { name = "Wulan",            map = 1443, x = 26.2, y = 69.8, ranks = { 3 } },     -- Schattenflucht (Buch)
+            { name = "Dirge Quikcleave", map = 1446, x = 52.6, y = 28.0, ranks = { 4 } },     -- Gadgetzan (Quest)
         },
-        [129] = {   -- Erste Hilfe: Fachmann über die Triage-Quest
+        [129] = {   -- Erste Hilfe: Lehrer = Lehrling+Geselle, Experte per Buch, Fachmann per Quest
+            { name = "Arnok",              map = 1454, x = 34.0, y = 84.4, ranks = { 1, 2 } }, -- Orgrimmar
+            { name = "Balai Lok'Wein",     map = 1445, x = 36.4, y = 30.4, ranks = { 3 } },    -- Brackenwall (Buch)
             { name = "Dr. Gregory Victor", map = 1417, x = 73.4, y = 36.8, artisanOnly = true }, -- Hammerfall
+        },
+        -- Herstellungsberufe: je Rang ein eigener Lehrer (goldgoblin "Lehrer und Berufsränge",
+        -- Koordinaten aus den /mappin-Angaben der Seiten, 2026-11-13). ranks = lehrt diesen Rang.
+        [171] = {   -- Alchemie
+            { name = "Whuut",                 map = 1454, x = 55.8, y = 32.9, ranks = { 1 } },  -- Orgrimmar
+            { name = "Yelmak",                map = 1454, x = 56.8, y = 33.0, ranks = { 2 } },  -- Orgrimmar
+            { name = "Doktor Herbert Halsey", map = 1458, x = 48.8, y = 73.4, ranks = { 3 } },  -- Unterstadt
+            { name = "Rogvar",                map = 1435, x = 48.2, y = 55.4, ranks = { 4 } },  -- Stonard
+        },
+        [164] = {   -- Schmiedekunst
+            { name = "Ug'thok",        map = 1454, x = 80.8, y = 23.7, ranks = { 1 } },
+            { name = "Snarl",          map = 1454, x = 79.6, y = 23.3, ranks = { 2 } },
+            { name = "Saru Steelfury", map = 1454, x = 82.3, y = 23.0, ranks = { 3 } },
+            { name = "Brikk Keencraft", map = 1434, x = 29.0, y = 75.6, ranks = { 4 } },        -- Beutebucht
+        },
+        [202] = {   -- Ingenieurskunst
+            { name = "Thund",              map = 1454, x = 75.8, y = 24.6, ranks = { 1 } },
+            { name = "Nogg",               map = 1454, x = 75.8, y = 25.2, ranks = { 2 } },
+            { name = "Roxxik",             map = 1454, x = 76.0, y = 25.0, ranks = { 3 } },
+            { name = "Buzzek Bracketswing", map = 1446, x = 52.2, y = 27.6, ranks = { 4 } },    -- Gadgetzan
+        },
+        [165] = {   -- Lederverarbeitung
+            { name = "Mak",              map = 1456, x = 42.2, y = 43.2, ranks = { 1 } },     -- Donnerfels
+            { name = "Tarn",             map = 1456, x = 42.4, y = 43.0, ranks = { 2 } },
+            { name = "Una",              map = 1456, x = 41.4, y = 42.6, ranks = { 3 } },
+            { name = "Hahrana Ironhide", map = 1444, x = 74.4, y = 43.0, ranks = { 4 } },     -- Camp Mojache
+        },
+        [197] = {   -- Schneiderei
+            { name = "Victor Ward",     map = 1458, x = 70.2, y = 29.6, ranks = { 1 } },      -- Unterstadt
+            { name = "Rhiannon Davis",  map = 1458, x = 70.6, y = 29.6, ranks = { 2 } },
+            { name = "Josef Gregorian", map = 1458, x = 70.6, y = 30.6, ranks = { 3 } },
+            { name = "Daryl Stack",     map = 1424, x = 63.6, y = 20.8, ranks = { 4 } },      -- Tarrens Mühle
+        },
+        [333] = {   -- Verzauberkunst
+            { name = "Jhag",   map = 1454, x = 53.6, y = 38.2, ranks = { 1 } },
+            { name = "Godan",  map = 1454, x = 53.8, y = 38.4, ranks = { 2 } },
+            { name = "Hgarth", map = 1442, x = 49.2, y = 57.2, ranks = { 3 } },              -- Sonnenfels
+            { name = "Annora", map = 1418, x = 66.0, y = 43.0, ranks = { 4 } },              -- Uldaman
         },
     },
 }

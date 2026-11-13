@@ -365,3 +365,12 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Etwas verkaufen/kaufen: „Sitzung: +…" grün bzw. „-…" rot, ändert sich sofort.
 - /reload: der Wert bleibt (zählt seit dem Einloggen). Neues Einloggen: wieder ±0.
 - `/ww gold` im Chat, `/ww gold neu` setzt auf ±0. Abschaltbar in /ww config.
+
+## Version 0.38.0 – Berufe gegen goldgoblin geprüft
+
+- Kochkunst beim Lehrer/im Berufsfenster: „Rezept: beim Rezepthändler: Harn Longcast (Mulgore), …"
+  statt eines Lehrer-Hinweises (Fischrezepte gibt es beim Händler, nicht beim Lehrer).
+- `/ww berufe`: Kochkunst Experte „per Buch" mit Wulan (Desolace), Fachmann „per Quest" bei Dirge (Gadgetzan).
+- `/ww lehrer alchemie` (auch schmiedekunst, ingenieurskunst, lederverarbeitung, schneiderei,
+  verzauberkunst): Wegpunkt zum Lehrer für deinen NÄCHSTEN Rang (Lehrling/Geselle/Experte/Fachmann).
+- `/ww lehrer kochen` mit Skill-Limit 150: Wegpunkt zu Wulan (Buch), mit 225: zu Dirge (Quest).
