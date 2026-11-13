@@ -5,11 +5,9 @@
 
 Wegweiser erklärt und hilft, statt nur einen Pfeil zu zeigen: Welche Quest lohnt sich gerade? Wohin als Nächstes? Welches Talent ist jetzt dran?
 
-## Download
+## [⬇ Download](https://github.com/Dober1337/Wegweiser/raw/main/dist/Wegweiser.zip)
 
-**[⬇ Wegweiser herunterladen (aktuelle Version)](https://github.com/Dober1337/Wegweiser/raw/main/dist/Wegweiser.zip)**
-
-Optional: [⬇ Wegweiser Recorder](https://github.com/Dober1337/Wegweiser/raw/main/dist/WegweiserRecorder.zip) (zeichnet Questrouten auf, siehe unten)
+Optional: [Recorder-Download](https://github.com/Dober1337/Wegweiser/raw/main/dist/WegweiserRecorder.zip) (zeichnet Questrouten auf, siehe unten)
 
 Die ZIP entpacken und den Ordner `Wegweiser` nach `World of Warcraft\_forever_\Interface\AddOns\` legen. Bei einem Update den alten Ordner ersetzen und das Spiel neu starten.
 
@@ -90,6 +88,6 @@ Wegweiser ist und bleibt kostenlos – keine Bezahlfunktionen, keine Werbung, ke
 - **Professions:** what to craft now at the trainer, `/ww professions`, `/ww trainer <profession>` waypoints, gathering skill in herb/ore/beast tooltips.
 - **On the road:** unknown flight points in your zone, hearthstone location, bag/repair hints, "sell grey" and "repair" at merchants, session gold in your bags.
 
-**Download:** [Wegweiser (latest version)](https://github.com/Dober1337/Wegweiser/raw/main/dist/Wegweiser.zip) – unzip and put the `Wegweiser` folder into `World of Warcraft\_forever_\Interface\AddOns\`.
+**[Download](https://github.com/Dober1337/Wegweiser/raw/main/dist/Wegweiser.zip)** – unzip and put the `Wegweiser` folder into `World of Warcraft\_forever_\Interface\AddOns\`.
 
 Everything can be turned off in `/ww config`. Languages: English and German. Free – no paid features, no ads.
