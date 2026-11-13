@@ -43,6 +43,7 @@ ns.defaults = {
         -- Taschen & Händler
         invHints        = true,   -- Hinweis: Taschen fast voll, Ausrüstung kaputt
         merchantHelper  = true,   -- Händler: Graues verkaufen, Reparieren (auf Knopfdruck)
+        sessionMoney    = true,   -- Gold-Bilanz der Sitzung unten links in der Tasche
         -- Build-Wahl steht in talentBuildByClass (pro Klasse). Ohne Wahl gilt der
         -- Einsteiger-Tipp der Klasse (TalentGuide:GetBuild).
     },

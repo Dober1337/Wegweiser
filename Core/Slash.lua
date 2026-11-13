@@ -24,6 +24,7 @@ local function showHelp()
     ns:Print(L.HELP_ZONES)
     ns:Print(L.HELP_FLIGHT)
     ns:Print(L.HELP_HEARTH)
+    ns:Print(L.HELP_GOLD)
     ns:Print(L.HELP_PROF)
     ns:Print(L.HELP_TRAINER)
     ns:Print(L.HELP_GUIDE)
@@ -105,6 +106,7 @@ local commands = {
     flight     = function(_, rest) ns:RunOutOfCombat(function() ns.modules.Travel:FlightCommand(rest) end) end,
     ruhestein  = function() ns.modules.Travel:HearthCommand() end,
     hearth     = function() ns.modules.Travel:HearthCommand() end,
+    gold       = function(_, rest) ns.modules.SessionMoney:Command(rest) end,
     flugdebug  = function() ns:RunOutOfCombat(function() ns.modules.Travel:Debug() end) end,
     lehrer     = function(_, rest) ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:TrainerCommand(rest) end) end,
     trainer    = function(_, rest) ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:TrainerCommand(rest) end) end,

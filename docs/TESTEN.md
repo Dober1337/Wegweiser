@@ -358,3 +358,10 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Taschen bis auf 3 freie Plätze füllen: gelber Hinweis. Ganz voll: eigener Hinweis.
 - Ausrüstung unter 25 % oder kaputt: gelber Hinweis.
 - Abschaltbar: /ww config (zwei Häkchen).
+
+## Version 0.37.0 – Gold der Sitzung
+
+- Tasche öffnen (kombiniert oder einzeln): unten links „Sitzung: ±0" direkt nach dem Einloggen.
+- Etwas verkaufen/kaufen: „Sitzung: +…" grün bzw. „-…" rot, ändert sich sofort.
+- /reload: der Wert bleibt (zählt seit dem Einloggen). Neues Einloggen: wieder ±0.
+- `/ww gold` im Chat, `/ww gold neu` setzt auf ±0. Abschaltbar in /ww config.
