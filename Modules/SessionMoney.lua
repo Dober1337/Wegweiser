@@ -1,7 +1,7 @@
 -- ============================================================
 -- Modules/SessionMoney.lua
--- Gold-Bilanz der Sitzung unten links in der Tasche: "+2g 3s 7k" (grün)
--- oder "-80s 15k" (rot). Sitzung = seit dem Einloggen; ein /reload
+-- Gold-Bilanz der Sitzung unten links in der Tasche: "+" (grün) oder
+-- "-" (rot) mit den Münzsymbolen des Spiels. Sitzung = seit dem Einloggen; ein /reload
 -- zählt weiter (Startwert pro Charakter gespeichert).
 --
 -- Geprüft im Forever-UI-Quellcode (Blizzard_UIPanels_Game/Mainline/
@@ -30,9 +30,13 @@ local function charData()
     return ns.db.chars[key]
 end
 
--- 20307 -> "2g 3s 7k"  (Nullen weglassen, 0 -> "0k")
+-- 20307 -> Münzsymbole aus dem Spiel (wie Blizzards Goldanzeige).
+-- Ersatz ohne die Funktion: "2g 3s 7k" (Nullen weglassen).
 function SM:Format(copper)
     copper = math.abs(copper)
+    if C_CurrencyInfo and C_CurrencyInfo.GetCoinTextureString then
+        return C_CurrencyInfo.GetCoinTextureString(copper)
+    end
     local g = math.floor(copper / 10000)
     local s = math.floor((copper % 10000) / 100)
     local c = copper % 100
