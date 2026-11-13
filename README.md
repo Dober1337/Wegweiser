@@ -19,13 +19,25 @@ Wegweiser erklärt und hilft, statt nur einen Pfeil zu zeigen: Welche Quest lohn
 - `/ww zonen` zeigt deine Zone und gute Zonen für dein Level
 
 **Talent-Leitfaden**
-- Leveling-Build mit Begründung für jeden Punkt (bisher: Schamane, Heal-Hybrid Verstärkung/Wiederherstellung)
-- Im Talentfenster: das Talent, das jetzt dran ist, wird golden umrandet; Tooltip „jetzt skillen – …“
+- 28 Leveling-Builds für alle 9 Klassen (Wowhead-Leveling-Guides), Auswahl im Talentfenster oder mit `/ww build wahl`
+- Pro Klasse ein grün markierter **Einsteiger-Tipp**, ohne eigene Wahl voreingestellt
+- Im Talentfenster: das Talent, das jetzt dran ist, wird golden umrandet; auf Wunsch der ganze Build
 - Erkennt deine tatsächlich verteilten Punkte – Abweichungen sind erlaubt, nur ein Hinweis
 - `/ww build`, `/ww build liste`, `/ww build hinweise`
 
 **Level-Up-Hinweise**
-- Erinnerung an den Klassenlehrer (alle 2 Level) und an freie Talentpunkte
+- Erinnerung an den Klassenlehrer mit den neuen Fähigkeiten (`/ww lernen`) und an freie Talentpunkte
+
+**Berufe**
+- Beim Lehrer und im Berufsfenster: womit du jetzt am besten skillst, Material, ob du das Rezept schon kennst
+- `/ww berufe` mit Rang-Grenzen und Tipps, `/ww lehrer <Beruf>` setzt einen Wegpunkt zum passenden Lehrer
+- Tooltip über Kraut, Erz und Tier: ab welcher Fertigkeit und welche Farbe es für dich hat
+
+**Unterwegs**
+- Flugpunkte: Hinweis auf noch unbekannte Flugpunkte in deiner Zone, `/ww flug` mit Wegpunkt
+- `/ww ruhestein`: wo dein Ruhestein gebunden ist
+- Taschen fast voll oder Ausrüstung kaputt: Hinweis; beim Händler „Graues verkaufen“ und „Reparieren“ auf Knopfdruck
+- Gold dieser Sitzung unten links in der Tasche, `/ww gold`
 
 Alles ist einzeln abschaltbar: `/ww config` (oder ESC → Optionen → AddOns → Wegweiser).
 Fenster und Markierungen werden nur außerhalb des Kampfes verändert.
@@ -49,7 +61,9 @@ Deutsch und Englisch.
 
 - Spieldaten zur Laufzeit direkt aus dem Spiel (Blizzard-API)
 - Zonen-Levelbereiche und Zonen-Empfehlungen: [Mobalytics – Zone Map: Level Ranges](https://mobalytics.gg/wow-forever/guides/zone-map-level-ranges) (Stand 10.11.2026)
-- Talent-Build: von einem Spieler im Spiel erstellt und geprüft
+- Talent-Builds: Wowhead-Leveling-Guides für WoW Forever (Heilig-Priester: Endstand von Wowhead, Reihenfolge von Wegweiser vorgeschlagen); Schamanen-Heal-Hybrid von einem Spieler erstellt
+- Berufe (Routen, Ränge, Lehrer, Sammel-Farben): [goldgoblin – Forever-Berufe](https://classic.goldgoblin.net/warcraft-forever-berufe-uebersicht/)
+- Einsteiger-Tipps: Forever-Einsteigerlisten, Begründung in `docs/EINSTEIGER.md`
 
 ## Kostenlos
 
@@ -63,7 +77,9 @@ Wegweiser ist und bleibt kostenlos – keine Bezahlfunktionen, keine Werbung, ke
 
 - **Quest advisor:** a symbol next to every quest in your quest log (good to do, still worth it, group needed, too hard, skip, ready to turn in), a hint at the quest giver **before** you accept, tooltip explanations, `/ww quests`.
 - **Zone guide:** level ranges for every zone on the world map, a hint when your zone has become too low, suggestions for your next zones, `/ww zones`.
-- **Talent guide:** a leveling build with a reason for every point (currently: Shaman healer hybrid); the talent to pick now is highlighted in the talent window.
-- **Level-up tips:** reminders for the class trainer (every 2 levels) and unspent talent points.
+- **Talent guide:** 28 leveling builds for all 9 classes, one marked as the beginner tip; the talent to pick now is highlighted in the talent window.
+- **Level-up tips:** reminders for the class trainer and unspent talent points.
+- **Professions:** what to craft now at the trainer, `/ww professions`, `/ww trainer <profession>` waypoints, gathering skill in herb/ore/beast tooltips.
+- **On the road:** unknown flight points in your zone, hearthstone location, bag/repair hints, "sell grey" and "repair" at merchants, session gold in your bags.
 
 Everything can be turned off in `/ww config`. Languages: English and German. Free – no paid features, no ads.

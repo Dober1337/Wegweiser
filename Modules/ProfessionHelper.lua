@@ -207,9 +207,23 @@ local function playerWorldPos()
 end
 
 -- Beruf aus Eingabe finden: Name im Spiel oder deutscher/englischer Name (Anfang reicht)
+-- Kurzformen, die Spieler oft tippen ("/ww lehrer kochen")
+local ALIASES = {
+    kochen = 185, koch = 185, cook = 185, angel = 356, fish = 356,
+    schmied = 164, schmieden = 164, leder = 165, schneider = 197, schneidern = 197,
+    verzauber = 333, vz = 333, ingi = 202, ingenieur = 202, engi = 202,
+    erste = 129, ["erste hilfe"] = 129, verband = 129, alchi = 171,
+    kraeuter = 182, ["kräuter"] = 182, kuerschner = 393, ["kürschner"] = 393, ["häuten"] = 393,
+    erz = 186, bergbau = 186,
+}
+
 local function findProfession(text)
     text = (text or ""):lower()
     if text == "" then return nil end
+    if ALIASES[text] then return ALIASES[text] end
+    for alias, id in pairs(ALIASES) do
+        if #text >= 4 and text:sub(1, #alias) == alias then return id end
+    end
     for id, data in pairs(ns.Professions) do
         for _, candidate in ipairs({ profName(id), L["PROF_NAME_" .. id], data.en }) do
             if candidate and candidate:lower():sub(1, #text) == text then return id end
