@@ -294,8 +294,37 @@ function PH:FindTrainer(id)
     return best
 end
 
+-- /ww lehrer klasse – nächster bekannter Klassenlehrer (Ort beim Besuch gemerkt)
+function PH:ClassTrainerCommand()
+    local list = ns.modules.TrainerSpells:KnownClassTrainers()
+    if #list == 0 then ns:Print(L.CT_NONE) return end
+    local pc, pp = playerWorldPos()
+    local best, bestDist
+    for _, t in ipairs(list) do
+        local tc, tp = worldPos(t.map, t.x / 100, t.y / 100)
+        local dist = math.huge / 2
+        if pc and tc and pc == tc then dist = math.sqrt((tp.x - pp.x) ^ 2 + (tp.y - pp.y) ^ 2) end
+        if not best or dist < bestDist then best, bestDist = t, dist end
+    end
+    local info = C_Map.GetMapInfo(best.map)
+    local mapName = info and info.name or ("#" .. best.map)
+    local ok = C_Map.CanSetUserWaypointOnMap == nil or C_Map.CanSetUserWaypointOnMap(best.map)
+    if ok and C_Map.SetUserWaypoint then
+        C_Map.SetUserWaypoint({ uiMapID = best.map, position = CreateVector2D(best.x / 100, best.y / 100) })
+        if C_SuperTrack and C_SuperTrack.SetSuperTrackedUserWaypoint then
+            C_SuperTrack.SetSuperTrackedUserWaypoint(true)
+        end
+        ns:Print(L.CT_WAY_SET, best.name, mapName, best.x, best.y)
+    else
+        ns:Print(L.CT_WAY_TEXT, best.name, mapName, best.x, best.y)
+    end
+end
+
+local CLASS_WORDS = { klasse = true, class = true, klassenlehrer = true, ["klassen"] = true }
+
 function PH:TrainerCommand(rest)
     local text = rest or ""   -- alles nach "lehrer", z. B. "bergbau"
+    if CLASS_WORDS[text:lower()] then return self:ClassTrainerCommand() end
     if text:lower() == "aus" or text:lower() == "off" then
         if C_Map.ClearUserWaypoint then C_Map.ClearUserWaypoint() end
         ns:Print(L.PROF_WAY_CLEARED)

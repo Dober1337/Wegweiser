@@ -374,3 +374,11 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - `/ww lehrer alchemie` (auch schmiedekunst, ingenieurskunst, lederverarbeitung, schneiderei,
   verzauberkunst): Wegpunkt zum Lehrer für deinen NÄCHSTEN Rang (Lehrling/Geselle/Experte/Fachmann).
 - `/ww lehrer kochen` mit Skill-Limit 150: Wegpunkt zu Wulan (Buch), mit 225: zu Dirge (Quest).
+
+## Version 0.39.0 – Klassenlehrer-Wegpunkt
+
+- Vor dem ersten Besuch: `/ww lehrer klasse` → „Wegweiser kennt noch keinen Klassenlehrer …".
+- Klassenlehrer ansprechen: Chat „Ort deines Klassenlehrers … gemerkt".
+  Waffenmeister oder Reitlehrer dürfen NICHT gemerkt werden.
+- Woanders `/ww lehrer klasse`: Wegpunkt zum nächsten gemerkten Klassenlehrer.
+- Beim nächsten Level mit neuen Fähigkeiten: Zeile „Wegpunkt zum Klassenlehrer: /ww lehrer klasse".

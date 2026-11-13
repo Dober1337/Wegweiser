@@ -68,6 +68,11 @@ function LevelUp:ShowLevelUpMessages(level, forceTrainer)
             ns:Print(L.LEVELUP_TRAINER)   -- Liste unbekannt: allgemeiner Hinweis alle 2 Level
         end
         -- known == false: Liste vollständig, auf diesem Level gibt es nichts Neues
+        local ts = ns.modules.TrainerSpells
+        if (known or (known == nil and (forceTrainer or self:IsTrainerLevel(level))))
+           and ts and #ts:KnownClassTrainers() > 0 then
+            ns:Print("   " .. L.CT_LEVELUP_HINT)
+        end
     end
 
     if level == ns:Const("FIRST_TALENT_LEVEL") then

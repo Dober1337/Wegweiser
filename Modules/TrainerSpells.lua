@@ -76,6 +76,54 @@ function TS:Scan()
     end
 end
 
+-- Ist der offene Lehrer DEIN Klassenlehrer? (Waffenmeister und Reitlehrer sind
+-- ebenfalls Typ "General".) Erkennung: mindestens eine angebotene Fähigkeit gehört
+-- zu einem deiner Talentbäume oder zu deiner Klasse (GetTrainerServiceSkillLine,
+-- geprüft im Forever-UI-Quellcode, Mainline/Blizzard_TrainerUI.lua).
+function TS:IsClassTrainer()
+    if not GetTrainerServiceSkillLine or not GetNumTrainerServices then return false end
+    if IsTradeskillTrainer and IsTradeskillTrainer() then return false end
+    local names = {}
+    local className = UnitClass("player")
+    if className then names[className] = true end
+    for _, t in ipairs(ns.TalentAPI and ns.TalentAPI:GetTrees() or {}) do
+        if t.name then names[t.name] = true end
+    end
+    for i = 1, GetNumTrainerServices() do
+        local line = GetTrainerServiceSkillLine(i)
+        if line and not (issecretvalue and issecretvalue(line)) and names[line] then return true end
+    end
+    return false
+end
+
+-- Ort des Klassenlehrers merken (pro Klasse und Fraktion, accountweit)
+function TS:RememberClassTrainer()
+    if not self:IsClassTrainer() or not UnitExists("npc") then return end
+    local name = UnitName("npc")
+    if not name or (issecretvalue and issecretvalue(name)) then return end
+    local mapID = C_Map.GetBestMapForUnit("player")
+    local pos = mapID and C_Map.GetPlayerMapPosition(mapID, "player")
+    if not pos then return end
+    local x, y = pos:GetXY()
+    if not x or (issecretvalue and issecretvalue(x)) then return end
+    local _, classFile = UnitClass("player")
+    local key = classFile .. "-" .. (UnitFactionGroup("player") or "?")
+    ns.db.classTrainers = ns.db.classTrainers or {}
+    ns.db.classTrainers[key] = ns.db.classTrainers[key] or {}
+    local list = ns.db.classTrainers[key]
+    for _, t in ipairs(list) do
+        if t.name == name then t.map, t.x, t.y = mapID, x * 100, y * 100 return end
+    end
+    table.insert(list, { name = name, map = mapID, x = x * 100, y = y * 100 })
+    ns:Print(L.CT_SAVED, name)
+end
+
+function TS:KnownClassTrainers()
+    local _, classFile = UnitClass("player")
+    local key = classFile .. "-" .. (UnitFactionGroup("player") or "?")
+    return ns.db.classTrainers and ns.db.classTrainers[key] or {}
+end
+
 -- ------------------------------------------------------------
 -- Auswertung
 -- ------------------------------------------------------------
@@ -156,5 +204,8 @@ function TS:OnInitialize()
         C_Timer.After(0.3, function() ns:RunOutOfCombat(function() TS:Scan() end, true) end)
     end
     ns:RegisterEvent("TRAINER_SHOW", scanLater)
+    ns:RegisterEvent("TRAINER_SHOW", function()
+        C_Timer.After(0.4, function() ns:RunOutOfCombat(function() TS:RememberClassTrainer() end, true) end)
+    end)
     ns:RegisterEvent("TRAINER_UPDATE", scanLater)   -- z. B. nach Lernen oder Filterwechsel
 end
