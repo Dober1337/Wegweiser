@@ -23,6 +23,10 @@ def build(src_dir, folder, toc_name, extra=()):
     ver = version(os.path.join(src_dir, toc_name))
     out = os.path.join(ROOT, "dist", f"{folder}-{ver}.zip")
     os.makedirs(os.path.dirname(out), exist_ok=True)
+    # Nur die aktuelle Version im Ordner behalten (alte stehen in der Git-Historie)
+    for old in os.listdir(os.path.dirname(out)):
+        if re.fullmatch(re.escape(folder) + r"-[\d.]+\.zip", old) and old != os.path.basename(out):
+            os.remove(os.path.join(os.path.dirname(out), old))
     names = files_from_toc(src_dir, toc_name) + list(extra)
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         for rel in names:
