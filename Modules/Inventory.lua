@@ -205,7 +205,6 @@ end
 
 local function createBox()
     box = CreateFrame("Frame", nil, MerchantFrame, "BackdropTemplate")
-    box:SetPoint("TOPLEFT", MerchantFrame, "BOTTOMLEFT", 0, -2)
     box:SetSize(MerchantFrame:GetWidth(), 62)
     box:SetBackdrop({
         bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
@@ -229,6 +228,19 @@ local function createBox()
     box.repairText:SetJustifyH("LEFT")
 end
 
+-- Unter die Reiter "Händler"/"Rückkauf" setzen: die hängen in Forever unter
+-- dem Fenster heraus (im Spiel gesehen). Abstand wird beim Öffnen gemessen.
+local function placeBox()
+    local dy = -2
+    local tab = MerchantFrameTab1
+    if tab and tab:IsShown() and tab:GetBottom() and MerchantFrame:GetBottom() then
+        local below = MerchantFrame:GetBottom() - tab:GetBottom()
+        if below > 0 then dy = -(below + 2) end
+    end
+    box:ClearAllPoints()
+    box:SetPoint("TOPLEFT", MerchantFrame, "BOTTOMLEFT", 0, dy)
+end
+
 local function onMerchantShow()
     if not setting("merchantHelper") or not MerchantFrame then
         if box then box:Hide() end
@@ -236,6 +248,8 @@ local function onMerchantShow()
     end
     if not box then createBox() end
     box:Show()
+    placeBox()
+    C_Timer.After(0, placeBox)   -- nach dem ersten Zeichnen stimmen die Positionen sicher
     updateBox()
     -- Preise kommen evtl. erst nach dem Laden der Gegenstandsdaten
     C_Timer.After(0.5, updateBox)
