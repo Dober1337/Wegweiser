@@ -267,15 +267,17 @@ function PH:FindTrainer(id)
     for _, t in ipairs(static or {}) do table.insert(list, t) end
     for _, t in ipairs(learnedTrainers(id, false) or {}) do table.insert(list, t) end
     if #list == 0 then return nil end
-    local nextIdx
+    local nextIdx, nextRank
     for _, p in ipairs(self:GetMyProfessions()) do
-        if p.id == id then nextIdx = self:NextRank(p) end
+        if p.id == id then nextIdx, nextRank = self:NextRank(p) end
     end
     local needsHigher = nextIdx and nextIdx >= 2
     local pc, pp = playerWorldPos()
     local best, bestDist
     for _, t in ipairs(list) do
         local fits = not (needsHigher and t.apprentice) and not (t.artisanOnly and nextIdx ~= 4)
+        -- Selbst gemerkte Lehrer lehren nur Lehrer-Ränge, keine Bücher/Quests
+        if fits and t.learned and nextRank and nextRank.how ~= "TRAINER" then fits = false end
         if fits and t.ranks then
             -- Lehrer lehrt nur bestimmte Ränge; ohne den Beruf = Lehrling (Rang 1)
             local want, ok = nextIdx or 1, false
