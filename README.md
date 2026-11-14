@@ -13,7 +13,7 @@ Die ZIP entpacken und den Ordner `Wegweiser` nach `World of Warcraft\_forever_\I
 
 ## Empfohlenes Zusatz-Addon
 
-**Dungeon Journal** (Autor: Exehn, kostenlos auf CurseForge, dort nach „Dungeon Journal“ suchen) zeigt Bosse, Beute und Quests aller Dungeons. Ist es installiert, öffnet ein Klick auf einen Dungeon in Wegweisers Gruppensuche-Reiter direkt dessen Seite. Wegweiser funktioniert auch ohne.
+**[Dungeon Journal](https://www.curseforge.com/wow/addons/dungeonjournal)** (Autor: Exehn, kostenlos auf CurseForge) zeigt Bosse, Beute und Quests aller Dungeons. Ist es installiert, öffnet ein Klick auf einen Dungeon in Wegweisers Gruppensuche-Reiter direkt dessen Seite. Wegweiser funktioniert auch ohne.
 
 ## Funktionen
 

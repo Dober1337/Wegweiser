@@ -454,4 +454,4 @@ L.DF_SOURCE            = "Level ranges: Blizzard's group finder (the game's sugg
 L.DF_TT_OPEN             = "Click: open bosses, loot and quests in the \"Dungeon Journal\" addon."
 L.DF_TT_NOJOURNAL        = "Click: download link for the free extra addon \"Dungeon Journal\" (bosses and loot)."
 L.DF_NO_JOURNAL          = "Bosses and loot are shown by the free extra addon \"Dungeon Journal\" by Exehn (CurseForge)."
-L.DF_COPY_TEXT           = "Search CurseForge for the extra addon \"Dungeon Journal\" (author: Exehn) – copy the link with Ctrl+C:"
+L.DF_COPY_TEXT           = "The extra addon \"Dungeon Journal\" (author: Exehn) on CurseForge – copy the link with Ctrl+C:"

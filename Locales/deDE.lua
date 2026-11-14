@@ -454,4 +454,4 @@ L.DF_SOURCE            = "Stufenbereiche: Blizzards Gruppenfinder (Empfehlung de
 L.DF_TT_OPEN             = "Klick: Bosse, Beute und Quests im Addon „Dungeon Journal“ öffnen."
 L.DF_TT_NOJOURNAL        = "Klick: Download-Link für das kostenlose Zusatz-Addon „Dungeon Journal“ (Bosse und Beute)."
 L.DF_NO_JOURNAL          = "Bosse und Beute zeigt das kostenlose Zusatz-Addon „Dungeon Journal“ von Exehn (CurseForge)."
-L.DF_COPY_TEXT           = "Zusatz-Addon „Dungeon Journal“ (Autor: Exehn) auf CurseForge suchen – Link mit Strg+C kopieren:"
+L.DF_COPY_TEXT           = "Zusatz-Addon „Dungeon Journal“ (Autor: Exehn) auf CurseForge – Link mit Strg+C kopieren:"

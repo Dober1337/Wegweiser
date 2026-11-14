@@ -165,8 +165,8 @@ local function wingByName(name)
     end
 end
 
--- Download-Hinweis: CurseForge-Suche (der genaue Seitenlink ist noch nicht bestätigt)
-local DJ_URL = "https://www.curseforge.com/wow/search?search=dungeon%20journal"
+-- Download-Seite von Dungeon Journal (vom Spieler aus der CurseForge-App bestätigt, Nov 2026)
+local DJ_URL = "https://www.curseforge.com/wow/addons/dungeonjournal"
 
 local function journal()
     local FDJ = _G.ForeverDungeonJournal_NS
