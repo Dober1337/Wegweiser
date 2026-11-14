@@ -390,3 +390,11 @@ L.CT_LEVELUP_HINT        = "Wegpunkt zum Klassenlehrer: /ww lehrer klasse"
 L.PROF_ROLE_TRAINER     = "Lehrer"
 L.PROF_ROLE_BOOK        = "Buch kaufen"
 L.PROF_ROLE_QUEST       = "Quest"
+
+-- Build-Prüfung (Modules/BuildCheck.lua)
+L.HELP_BUILD_CHECK     = "/ww build prüfen – passen alle Builds deiner Klasse noch zum Talentbaum?"
+L.BC_PATCH             = "Neue Spielversion erkannt (%s) – Wegweiser hat die Talent-Builds deiner Klasse geprüft."
+L.BC_ALL_OK            = "Alle %d Builds passen weiterhin zum Talentbaum."
+L.BC_BAD               = "%d von %d Builds passen nicht mehr zum Talentbaum:"
+L.BC_BAD_HINT          = "Bitte der Addon-Pflege melden (Screenshot von /ww build prüfen). Bis dahin dem Build in diesem Punkt nicht blind folgen."
+L.BC_HEADER            = "Build-Prüfung (Spielversion %s):"

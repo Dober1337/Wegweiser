@@ -30,6 +30,7 @@ Die ZIP entpacken und den Ordner `Wegweiser` nach `World of Warcraft\_forever_\I
 - Im Talentfenster: das Talent, das jetzt dran ist, wird golden umrandet; auf Wunsch der ganze Build
 - Erkennt deine tatsächlich verteilten Punkte – Abweichungen sind erlaubt, nur ein Hinweis
 - `/ww build`, `/ww build liste`, `/ww build hinweise`
+- Nach jedem Spielpatch prüft Wegweiser automatisch, ob die Builds deiner Klasse noch zum Talentbaum passen (`/ww build prüfen`)
 
 **Level-Up-Hinweise**
 - Erinnerung an den Klassenlehrer mit den neuen Fähigkeiten (`/ww lernen`) und an freie Talentpunkte

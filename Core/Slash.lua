@@ -31,6 +31,7 @@ local function showHelp()
     ns:Print(L.HELP_BUILD)
     ns:Print(L.HELP_BUILD_LIST)
     ns:Print(L.HELP_BUILD_NOTES)
+    ns:Print(L.HELP_BUILD_CHECK)
     ns:Print(L.HELP_POINTS)
     if WegweiserRecorder then ns:Print(L.HELP_ROUTE) end
     ns:Print(L.HELP_CONFIG)
@@ -73,6 +74,8 @@ local function buildCommand(arg, rest)
             local number = tonumber((rest or ""):match("^%S+%s+(%d+)"))
             if number then guide:SelectByIndex(number) end
             guide:PrintChoices()
+        elseif arg == "prüfen" or arg == "pruefen" or arg == "check" then
+            ns.modules.BuildCheck:Command()
         elseif arg == "zeigen" or arg == "show" then
             ns.modules.TalentHighlight:ToggleFull()
         elseif arg == "liste" or arg == "list" then

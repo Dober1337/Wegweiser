@@ -390,3 +390,10 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Am Limit (150 bzw. 225): Meldung sagt jetzt „den nächsten Rang lernst" (nicht mehr „beim Lehrer"),
   darunter Buch bzw. Quest mit Ort.
 - `/ww lehrer kochen` bei 150/150: „Wegpunkt gesetzt – Kochkunst (Buch kaufen): Wulan, Desolace".
+
+## Version 0.41.0 – Build-Prüfung nach Patches
+
+- `/ww build prüfen`: alle Builds deiner Klasse mit grünem Haken (passt) oder rotem Kreuz (passt nicht).
+- Erstes Einloggen mit 0.41.0: keine Meldung (Spielversion wird nur gemerkt).
+- Nach dem nächsten echten Forever-Patch: beim Einloggen „Neue Spielversion erkannt …“ und das Ergebnis.
+- Ergebnisse stehen in WegweiserDB.buildCheck (SavedVariables) – bei Problemen die Datei schicken.

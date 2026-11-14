@@ -390,3 +390,11 @@ L.CT_LEVELUP_HINT        = "Waypoint to your class trainer: /ww trainer class"
 L.PROF_ROLE_TRAINER     = "trainer"
 L.PROF_ROLE_BOOK        = "buy book"
 L.PROF_ROLE_QUEST       = "quest"
+
+-- Build check (Modules/BuildCheck.lua)
+L.HELP_BUILD_CHECK     = "/ww build check – do all builds of your class still fit the talent tree?"
+L.BC_PATCH             = "New game version detected (%s) – Wegweiser checked the talent builds of your class."
+L.BC_ALL_OK            = "All %d builds still fit the talent tree."
+L.BC_BAD               = "%d of %d builds no longer fit the talent tree:"
+L.BC_BAD_HINT          = "Please report it to the addon maintainer (screenshot of /ww build check). Until then don't follow that build blindly."
+L.BC_HEADER            = "Build check (game version %s):"
