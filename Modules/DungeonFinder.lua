@@ -282,6 +282,41 @@ local function setup()
     parent:HookScript("OnHide", function() if panel:IsShown() then panel:Hide(); tab:SetChecked(false) end end)
 end
 
+-- /ww ejprobe – Liefert der Client Daten des Dungeon-Kompendiums? (Entwicklung)
+function DF:EJProbe()
+    local function t(v) return type(v) end
+    ns:Print("EJ_GetNumTiers: %s, EJ_GetInstanceByIndex: %s, EJ_GetLootInfoByIndex: %s, C_EncounterJournal: %s",
+        t(EJ_GetNumTiers), t(EJ_GetInstanceByIndex), t(EJ_GetLootInfoByIndex), t(C_EncounterJournal))
+    ns:Print("DungeonJournal geladen: %s", tostring(C_AddOns and C_AddOns.IsAddOnLoaded("DungeonJournal")))
+    if not (EJ_GetNumTiers and EJ_GetInstanceByIndex) then return end
+    local ok, tiers = pcall(EJ_GetNumTiers)
+    ns:Print("Tiers: %s", tostring(tiers))
+    if not ok or not tiers or tiers == 0 then return end
+    local probe = { tiers = tiers, instances = {} }
+    for tier = 1, tiers do
+        pcall(EJ_SelectTier, tier)
+        for i = 1, 60 do
+            local ok2, id, name = pcall(EJ_GetInstanceByIndex, i, false)
+            if not ok2 or not id then break end
+            table.insert(probe.instances, { tier = tier, id = id, name = name })
+        end
+    end
+    ns:Print("Dungeons im Kompendium: %d", #probe.instances)
+    local first = probe.instances[1]
+    if first and EJ_SelectInstance and EJ_GetEncounterInfoByIndex then
+        pcall(EJ_SelectInstance, first.id)
+        local ok3, bossName, _, encID = pcall(EJ_GetEncounterInfoByIndex, 1, first.id)
+        ns:Print("Beispiel: %s – erster Boss: %s", tostring(first.name), tostring(ok3 and bossName))
+        if ok3 and encID and EJ_SelectEncounter and EJ_GetNumLoot then
+            pcall(EJ_SelectEncounter, encID)
+            local ok4, n = pcall(EJ_GetNumLoot)
+            ns:Print("Beute-Einträge beim ersten Boss: %s", tostring(ok4 and n))
+            probe.lootCount = ok4 and n or nil
+        end
+    end
+    ns.db.ejProbe = probe
+end
+
 function DF:OnInitialize()
     if LFGParentFrame then setup() end
     ns:RegisterEvent("ADDON_LOADED", function(_, name)

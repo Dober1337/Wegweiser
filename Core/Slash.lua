@@ -51,6 +51,7 @@ local function showDevHelp()
     ns:Print("/ww zoneinfo – Rohdaten der aktuellen Zone")
     ns:Print("/ww zonecheck – Karten-Nummern gegen das Spiel prüfen")
     ns:Print("/ww flugdebug – Flugpunkt-Daten des Spiels prüfen")
+    ns:Print("/ww ejprobe – Dungeon-Kompendium/Beute-Daten des Spiels prüfen")
 end
 
 local function showPoints()
@@ -116,6 +117,7 @@ local commands = {
     dungeons   = function() ns.modules.DungeonFinder:Command() end,
     dungeon    = function() ns.modules.DungeonFinder:Command() end,
     instanzen  = function() ns.modules.DungeonFinder:Command() end,
+    ejprobe    = function() ns:RunOutOfCombat(function() ns.modules.DungeonFinder:EJProbe() end) end,
     reiten     = function() ns:RunOutOfCombat(function() ns.modules.Milestones:RidingCommand() end) end,
     riding     = function() ns:RunOutOfCombat(function() ns.modules.Milestones:RidingCommand() end) end,
     ["vermächtnis"] = function() ns.modules.Milestones:LegacyCommand() end,
