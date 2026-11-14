@@ -162,7 +162,11 @@ function MS:LegacyCommand()
     if not unlocked then ns:Print(L.MS_LEG_LOCKED) return end
     ns:Print(L.MS_LEG_STATUS, points or 0)
     local key = legacyKey()
-    ns:Print("   " .. (key and string.format(L.MS_LEG_OPEN_KEY, key) or L.MS_LEG_OPEN_MENU))
+    if (points or 0) > 0 then
+        ns:Print("   " .. (key and string.format(L.MS_LEG_OPEN_KEY, key) or L.MS_LEG_OPEN_MENU))
+    else
+        ns:Print("   " .. (key and string.format(L.MS_LEG_OPEN_KEY0, key) or L.MS_LEG_OPEN_MENU0))
+    end
 end
 
 -- ------------------------------------------------------------
