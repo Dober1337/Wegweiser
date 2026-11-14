@@ -47,6 +47,9 @@ ns.defaults = {
         -- Meilensteine
         ridingHint      = true,   -- Reiten: Spar-Hinweise ab 30, Reitlehrer auf 40
         legacyHint      = true,   -- Vermächtnis: freie Punkte melden
+        -- Dungeons
+        dungeonTab      = true,   -- eigener Reiter im Gruppenfinder
+        dungeonHint     = true,   -- Levelaufstieg: Dungeon neu im Stufenbereich
         -- Build-Wahl steht in talentBuildByClass (pro Klasse). Ohne Wahl gilt der
         -- Einsteiger-Tipp der Klasse (TalentGuide:GetBuild).
     },

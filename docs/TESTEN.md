@@ -406,3 +406,11 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Mit freien Vermächtnispunkten beim Einloggen: gelber Hinweis mit der Taste zum Öffnen.
   Erste Freischaltung: einmaliger Hinweis mit Erklärung.
 - Prüfen: Stimmen Reitlehrer-Ort (goldgoblin: Classic-Anlaufstellen, ca.-Koordinaten) und Preis?
+
+## Version 0.43.0 – Dungeons für deine Stufe
+
+- Gruppensuche öffnen: unter den drei Blizzard-Reitern rechts ein vierter mit Karten-Symbol.
+- Klick darauf: Kasten „Dungeons für Stufe X“ mit Abschnitten Passt jetzt / Bald / Später / Schon zu niedrig.
+  Klick auf einen Blizzard-Reiter schließt den Kasten wieder.
+- Prüfen: Sitzt der Kasten sauber im Fenster? Sind die Stufenbereiche sinnvoll?
+- `/ww dungeons` im Chat. Beim Levelaufstieg: „Neuer Dungeon für deine Stufe: …“.
