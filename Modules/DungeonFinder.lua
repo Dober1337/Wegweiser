@@ -165,6 +165,9 @@ local function wingByName(name)
     end
 end
 
+-- Download-Hinweis: CurseForge-Suche (der genaue Seitenlink ist noch nicht bestätigt)
+local DJ_URL = "https://www.curseforge.com/wow/search?search=dungeon%20journal"
+
 local function journal()
     local FDJ = _G.ForeverDungeonJournal_NS
     if type(FDJ) == "table" and SlashCmdList and SlashCmdList.FOREVERDUNGEONJOURNAL then return FDJ end
@@ -182,6 +185,10 @@ end
 function DF:OpenInJournal(d)
     if not journal() then
         ns:Print(L.DF_NO_JOURNAL)
+        -- Link zum Kopieren (Chat-Links sind in WoW nicht klickbar); Popup aus ProfessionHelper
+        if StaticPopupDialogs and StaticPopupDialogs["WEGWEISER_COPY_LINK"] then
+            StaticPopup_Show("WEGWEISER_COPY_LINK", L.DF_COPY_TEXT, nil, DJ_URL)
+        end
         return
     end
     local cmd = DJ_SLASH[journalKey(d) or ""]

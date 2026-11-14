@@ -11,6 +11,10 @@ Optional: [Recorder-Download](https://github.com/Dober1337/Wegweiser/raw/main/di
 
 Die ZIP entpacken und den Ordner `Wegweiser` nach `World of Warcraft\_forever_\Interface\AddOns\` legen. Bei einem Update den alten Ordner ersetzen und das Spiel neu starten.
 
+## Empfohlenes Zusatz-Addon
+
+**Dungeon Journal** (Autor: Exehn, kostenlos auf CurseForge, dort nach „Dungeon Journal“ suchen) zeigt Bosse, Beute und Quests aller Dungeons. Ist es installiert, öffnet ein Klick auf einen Dungeon in Wegweisers Gruppensuche-Reiter direkt dessen Seite. Wegweiser funktioniert auch ohne.
+
 ## Funktionen
 
 **Quest-Berater**
