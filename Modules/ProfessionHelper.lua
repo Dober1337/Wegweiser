@@ -336,6 +336,16 @@ function PH:TrainerCommand(rest)
         return
     end
     local t = self:FindTrainer(id)
+    -- Was macht man dort? Lehrer, Buch kaufen oder Quest (nach dem nächsten Rang)
+    local role = L.PROF_ROLE_TRAINER
+    if t then
+        for _, p in ipairs(self:GetMyProfessions()) do
+            if p.id == id then
+                local _, r = self:NextRank(p)
+                if r and r.how ~= "TRAINER" and (t.ranks or t.artisanOnly) then role = L["PROF_ROLE_" .. r.how] end
+            end
+        end
+    end
     if not t then
         ns:Print(L.PROF_WAY_NONE, profName(id))
         local names = ns.ProfessionTrainerNames[factionKey()] and ns.ProfessionTrainerNames[factionKey()][id]
@@ -352,9 +362,9 @@ function PH:TrainerCommand(rest)
         if C_SuperTrack and C_SuperTrack.SetSuperTrackedUserWaypoint then
             C_SuperTrack.SetSuperTrackedUserWaypoint(true)
         end
-        ns:Print(L.PROF_WAY_SET, profName(id), t.name, mapName, t.x, t.y)
+        ns:Print(L.PROF_WAY_SET, profName(id), role, t.name, mapName, t.x, t.y)
     else
-        ns:Print(L.PROF_WAY_TEXT, profName(id), t.name, mapName, t.x, t.y)
+        ns:Print(L.PROF_WAY_TEXT, profName(id), role, t.name, mapName, t.x, t.y)
     end
 end
 
@@ -406,8 +416,17 @@ function PH:CheckCaps()
         local idx, r = self:NextRank(p)
         if idx then
             local key = p.id .. ":" .. p.maxRank
-            local hasTrainer = r.how == "TRAINER" and ns.ProfessionTrainers[factionKey()]
-                and ns.ProfessionTrainers[factionKey()][p.id]
+            -- Gibt es einen bekannten NPC (Lehrer, Buchhändler, Questgeber) für diesen Rang?
+            local hasTrainer = false
+            for _, t in ipairs(ns.ProfessionTrainers[factionKey()] and ns.ProfessionTrainers[factionKey()][p.id] or {}) do
+                if t.ranks then
+                    for _, rr in ipairs(t.ranks) do if rr == idx then hasTrainer = true end end
+                elseif t.artisanOnly then
+                    if idx == 4 then hasTrainer = true end
+                elseif r.how == "TRAINER" and not t.apprentice then
+                    hasTrainer = true
+                end
+            end
             local levelOk = not r.level or level >= r.level
             local atCap = p.rank >= p.maxRank
             if p.rank >= r.skill and levelOk and not warned[key .. ":ready"] then
@@ -420,6 +439,7 @@ function PH:CheckCaps()
                 else
                     ns:Print(L.PROF_CAN_LEARN, p.name, p.rank, p.maxRank, self:RankText(idx, r))
                 end
+                if r.note then ns:Print("   |cffffd100" .. L[r.note] .. "|r") end
                 if hasTrainer then ns:Print("   " .. L.PROF_WAY_TIP, p.name:lower()) end
             elseif p.rank >= r.skill and not levelOk and not warned[key .. ":lvl"] then
                 warned[key .. ":lvl"] = true
@@ -428,6 +448,8 @@ function PH:CheckCaps()
             if atCap and not warned[key .. ":cap"] then
                 warned[key .. ":cap"] = true
                 ns:Notify(L.PROF_AT_CAP, p.name, p.rank, p.maxRank)
+                ns:Print("   " .. self:RankText(idx, r))
+                if r.note then ns:Print("   |cffffd100" .. L[r.note] .. "|r") end
             end
         end
     end

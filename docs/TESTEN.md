@@ -382,3 +382,11 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
   Waffenmeister oder Reitlehrer dürfen NICHT gemerkt werden.
 - Woanders `/ww lehrer klasse`: Wegpunkt zum nächsten gemerkten Klassenlehrer.
 - Beim nächsten Level mit neuen Fähigkeiten: Zeile „Wegpunkt zum Klassenlehrer: /ww lehrer klasse".
+
+## Version 0.40.0 – Bücher und Quests für Angeln, Kochen, Erste Hilfe
+
+- Angeln/Kochen/Erste Hilfe ab Skill 125: Chat nennt das Expertenbuch mit Händler und Ort,
+  dazu „Wegpunkt dorthin: /ww lehrer …".
+- Am Limit (150 bzw. 225): Meldung sagt jetzt „den nächsten Rang lernst" (nicht mehr „beim Lehrer"),
+  darunter Buch bzw. Quest mit Ort.
+- `/ww lehrer kochen` bei 150/150: „Wegpunkt gesetzt – Kochkunst (Buch kaufen): Wulan, Desolace".
