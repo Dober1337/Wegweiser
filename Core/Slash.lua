@@ -25,6 +25,8 @@ local function showHelp()
     ns:Print(L.HELP_FLIGHT)
     ns:Print(L.HELP_HEARTH)
     ns:Print(L.HELP_GOLD)
+    ns:Print(L.HELP_RIDING)
+    ns:Print(L.HELP_LEGACY)
     ns:Print(L.HELP_PROF)
     ns:Print(L.HELP_TRAINER)
     ns:Print(L.HELP_GUIDE)
@@ -110,6 +112,11 @@ local commands = {
     ruhestein  = function() ns.modules.Travel:HearthCommand() end,
     hearth     = function() ns.modules.Travel:HearthCommand() end,
     gold       = function(_, rest) ns.modules.SessionMoney:Command(rest) end,
+    reiten     = function() ns:RunOutOfCombat(function() ns.modules.Milestones:RidingCommand() end) end,
+    riding     = function() ns:RunOutOfCombat(function() ns.modules.Milestones:RidingCommand() end) end,
+    ["vermächtnis"] = function() ns.modules.Milestones:LegacyCommand() end,
+    vermaechtnis = function() ns.modules.Milestones:LegacyCommand() end,
+    legacy     = function() ns.modules.Milestones:LegacyCommand() end,
     flugdebug  = function() ns:RunOutOfCombat(function() ns.modules.Travel:Debug() end) end,
     lehrer     = function(_, rest) ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:TrainerCommand(rest) end) end,
     trainer    = function(_, rest) ns:RunOutOfCombat(function() ns.modules.ProfessionHelper:TrainerCommand(rest) end) end,

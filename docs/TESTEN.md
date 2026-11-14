@@ -397,3 +397,12 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Erstes Einloggen mit 0.41.0: keine Meldung (Spielversion wird nur gemerkt).
 - Nach dem nächsten echten Forever-Patch: beim Einloggen „Neue Spielversion erkannt …“ und das Ergebnis.
 - Ergebnisse stehen in WegweiserDB.buildCheck (SavedVariables) – bei Problemen die Datei schicken.
+
+## Version 0.42.0 – Reiten und Vermächtnis
+
+- `/ww reiten`: Kosten (100 Gold ab Stufe 40), dein Gold, was fehlt, Reitlehrer deines Volkes + Wegpunkt.
+- Levelaufstieg auf 30, 34, 37, 39: Spar-Hinweis. Auf 40: „Du kannst jetzt Reiten lernen!“ mit Reitlehrer.
+- `/ww vermächtnis`: freie Vermächtnispunkte (oder „noch nicht freigeschaltet“).
+- Mit freien Vermächtnispunkten beim Einloggen: gelber Hinweis mit der Taste zum Öffnen.
+  Erste Freischaltung: einmaliger Hinweis mit Erklärung.
+- Prüfen: Stimmen Reitlehrer-Ort (goldgoblin: Classic-Anlaufstellen, ca.-Koordinaten) und Preis?

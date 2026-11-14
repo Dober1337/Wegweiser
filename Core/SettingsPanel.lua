@@ -61,6 +61,9 @@ function ns:OnDatabaseReady()
     addCheckbox("invHints",        L.OPT_INV,       L.OPT_INV_TT)
     addCheckbox("merchantHelper",  L.OPT_MERCHANT,  L.OPT_MERCHANT_TT)
     addCheckbox("sessionMoney",    L.OPT_SESSIONMONEY, L.OPT_SESSIONMONEY_TT)
+
+    addCheckbox("ridingHint",      L.OPT_RIDING,    L.OPT_RIDING_TT)
+    addCheckbox("legacyHint",      L.OPT_LEGACY,    L.OPT_LEGACY_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.
 
