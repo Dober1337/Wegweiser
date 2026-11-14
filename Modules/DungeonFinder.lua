@@ -338,6 +338,11 @@ local function setup()
         edgeSize = 14, insets = { left = 3, right = 3, top = 3, bottom = 3 },
     })
     panel:SetBackdropColor(0.05, 0.05, 0.05, 0.97)
+    -- Deckende Fläche darunter: Blizzards Fensterinhalt darf nicht durchscheinen
+    local solid = panel:CreateTexture(nil, "BACKGROUND", nil, -8)
+    solid:SetPoint("TOPLEFT", 3, -3)
+    solid:SetPoint("BOTTOMRIGHT", -3, 3)
+    solid:SetColorTexture(0.06, 0.06, 0.06, 1)
     panel:Hide()
 
     panel.title = panel:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
