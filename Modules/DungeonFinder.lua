@@ -47,7 +47,7 @@ function DF:GetDungeons()
             local lo = info.minLevelSuggestion or 0
             local hi = info.maxLevelSuggestion or 0
             if lo == 0 then lo = info.minLevel or 0 end
-            table.insert(list, { name = info.fullName, min = lo, max = hi })
+            table.insert(list, { name = info.fullName, min = lo, max = hi, mapID = info.mapID })
         end
     end
     table.sort(list, function(a, b)
@@ -117,6 +117,105 @@ end
 
 local ROW_H = 16
 
+-- ------------------------------------------------------------
+-- Verknüpfung mit dem Addon "Dungeon Journal" (Ordner ForeverDungeonJournal,
+-- Autor Exehn). Geprüft in dessen Code (Version 2.0.5):
+--   * öffentlicher Chat-Befehl /dj <Kürzel> öffnet den Dungeon
+--     (SlashCmdList.FOREVERDUNGEONJOURNAL, Kürzel wie "sfk", "smlib", "brd")
+--   * Zuordnung über die Instanz-Nummer: ForeverDungeonJournal_NS.INSTANCE_ID_TO_DUNGEON
+--     (dieselbe Nummer liefert Blizzards Gruppenfinder als mapID)
+-- Wir rufen nur diesen Befehl auf, sonst nichts aus dem fremden Addon.
+-- ------------------------------------------------------------
+local DJ_SLASH = {
+    ["Ragefire Chasm"] = "rfc", ["Hall of Thanes"] = "hall", ["The Deadmines"] = "deadmines",
+    ["Ruins of Lordaeron"] = "ruins", ["Wailing Caverns"] = "wc", ["Shadowfang Keep"] = "sfk",
+    ["Blackfathom Deeps"] = "bfd", ["The Stockade"] = "stocks", ["Gnomeregan"] = "gnomer",
+    ["Razorfen Kraul"] = "rfk", ["City of Dalaran"] = "dalaran", ["Excavation Site: Wetlands"] = "exca",
+    ["Scarlet Monastery: Graveyard"] = "smgy", ["Scarlet Monastery: Library"] = "smlib",
+    ["Scarlet Monastery: Armory"] = "smarm", ["Scarlet Monastery: Cathedral"] = "smcath",
+    ["Razorfen Downs"] = "rfd", ["Uldaman"] = "ulda", ["Zul'Farrak"] = "zf", ["Sunken Temple"] = "st",
+    ["Scholomance"] = "scholo", ["Maraudon"] = "mara", ["Blackrock Depths"] = "brd",
+    ["Upper Blackrock Spire"] = "ubrs", ["Lower Blackrock Spire"] = "lbrs",
+    ["Dire Maul: East"] = "dme", ["Dire Maul: West"] = "dmw", ["Dire Maul: North"] = "dmn",
+    ["Stratholme: Living"] = "strat", ["Stratholme: Undead"] = "stratud",
+    ["Alcaz Prison"] = "alcaz", ["Blackmaw Hold"] = "bmh", ["Krol'dok Stronghold"] = "krol",
+    ["Shaper's Terrace"] = "shaper", ["The Drowned City"] = "dc",
+}
+
+-- Dungeons, die sich eine Instanz teilen: Teil über den Namen (deutsch/englisch)
+local function wingByName(name)
+    local n = (name or ""):lower()
+    local function has(...) for _, w in ipairs({ ... }) do if n:find(w, 1, true) then return true end end end
+    if has("scharlach", "scarlet") then
+        if has("friedhof", "graveyard") then return "Scarlet Monastery: Graveyard" end
+        if has("bibliothek", "library") then return "Scarlet Monastery: Library" end
+        if has("waffenkammer", "armory") then return "Scarlet Monastery: Armory" end
+        if has("kathedrale", "cathedral") then return "Scarlet Monastery: Cathedral" end
+    elseif has("düsterbruch", "dire maul") then
+        if has("ost", "east") then return "Dire Maul: East" end
+        if has("west") then return "Dire Maul: West" end
+        if has("nord", "north") then return "Dire Maul: North" end
+    elseif has("stratholme") then
+        if has("untot", "undead", "dienst", "service") then return "Stratholme: Undead" end
+        return "Stratholme: Living"
+    elseif has("schwarzfels", "blackrock") then
+        if has("tiefen", "depths") then return "Blackrock Depths" end
+        if has("obere", "upper") then return "Upper Blackrock Spire" end
+        if has("untere", "lower") then return "Lower Blackrock Spire" end
+    end
+end
+
+local function journal()
+    local FDJ = _G.ForeverDungeonJournal_NS
+    if type(FDJ) == "table" and SlashCmdList and SlashCmdList.FOREVERDUNGEONJOURNAL then return FDJ end
+end
+
+local function journalKey(d)
+    local FDJ = journal()
+    if not FDJ then return nil end
+    local key = FDJ.INSTANCE_ID_TO_DUNGEON and d.mapID and FDJ.INSTANCE_ID_TO_DUNGEON[d.mapID]
+    if not key or key == "Scarlet Monastery" then key = wingByName(d.name) end
+    if not key and FDJ.DungeonFromInstanceName then key = FDJ.DungeonFromInstanceName(d.name) end
+    return key
+end
+
+function DF:OpenInJournal(d)
+    if not journal() then
+        ns:Print(L.DF_NO_JOURNAL)
+        return
+    end
+    local cmd = DJ_SLASH[journalKey(d) or ""]
+    -- Ohne passendes Kürzel: Journal einfach öffnen
+    SlashCmdList.FOREVERDUNGEONJOURNAL(cmd or "")
+end
+
+local function newRow()
+    local row = CreateFrame("Button", nil, panel.content)
+    row:SetHeight(ROW_H)
+    row.name = row:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+    row.name:SetPoint("LEFT", 6, 0)
+    row.name:SetJustifyH("LEFT")
+    row.range = row:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+    row.range:SetPoint("RIGHT", -6, 0)
+    row.head = row:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    row.head:SetPoint("LEFT", 2, 0)
+    local hl = row:CreateTexture(nil, "HIGHLIGHT")
+    hl:SetAllPoints()
+    hl:SetColorTexture(1, 1, 1, 0.08)
+    row:SetScript("OnClick", function(self)
+        if self.dungeon then DF:OpenInJournal(self.dungeon) end
+    end)
+    row:SetScript("OnEnter", function(self)
+        if not self.dungeon then return end
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:AddLine(self.dungeon.name, 1, 0.82, 0)
+        GameTooltip:AddLine(journal() and L.DF_TT_OPEN or L.DF_TT_NOJOURNAL, 0.9, 0.9, 0.9, true)
+        GameTooltip:Show()
+    end)
+    row:SetScript("OnLeave", function() GameTooltip:Hide() end)
+    return row
+end
+
 local function fillPanel()
     if not panel then return end
     local list = DF:GetDungeons() or {}
@@ -147,15 +246,7 @@ local function fillPanel()
         i = i + 1
         local row = panel.rows[i]
         if not row then
-            row = CreateFrame("Frame", nil, panel.content)
-            row:SetHeight(ROW_H)
-            row.name = row:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-            row.name:SetPoint("LEFT", 6, 0)
-            row.name:SetJustifyH("LEFT")
-            row.range = row:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-            row.range:SetPoint("RIGHT", -6, 0)
-            row.head = row:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-            row.head:SetPoint("LEFT", 2, 0)
+            row = newRow()
             panel.rows[i] = row
         end
         row:ClearAllPoints()
@@ -167,20 +258,13 @@ local function fillPanel()
             row:SetPoint("RIGHT", panel.content, "RIGHT", 0, 0)
             row.head:SetText(L["DF_SECTION_" .. d._st:upper()])
             row.head:Show(); row.name:Hide(); row.range:Hide()
+            row.dungeon = nil; row:EnableMouse(false)
             row:Show()
             y = y + ROW_H
             i = i + 1
             row = panel.rows[i]
             if not row then
-                row = CreateFrame("Frame", nil, panel.content)
-                row:SetHeight(ROW_H)
-                row.name = row:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-                row.name:SetPoint("LEFT", 6, 0)
-                row.name:SetJustifyH("LEFT")
-                row.range = row:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-                row.range:SetPoint("RIGHT", -6, 0)
-                row.head = row:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-                row.head:SetPoint("LEFT", 2, 0)
+                row = newRow()
                 panel.rows[i] = row
             end
             row:ClearAllPoints()
@@ -189,6 +273,7 @@ local function fillPanel()
         row:SetPoint("RIGHT", panel.content, "RIGHT", 0, 0)
         local c = COLORS[d._st]
         row.head:Hide()
+        row.dungeon = d; row:EnableMouse(true)
         row.name:SetText(d.name); row.name:SetTextColor(c[1], c[2], c[3]); row.name:Show()
         row.range:SetText(rangeText(d)); row.range:SetTextColor(c[1], c[2], c[3]); row.range:Show()
         row:Show()

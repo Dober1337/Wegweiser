@@ -414,3 +414,11 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
   Klick auf einen Blizzard-Reiter schließt den Kasten wieder.
 - Prüfen: Sitzt der Kasten sauber im Fenster? Sind die Stufenbereiche sinnvoll?
 - `/ww dungeons` im Chat. Beim Levelaufstieg: „Neuer Dungeon für deine Stufe: …“.
+
+## Version 0.44.0 – Dungeon anklicken → Dungeon Journal
+
+- Gruppensuche → Reiter „Dungeons für deine Stufe“ → Maus über einen Dungeon: Tooltip
+  „Klick: Bosse, Beute und Quests im Addon Dungeon Journal öffnen“, Zeile leuchtet auf.
+- Klick: Dungeon Journal öffnet sich direkt bei diesem Dungeon (z. B. Burg Shadowfang).
+- Bitte mehrere testen, besonders Scharlachrotes Kloster (Flügel), Düsterbruch, Stratholme, Schwarzfels.
+- Ohne Dungeon Journal: Hinweis im Chat auf das Zusatz-Addon.
