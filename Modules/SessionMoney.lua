@@ -53,6 +53,72 @@ function SM:Delta()
     return GetMoney() - start
 end
 
+-- "+1g 2s" grün / "-3s" rot / "±0"
+function SM:Signed(delta)
+    if not delta then return "|cff999999–|r" end
+    if delta > 0 then return "|cff40ff40+" .. self:Format(delta) .. "|r" end
+    if delta < 0 then return "|cffff4040-" .. self:Format(delta) .. "|r" end
+    return "|cffbbbbbb±0|r"
+end
+
+-- Stand des Charakters merken (für Tag, Gesamt und "alle Charaktere")
+local function remember()
+    local data = charData()
+    local money = GetMoney()
+    local today = date("%Y-%m-%d")
+    data.money = money
+    data.name = UnitName("player")
+    data.realm = GetRealmName()
+    data.class = select(2, UnitClass("player"))
+    data.faction = UnitFactionGroup("player")
+    if data.dayDate ~= today then data.dayDate, data.dayStart = today, money end
+    if not data.trackStart then data.trackStart, data.trackDate = money, today end
+end
+
+-- Alle Charaktere dieses Realms (gemerkt, sobald man sich einmal mit ihnen einloggt)
+function SM:Characters()
+    local list, total = {}, 0
+    local realm = GetRealmName()
+    for _, c in pairs(ns.db.chars or {}) do
+        if c.money and c.name and c.realm == realm then
+            table.insert(list, c)
+            total = total + c.money
+        end
+    end
+    table.sort(list, function(a, b) return a.money > b.money end)
+    return list, total
+end
+
+-- "2026-11-16" -> "16.11.2026" (deutsch) bzw. unverändert
+local function showDate(iso)
+    if not iso then return "?" end
+    if ns.locale ~= "deDE" then return iso end
+    local y, m, d = iso:match("(%d+)-(%d+)-(%d+)")
+    return y and (d .. "." .. m .. "." .. y) or iso
+end
+
+function SM:FillTooltip(tt)
+    local data = charData()
+    local money = GetMoney()
+    tt:AddLine(L.SM_TT_TITLE, 1, 0.82, 0)
+    tt:AddDoubleLine(L.SM_TT_SESSION, self:Signed(self:Delta()), 1, 1, 1)
+    tt:AddDoubleLine(L.SM_TT_TODAY, self:Signed(data.dayStart and (money - data.dayStart)), 1, 1, 1)
+    tt:AddDoubleLine(string.format(L.SM_TT_SINCE, showDate(data.trackDate)),
+        self:Signed(data.trackStart and (money - data.trackStart)), 1, 1, 1)
+    local list, total = self:Characters()
+    if #list > 1 then
+        tt:AddLine(" ")
+        tt:AddLine(string.format(L.SM_TT_CHARS, GetRealmName() or ""), 1, 0.82, 0)
+        for _, c in ipairs(list) do
+            local col = RAID_CLASS_COLORS and c.class and RAID_CLASS_COLORS[c.class]
+            local r, g, b = 1, 1, 1
+            if col then r, g, b = col.r, col.g, col.b end
+            tt:AddDoubleLine(c.name, self:Format(c.money), r, g, b, 1, 1, 1)
+        end
+        tt:AddDoubleLine(L.SM_TT_TOTAL, self:Format(total), 1, 0.82, 0, 1, 1, 1)
+    end
+end
+
 local function update()
     local show = enabled()
     local delta = show and SM:Delta()
@@ -70,6 +136,10 @@ local function update()
     for _, fs in ipairs(labels) do
         fs:SetText(text or "")
         fs:SetShown(text ~= nil)
+        if fs.hover then
+            fs.hover:SetWidth(math.max((fs:GetStringWidth() or 0) + 4, 10))
+            fs.hover:SetShown(text ~= nil)
+        end
     end
 end
 
@@ -81,6 +151,18 @@ local function attach(moneyFrame)
     local fs = holder:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     fs:SetPoint("LEFT", moneyFrame, "LEFT", 6, 0)
     fs:SetJustifyH("LEFT")
+    -- Maus-Fläche nur über unserem Text (Blizzards Goldanzeige rechts bleibt frei)
+    local hover = CreateFrame("Frame", nil, holder)
+    hover:SetPoint("LEFT", fs, "LEFT", -2, 0)
+    hover:SetHeight(16)
+    hover:EnableMouse(true)
+    hover:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_TOP")
+        SM:FillTooltip(GameTooltip)
+        GameTooltip:Show()
+    end)
+    hover:SetScript("OnLeave", function() GameTooltip:Hide() end)
+    fs.hover = hover
     table.insert(labels, fs)
     moneyFrame:HookScript("OnShow", update)
 end
@@ -95,9 +177,10 @@ function SM:OnInitialize()
         if isInitialLogin or not data.sessionStart then
             data.sessionStart = GetMoney()
         end
+        remember()
         update()
     end)
-    ns:RegisterEvent("PLAYER_MONEY", update)
+    ns:RegisterEvent("PLAYER_MONEY", function() remember(); update() end)
 end
 
 -- /ww gold – Bilanz im Chat, "/ww gold neu" startet die Zählung neu
@@ -108,7 +191,14 @@ function SM:Command(rest)
         update()
         return
     end
-    local delta = self:Delta() or 0
-    local sign = delta > 0 and "+" or (delta < 0 and "-" or "±")
-    ns:Print(L.SM_CHAT, sign .. self:Format(delta))
+    remember()
+    local data, money = charData(), GetMoney()
+    ns:Print(L.SM_CHAT, self:Signed(self:Delta() or 0))
+    ns:Print("   " .. L.SM_TT_TODAY .. ": " .. self:Signed(data.dayStart and (money - data.dayStart)))
+    ns:Print("   " .. string.format(L.SM_TT_SINCE, showDate(data.trackDate)) .. ": "
+        .. self:Signed(data.trackStart and (money - data.trackStart)))
+    local list, total = self:Characters()
+    if #list > 1 then
+        ns:Print("   " .. string.format(L.SM_TT_CHARS, GetRealmName() or "") .. " " .. self:Format(total))
+    end
 end

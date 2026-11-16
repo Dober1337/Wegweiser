@@ -422,3 +422,10 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Klick: Dungeon Journal öffnet sich direkt bei diesem Dungeon (z. B. Burg Shadowfang).
 - Bitte mehrere testen, besonders Scharlachrotes Kloster (Flügel), Düsterbruch, Stratholme, Schwarzfels.
 - Ohne Dungeon Journal: Hinweis im Chat auf das Zusatz-Addon.
+
+## Version 0.45.0 – Gold-Bilanz
+
+- Tasche öffnen, Maus über „Sitzung: …“ unten links: Tooltip mit
+  Diese Sitzung / Heute / Seit <Datum> (Beginn) – jeweils grün (Plus) oder rot (Minus).
+- Mit mehreren Charakteren auf dem Realm (jeder einmal eingeloggt): Liste mit Gold pro Charakter und Summe.
+- `/ww gold` zeigt dasselbe im Chat.
