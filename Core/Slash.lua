@@ -23,6 +23,7 @@ local function showHelp()
     ns:Print(L.HELP_QUESTS)
     ns:Print(L.HELP_ZONES)
     ns:Print(L.HELP_DUNGEONS)
+    ns:Print(L.HELP_AH)
     ns:Print(L.HELP_FLIGHT)
     ns:Print(L.HELP_HEARTH)
     ns:Print(L.HELP_GOLD)
@@ -117,6 +118,8 @@ local commands = {
     dungeons   = function() ns.modules.DungeonFinder:Command() end,
     dungeon    = function() ns.modules.DungeonFinder:Command() end,
     instanzen  = function() ns.modules.DungeonFinder:Command() end,
+    ah         = function() ns.modules.AuctionPrices:Command() end,
+    auktion    = function() ns.modules.AuctionPrices:Command() end,
     ejprobe    = function() ns:RunOutOfCombat(function() ns.modules.DungeonFinder:EJProbe() end) end,
     reiten     = function() ns:RunOutOfCombat(function() ns.modules.Milestones:RidingCommand() end) end,
     riding     = function() ns:RunOutOfCombat(function() ns.modules.Milestones:RidingCommand() end) end,

@@ -49,6 +49,7 @@ Die ZIP entpacken und den Ordner `Wegweiser` nach `World of Warcraft\_forever_\I
 - `/ww ruhestein`: wo dein Ruhestein gebunden ist
 - Taschen fast voll oder Ausrüstung kaputt: Hinweis; beim Händler „Graues verkaufen“ und „Reparieren“ auf Knopfdruck
 - Gold dieser Sitzung unten links in der Tasche, `/ww gold`
+- Auktionshauspreise im Tooltip: einmal am Auktionshaus „Preise scannen“, danach steht der günstigste Sofortkaufpreis bei jedem Gegenstand (`/ww ah`; still, wenn Auctionator läuft)
 - Reiten: ab Stufe 30 Spar-Hinweise, auf Stufe 40 der Weg zum Reitlehrer (`/ww reiten`)
 - Vermächtnis: Hinweis auf freie Vermächtnispunkte mit der Taste zum Öffnen (`/ww vermächtnis`)
 - Dungeons: eigener Reiter in der Gruppensuche „Dungeons für deine Stufe“ (Stufenbereiche aus Blizzards Gruppenfinder), Hinweis beim Levelaufstieg, `/ww dungeons`
@@ -94,7 +95,7 @@ Wegweiser ist und bleibt kostenlos – keine Bezahlfunktionen, keine Werbung, ke
 - **Talent guide:** 28 leveling builds for all 9 classes, one marked as the beginner tip; the talent to pick now is highlighted in the talent window.
 - **Level-up tips:** reminders for the class trainer and unspent talent points.
 - **Professions:** what to craft now at the trainer, `/ww professions`, `/ww trainer <profession>` waypoints, gathering skill in herb/ore/beast tooltips.
-- **On the road:** unknown flight points in your zone, hearthstone location, bag/repair hints, "sell grey" and "repair" at merchants, session gold in your bags.
+- **On the road:** unknown flight points in your zone, hearthstone location, bag/repair hints, "sell grey" and "repair" at merchants, session gold in your bags, auction house prices in item tooltips after one scan.
 
 **[Download](https://github.com/Dober1337/Wegweiser/raw/main/dist/Wegweiser.zip)** – unzip and put the `Wegweiser` folder into `World of Warcraft\_forever_\Interface\AddOns\`.
 

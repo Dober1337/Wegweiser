@@ -50,6 +50,7 @@ ns.defaults = {
         -- Dungeons
         dungeonTab      = true,   -- eigener Reiter im Gruppenfinder
         dungeonHint     = true,   -- Levelaufstieg: Dungeon neu im Stufenbereich
+        ahPrices        = true,   -- Auktionshauspreise im Tooltip + Scan-Knopf
         -- Build-Wahl steht in talentBuildByClass (pro Klasse). Ohne Wahl gilt der
         -- Einsteiger-Tipp der Klasse (TalentGuide:GetBuild).
     },

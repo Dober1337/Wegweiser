@@ -429,3 +429,15 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
   Diese Sitzung / Heute / Seit <Datum> (Beginn) – jeweils grün (Plus) oder rot (Minus).
 - Mit mehreren Charakteren auf dem Realm (jeder einmal eingeloggt): Liste mit Gold pro Charakter und Summe.
 - `/ww gold` zeigt dasselbe im Chat.
+
+## Version 0.46.0 – Auktionshauspreise
+
+- Auktionshaus öffnen: über dem Fenster rechts der Knopf „Wegweiser: Preise scannen“.
+- Klick: Chat „Scan läuft …“, nach einigen Sekunden „Scan fertig: Preise für X Gegenstände (Y Auktionen)“.
+  Fenster dabei offen lassen. Danach zeigt der Knopf „Nächster Scan in N Min.“ (Blizzard erlaubt nur alle 15 Minuten).
+- Maus über Gegenstände in der Tasche: Zeile „Auktionshaus (Stück): <Münzen> (vor X Min.)“.
+- Prüfen: Stimmen die Preise mit dem günstigsten Angebot im Auktionshaus überein (pro Stück)?
+  Ruckelt das Spiel beim Scan stark?
+- Eine normale Suche im Auktionshaus aktualisiert die gefundenen Gegenstände ebenfalls.
+- `/ww ah`: Anzahl gespeicherter Preise und Alter des letzten Scans.
+- Mit Auctionator: kein Knopf, keine Wegweiser-Zeile (Auctionator zeigt seine eigenen Preise).
