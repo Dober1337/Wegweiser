@@ -69,7 +69,6 @@ function ns:OnDatabaseReady()
     addCheckbox("dungeonHint",     L.OPT_DHINT,     L.OPT_DHINT_TT)
 
     addCheckbox("ahPrices",        L.OPT_AH,        L.OPT_AH_TT)
-    addCheckbox("ahAutoScan",      L.OPT_AHAUTO,    L.OPT_AHAUTO_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.
 

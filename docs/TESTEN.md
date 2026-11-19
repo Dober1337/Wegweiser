@@ -453,3 +453,8 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Maus über einen Stapel in der Tasche (z. B. 20 Seidenstoff): unter „Auktionshaus (Stück)“ eine zweite Zeile
   „Auktionshaus (20 Stück): <Stückpreis × 20>“. Bei Einzelstücken nur die Stück-Zeile.
 - Prüfen: Stimmt die Anzahl auch in der Bank und bei angebrochenen Stapeln (z. B. 13)?
+
+## Version 0.46.3 – zurück zum Scan per Knopf
+
+- Automatischer Scan wieder entfernt (inkl. Option). Gescannt wird nur per Klick auf „Wegweiser: Preise scannen“.
+- Geblieben: Der Knopf zählt die Wartezeit herunter; Stapelpreis im Tooltip.
