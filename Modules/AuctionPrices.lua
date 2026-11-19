@@ -29,7 +29,7 @@ ns.modules.AuctionPrices = AP
 local SCAN_COOLDOWN = 15 * 60
 local CHUNK = 2000          -- Einträge pro Bild (Spiel soll nicht stocken)
 
-local button, scanning, processing
+local button, scanning, processing, ticker
 
 local function setting() return ns.db and ns.db.settings.ahPrices end
 local function isSecret(v) return issecretvalue and issecretvalue(v) end
@@ -109,14 +109,14 @@ local function processReplicate()
     step()
 end
 
-function AP:Scan()
+function AP:Scan(auto)
     if scanning or not (C_AuctionHouse and C_AuctionHouse.ReplicateItems) then return end
     local s = store()
     if ((s.lastRequest or 0) + SCAN_COOLDOWN) > time() then setButtonState() return end
     s.lastRequest = time()
     scanning = true
     setButtonState()
-    ns:Print(L.AP_START)
+    ns:Print(auto and L.AP_START_AUTO or L.AP_START)
     C_AuctionHouse.ReplicateItems()
 end
 
@@ -190,8 +190,22 @@ function AP:OnInitialize()
         end
         createButton()
         if button then button:SetShown(not otherAddon()); setButtonState() end
+        if otherAddon() then return end
+        -- Automatik (wie bei Auctionator): beim Öffnen scannen, wenn die
+        -- 15 Minuten um sind, und solange das Fenster offen ist alle 15 Minuten
+        -- erneut. Geht nur am Auktionator – ohne offenes Auktionshaus liefert der
+        -- Server keine Daten. ReplicateItems ist laut API-Doku ohne
+        -- Einschränkung (kein Klick nötig).
+        local function tick()
+            setButtonState()
+            if ns.db.settings.ahAutoScan and not scanning then AP:Scan(true) end
+        end
+        C_Timer.After(2, tick)
+        if ticker then ticker:Cancel() end
+        ticker = C_Timer.NewTicker and C_Timer.NewTicker(30, tick)
     end)
     ns:RegisterEvent("AUCTION_HOUSE_CLOSED", function()
+        if ticker then ticker:Cancel(); ticker = nil end
         if scanning then scanning = false; ns:Print(L.AP_ABORT) end
     end)
     ns:RegisterEvent("REPLICATE_ITEM_LIST_UPDATE", function()

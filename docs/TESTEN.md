@@ -441,3 +441,9 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Eine normale Suche im Auktionshaus aktualisiert die gefundenen Gegenstände ebenfalls.
 - `/ww ah`: Anzahl gespeicherter Preise und Alter des letzten Scans.
 - Mit Auctionator: kein Knopf, keine Wegweiser-Zeile (Auctionator zeigt seine eigenen Preise).
+
+## Version 0.46.1 – Auktionshaus automatisch scannen
+
+- Auktionshaus öffnen (letzter Scan > 15 Min. her): nach ~2 Sekunden „Auktionshaus-Preise werden automatisch eingelesen …“, dann „Scan fertig …“ – ohne Klick.
+- Fenster offen lassen: Der Knopf zählt die Minuten herunter (aktualisiert alle 30 s); nach 15 Minuten scannt es von selbst erneut.
+- Abschaltbar: `/ww config` → „Auktionshaus automatisch scannen“ (dann nur per Knopf).
