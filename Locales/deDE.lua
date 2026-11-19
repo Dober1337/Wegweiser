@@ -486,3 +486,4 @@ L.AP_OTHER               = "Auctionator/TradeSkillMaster ist aktiv – Wegweiser
 L.OPT_AHAUTO             = "Auktionshaus automatisch scannen"
 L.OPT_AHAUTO_TT          = "Beim Öffnen des Auktionshauses und danach alle 15 Minuten (solange es offen ist) die Preise automatisch einlesen."
 L.AP_START_AUTO          = "Auktionshaus-Preise werden automatisch eingelesen …"
+L.AP_TT_STACK            = "Auktionshaus (%d Stück)"

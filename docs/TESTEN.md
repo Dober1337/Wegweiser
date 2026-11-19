@@ -447,3 +447,9 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Auktionshaus öffnen (letzter Scan > 15 Min. her): nach ~2 Sekunden „Auktionshaus-Preise werden automatisch eingelesen …“, dann „Scan fertig …“ – ohne Klick.
 - Fenster offen lassen: Der Knopf zählt die Minuten herunter (aktualisiert alle 30 s); nach 15 Minuten scannt es von selbst erneut.
 - Abschaltbar: `/ww config` → „Auktionshaus automatisch scannen“ (dann nur per Knopf).
+
+## Version 0.46.2 – Auktionshauspreis für den ganzen Stapel
+
+- Maus über einen Stapel in der Tasche (z. B. 20 Seidenstoff): unter „Auktionshaus (Stück)“ eine zweite Zeile
+  „Auktionshaus (20 Stück): <Stückpreis × 20>“. Bei Einzelstücken nur die Stück-Zeile.
+- Prüfen: Stimmt die Anzahl auch in der Bank und bei angebrochenen Stapeln (z. B. 13)?

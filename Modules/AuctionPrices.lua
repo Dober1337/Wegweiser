@@ -142,12 +142,46 @@ end
 -- Tooltip
 -- ------------------------------------------------------------
 
+-- Stapelgröße des Gegenstands unter der Maus (Tasche, Bank …), mehrere Wege:
+--  1) data.guid -> C_Item.GetItemLocation -> C_Item.GetStackCount (Forever-Doku)
+--  2) Taschen-Knopf als Besitzer: C_Container.GetContainerItemInfo(bag, slot).stackCount
+--  3) Blizzards Verkaufspreis-Zeile (gilt schon für den ganzen Stapel) / Stückpreis
+local function stackCount(tooltip, data)
+    if data.guid and not isSecret(data.guid) and C_Item and C_Item.GetItemLocation and C_Item.GetStackCount then
+        local ok, loc = pcall(C_Item.GetItemLocation, data.guid)
+        if ok and loc then
+            local ok2, n = pcall(C_Item.GetStackCount, loc)
+            if ok2 and type(n) == "number" and not isSecret(n) and n > 0 then return n end
+        end
+    end
+    local owner = tooltip.GetOwner and tooltip:GetOwner()
+    if owner and owner.GetBagID and owner.GetID and C_Container and C_Container.GetContainerItemInfo then
+        local ok, info = pcall(function() return C_Container.GetContainerItemInfo(owner:GetBagID(), owner:GetID()) end)
+        if ok and info and info.itemID == data.id and info.stackCount and not isSecret(info.stackCount) then
+            return info.stackCount
+        end
+    end
+    local unit = C_Item and C_Item.GetItemInfo and select(11, C_Item.GetItemInfo(data.id))
+    if unit and unit > 0 and data.lines then
+        for _, line in ipairs(data.lines) do
+            if line.type == 11 and line.price and not isSecret(line.price) and line.price % unit == 0 then
+                return line.price / unit
+            end
+        end
+    end
+    return 1
+end
+
 local function onTooltip(tooltip, data)
     if not setting() or otherAddon() or not data or not data.id or isSecret(data.id) then return end
     local e = store().items[data.id]
     if not e then return end
     tooltip:AddDoubleLine(L.AP_TT, money(e.p) .. " |cff999999" .. string.format(L.AP_TT_AGE, ago(e.t)) .. "|r",
         0.4, 0.8, 1.0, 1, 1, 1)
+    local ok, n = pcall(stackCount, tooltip, data)
+    if ok and n and n > 1 then
+        tooltip:AddDoubleLine(string.format(L.AP_TT_STACK, n), money(e.p * n), 0.4, 0.8, 1.0, 1, 1, 1)
+    end
 end
 
 -- /ww ah – Stand der gespeicherten Preise

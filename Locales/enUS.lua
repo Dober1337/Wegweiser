@@ -486,3 +486,4 @@ L.AP_OTHER               = "Auctionator/TradeSkillMaster is active – Wegweiser
 L.OPT_AHAUTO             = "Scan auction house automatically"
 L.OPT_AHAUTO_TT          = "Read prices automatically when opening the auction house and every 15 minutes while it stays open."
 L.AP_START_AUTO          = "Reading auction house prices automatically …"
+L.AP_TT_STACK            = "Auction house (%d items)"
