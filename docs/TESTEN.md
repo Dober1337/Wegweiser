@@ -468,3 +468,11 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 - Rechtsklick: Zählung neu starten. `/ww xp` nochmal: Fenster aus.
 - Auch als Häkchen in `/ww config` („XP pro Stunde anzeigen“) – wirkt sofort.
 - Prüfen: Stimmt die Zahl nach einem Levelaufstieg weiter (kein Sprung/Einbruch)? Zählt sie nach /reload weiter?
+
+## Version 0.47.1 – Kills im XP-Fenster (Grind-Spots testen)
+
+- Am Grind-Spot ankommen → Rechtsklick aufs XP-Fenster (Zählung neu).
+- Nach dem ersten Kill: dritte Zeile „Kills bis Level: N“.
+- Maus drüber: Kills (mit Kills pro Stunde), Ø XP pro Kill, Kills bis zum Level.
+- Quest-Abgaben zählen nicht als Kill (erhöhen aber XP/h).
+- Prüfen: Zählt jeder Raptor genau einmal? (Falls die dritte Zeile nie erscheint: Screenshot der Chatmeldung „… stirbt, Ihr bekommt … Erfahrung“.)

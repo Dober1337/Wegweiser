@@ -5,7 +5,13 @@
 --
 --   Zeile 1: "XP/h: 12.4k"
 --   Zeile 2: "Level 23 in: 1 Std. 12 Min."
---   Tooltip: XP dieser Sitzung, Dauer, erholte XP, Bedienung.
+--   Zeile 3: "Kills bis Level: 34" (sobald Mobs Erfahrung gegeben haben)
+--   Tooltip: XP dieser Sitzung, Kills, Ø XP pro Kill, Dauer, erholte XP, Bedienung.
+--
+-- Kills zählt Wegweiser über Blizzards eigene Chatmeldung „X stirbt, Ihr
+-- bekommt N Erfahrung“ (CHAT_MSG_COMBAT_XP_GAIN, Text aus der globalen
+-- Spielvariable COMBATLOG_XPGAIN_FIRSTPERSON – passt sich der Spielsprache an).
+-- Quest-XP läuft über eine andere Meldung und zählt nicht als Kill.
 --
 -- Gerechnet wird über die ganze Sitzung (seit dem Einloggen, /reload zählt
 -- weiter). Pausen (AFK, Stadt) drücken den Schnitt – Rechtsklick setzt zurück.
@@ -75,6 +81,7 @@ function XT:Reset()
     local s = session()
     s.start = time()
     s.gained = 0
+    s.kills, s.killXP = 0, 0
     s.lastXP, s.lastMax, s.lastLevel = UnitXP("player"), UnitXPMax("player"), UnitLevel("player")
 end
 
@@ -93,6 +100,40 @@ local function onXP()
     end
     if diff > 0 then s.gained = (s.gained or 0) + diff end
     s.lastXP, s.lastMax, s.lastLevel = cur, max, level
+end
+
+-- Muster aus Blizzards Text bauen: "%s dies, you gain %d experience."
+-- -> "^(.+) dies, you gain (%d+) experience" (Ende offen: Erholt-/Gruppenbonus)
+local killPattern
+local function buildPattern()
+    local fmt = _G.COMBATLOG_XPGAIN_FIRSTPERSON
+    if type(fmt) ~= "string" then return nil end
+    fmt = fmt:gsub("%%%d%$", "%%")              -- %1$s -> %s
+    fmt = fmt:gsub("[%.%s]+$", "")              -- Punkt am Ende weg
+    local p = fmt:gsub("([%^%$%(%)%.%[%]%*%+%-%?])", "%%%1")
+    p = p:gsub("%%s", "(.+)"):gsub("%%d", "(%%d+)")
+    return "^" .. p
+end
+
+local function onXPMessage(msg)
+    if type(msg) ~= "string" or (issecretvalue and issecretvalue(msg)) then return end
+    killPattern = killPattern or buildPattern()
+    if not killPattern then return end
+    local name, amount = msg:match(killPattern)
+    amount = tonumber(amount)
+    if name and amount then
+        local s = session()
+        s.kills = (s.kills or 0) + 1
+        s.killXP = (s.killXP or 0) + amount
+    end
+end
+
+-- Kills bis zum Level (nil ohne Daten)
+function XT:KillsToLevel()
+    local s = session()
+    if (s.kills or 0) == 0 or (s.killXP or 0) == 0 then return nil end
+    local avg = s.killXP / s.kills
+    return math.ceil((UnitXPMax("player") - UnitXP("player")) / avg), avg
 end
 
 -- Rückgabe: XP pro Stunde, Sekunden bis Level (nil, wenn noch nichts verdient)
@@ -119,7 +160,10 @@ local function update()
         frame.line1:SetText(string.format(L.XT_RATE, "–"))
         frame.line2:SetText(L.XT_WAITING)
     end
-    local w = math.max(frame.line1:GetStringWidth(), frame.line2:GetStringWidth()) + 20
+    local kills = XT:KillsToLevel()
+    frame.line3:SetText(kills and string.format(L.XT_KILLS_LEFT, kills) or "")
+    frame:SetHeight(kills and 54 or 40)
+    local w = math.max(frame.line1:GetStringWidth(), frame.line2:GetStringWidth(), frame.line3:GetStringWidth()) + 20
     frame:SetWidth(math.max(w, 120))
 end
 
@@ -127,6 +171,13 @@ local function fillTooltip(tt)
     local s = session()
     tt:AddLine(L.XT_TT_TITLE, 1, 0.82, 0)
     tt:AddDoubleLine(L.XT_TT_GAINED, short(s.gained or 0), 1, 1, 1, 1, 1, 1)
+    local kills, avg = XT:KillsToLevel()
+    if kills then
+        local elapsed = math.max(time() - (s.start or time()), 1)
+        tt:AddDoubleLine(L.XT_TT_KILLS, string.format("%d (%s/h)", s.kills, short(s.kills / elapsed * 3600)), 1, 1, 1, 1, 1, 1)
+        tt:AddDoubleLine(L.XT_TT_AVG, short(avg), 1, 1, 1, 1, 1, 1)
+        tt:AddDoubleLine(L.XT_TT_KILLS_LEFT, tostring(kills), 1, 1, 1, 1, 1, 1)
+    end
     tt:AddDoubleLine(L.XT_TT_TIME, duration(time() - (s.start or time())), 1, 1, 1, 1, 1, 1)
     tt:AddDoubleLine(L.XT_TT_LEFT, short(UnitXPMax("player") - UnitXP("player")), 1, 1, 1, 1, 1, 1)
     local rested = GetXPExhaustion and GetXPExhaustion()
@@ -156,6 +207,8 @@ local function createFrame()
     frame.line1:SetPoint("TOPLEFT", 10, -8)
     frame.line2 = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
     frame.line2:SetPoint("TOPLEFT", frame.line1, "BOTTOMLEFT", 0, -3)
+    frame.line3 = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    frame.line3:SetPoint("TOPLEFT", frame.line2, "BOTTOMLEFT", 0, -3)
 
     -- Verschieben mit gedrückter linker Maustaste, Position merken
     frame:SetMovable(true)
@@ -226,6 +279,7 @@ function XT:OnInitialize()
         XT:Refresh()
     end)
     ns:RegisterEvent("PLAYER_XP_UPDATE", function() onXP(); update() end)
+    ns:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN", function(_, msg) onXPMessage(msg) end)
     ns:RegisterEvent("PLAYER_LEVEL_UP", function()
         C_Timer.After(1, function() onXP(); XT:Refresh() end)
     end)
