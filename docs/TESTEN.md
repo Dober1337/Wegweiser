@@ -458,3 +458,13 @@ Bitte Screenshot: sitzt der Knopf gut (überdeckt er nichts)?
 
 - Automatischer Scan wieder entfernt (inkl. Option). Gescannt wird nur per Klick auf „Wegweiser: Preise scannen“.
 - Geblieben: Der Knopf zählt die Wartezeit herunter; Stapelpreis im Tooltip.
+
+## Version 0.47.0 – XP pro Stunde
+
+- `/ww xp`: kleines Fenster oben in der Bildmitte erscheint („XP/h: –“ / „Sammle Daten …“).
+  Nach der ersten Minute mit Erfahrung: „XP/h: 12,4k“ und „Level 23 in: 1 Std. 12 Min.“
+- Mit der linken Maustaste verschieben – Position bleibt nach /reload erhalten.
+- Maus drüber: Verdient, Dauer, noch bis zum Level, erholte XP.
+- Rechtsklick: Zählung neu starten. `/ww xp` nochmal: Fenster aus.
+- Auch als Häkchen in `/ww config` („XP pro Stunde anzeigen“) – wirkt sofort.
+- Prüfen: Stimmt die Zahl nach einem Levelaufstieg weiter (kein Sprung/Einbruch)? Zählt sie nach /reload weiter?

@@ -27,6 +27,7 @@ local function showHelp()
     ns:Print(L.HELP_FLIGHT)
     ns:Print(L.HELP_HEARTH)
     ns:Print(L.HELP_GOLD)
+    ns:Print(L.HELP_XP)
     ns:Print(L.HELP_RIDING)
     ns:Print(L.HELP_LEGACY)
     ns:Print(L.HELP_PROF)
@@ -115,6 +116,7 @@ local commands = {
     ruhestein  = function() ns.modules.Travel:HearthCommand() end,
     hearth     = function() ns.modules.Travel:HearthCommand() end,
     gold       = function(_, rest) ns.modules.SessionMoney:Command(rest) end,
+    xp         = function(_, rest) ns.modules.XPTracker:Command(rest) end,
     dungeons   = function() ns.modules.DungeonFinder:Command() end,
     dungeon    = function() ns.modules.DungeonFinder:Command() end,
     instanzen  = function() ns.modules.DungeonFinder:Command() end,

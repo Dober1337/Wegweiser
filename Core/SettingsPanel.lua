@@ -69,6 +69,7 @@ function ns:OnDatabaseReady()
     addCheckbox("dungeonHint",     L.OPT_DHINT,     L.OPT_DHINT_TT)
 
     addCheckbox("ahPrices",        L.OPT_AH,        L.OPT_AH_TT)
+    addCheckbox("xpTracker",       L.OPT_XP,        L.OPT_XP_TT)
     -- Weitere Module (Talent-Leitfaden, Zonen, Quests, ...) kommen hier dazu,
     -- sobald sie gebaut sind.
 

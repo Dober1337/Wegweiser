@@ -51,6 +51,7 @@ ns.defaults = {
         dungeonTab      = true,   -- eigener Reiter im Gruppenfinder
         dungeonHint     = true,   -- Levelaufstieg: Dungeon neu im Stufenbereich
         ahPrices        = true,   -- Auktionshauspreise im Tooltip + Scan-Knopf
+        xpTracker       = false,  -- Fenster XP pro Stunde (an mit /ww xp)
         -- Build-Wahl steht in talentBuildByClass (pro Klasse). Ohne Wahl gilt der
         -- Einsteiger-Tipp der Klasse (TalentGuide:GetBuild).
     },
